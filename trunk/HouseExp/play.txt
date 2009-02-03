@@ -1,0 +1,55 @@
+w
+get fla
+w
+u
+s
+s
+s
+get hai
+n
+n
+n
+u
+s
+e
+get bat
+n
+bru leo
+get boo
+rea boo
+w
+d
+s
+s
+s
+s
+dro hai
+dro boo
+get ban
+n
+n
+n
+n
+d
+d
+inv
+on
+n
+n
+pla ban
+get can
+dro ban
+w
+n
+w
+spr blo
+get par
+rea par
+w
+w
+w
+s
+u
+off
+w
+say seersucker

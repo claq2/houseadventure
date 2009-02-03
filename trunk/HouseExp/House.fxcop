@@ -1,0 +1,1284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">http://www.gotdotnet.com/team/fxcop//xsl/1.35/FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/House/bin/Debug/House.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/House/bin/Debug/HouseFunctions.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/HouseForms/bin/Debug/HouseForms.exe" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Targets>
+   <Target Name="$(ProjectDir)/House/bin/Debug/House.exe">
+    <Modules>
+     <Module Name="house.exe">
+      <Namespaces>
+       <Namespace Name="House">
+        <Types>
+         <Type Name="ActionHelper">
+          <Messages>
+           <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Created="2008-09-28 17:54:32Z">
+            <Issue>
+             <Item>'ActionHelper'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Action">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ActionHelper.Action'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Action()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Action.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Action(System.String)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Action.set(string)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'ActionHelper.Action.set(string)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Adversaries">
+            <Accessors>
+             <Accessor Name="#get_Adversaries()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Adversaries.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Argument">
+            <Accessors>
+             <Accessor Name="#get_Argument()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Argument.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Argument(System.String)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Argument.set(string)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#ClearScreen">
+            <Accessors>
+             <Accessor Name="#get_ClearScreen()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.ClearScreen.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_ClearScreen(System.Boolean)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.ClearScreen.set(bool)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#ExitDirections">
+            <Accessors>
+             <Accessor Name="#get_ExitDirections()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.ExitDirections.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#GameEnded">
+            <Accessors>
+             <Accessor Name="#get_GameEnded()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.GameEnded.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_GameEnded(System.Boolean)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.GameEnded.set(bool)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#House">
+            <Accessors>
+             <Accessor Name="#get_House()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.House.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_House(HouseFunctions.HouseType)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 22:32:39Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.House.set(HouseType)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Inventory">
+            <Accessors>
+             <Accessor Name="#get_Inventory()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Inventory.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Items">
+            <Accessors>
+             <Accessor Name="#get_Items()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Items.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Message">
+            <Accessors>
+             <Accessor Name="#get_Message()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Message.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Message(System.Text.StringBuilder)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Message.set(StringBuilder)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Player">
+            <Accessors>
+             <Accessor Name="#get_Player()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Player.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Player(HouseFunctions.Player)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.Player.set(Player)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#RoomName">
+            <Accessors>
+             <Accessor Name="#get_RoomName()">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 22:30:34Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.RoomName.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_RoomName(System.String)">
+              <Messages>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 22:30:34Z">
+                <Issue Name="TooGeneric">
+                 <Item>'ActionHelper.RoomName.set(string)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlayGame">
+          <Members>
+           <Member Name="#_input">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2008-09-28 17:54:32Z">
+              <Issue>
+               <Item>'PlayGame._input'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Program">
+          <Members>
+           <Member Name="#Action">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Action'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Action()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Action.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Action.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Action(System.String)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Action.set(string)'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Action.set(string)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'Program.Action.set(string)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Adversaries">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Adversaries'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Adversaries()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Adversaries.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Adversaries.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Argument">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Argument'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Argument()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Argument.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Argument.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Argument(System.String)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Argument.set(string)'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Argument.set(string)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'Program.Argument.set(string)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#ClearScreen">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.ClearScreen'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_ClearScreen()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.ClearScreen.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.ClearScreen.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_ClearScreen(System.Boolean)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.ClearScreen.set(bool)'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.ClearScreen.set(bool)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'Program.ClearScreen.set(bool)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Died">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Died'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Died()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Died.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Died.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Died(System.Boolean)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Died.set(bool)'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Died.set(bool)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'Program.Died.set(bool)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Dispose()">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+              <Issue>
+               <Item>'Program.Dispose()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-28 17:54:32Z">
+              <Issue Name="TooGeneric">
+               <Item>'Program.Dispose()'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Dispose()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ExitDirections">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.ExitDirections'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_ExitDirections()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.ExitDirections.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.ExitDirections.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Inventory">
+            <Accessors>
+             <Accessor Name="#get_Inventory()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Inventory.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Items">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Items'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Items()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Items.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Items.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Main(System.String[])">
+            <Messages>
+             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2008-09-08 13:27:30Z">
+              <Issue>
+               <Item>'int.ToString()'</Item>
+               <Item>'Program.Main(string[])'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Message">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.Message'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_Message()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Message.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Message.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Message(System.String)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.Message.set(string)'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.Message.set(string)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'Program.Message.set(string)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#WonGame">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Program.WonGame'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="#get_WonGame()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.WonGame.get()'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.WonGame.get()'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_WonGame(System.Boolean)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+                <Issue>
+                 <Item>'Program.WonGame.set(bool)'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-09-23 21:36:57Z">
+                <Issue Name="TooGeneric">
+                 <Item>'Program.WonGame.set(bool)'</Item>
+                 <Item>'Exception'</Item>
+                </Issue>
+               </Message>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-28 17:54:32Z" FixCategory="NonBreaking">
+                <Issue>
+                 <Item>'value'</Item>
+                 <Item>'Program.WonGame.set(bool)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/House/bin/Debug/HouseFunctions.dll">
+    <Modules>
+     <Module Name="housefunctions.dll">
+      <Namespaces>
+       <Namespace Name="HouseFunctions">
+        <Types>
+         <Type Name="ActionShortName">
+          <Members>
+           <Member Name="#Bru">
+            <Messages>
+             <Message Id="Bru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Bru</Item>
+               <Item>'ActionShortName.Bru'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Dro">
+            <Messages>
+             <Message Id="Dro" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Dro</Item>
+               <Item>'ActionShortName.Dro'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Kil">
+            <Messages>
+             <Message Id="Kil" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Kil</Item>
+               <Item>'ActionShortName.Kil'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Lig">
+            <Messages>
+             <Message Id="Lig" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Lig</Item>
+               <Item>'ActionShortName.Lig'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Loo">
+            <Messages>
+             <Message Id="Loo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Loo</Item>
+               <Item>'ActionShortName.Loo'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Ope">
+            <Messages>
+             <Message Id="Ope" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Ope</Item>
+               <Item>'ActionShortName.Ope'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Pla">
+            <Messages>
+             <Message Id="Pla" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Pla</Item>
+               <Item>'ActionShortName.Pla'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Sav">
+            <Messages>
+             <Message Id="Sav" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Sav</Item>
+               <Item>'ActionShortName.Sav'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Spr">
+            <Messages>
+             <Message Id="Spr" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Spr</Item>
+               <Item>'ActionShortName.Spr'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Tak">
+            <Messages>
+             <Message Id="Tak" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Tak</Item>
+               <Item>'ActionShortName.Tak'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Unl">
+            <Messages>
+             <Message Id="Unl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="Member">
+               <Item>Unl</Item>
+               <Item>'ActionShortName.Unl'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="AdversaryShortName">
+          <Members>
+           <Member Name="#Blo">
+            <Messages>
+             <Message Id="Blo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Blo</Item>
+               <Item>'AdversaryShortName.Blo'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Vam">
+            <Messages>
+             <Message Id="Vam" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Vam</Item>
+               <Item>'AdversaryShortName.Vam'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Wer">
+            <Messages>
+             <Message Id="Wer" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Wer</Item>
+               <Item>'AdversaryShortName.Wer'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="DirectionShortName">
+          <Members>
+           <Member Name="#D">
+            <Messages>
+             <Message Id="D" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'DirectionShortName.D'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#E">
+            <Messages>
+             <Message Id="E" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'DirectionShortName.E'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#N">
+            <Messages>
+             <Message Id="N" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'DirectionShortName.N'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#S">
+            <Messages>
+             <Message Id="S" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'DirectionShortName.S'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#U">
+            <Messages>
+             <Message Id="U" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'DirectionShortName.U'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#W">
+            <Messages>
+             <Message Id="W" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-23 18:56:15Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'DirectionShortName.W'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="InanimateObjectShortName">
+          <Members>
+           <Member Name="#Coi">
+            <Messages>
+             <Message Id="Coi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Coi</Item>
+               <Item>'InanimateObjectShortName.Coi'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Dia">
+            <Messages>
+             <Message Id="Dia" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Dia</Item>
+               <Item>'InanimateObjectShortName.Dia'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fla">
+            <Messages>
+             <Message Id="Fla" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Fla</Item>
+               <Item>'InanimateObjectShortName.Fla'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Glo">
+            <Messages>
+             <Message Id="Glo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Glo</Item>
+               <Item>'InanimateObjectShortName.Glo'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Gol">
+            <Messages>
+             <Message Id="Gol" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Gol</Item>
+               <Item>'InanimateObjectShortName.Gol'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Hai">
+            <Messages>
+             <Message Id="Hai" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Hai</Item>
+               <Item>'InanimateObjectShortName.Hai'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Kni">
+            <Messages>
+             <Message Id="Kni" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Kni</Item>
+               <Item>'InanimateObjectShortName.Kni'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Pil">
+            <Messages>
+             <Message Id="Pil" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Pil</Item>
+               <Item>'InanimateObjectShortName.Pil'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Sho">
+            <Messages>
+             <Message Id="Sho" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Sho</Item>
+               <Item>'InanimateObjectShortName.Sho'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="LocationType">
+          <Members>
+           <Member Name="#Equals(System.Object)">
+            <Messages>
+             <Message TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800" Created="2008-09-22 02:49:59Z">
+              <Issue Name="Parameter">
+               <Item>'obj'</Item>
+               <Item>'LocationType'</Item>
+               <Item>'LocationType.Equals(object)'</Item>
+               <Item>isint</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="MagicWord">
+          <Members>
+           <Member Name="#Shazaam">
+            <Messages>
+             <Message Id="Shazaam" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Shazaam</Item>
+               <Item>'MagicWord.Shazaam'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Ugaboom">
+            <Messages>
+             <Message Id="Ugaboom" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-09-08 13:27:30Z">
+              <Issue Name="Member">
+               <Item>Ugaboom</Item>
+               <Item>'MagicWord.Ugaboom'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlayerEntity">
+          <Members>
+           <Member Name="#FormatCommand(System.String)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-28 17:54:32Z">
+              <Issue>
+               <Item>'PlayerEntity.FormatCommand(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SaveData">
+          <Members>
+           <Member Name="#PopulateRoomsOfOneFloor(HouseFunctions.RoomKeyedCollection,HouseFunctions.Floor)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-22 02:49:59Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'SaveData.PopulateRoomsOfOneFloor(RoomKeyedCollection, Floor)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TheHouse">
+          <Members>
+           <Member Name="#RemoveFrontPorchItems()">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-19 02:13:10Z">
+              <Issue>
+               <Item>'TheHouse.RemoveFrontPorchItems()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RepopulateAdversary(HouseFunctions.Adversary)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-22 02:49:59Z">
+              <Issue>
+               <Item>'TheHouse.RepopulateAdversary(Adversary)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RepopulateInanimateObject(HouseFunctions.InanimateObject)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-22 02:49:59Z">
+              <Issue>
+               <Item>'TheHouse.RepopulateInanimateObject(InanimateObject)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RestoreFromSaveData(HouseFunctions.SaveData)">
+            <Messages>
+             <Message Id="data" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-09-22 02:49:59Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'data'</Item>
+               <Item>'TheHouse.RestoreFromSaveData(SaveData)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RestoreRoom(HouseFunctions.Room)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-22 02:49:59Z">
+              <Issue>
+               <Item>'TheHouse.RestoreRoom(Room)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RestoreRooms(HouseFunctions.RoomKeyedCollection)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-22 02:49:59Z">
+              <Issue>
+               <Item>'TheHouse.RestoreRooms(RoomKeyedCollection)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateMonstersInHangout()">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-09-19 02:13:10Z">
+              <Issue>
+               <Item>'TheHouse.UpdateMonstersInHangout()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="HouseFunctions.Presenters">
+        <Types>
+         <Type Name="ActionPresenter">
+          <Members>
+           <Member Name="#Load()">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'ActionPresenter.Load()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Save()">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-09-28 17:54:32Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'ActionPresenter.Save()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/HouseForms/bin/Debug/HouseForms.exe">
+    <Modules>
+     <Module Name="houseforms.exe">
+      <Namespaces>
+       <Namespace Name="HouseForms">
+        <Types>
+         <Type Name="FormHouse">
+          <Members>
+           <Member Name="#FormHouse_Load(System.Object,System.EventArgs)">
+            <Messages>
+             <Message Id="bDebugMode" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2008-09-28 17:54:32Z">
+              <Issue>
+               <Item>'FormHouse.FormHouse_Load(object, EventArgs)'</Item>
+               <Item>'bDebugMode'</Item>
+               <Item>'bool'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812">
+    <Resolution Name="Default">{0} is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+    <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
+    <Resolution Name="Parameter">{0}, a parameter, is cast to type {1} multiple times in method {2}. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant {3} instruction.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
+    <Resolution Name="TooGeneric">{0} creates an exception of type {1}, an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberMoreMeaningfulName">Consider providing a more meaningful name than member name {0}.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
+    <Resolution Name="Default">{0} declares a variable, {1}, of type {2}, which is never used or is only assigned to. Use this variable or remove it.</Resolution>
+   </Rule>
+   <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+    <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>

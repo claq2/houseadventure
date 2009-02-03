@@ -1,0 +1,9 @@
+#summary Features of the Game
+
+= Introduction =
+
+These are the commands and features of the game.
+
+= Details =
+
+Objects, adversaries, actions, movement, impostor, etc.

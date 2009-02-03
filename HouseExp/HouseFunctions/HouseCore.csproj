@@ -1,0 +1,105 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{300F02C3-4989-4F9A-ACBB-EC07EF031228}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HouseCore</RootNamespace>
+    <AssemblyName>HouseCore</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>housekey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\HouseCore.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionShortName.cs" />
+    <Compile Include="Actions.cs" />
+    <Compile Include="AdversaryCollection.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="DirectionShortName.cs" />
+    <Compile Include="Exit.cs" />
+    <Compile Include="ExitSet.cs" />
+    <Compile Include="Floor.cs" />
+    <Compile Include="GameEntity.cs" />
+    <Compile Include="GetHelper.cs" />
+    <Compile Include="DropHelper.cs" />
+    <Compile Include="HouseType.cs" />
+    <Compile Include="Interfaces\IHouseView.cs" />
+    <Compile Include="LethalActionHelper.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Adversary.cs" />
+    <Compile Include="Domain\HouseObjectTypes\AdversaryShortName.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ConsumeableDependentObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ConsumableObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ContainerObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\CushioningObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\DelicateObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\DiggingObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\InanimateObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\InanimateObjects.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Item.cs" />
+    <Compile Include="Domain\HouseObjectTypes\LockableDoorObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\MultiplePieceObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\StationaryObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\OnOffObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\PainfulObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\PortableObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ProtectiveObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Switch.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Impostor.cs" />
+    <Compile Include="LookHelper.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Presenters\HousePresenter.cs" />
+    <Compile Include="SaveData.cs" />
+    <Compile Include="SingletonPlayerEntity.cs" />
+    <Compile Include="TheHouse.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="MagicWord.cs" />
+    <Compile Include="Domain\RoomTypes\MonsterHangout.cs" />
+    <Compile Include="PlayerEntity.cs" />
+    <Compile Include="PositionedEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomKeyedCollection.cs" />
+    <Compile Include="Domain\RoomTypes\Elevator.cs" />
+    <Compile Include="Domain\RoomTypes\Room.cs" />
+    <Compile Include="Domain\RoomTypes\TelephoneBooth.cs" />
+    <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom.cs" />
+    <Compile Include="TheHouseData.cs" />
+    <Compile Include="TheSingletonHouse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HouseFunctions.cd" />
+    <None Include="housekey.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

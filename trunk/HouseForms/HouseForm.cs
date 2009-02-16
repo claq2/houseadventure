@@ -16,11 +16,12 @@ namespace HouseForms
     using System.Windows.Forms;
     using System.Globalization;
     using HouseCore;
+    using HouseCore.Interfaces;
 
     /// <summary>
     /// The Form
     /// </summary>
-    public partial class FormHouse : Form
+    public partial class FormHouse : Form, IHouseView
     {
         #region Constructors (1) 
 
@@ -44,7 +45,7 @@ namespace HouseForms
         /// <param name="item">The item.</param>
         private void Brush(string item)
         {
-            labelMessage.Text = TheSingletonHouse.Instance.Player.Brush(item);
+            //labelMessage.Text = TheSingletonHouse.Instance.Player.Brush(item);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonInventory_Click(object sender, EventArgs e)
         {
-            this.listBoxInventory.DataSource = TheSingletonHouse.Instance.Player.Inventory;
+            //this.listBoxInventory.DataSource = TheSingletonHouse.Instance.Player.Inventory;
         }
 
         /// <summary>
@@ -197,8 +198,8 @@ namespace HouseForms
         /// <param name="item">The item.</param>
         private void Get(string item)
         {
-            GetHelper getHelper = TheSingletonHouse.Instance.Player.Get(item);
-            labelMessage.Text = getHelper.Output;
+            //GetHelper getHelper = TheSingletonHouse.Instance.Player.Get(item);
+            //labelMessage.Text = getHelper.Output;
         }
 
         /// <summary>
@@ -210,11 +211,10 @@ namespace HouseForms
         /// </returns>
         private static bool IsRightToLeft(IWin32Window owner)
         {
-            Control control = owner as Control;
-
-            if (control != null)
+            using (Control control = owner as Control)
             {
-                return control.RightToLeft == RightToLeft.Yes;
+                if (control != null)
+                    return control.RightToLeft == RightToLeft.Yes;
             }
 
             // If no parent control is available, ask the CurrentUICulture
@@ -228,12 +228,12 @@ namespace HouseForms
         /// <param name="afterVerticalMovement">if set to <c>true</c> [after vertical movement].</param>
         private void Look(bool afterVerticalMovement)
         {
-            LookHelper lookHelper = TheSingletonHouse.Instance.Player.Look(afterVerticalMovement);
+            //LookHelper lookHelper = TheSingletonHouse.Instance.Player.Look(afterVerticalMovement);
 
-            labelLocation.Text = lookHelper.RoomName;
-            listBoxRoomContents.DataSource = lookHelper.Items;
-            listBoxExits.DataSource = lookHelper.ExitDirections;
-            labelMessage.Text = lookHelper.Output;
+            //labelLocation.Text = lookHelper.RoomName;
+            //listBoxRoomContents.DataSource = lookHelper.Items;
+            //listBoxExits.DataSource = lookHelper.ExitDirections;
+            //labelMessage.Text = lookHelper.Output;
         }
 
         /// <summary>
@@ -248,14 +248,14 @@ namespace HouseForms
                 afterVerticalMovement = true;
             }
 
-            if (TheSingletonHouse.Instance.Player.Move(direction))
-            {
-                this.Look(afterVerticalMovement);
-            }
-            else
-            {
-                labelMessage.Text = TheHouseData.DisallowedDirectionValue;
-            }
+            //if (TheSingletonHouse.Instance.Player.Move(direction))
+            //{
+            //    this.Look(afterVerticalMovement);
+            //}
+            //else
+            //{
+            //    labelMessage.Text = TheHouseData.DisallowedDirectionValue;
+            //}
         }
 
         /// <summary>
@@ -287,5 +287,113 @@ namespace HouseForms
         }
 
 		#endregion Methods 
+    
+        #region IHouseView Members
+
+        public StringBuilder Message
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public bool ClearScreen
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public HouseType House
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public Player Player
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public string Argument
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public bool GameEnded
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public bool AfterVerticalMovement
+        {
+            get { throw new Exception("The method or operation is not implemented."); }
+        }
+
+        public IList<string> Adversaries
+        {
+            get { throw new Exception("The method or operation is not implemented."); }
+        }
+
+        public IList<string> Items
+        {
+            get { throw new Exception("The method or operation is not implemented."); }
+        }
+
+        public IList<string> ExitDirections
+        {
+            get { throw new Exception("The method or operation is not implemented."); }
+        }
+
+        public string RoomName
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        #endregion
     }
 }

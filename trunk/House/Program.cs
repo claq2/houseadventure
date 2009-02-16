@@ -422,85 +422,85 @@ namespace House
             */
         }
 
-        /// <summary>
-        /// Formats the command.
-        /// </summary>
-        /// <param name="input">The input.</param>
-        /// <returns>The input string with the first letter in upper case and the reset in lower case</returns>
-        private static string FormatCommand(string input)
-        {
-            return input[0].ToString().ToUpper(CultureInfo.CurrentCulture) + input.Substring(1).ToLower(CultureInfo.CurrentCulture);
-        }
+        ///// <summary>
+        ///// Formats the command.
+        ///// </summary>
+        ///// <param name="input">The input.</param>
+        ///// <returns>The input string with the first letter in upper case and the reset in lower case</returns>
+        //private static string FormatCommand(string input)
+        //{
+        //    return input[0].ToString().ToUpper(CultureInfo.CurrentCulture) + input.Substring(1).ToLower(CultureInfo.CurrentCulture);
+        //}
 
-        /// <summary>
-        /// Processes the look helper.
-        /// </summary>
-        /// <param name="lookHelper">The look helper.</param>
-        /// <returns>String to show the user</returns>
-        private static string ProcessLookHelper(LookHelper lookHelper)
-        {
-            StringBuilder stringBuilderOutput = new StringBuilder();
-            stringBuilderOutput.Append("\r\n\r\n");
-            stringBuilderOutput.Append("You are ");
-            stringBuilderOutput.Append(lookHelper.RoomName);
-            stringBuilderOutput.Append("\r\n");
-            stringBuilderOutput.Append("I see:\r\n");
-            if (!String.IsNullOrEmpty(lookHelper.Output))
-            {
-                stringBuilderOutput.Append(lookHelper.Output);
-            }
-            else
-            {
-                foreach (Adversary adversary in lookHelper.Adversaries)
-                {
-                    stringBuilderOutput.Append(adversary.Name);
-                    stringBuilderOutput.Append("\r\n");
-                }
+        ///// <summary>
+        ///// Processes the look helper.
+        ///// </summary>
+        ///// <param name="lookHelper">The look helper.</param>
+        ///// <returns>String to show the user</returns>
+        //private static string ProcessLookHelper(LookHelper lookHelper)
+        //{
+        //    StringBuilder stringBuilderOutput = new StringBuilder();
+        //    stringBuilderOutput.Append("\r\n\r\n");
+        //    stringBuilderOutput.Append("You are ");
+        //    stringBuilderOutput.Append(lookHelper.RoomName);
+        //    stringBuilderOutput.Append("\r\n");
+        //    stringBuilderOutput.Append("I see:\r\n");
+        //    if (!String.IsNullOrEmpty(lookHelper.Output))
+        //    {
+        //        stringBuilderOutput.Append(lookHelper.Output);
+        //    }
+        //    else
+        //    {
+        //        foreach (Adversary adversary in lookHelper.Adversaries)
+        //        {
+        //            stringBuilderOutput.Append(adversary.Name);
+        //            stringBuilderOutput.Append("\r\n");
+        //        }
 
-                foreach (InanimateObject inanimateObject in lookHelper.Items)
-                {
-                    stringBuilderOutput.Append(inanimateObject.Name);
-                    stringBuilderOutput.Append("\r\n");
-                }
+        //        foreach (InanimateObject inanimateObject in lookHelper.Items)
+        //        {
+        //            stringBuilderOutput.Append(inanimateObject.Name);
+        //            stringBuilderOutput.Append("\r\n");
+        //        }
 
-                stringBuilderOutput.Append("Obvious exits are:\r\n");
-                int intCount = 0;
-                foreach (Direction direction in lookHelper.ExitDirections)
-                {
-                    stringBuilderOutput.Append(direction.ToString());
-                    intCount++;
-                    if (intCount < lookHelper.ExitDirections.Count)
-                    {
-                        stringBuilderOutput.Append("\r\n");
-                    }
-                }
-            }
+        //        stringBuilderOutput.Append("Obvious exits are:\r\n");
+        //        int intCount = 0;
+        //        foreach (Direction direction in lookHelper.ExitDirections)
+        //        {
+        //            stringBuilderOutput.Append(direction.ToString());
+        //            intCount++;
+        //            if (intCount < lookHelper.ExitDirections.Count)
+        //            {
+        //                stringBuilderOutput.Append("\r\n");
+        //            }
+        //        }
+        //    }
 
-            return stringBuilderOutput.ToString();
-        }
+        //    return stringBuilderOutput.ToString();
+        //}
 
-        /// <summary>
-        /// Processes the movement.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <returns>Success or fail</returns>
-        private static bool ProcessMovement(Direction direction)
-        {
-            LookHelper lookHelper = new LookHelper();
-            bool verticalMovement = direction == Direction.Up || direction == Direction.Down;
-            if (TheSingletonHouse.Instance.Player.Move(direction))
-            {
-                Console.Clear();
-                lookHelper = TheSingletonHouse.Instance.Player.Look(verticalMovement);
-                Console.WriteLine(ProcessLookHelper(lookHelper));
-            }
-            else
-            {
-                Console.WriteLine(TheHouseData.DisallowedDirectionValue);
-            }
+        ///// <summary>
+        ///// Processes the movement.
+        ///// </summary>
+        ///// <param name="direction">The direction.</param>
+        ///// <returns>Success or fail</returns>
+        //private static bool ProcessMovement(Direction direction)
+        //{
+        //    LookHelper lookHelper = new LookHelper();
+        //    bool verticalMovement = direction == Direction.Up || direction == Direction.Down;
+        //    if (TheSingletonHouse.Instance.Player.Move(direction))
+        //    {
+        //        Console.Clear();
+        //        lookHelper = TheSingletonHouse.Instance.Player.Look(verticalMovement);
+        //        Console.WriteLine(ProcessLookHelper(lookHelper));
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(TheHouseData.DisallowedDirectionValue);
+        //    }
 
-            return lookHelper.Died;
-        }
+        //    return lookHelper.Died;
+        //}
 
         /*
         public static void Initialize(HouseFunctions.PlayerEntity Player, int[, ,] Exits, int[,] Monsters, double[,] Objects, int[,] MagicRooms, HouseEntity house, List<Room> rooms, List<Adversary> adversries, List<InanimateObject> items)

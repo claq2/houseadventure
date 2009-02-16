@@ -92,7 +92,6 @@ namespace HouseCore
         /// 
         /// </summary>
         public Room()
-            : base()
         {
             InitializeCollections();
         }
@@ -138,10 +137,7 @@ namespace HouseCore
             //items = new InanimateObjectsCollection();
             //exits = new ExitSetKeyedCollection();
 
-            foreach (RoomExit exit in exits)
-            {
-                Exits.Add(exit);
-            }
+            Array.ForEach(exits, Exits.Add);
         }
 
         /// <summary>

@@ -60,6 +60,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="HouseForms.cd" />
     <None Include="housekey.snk" />
     <None Include="Properties\DataSources\HouseFunctions.InanimateObject.datasource" />
     <None Include="Properties\Settings.settings">

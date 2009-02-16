@@ -30,11 +30,6 @@ namespace HouseCore
         private InanimateObjectKeyedCollection inanimateObjects = new InanimateObjectKeyedCollection();
 
         /// <summary>
-        /// The portable objects in the house
-        /// </summary>
-        private InanimateObjectKeyedCollection portableObjects = new InanimateObjectKeyedCollection();
-
-        /// <summary>
         /// The rooms in the house
         /// </summary>
         private RoomKeyedCollection rooms = new RoomKeyedCollection();
@@ -61,7 +56,6 @@ namespace HouseCore
             {
                 this.InitRooms();
                 this.InitObjects();
-                this.InitPortableObjects();
                 this.InitMonsters();
             }
         }
@@ -97,7 +91,19 @@ namespace HouseCore
         [XmlIgnore()]
         public InanimateObjectKeyedCollection PortableObjects
         {
-            get { return this.portableObjects; }
+            get
+            {
+                InanimateObjectKeyedCollection result = new InanimateObjectKeyedCollection();
+                foreach (InanimateObject obj in this.inanimateObjects)
+                {
+                    PortableObject portableObject = obj as PortableObject;
+                    if (portableObject != null)
+                    {
+                        result.Add(obj);
+                    }
+                }
+                return result;
+            }
         }
 
         /// <summary>
@@ -200,9 +206,9 @@ namespace HouseCore
             this.adversaries.Add(new Adversary(TheHouseData.MonkName, this.rooms[TheHouseData.LocationSecondFloorGuestroom1], TheHouseData.MonkShortName));
             this.adversaries.Add(new Adversary(TheHouseData.VampireName, this.rooms[TheHouseData.LocationFirstFloorKitchen], TheHouseData.VampireShortName));
             this.adversaries.Add(new Adversary(TheHouseData.WerewolfName, this.rooms[TheHouseData.LocationThirdFloorArtHall], TheHouseData.WerewolfShortName));
-            int intImpostorItemNumber = random.Next(portableObjects.Count);
-            string stringImpostorDisplayName = this.portableObjects[intImpostorItemNumber].Name;
-            string stringImpostorShortName = this.portableObjects[intImpostorItemNumber].ShortName;
+            int intImpostorItemNumber = random.Next(this.PortableObjects.Count);
+            string stringImpostorDisplayName = this.PortableObjects[intImpostorItemNumber].Name;
+            string stringImpostorShortName = this.PortableObjects[intImpostorItemNumber].ShortName;
             int intImpostorRoomNumber = random.Next(10);
             Floor floorImpostorFloor = (Floor)random.Next(4);
             LocationType locationImpostorLocation = new LocationType(intImpostorRoomNumber, floorImpostorFloor);
@@ -242,23 +248,6 @@ namespace HouseCore
             this.inanimateObjects.Add(new StationaryObject(TheHouseData.MainframeName, this.rooms[TheHouseData.LocationThirdFloorComputerRoom]));
             this.inanimateObjects.Add(new StationaryObject(TheHouseData.MooseHeadName, this.rooms[TheHouseData.LocationSecondFloorDen]));
             this.inanimateObjects.Add(new StationaryObject(TheHouseData.StocksName, this.rooms[TheHouseData.LocationBasementTortureChamber]));
-        }
-
-        /// <summary>
-        /// Inits the portable objects.
-        /// </summary>
-        private void InitPortableObjects()
-        {
-            int intCount = this.inanimateObjects.Count;
-            this.portableObjects.Clear();
-            for (int i = 0; i < intCount; i++)
-            {
-                PortableObject portable = this.inanimateObjects[i] as PortableObject;
-                if (portable != null)
-                {
-                    this.portableObjects.Add(portable);
-                }
-            }
         }
 
         /// <summary>
@@ -456,8 +445,6 @@ namespace HouseCore
                     this.inanimateObjects.Add(value.Rooms[i].Items[j]);
                 }
             }
-
-            this.InitPortableObjects();
         }
     }
 }

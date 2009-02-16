@@ -38,18 +38,16 @@
   <ItemGroup>
     <Compile Include="ActionShortName.cs" />
     <Compile Include="Actions.cs" />
-    <Compile Include="AdversaryCollection.cs" />
+    <Compile Include="Domain\AdversaryCollection.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="DirectionShortName.cs" />
     <Compile Include="Exit.cs" />
     <Compile Include="ExitSet.cs" />
     <Compile Include="Floor.cs" />
-    <Compile Include="GameEntity.cs" />
-    <Compile Include="GetHelper.cs" />
+    <Compile Include="Domain\GameEntity.cs" />
     <Compile Include="DropHelper.cs" />
-    <Compile Include="HouseType.cs" />
+    <Compile Include="Domain\HouseType.cs" />
     <Compile Include="Interfaces\IHouseView.cs" />
-    <Compile Include="LethalActionHelper.cs" />
     <Compile Include="Domain\HouseObjectTypes\Adversary.cs" />
     <Compile Include="Domain\HouseObjectTypes\AdversaryShortName.cs" />
     <Compile Include="Domain\HouseObjectTypes\ConsumeableDependentObject.cs" />
@@ -70,28 +68,23 @@
     <Compile Include="Domain\HouseObjectTypes\ProtectiveObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\Switch.cs" />
     <Compile Include="Domain\HouseObjectTypes\Impostor.cs" />
-    <Compile Include="LookHelper.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Domain\Player.cs" />
     <Compile Include="Presenters\HousePresenter.cs" />
-    <Compile Include="SaveData.cs" />
-    <Compile Include="SingletonPlayerEntity.cs" />
-    <Compile Include="TheHouse.cs" />
+    <Compile Include="Domain\SaveData.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="MagicWord.cs" />
+    <Compile Include="Domain\MagicWord.cs" />
     <Compile Include="Domain\RoomTypes\MonsterHangout.cs" />
-    <Compile Include="PlayerEntity.cs" />
-    <Compile Include="PositionedEntity.cs" />
+    <Compile Include="Domain\PositionedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoomKeyedCollection.cs" />
+    <Compile Include="Domain\RoomTypes\RoomKeyedCollection.cs" />
     <Compile Include="Domain\RoomTypes\Elevator.cs" />
     <Compile Include="Domain\RoomTypes\Room.cs" />
     <Compile Include="Domain\RoomTypes\TelephoneBooth.cs" />
     <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom.cs" />
-    <Compile Include="TheHouseData.cs" />
-    <Compile Include="TheSingletonHouse.cs" />
+    <Compile Include="Domain\TheHouseData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="HouseFunctions.cd" />
+    <None Include="HouseCore.cd" />
     <None Include="housekey.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -36,7 +36,7 @@ namespace House
         /// <summary>
         /// The adversaries in the room
         /// </summary>
-        private List<string> adversaries = new List<string>();
+        private List<string> adversariesInRoom = new List<string>();
 
         /// <summary>
         /// The action argument
@@ -66,7 +66,7 @@ namespace House
         /// <summary>
         /// The items in the room
         /// </summary>
-        private List<string> items = new List<string>();
+        private List<string> itemsInRoom = new List<string>();
 
         /// <summary>
         /// The output from the action
@@ -102,9 +102,9 @@ namespace House
         /// Gets the adversaries.
         /// </summary>
         /// <value>The adversaries.</value>
-        public IList<string> Adversaries
+        public IList<string> AdversariesInRoom
         {
-            get { return this.adversaries; }
+            get { return this.adversariesInRoom; }
         }
 
         /// <summary>
@@ -191,9 +191,9 @@ namespace House
         /// Gets the items.
         /// </summary>
         /// <value>The items.</value>
-        public IList<string> Items
+        public IList<string> ItemsInRoom
         {
-            get { return this.items; }
+            get { return this.itemsInRoom; }
         }
 
         /// <summary>
@@ -483,13 +483,15 @@ namespace House
                         StringBuilder stringBuilderOutput = new StringBuilder();
 
                         stringBuilderOutput.Append("You are presently carrying\r\n");
-                        if (this.player.Inventory.Count == 0)
+//                        if (this.player.Inventory.Count == 0)
+                        if (this.house.Rooms[LocationType.Inventory].Items.Count == 0)
                         {
                             stringBuilderOutput.Append("nothing");
                         }
                         else
                         {
-                            foreach (InanimateObject inanimateObject in this.player.Inventory)
+//                            foreach (InanimateObject inanimateObject in this.player.Inventory)
+                            foreach (InanimateObject inanimateObject in this.house.Rooms[LocationType.Inventory].Items)
                             {
                                 stringBuilderOutput.Append(inanimateObject.Name);
                                 stringBuilderOutput.Append(Environment.NewLine);
@@ -671,13 +673,13 @@ namespace House
             }
             else
             {
-                foreach (string adversary in this.Adversaries)
+                foreach (string adversary in this.AdversariesInRoom)
                 {
                     stringBuilderOutput.Append(adversary);
                     stringBuilderOutput.Append(Environment.NewLine);
                 }
 
-                foreach (string inanimateObject in this.Items)
+                foreach (string inanimateObject in this.ItemsInRoom)
                 {
                     stringBuilderOutput.Append(inanimateObject);
                     stringBuilderOutput.Append(Environment.NewLine);

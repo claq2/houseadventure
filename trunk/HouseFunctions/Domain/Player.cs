@@ -59,10 +59,10 @@ namespace HouseCore
         /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        public InanimateObjectKeyedCollection Inventory
-        {
-            get { return this.inventory; }
-        }
+     //   public InanimateObjectKeyedCollection Inventory
+      //  {
+       //     get { return this.inventory; }
+       // }
 
         /// <summary>
         /// Gets or sets the items removed from house.

@@ -21,14 +21,14 @@ namespace UnitTests
 
 		// Fields (11) 
 
-        private List<string> adversaries;
+        private List<string> adversariesInRoom;
         private bool afterVerticalMovement;
         private string argument;
         private bool clearScreen;
         private List<string> exitDirections;
         private bool gameEnded;
         private HouseType house = new HouseType(true);
-        private List<string> items;
+        private List<string> itemsInRoom;
         private StringBuilder message;
         private Player player = new Player();
         private string roomName;
@@ -36,9 +36,9 @@ namespace UnitTests
 
 		// Properties (11) 
 
-        public IList<string> Adversaries
+        public IList<string> AdversariesInRoom
         {
-            get { return this.adversaries; }
+            get { return this.adversariesInRoom; }
         }
 
         public bool AfterVerticalMovement
@@ -99,9 +99,9 @@ namespace UnitTests
             }
         }
 
-        public IList<string> Items
+        public IList<string> ItemsInRoom
         {
-            get { return this.items; }
+            get { return this.itemsInRoom; }
         }
 
         public StringBuilder Message

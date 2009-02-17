@@ -367,12 +367,12 @@ namespace HouseForms
             get { throw new Exception("The method or operation is not implemented."); }
         }
 
-        public IList<string> Adversaries
+        public IList<string> AdversariesInRoom
         {
             get { throw new Exception("The method or operation is not implemented."); }
         }
 
-        public IList<string> Items
+        public IList<string> ItemsInRoom
         {
             get { throw new Exception("The method or operation is not implemented."); }
         }

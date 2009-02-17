@@ -5,6 +5,7 @@ using System.Text;
 namespace HouseCore
 {
     using System.Xml.Serialization;
+
     /// <summary>
     /// 
     /// </summary>
@@ -26,6 +27,7 @@ namespace HouseCore
             this.roomNumber = roomNumber;
             this.floor = floor;
         }
+
         private Floor floor;
 
         /// <summary>
@@ -46,6 +48,17 @@ namespace HouseCore
         {
             get { return roomNumber; }
             set { roomNumber = value; }
+        }
+
+        /// <summary>
+        /// Location of the inventory
+        /// </summary>
+        public static LocationType Inventory
+        {
+            get
+            {
+                return new LocationType(-1, Floor.InHand);
+            }
         }
 
         #region IEquatable<LocationType> Members

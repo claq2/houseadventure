@@ -55,13 +55,13 @@ namespace HouseCore.Interfaces
         /// Gets the adversaries.
         /// </summary>
         /// <value>The adversaries.</value>
-        IList<string> Adversaries { get; }
+        IList<string> AdversariesInRoom { get; }
 
         /// <summary>
         /// Gets the items.
         /// </summary>
         /// <value>The items.</value>
-        IList<string> Items { get; }
+        IList<string> ItemsInRoom { get; }
 
         /// <summary>
         /// Gets the exit directions.

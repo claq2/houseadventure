@@ -142,8 +142,8 @@ namespace HouseCore.Presenters
         {
             Room roomCurrent = this.view.House.Rooms[this.view.Player.Location];
             Elevator elevatorCurrent = roomCurrent as Elevator;
-            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseData.FlashlightShortName] as OnOffObject;
-            ConsumableObject consumableObjectBatteries = this.view.House.InanimateObjects[TheHouseData.BatteriesShortName] as ConsumableObject;
+            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseObjectData.FlashlightShortName] as OnOffObject;
+            ConsumableObject consumableObjectBatteries = this.view.House.InanimateObjects[TheHouseObjectData.BatteriesShortName] as ConsumableObject;
             if (direction == Direction.North || direction == Direction.East || direction == Direction.West || direction == Direction.South)
             {
                 if (onOffObjectFlashlight.State == Switch.On)
@@ -202,8 +202,8 @@ namespace HouseCore.Presenters
         {
             this.view.Message = new StringBuilder();
             Room room = this.view.House.Rooms[this.view.Player.Location];
-            Adversary adversaryLeopard = this.view.House.Adversaries[TheHouseData.LeopardShortName];
-            PortableObject portableObjectBrush = this.view.House.InanimateObjects[TheHouseData.BrushShortName] as PortableObject;
+            Adversary adversaryLeopard = this.view.House.Adversaries[TheHouseAdversaryData.LeopardShortName];
+            PortableObject portableObjectBrush = this.view.House.InanimateObjects[TheHouseObjectData.BrushShortName] as PortableObject;
             this.view.Message = new StringBuilder();
 
             // Trying to brush non adverasry?
@@ -218,7 +218,7 @@ namespace HouseCore.Presenters
                 this.view.Message.Append(this.view.Argument);
                 this.view.Message.Append(" here");
             }
-            else if (!this.view.Player.Inventory.Contains(portableObjectBrush))
+            else if (!this.view.House.Inventory.Contains(portableObjectBrush))
             {
                 // Trying to brush adversary in the room but don't have a brush?
                 this.view.Message.Append("You have nothing with which to brush the ");
@@ -259,7 +259,7 @@ namespace HouseCore.Presenters
             {
                 this.view.Message.Append("I see no dirt to dig here.");
             }
-            else if (!this.view.Player.Inventory.Contains(TheHouseData.ShovelShortName))
+            else if (!this.view.House.Inventory.Contains(TheHouseObjectData.ShovelShortName))
             {
                 this.view.Message.Append("You don't have anything with which to dig.");
             }
@@ -286,8 +286,8 @@ namespace HouseCore.Presenters
         {
             this.view.Message = new StringBuilder();
             Switch state = 0;
-            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseData.FlashlightShortName] as OnOffObject;
-            ConsumableObject consumableObjectBatteries = this.view.House.InanimateObjects[TheHouseData.BatteriesShortName] as ConsumableObject;
+            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseObjectData.FlashlightShortName] as OnOffObject;
+            ConsumableObject consumableObjectBatteries = this.view.House.InanimateObjects[TheHouseObjectData.BatteriesShortName] as ConsumableObject;
             if (String.IsNullOrEmpty(view.Argument))
             {
                 state = Switch.On;
@@ -310,11 +310,11 @@ namespace HouseCore.Presenters
 
             if (state == Switch.On)
             {
-                if (!this.view.Player.Inventory.Contains(onOffObjectFlashlight.Identity))
+                if (!this.view.House.Inventory.Contains(onOffObjectFlashlight.Identity))
                 {
                     this.view.Message.Append("You have no light to turn on!");
                 }
-                else if (!this.view.Player.Inventory.Contains(consumableObjectBatteries.Identity))
+                else if (!this.view.House.Inventory.Contains(consumableObjectBatteries.Identity))
                 {
                     this.view.Message.Append("It doesn't work");
                 }
@@ -331,11 +331,11 @@ namespace HouseCore.Presenters
             }
             else
             {
-                if (!this.view.Player.Inventory.Contains(onOffObjectFlashlight.Identity))
+                if (!this.view.House.Inventory.Contains(onOffObjectFlashlight.Identity))
                 {
                     this.view.Message.Append("You have no light to turn off!");
                 }
-                else if (!this.view.Player.Inventory.Contains(consumableObjectBatteries.Identity))
+                else if (!this.view.House.Inventory.Contains(consumableObjectBatteries.Identity))
                 {
                     this.view.Message.Append("It doesn't work anyway -- so why turn it off!");
                 }
@@ -357,8 +357,8 @@ namespace HouseCore.Presenters
         public void Open()
         {
             this.view.Message = new StringBuilder();
-            LockableDoorObject lockableDoor = this.view.House.InanimateObjects[TheHouseData.LockedDoorShortName] as LockableDoorObject;
-            PortableObject portableObjectKey = this.view.House.PortableObjects[TheHouseData.RustedKeyShortName] as PortableObject;
+            LockableDoorObject lockableDoor = this.view.House.InanimateObjects[TheHouseObjectData.LockedDoorShortName] as LockableDoorObject;
+            PortableObject portableObjectKey = this.view.House.PortableObjects[TheHouseObjectData.RustedKeyShortName] as PortableObject;
 #if DEBUG
             /*
             if (!this.view.Player.Inventory.Contains(portableObjectKey))
@@ -379,7 +379,7 @@ namespace HouseCore.Presenters
             {
                 this.view.Message.Append("I see no door that needs opening!");
             }
-            else if (!this.view.Player.Inventory.Contains(portableObjectKey))
+            else if (!this.view.House.Inventory.Contains(portableObjectKey))
             {
                 this.view.Message.Append("I need something first!");
             }
@@ -397,8 +397,8 @@ namespace HouseCore.Presenters
         public void Play()
         {
             this.view.Message = new StringBuilder();
-            PortableObject portableObjectBanjo = this.view.House.PortableObjects[TheHouseData.BanjoShortName] as PortableObject;
-            Adversary adversaryBeast = this.view.House.Adversaries[TheHouseData.BeastShortName];
+            PortableObject portableObjectBanjo = this.view.House.PortableObjects[TheHouseObjectData.BanjoShortName] as PortableObject;
+            Adversary adversaryBeast = this.view.House.Adversaries[TheHouseAdversaryData.BeastShortName];
 #if DEBUG
             ////this.view.Player.Inventory.Add(portableObjectBanjo);
 #endif
@@ -416,7 +416,7 @@ namespace HouseCore.Presenters
             {
                 this.view.Message.Append("You can't play that!");
             }
-            else if (!this.view.Player.Inventory.Contains(portableObjectBanjo))
+            else if (!this.view.House.Inventory.Contains(portableObjectBanjo))
             {
                 this.view.Message.Append("You have no banjo to play");
             }
@@ -437,8 +437,8 @@ namespace HouseCore.Presenters
         public void Read()
         {
             this.view.Message = new StringBuilder();
-            PortableObject portableObjectSorcerersBook = this.view.House.InanimateObjects[TheHouseData.BookShortName] as PortableObject;
-            PortableObject portableObjectParchment = this.view.House.InanimateObjects[TheHouseData.ParchmentShortName] as PortableObject;
+            PortableObject portableObjectSorcerersBook = this.view.House.InanimateObjects[TheHouseObjectData.BookShortName] as PortableObject;
+            PortableObject portableObjectParchment = this.view.House.InanimateObjects[TheHouseObjectData.ParchmentShortName] as PortableObject;
 #if DEBUG
             /*
             if (!this.view.Player.Inventory.Contains(portableObjectSorcerersBook))
@@ -465,7 +465,7 @@ namespace HouseCore.Presenters
                 {
                     this.view.Message.Append("You can't read that");
                 }
-                else if (!this.view.Player.Inventory.Contains(inanimateObjectTarget))
+                else if (!this.view.House.Inventory.Contains(inanimateObjectTarget))
                 {
                     this.view.Message.Append("You don't have a ");
                     this.view.Message.Append(this.view.Argument);
@@ -556,8 +556,8 @@ namespace HouseCore.Presenters
         public void Spray()
         {
             this.view.Message = new StringBuilder();
-            ConsumableObject consumableObjectBugSpray = this.view.House.InanimateObjects[TheHouseData.BugSprayShortName] as ConsumableObject;
-            Adversary adversaryBlob = this.view.House.Adversaries[TheHouseData.BlobShortName];
+            ConsumableObject consumableObjectBugSpray = this.view.House.InanimateObjects[TheHouseObjectData.BugSprayShortName] as ConsumableObject;
+            Adversary adversaryBlob = this.view.House.Adversaries[TheHouseAdversaryData.BlobShortName];
 #if DEBUG
             /*
             if (!this.view.Player.Inventory.Contains(consumableObjectBugSpray))
@@ -569,7 +569,7 @@ namespace HouseCore.Presenters
             Room room = this.view.House.Rooms[this.view.Player.Location];
 
             // Trying to spray adversary in the room but don't have the spray?
-            if (!this.view.Player.Inventory.Contains(consumableObjectBugSpray))
+            if (!this.view.House.Inventory.Contains(consumableObjectBugSpray))
             {
                 this.view.Message.Append("You have nothing with which to spray the ");
                 this.view.Message.Append(this.view.Argument);
@@ -614,8 +614,8 @@ namespace HouseCore.Presenters
         {
             this.view.Message = new StringBuilder();
             Room room = this.view.House.Rooms[this.view.Player.Location];
-            PortableObject portableObjectKnife = this.view.House.PortableObjects[TheHouseData.KnifeShortName] as PortableObject;
-            Adversary adversaryMonk = this.view.House.Adversaries[TheHouseData.MonkShortName];
+            PortableObject portableObjectKnife = this.view.House.PortableObjects[TheHouseObjectData.KnifeShortName] as PortableObject;
+            Adversary adversaryMonk = this.view.House.Adversaries[TheHouseAdversaryData.MonkShortName];
             Adversary adversaryTarget = null;
             try
             {
@@ -635,7 +635,7 @@ namespace HouseCore.Presenters
                 this.view.Message.Append(this.view.Argument);
                 this.view.Message.Append(" here");
             }
-            else if (!this.view.Player.Inventory.Contains(portableObjectKnife))
+            else if (!this.view.House.Inventory.Contains(portableObjectKnife))
             {
                 this.view.Message.Append("You have nothing with which to kill the ");
                 this.view.Message.Append(this.view.Argument);
@@ -660,10 +660,10 @@ namespace HouseCore.Presenters
         {
             this.view.Message = new StringBuilder();
             Room room = this.view.House.Rooms[this.view.Player.Location];
-            PortableObject portableObjectGarlic = this.view.House.InanimateObjects[TheHouseData.GarlicShortName] as PortableObject;
-            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseData.FlashlightShortName] as OnOffObject;
-            Adversary adversaryVampire = this.view.House.Adversaries[TheHouseData.VampireShortName];
-            Adversary adversaryWerewolf = this.view.House.Adversaries[TheHouseData.WerewolfShortName];
+            PortableObject portableObjectGarlic = this.view.House.InanimateObjects[TheHouseObjectData.GarlicShortName] as PortableObject;
+            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseObjectData.FlashlightShortName] as OnOffObject;
+            Adversary adversaryVampire = this.view.House.Adversaries[TheHouseAdversaryData.VampireShortName];
+            Adversary adversaryWerewolf = this.view.House.Adversaries[TheHouseAdversaryData.WerewolfShortName];
 
 #if DEBUG
             /*
@@ -698,7 +698,7 @@ namespace HouseCore.Presenters
                 // is not portable?
                 this.view.Message.Append("You can't wave that.");
             }
-            else if (!this.view.Player.Inventory.Contains(inanimateObjectTarget))
+            else if (!this.view.House.Inventory.Contains(inanimateObjectTarget))
             {
                 // is not in inventory?
                 this.view.Message.Append("You don't have a ");
@@ -760,12 +760,12 @@ namespace HouseCore.Presenters
                 {
                     this.view.Message.Append("You can't drop that");
                 }
-                else if (!this.view.Player.Inventory.Contains(inanimateObjectTarget.ToString()))
+                else if (!this.view.House.Inventory.Contains(inanimateObjectTarget.ToString()))
                 {
                     this.view.Message.Append("You don't have a ");
                     this.view.Message.Append(this.view.Argument);
                 }
-                else if (inanimateObjectTarget.Equals(this.view.House.InanimateObjects[TheHouseData.BatteriesShortName]) || inanimateObjectTarget.Equals(this.view.House.InanimateObjects[TheHouseData.FlashlightShortName]))
+                else if (inanimateObjectTarget.Equals(this.view.House.InanimateObjects[TheHouseObjectData.BatteriesShortName]) || inanimateObjectTarget.Equals(this.view.House.InanimateObjects[TheHouseObjectData.FlashlightShortName]))
                 {
                     string stringArgumentBackup = this.view.Argument;
                     StringBuilder stringBuilderMessageBackup = this.view.Message;
@@ -779,7 +779,7 @@ namespace HouseCore.Presenters
                     this.view.Message.Append(this.view.Argument);
                     this.view.Message.Append(" dropped");
                 }
-                else if (inanimateObjectTarget is ContainerObject && this.view.Player.Inventory.ContainsByType(typeof(MultiplePieceObject), multiplePieceObjectsInInventory))
+                else if (inanimateObjectTarget is ContainerObject && this.view.House.Inventory.ContainsByType(typeof(MultiplePieceObject), multiplePieceObjectsInInventory))
                 {
                     this.view.Message.Append("Try dropping the following items first:  ");
                     int intCount = 0;
@@ -793,7 +793,7 @@ namespace HouseCore.Presenters
                         }
                     }
                 }
-                else if (inanimateObjectTarget is ProtectiveObject && this.view.Player.Inventory.ContainsByType(typeof(PainfulObject)))
+                else if (inanimateObjectTarget is ProtectiveObject && this.view.House.Inventory.ContainsByType(typeof(PainfulObject)))
                 {
                     this.view.Message.Append("You'll hurt yourself");
                 }
@@ -803,11 +803,13 @@ namespace HouseCore.Presenters
                 }
                 else
                 {
-                    this.view.Player.Inventory.Remove(inanimateObjectTarget.ToString());
-                    this.view.House.Rooms[this.view.Player.Location].Items.Add(inanimateObjectTarget);
+                    PortableObject portableObject = inanimateObjectTarget as PortableObject;
+                    this.view.House.RemoveFromInventory(portableObject, this.view.Player.Location);
+//                    this.view.Player.Inventory.Remove(inanimateObjectTarget.ToString());
+//                    this.view.House.Rooms[this.view.Player.Location].Items.Add(inanimateObjectTarget);
                     this.view.Message.Append(this.view.Argument);
                     this.view.Message.Append(" dropped");
-                    if (this.view.Player.Location.Equals(TheHouseData.LocationFirstFloorFrontPorch))
+                    if (this.view.Player.Location.Equals(TheHouseRoomData.LocationFirstFloorFrontPorch))
                     {
                         this.view.Player.ItemsRemovedFromHouse++;
                         if (this.view.Player.ItemsRemovedFromHouse == this.view.House.PortableObjects.Count)
@@ -868,13 +870,13 @@ namespace HouseCore.Presenters
                     this.view.Message.Append(this.view.Argument);
                     this.view.Message.Append(" and won't let you have it");
                 }
-                else if (this.view.Player.Inventory.Count < TheHouseData.MaximumInventoryItems)
+                else if (this.view.House.Inventory.Count < TheHouseData.MaximumInventoryItems)
                 {
                     if (portableObjectTarget is MultiplePieceObject)
                     {
-                        if (this.view.Player.Inventory.ContainsByType(typeof(ContainerObject)))
+                        if (this.view.House.Inventory.ContainsByType(typeof(ContainerObject)))
                         {
-                            this.view.Player.Inventory.Add(portableObjectTarget);
+                            this.view.House.Inventory.Add(portableObjectTarget);
                             room.Items.Remove(portableObjectTarget);
                         }
                         else
@@ -885,7 +887,7 @@ namespace HouseCore.Presenters
                     else if (portableObjectTarget is PainfulObject)
                     {
                         bool boolHasProtectiveItem = false;
-                        foreach (InanimateObject inanimateObject in this.view.Player.Inventory)
+                        foreach (InanimateObject inanimateObject in this.view.House.Inventory)
                         {
                             if (inanimateObject is ProtectiveObject)
                             {
@@ -895,7 +897,7 @@ namespace HouseCore.Presenters
 
                         if (boolHasProtectiveItem)
                         {
-                            this.view.Player.Inventory.Add(portableObjectTarget);
+                            this.view.House.Inventory.Add(portableObjectTarget);
                             room.Items.Remove(portableObjectTarget);
                         }
                         else
@@ -905,8 +907,9 @@ namespace HouseCore.Presenters
                     }
                     else
                     {
-                        this.view.Player.Inventory.Add(portableObjectTarget);
-                        room.Items.Remove(portableObjectTarget);
+                        this.view.House.AddToInventory(portableObjectTarget);
+//                        this.view.Player.Inventory.Add(portableObjectTarget);
+  //                      room.Items.Remove(portableObjectTarget);
                         this.view.Message.Append(this.view.Argument);
                         this.view.Message.Append(" taken");
                     }
@@ -933,12 +936,12 @@ namespace HouseCore.Presenters
             this.view.GameEnded = false;
             this.view.ClearScreen = true;
             this.view.ExitDirections.Clear();
-            this.view.Adversaries.Clear();
-            this.view.Items.Clear();
+            this.view.AdversariesInRoom.Clear();
+            this.view.ItemsInRoom.Clear();
             this.view.RoomName = String.Empty;
             this.view.Message = new StringBuilder();
             TelephoneBooth telephoneBooth = room as TelephoneBooth;
-            if (!this.view.AfterVerticalMovement && this.view.Player.Inventory.Contains(TheHouseData.DimeShortName) && telephoneBooth != null)
+            if (!this.view.AfterVerticalMovement && this.view.House.Inventory.Contains(TheHouseObjectData.DimeShortName) && telephoneBooth != null)
             {
                 this.view.Player.Location.Floor = (Floor)random.Next(4);
                 room = this.view.House.Rooms[this.view.Player.Location];
@@ -955,7 +958,7 @@ namespace HouseCore.Presenters
                 this.view.House.UpdateMonstersInHangout();
             }
 
-            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseData.FlashlightShortName] as OnOffObject;
+            OnOffObject onOffObjectFlashlight = this.view.House.InanimateObjects[TheHouseObjectData.FlashlightShortName] as OnOffObject;
             if (this.view.Player.Location.Floor == Floor.Basement && onOffObjectFlashlight.State == Switch.Off)
             {
                 this.view.Message.Append("nothing--it's too dark!");
@@ -970,7 +973,7 @@ namespace HouseCore.Presenters
             {
                 foreach (Adversary adversary in room.Adversaries)
                 {
-                    this.view.Adversaries.Add(adversary.Name);
+                    this.view.AdversariesInRoom.Add(adversary.Name);
                 }
 
                 foreach (InanimateObject inanimateObject in room.Items)
@@ -979,11 +982,11 @@ namespace HouseCore.Presenters
                     if (portableObject == null)
                     {
                         // If it's a stationary object
-                        this.view.Items.Add(inanimateObject.Name);
+                        this.view.ItemsInRoom.Add(inanimateObject.Name);
                     }
                     else if (portableObject.Visible && !portableObject.Buried)
                     {
-                        this.view.Items.Add(inanimateObject.Name);
+                        this.view.ItemsInRoom.Add(inanimateObject.Name);
                     }
                 }
 

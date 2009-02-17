@@ -46,8 +46,8 @@ namespace UnitTests
         {
             this.view.Argument = "box";
             this.housePresenter.Get();
-            ContainerObject woodenBox = this.view.House.PortableObjects[TheHouseData.BoxShortName] as ContainerObject;
-            Assert.AreEqual(true, this.view.Player.Inventory.Contains(woodenBox));
+            ContainerObject woodenBox = this.view.House.PortableObjects[TheHouseObjectData.BoxShortName] as ContainerObject;
+            Assert.AreEqual(true, this.view.House.Inventory.Contains(woodenBox));
         }
     }
 }

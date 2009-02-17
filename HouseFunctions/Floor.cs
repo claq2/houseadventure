@@ -32,6 +32,11 @@ namespace HouseCore
         /// <summary>
         /// The monster hangout level
         /// </summary>
-        MonsterHangout
+        MonsterHangout,
+
+        /// <summary>
+        /// Level indicating the object is in the player's inventory
+        /// </summary>
+        InHand
     }
 }

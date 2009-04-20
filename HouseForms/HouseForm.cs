@@ -294,11 +294,11 @@ namespace HouseForms
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 
@@ -306,11 +306,11 @@ namespace HouseForms
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 
@@ -318,11 +318,11 @@ namespace HouseForms
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 
@@ -330,11 +330,11 @@ namespace HouseForms
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 
@@ -342,11 +342,11 @@ namespace HouseForms
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 
@@ -354,43 +354,43 @@ namespace HouseForms
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 
         public bool AfterVerticalMovement
         {
-            get { throw new Exception("The method or operation is not implemented."); }
+            get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
         public IList<string> AdversariesInRoom
         {
-            get { throw new Exception("The method or operation is not implemented."); }
+            get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
         public IList<string> ItemsInRoom
         {
-            get { throw new Exception("The method or operation is not implemented."); }
+            get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
         public IList<string> ExitDirections
         {
-            get { throw new Exception("The method or operation is not implemented."); }
+            get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
         public string RoomName
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new NotImplementedException("The method or operation is not implemented.");
             }
         }
 

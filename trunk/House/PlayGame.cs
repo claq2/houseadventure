@@ -648,7 +648,7 @@ namespace House
             }
             else
             {
-                Console.Write(String.Format("{0} what? ", stringFormattedCommand));
+                Console.Write(String.Format(CultureInfo.CurrentCulture, "{0} what? ", stringFormattedCommand));
                 stringReturn = Console.ReadLine();
             }
 

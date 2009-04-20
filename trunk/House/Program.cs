@@ -20,7 +20,7 @@ namespace House
     /// <summary>
     /// The Program class
     /// </summary>
-    public class Program
+    public sealed class Program
     {
         #region initial game data
         /*
@@ -66,6 +66,13 @@ namespace House
         */
 
         #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Program"/> class.
+        /// </summary>
+        private Program()
+        {
+        }
 
         /// <summary>
         /// Entry point for the program

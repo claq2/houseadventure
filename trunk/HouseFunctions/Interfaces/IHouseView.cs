@@ -26,7 +26,7 @@ namespace HouseCore.Interfaces
         /// Gets or sets the house.
         /// </summary>
         /// <value>The house.</value>
-        HouseType House { get; set;}
+        HouseType House { get;}// set;}
 
         /// <summary>
         /// Gets or sets the player.

@@ -37,10 +37,9 @@ namespace HouseCore.Presenters
             {
                 serializerSaveData.Serialize(writer, saveData);
             }
+
             this.view.Message = new StringBuilder();
             this.view.Message.Append("Data saved");
-
-
         }
 
         /// <summary>
@@ -59,8 +58,9 @@ namespace HouseCore.Presenters
                 saveData = (SaveData)serializer.Deserialize(reader);
                 reader.Close();
                 this.view.Player = saveData.Player;
-                this.view.House = saveData.House;
+                this.view.House.RestoreHouse(saveData.Rooms);
             }
+
             this.view.Message = new StringBuilder();
             this.view.Message.Append("Data loaded");
         }

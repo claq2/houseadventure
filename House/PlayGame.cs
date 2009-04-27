@@ -180,11 +180,11 @@ namespace House
                 return this.house;
             }
 
-            set
-            {
-                ////this.house = value;
-                this.house.RestoreHouse(value);
-            }
+            //set
+            //{
+            //    ////this.house = value;
+            //    this.house.RestoreHouse(value);
+            //}
         }
 
         /// <summary>
@@ -484,14 +484,14 @@ namespace House
 
                         stringBuilderOutput.Append("You are presently carrying\r\n");
 //                        if (this.player.Inventory.Count == 0)
-                        if (this.house.Rooms[LocationType.Inventory].Items.Count == 0)
+                        if (this.house.Rooms[TheHouseRoomData.LocationInventory].Items.Count == 0)
                         {
                             stringBuilderOutput.Append("nothing");
                         }
                         else
                         {
 //                            foreach (InanimateObject inanimateObject in this.player.Inventory)
-                            foreach (InanimateObject inanimateObject in this.house.Rooms[LocationType.Inventory].Items)
+                            foreach (InanimateObject inanimateObject in this.house.Rooms[TheHouseRoomData.LocationInventory].Items)
                             {
                                 stringBuilderOutput.Append(inanimateObject.Name);
                                 stringBuilderOutput.Append(Environment.NewLine);

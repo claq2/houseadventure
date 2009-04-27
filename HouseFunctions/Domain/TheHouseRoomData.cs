@@ -31,6 +31,7 @@ namespace HouseCore
         private readonly static ExitSetKeyedCollection exitsFirstFloorPantry = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.West, 2), new RoomExit(Direction.South, 6) });
         private readonly static ExitSetKeyedCollection exitsFirstFloorTelephoneBooth = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.South, 5) });
         private readonly static ExitSetKeyedCollection exitsMonsterHangout = new ExitSetKeyedCollection(new RoomExit[0]);
+        private readonly static ExitSetKeyedCollection exitsInventory = new ExitSetKeyedCollection(new RoomExit[0]);
         private readonly static ExitSetKeyedCollection exitsSecondFloorBathroom = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 6) });
         private readonly static ExitSetKeyedCollection exitsSecondFloorCloset = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.South, 3) });
         private readonly static ExitSetKeyedCollection exitsSecondFloorDen = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.West, 8) });
@@ -72,6 +73,7 @@ namespace HouseCore
         private readonly static LocationType locationFirstFloorPantry = new LocationType(5, Floor.FirstFloor);
         private readonly static LocationType locationFirstFloorTelephoneBooth = new LocationType(8, Floor.FirstFloor);
         private readonly static LocationType locationMonsterHangout = new LocationType(0, Floor.MonsterHangout);
+        private readonly static LocationType locationInventory = new LocationType(-1, Floor.InHand);
         private readonly static LocationType locationSecondFloorBathroom = new LocationType(4, Floor.SecondFloor);
         private readonly static LocationType locationSecondFloorCloset = new LocationType(1, Floor.SecondFloor);
         private readonly static LocationType locationSecondFloorDen = new LocationType(7, Floor.SecondFloor);
@@ -129,6 +131,7 @@ namespace HouseCore
         private const string m_TortureChamberName = "in the torture chamber";
         private const string m_TrophyRoomName = "in the trophy room";
         private const string m_WorkshopName = "in the workshop";
+        private const string m_InventoryName = "in your inventory";
 
         /// <summary>
         /// Gets the exits for the basement coal bin.
@@ -317,6 +320,15 @@ namespace HouseCore
         public static ExitSetKeyedCollection ExitsMonsterHangout
         {
             get { return TheHouseRoomData.exitsMonsterHangout; }
+        }
+
+        /// <summary>
+        /// Gets the exits of the inventory room.
+        /// </summary>
+        /// <value>The exits of the inventory room.</value>
+        public static ExitSetKeyedCollection ExitsInventory
+        {
+            get { return TheHouseRoomData.exitsInventory; }
         }
 
         /// <summary>
@@ -905,6 +917,15 @@ namespace HouseCore
         }
 
         /// <summary>
+        /// Gets the location of the inventory.
+        /// </summary>
+        /// <value>The location of the inventory.</value>
+        public static LocationType LocationInventory
+        {
+            get { return TheHouseRoomData.locationInventory; }
+        }
+
+        /// <summary>
         /// Gets the location of the second floor bathroom.
         /// </summary>
         /// <value>The location of the second floor bathroom.</value>
@@ -1100,6 +1121,15 @@ namespace HouseCore
         public static string MonsterHangoutName
         {
             get { return m_MonsterHangoutName; }
+        }
+
+        /// <summary>
+        /// Gets the name of the inventory.
+        /// </summary>
+        /// <value>The name of the inventory.</value>
+        public static string InventoryName
+        {
+            get { return m_InventoryName; }
         }
 
         /// <summary>

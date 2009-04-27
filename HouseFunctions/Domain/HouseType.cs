@@ -17,48 +17,37 @@ namespace HouseCore
     /// </summary>
     public class HouseType
     {
-        #region Fields (6)
+
+		#region Fields (6) 
 
         /// <summary>
         /// The adversaries in the house
         /// </summary>
         private AdversaryCollection adversaries = new AdversaryCollection();
-
         /// <summary>
         /// The inanimate objects in the house
         /// </summary>
         private InanimateObjectKeyedCollection inanimateObjects = new InanimateObjectKeyedCollection();
-
-        /// <summary>
-        /// The rooms in the house
-        /// </summary>
-        private RoomKeyedCollection rooms = new RoomKeyedCollection();
-
         /// <summary>
         /// Number of items removes from the house
         /// </summary>
         private int itemsRemovedFromHouse;
-
         /// <summary>
         /// Number of attempted actions
         /// </summary>
         private int numberOfMoves;
-
+        /// <summary>
+        /// The rooms in the house
+        /// </summary>
+        private RoomKeyedCollection rooms = new RoomKeyedCollection();
         /// <summary>
         /// Number of times player has looked in the dark
         /// </summary>
         private int timesLookedInDark;
-        #endregion Fields
 
-        #region Constructors (1)
+		#endregion Fields 
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HouseType"/> class.
-        /// </summary>
-        public HouseType()
-        {
-            
-        }
+		#region Constructors (2) 
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HouseType"/> class.
@@ -74,9 +63,37 @@ namespace HouseCore
             }
         }
 
-        #endregion Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HouseType"/> class.
+        /// </summary>
+        public HouseType()
+        {
+            
+        }
 
-        #region Properties (6)
+		#endregion Constructors 
+
+		#region Properties (8) 
+
+        /// <summary>
+        /// Gets the adversaries.
+        /// </summary>
+        /// <value>The adversaries.</value>
+        [XmlIgnore()]
+        public AdversaryCollection Adversaries
+        {
+            get { return this.adversaries; }
+        }
+
+        /// <summary>
+        /// Gets the inanimate objects.
+        /// </summary>
+        /// <value>The inanimate objects.</value>
+        [XmlIgnore()]
+        public InanimateObjectKeyedCollection InanimateObjects
+        {
+            get { return this.inanimateObjects; }
+        }
 
         /// <summary>
         /// Gets the inventory.
@@ -87,43 +104,13 @@ namespace HouseCore
             get 
             { 
                 InanimateObjectKeyedCollection result = new InanimateObjectKeyedCollection();
-                foreach (InanimateObject obj in this.Rooms[LocationType.Inventory].Items)
+                foreach (InanimateObject obj in this.Rooms[TheHouseRoomData.LocationInventory].Items)
                 {
                     result.Add(obj);
                 }
+
                 return result;
-
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="portableObject"></param>
-        public void AddToInventory(PortableObject portableObject)
-        {
-            foreach (Room room in this.Rooms)
-            {
-                foreach (InanimateObject inanimateObject in room.Items)
-                {
-                    if (inanimateObject == portableObject)
-                    {
-                        room.Items.Remove(portableObject);
-                        this.Rooms[LocationType.Inventory].Items.Add(portableObject);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="portableObject"></param>
-        /// <param name="location"></param>
-        public void RemoveFromInventory(PortableObject portableObject, LocationType location)
-        {
-            this.Rooms[LocationType.Inventory].Items.Remove(portableObject);
-            this.Rooms[location].Items.Add(portableObject);
         }
 
         /// <summary>
@@ -147,35 +134,6 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// Gets or sets the times looked in dark.
-        /// </summary>
-        /// <value>The times looked in dark.</value>
-        public int TimesLookedInDark
-        {
-            get { return this.timesLookedInDark; }
-            set { this.timesLookedInDark = value; }
-        }
-        /// <summary>
-        /// Gets the adversaries.
-        /// </summary>
-        /// <value>The adversaries.</value>
-        [XmlIgnore()]
-        public AdversaryCollection Adversaries
-        {
-            get { return this.adversaries; }
-        }
-
-        /// <summary>
-        /// Gets the inanimate objects.
-        /// </summary>
-        /// <value>The inanimate objects.</value>
-        [XmlIgnore()]
-        public InanimateObjectKeyedCollection InanimateObjects
-        {
-            get { return this.inanimateObjects; }
-        }
-
-        /// <summary>
         /// Gets the portable objects.
         /// </summary>
         /// <value>The portable objects.</value>
@@ -193,6 +151,7 @@ namespace HouseCore
                         result.Add(obj);
                     }
                 }
+
                 return result;
             }
         }
@@ -206,12 +165,56 @@ namespace HouseCore
             get { return this.rooms; }
         }
 
-        #endregion Properties
+        /// <summary>
+        /// Gets or sets the times looked in dark.
+        /// </summary>
+        /// <value>The times looked in dark.</value>
+        public int TimesLookedInDark
+        {
+            get { return this.timesLookedInDark; }
+            set { this.timesLookedInDark = value; }
+        }
 
-        #region Methods (10)
+		#endregion Properties 
 
-        // Public Methods (3) 
+		#region Methods (2) 
 
+
+		// Public Methods (2) 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="portableObject"></param>
+        public void AddToInventory(PortableObject portableObject)
+        {
+            foreach (Room room in this.Rooms)
+            {
+                foreach (InanimateObject inanimateObject in room.Items)
+                {
+                    if (inanimateObject == portableObject)
+                    {
+                        room.Items.Remove(portableObject);
+                        this.Rooms[TheHouseRoomData.LocationInventory].Items.Add(portableObject);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="portableObject"></param>
+        /// <param name="location"></param>
+        public void RemoveFromInventory(PortableObject portableObject, LocationType location)
+        {
+            this.Rooms[TheHouseRoomData.LocationInventory].Items.Remove(portableObject);
+            this.Rooms[location].Items.Add(portableObject);
+        }
+
+
+		#endregion Methods 
+        // Public Methods (3)
         ///// <summary>
         ///// Loads this instance.
         ///// </summary>
@@ -220,7 +223,6 @@ namespace HouseCore
         //{
         //    StringBuilder stringBuilderOutput = new StringBuilder();
         //    XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
-
         //    // Reading the XML document requires a FileStream.
         //    using (Stream reader = new FileStream("housedata.txt", FileMode.Open))
         //    {
@@ -233,7 +235,6 @@ namespace HouseCore
         //    stringBuilderOutput.Append("Data loaded");
         //    return stringBuilderOutput.ToString();
         //}
-
         //    /// <summary>
         //    /// Restores from save data.
         //    /// </summary>
@@ -262,7 +263,9 @@ namespace HouseCore
 
         //        this.InitPortableObjects();
         //    }
-        //}
+
+        //
+
 
         /// <summary>
         /// Saves this instance.
@@ -412,7 +415,7 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// Inits the monster hangout rooms.
+        /// Inits the monster hangout room.
         /// </summary>
         private void InitMonsterHangoutRooms()
         {
@@ -426,14 +429,19 @@ namespace HouseCore
         {
             Random random = new Random();
             InitBasementRooms(random);
-
             InitFirstFloorRooms(random);
-
             InitSecondFloorRooms();
-
             InitThirdFloorRooms();
-
             InitMonsterHangoutRooms();
+            InitInventoryRoom();
+        }
+
+        /// <summary>
+        /// Inits the inventory room.
+        /// </summary>
+        private void InitInventoryRoom()
+        {
+            this.rooms.Add(new Room(TheHouseRoomData.InventoryName, TheHouseRoomData.LocationInventory, TheHouseRoomData.ExitsInventory));
         }
 
         /// <summary>
@@ -509,31 +517,32 @@ namespace HouseCore
             adversary.MovesUntilUnhidden = 5;
         }
 
-        #endregion Methods
-
         /// <summary>
         /// Restores the house.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void RestoreHouse(HouseType value)
+        public void RestoreHouse(RoomKeyedCollection value)
         {
-            int intCountRooms = value.Rooms.Count;
+            this.rooms.Clear();
+            this.adversaries.Clear();
+            this.inanimateObjects.Clear();
+            int intCountRooms = value.Count;
             for (int i = 0; i < intCountRooms; i++)
             {
-                this.rooms.Remove(value.Rooms[i].Location);
-                this.rooms.Add(value.Rooms[i]);
-                int intCountAdversariesInRoom = value.Rooms[i].Adversaries.Count;
+//                this.rooms.Remove(value.Rooms[i].Location);
+                this.rooms.Add(value[i]);
+                int intCountAdversariesInRoom = value[i].Adversaries.Count;
                 for (int j = 0; j < intCountAdversariesInRoom; j++)
                 {
-                    this.adversaries.Remove(value.Rooms[i].Adversaries[j].Identity);
-                    this.adversaries.Add(value.Rooms[i].Adversaries[j]);
+//                    this.adversaries.Remove(value.Rooms[i].Adversaries[j].Identity);
+                    this.adversaries.Add(value[i].Adversaries[j]);
                 }
 
-                int intCountItemsInRoom = value.Rooms[i].Items.Count;
+                int intCountItemsInRoom = value[i].Items.Count;
                 for (int j = 0; j < intCountItemsInRoom; j++)
                 {
-                    this.inanimateObjects.Remove(value.Rooms[i].Items[j].Identity);
-                    this.inanimateObjects.Add(value.Rooms[i].Items[j]);
+                    //this.inanimateObjects.Remove(value.Rooms[i].Items[j].Identity);
+                    this.inanimateObjects.Add(value[i].Items[j]);
                 }
             }
         }

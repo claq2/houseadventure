@@ -26,8 +26,9 @@ namespace HouseCore
         /// <param name="view">The view.</param>
         public SaveData(IHouseView view)
         {
-            this.house = view.House;
+            //this.house = view.House;
             this.player = view.Player;
+            this._rooms = view.House.Rooms;
         }
 
 		#region Fields (12) 
@@ -40,16 +41,16 @@ namespace HouseCore
         //private RoomKeyedCollection basementRooms = new RoomKeyedCollection();
         //private RoomKeyedCollection firstFloorRooms = new RoomKeyedCollection();
         // PlayerEntity fields
-        private InanimateObjectsCollection inventory = new InanimateObjectsCollection();
-        private int itemsRemovedFromHouse;
+        //private InanimateObjectsCollection inventory = new InanimateObjectsCollection();
+        //private int itemsRemovedFromHouse;
         //private RoomKeyedCollection monsterHangoutRooms = new RoomKeyedCollection();
-        private int numberOfMoves;
+        //private int numberOfMoves;
         //private RoomKeyedCollection secondFloorRooms = new RoomKeyedCollection();
         // private Impostor theImpostor;
         //private RoomKeyedCollection thirdFloorRooms= new RoomKeyedCollection();
-        private RoomKeyedCollection rooms = new RoomKeyedCollection();
+        private RoomKeyedCollection _rooms = new RoomKeyedCollection();
         private Player player = new Player();
-        private HouseType house = new HouseType(false);
+        //private HouseType house = new HouseType(false);
 
         /// <summary>
         /// Gets or sets the player.
@@ -65,11 +66,11 @@ namespace HouseCore
         /// Gets or sets the house.
         /// </summary>
         /// <value>The house.</value>
-        public HouseType House
-        {
-            get { return this.house; }
-            set { this.house = value; }
-        }
+        //public HouseType House
+        //{
+        //    get { return this.house; }
+        //    set { this.house = value; }
+        //}
 
         /// <summary>
         /// Gets the rooms.
@@ -77,11 +78,12 @@ namespace HouseCore
         /// <value>The rooms.</value>
         public RoomKeyedCollection Rooms
         {
-            get { return rooms; }
+            get { return _rooms; }
         }
-        private int timesLookedInDark;
 
-        private InanimateObjectKeyedCollection keyedInventory;
+        //private int timesLookedInDark;
+
+        //private InanimateObjectKeyedCollection keyedInventory;
 
 		#endregion Fields 
 
@@ -109,11 +111,11 @@ namespace HouseCore
         /// Gets or sets the items removed from house.
         /// </summary>
         /// <value>The items removed from house.</value>
-        public int ItemsRemovedFromHouse
-        {
-            get { return itemsRemovedFromHouse; }
-            set { itemsRemovedFromHouse = value; }
-        }
+        //public int ItemsRemovedFromHouse
+        //{
+        //    get { return itemsRemovedFromHouse; }
+        //    set { itemsRemovedFromHouse = value; }
+        //}
 
         ///// <summary>
         ///// Gets or sets the monster hangout rooms.
@@ -128,11 +130,11 @@ namespace HouseCore
         /// Gets or sets the number of moves.
         /// </summary>
         /// <value>The number of moves.</value>
-        public int NumberOfMoves
-        {
-            get { return numberOfMoves; }
-            set { numberOfMoves = value; }
-        }
+        //public int NumberOfMoves
+        //{
+        //    get { return numberOfMoves; }
+        //    set { numberOfMoves = value; }
+        //}
 
         ///// <summary>
         ///// Gets or sets the second floor rooms.
@@ -156,39 +158,40 @@ namespace HouseCore
         /// Gets or sets the times looked in dark.
         /// </summary>
         /// <value>The times looked in dark.</value>
-        public int TimesLookedInDark
-        {
-            get { return timesLookedInDark; }
-            set { timesLookedInDark = value; }
-        }
+       // public int TimesLookedInDark
+        //{
+        //    get { return timesLookedInDark; }
+        //    set { timesLookedInDark = value; }
+        //}
 
 		#endregion Properties 
+
         /// <summary>
         /// Gets or sets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        public InanimateObjectsCollection Inventory
-        {
-            get { return inventory; }
-        }
+        //public InanimateObjectsCollection Inventory
+        //{
+        //    get { return inventory; }
+        //}
 
         /// <summary>
         /// Gets the keyed inventory.
         /// </summary>
         /// <value>The keyed inventory.</value>
-        public InanimateObjectKeyedCollection KeyedInventory
-        {
-            get { return keyedInventory; }
-        }
+        //public InanimateObjectKeyedCollection KeyedInventory
+        //{
+        //    get { return keyedInventory; }
+        //}
 
         /// <summary>
         /// Populates the inventory.
         /// </summary>
         /// <param name="inventory">The inventory.</param>
-        public void PopulateInventory(InanimateObjectsCollection inventory)
-        {
-            PopulateCollection<InanimateObject>(inventory, this.inventory);
-        }
+        //public void PopulateInventory(InanimateObjectsCollection inventory)
+        //{
+        //    PopulateCollection<InanimateObject>(inventory, this.inventory);
+        //}
 
         /// <summary>
         /// Populates the rooms.
@@ -196,7 +199,7 @@ namespace HouseCore
         /// <param name="rooms">The rooms.</param>
         public void PopulateRooms(RoomKeyedCollection rooms)
         {
-            PopulateCollection<Room>(rooms, this.rooms);
+            PopulateCollection<Room>(rooms, this._rooms);
         }
 
         /// <summary>

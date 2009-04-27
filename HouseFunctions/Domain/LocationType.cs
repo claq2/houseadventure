@@ -49,18 +49,7 @@ namespace HouseCore
             get { return roomNumber; }
             set { roomNumber = value; }
         }
-
-        /// <summary>
-        /// Location of the inventory
-        /// </summary>
-        public static LocationType Inventory
-        {
-            get
-            {
-                return new LocationType(-1, Floor.InHand);
-            }
-        }
-
+   
         #region IEquatable<LocationType> Members
 
         /// <summary>

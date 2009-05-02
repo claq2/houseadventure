@@ -9,7 +9,7 @@ namespace HouseCore
     /// 
     /// </summary>
     [XmlRootAttribute("PositionedEntity", Namespace = "", IsNullable = false)]
-    public class PositionedEntity : GameEntity
+    public abstract class PositionedEntity : GameEntity
     {
         private LocationType location;
 
@@ -26,7 +26,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="PositionedEntity"/> class.
         /// </summary>
-        public PositionedEntity()
+        protected PositionedEntity()
             : base()
         {
             this.Location = new LocationType();
@@ -36,7 +36,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="PositionedEntity"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public PositionedEntity(string name)
+        protected PositionedEntity(string name)
             : base(name)
         {
             this.Location = new LocationType();
@@ -48,7 +48,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="floor">The floor.</param>
-        public PositionedEntity(string name, int roomNumber, Floor floor)
+        protected PositionedEntity(string name, int roomNumber, Floor floor)
             : base(name)
         {
             this.Location = new LocationType(roomNumber, floor);
@@ -59,7 +59,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
-        public PositionedEntity(string name, LocationType location)
+        protected PositionedEntity(string name, LocationType location)
             : base(name)
         {
             this.Location = location;

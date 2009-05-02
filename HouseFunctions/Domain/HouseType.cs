@@ -214,6 +214,7 @@ namespace HouseCore
 
 
 		#endregion Methods 
+
         // Public Methods (3)
         ///// <summary>
         ///// Loads this instance.
@@ -265,26 +266,6 @@ namespace HouseCore
         //    }
 
         //
-
-
-        /// <summary>
-        /// Saves this instance.
-        /// </summary>
-        /// <returns>Message indicating success or failure</returns>
-        public string Save()
-        {
-            SaveData saveData = new SaveData();
-            this.PopulateSaveData(saveData);
-            StringBuilder stringBuilderOutput = new StringBuilder();
-            XmlSerializer serializerSaveData = new XmlSerializer(typeof(SaveData));
-            using (TextWriter writer = new StreamWriter("housedata.txt"))
-            {
-                serializerSaveData.Serialize(writer, saveData);
-            }
-
-            stringBuilderOutput.Append("Data saved");
-            return stringBuilderOutput.ToString();
-        }
 
         // Private Methods (5) 
 
@@ -444,16 +425,7 @@ namespace HouseCore
             this.rooms.Add(new Room(TheHouseRoomData.InventoryName, TheHouseRoomData.LocationInventory, TheHouseRoomData.ExitsInventory));
         }
 
-        /// <summary>
-        /// Populates the save data.
-        /// </summary>
-        /// <param name="data">The data in which to store state.</param>
-        private void PopulateSaveData(SaveData data)
-        {
-            data.PopulateRooms(this.rooms);
-        }
-
-        // Internal Methods (2) 
+         // Internal Methods (2) 
 
         /// <summary>
         /// Removes the front porch items.

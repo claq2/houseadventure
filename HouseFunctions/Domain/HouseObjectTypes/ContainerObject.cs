@@ -70,10 +70,10 @@ namespace HouseCore
         /// <returns>
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
-        public bool Equals(ContainerObject other)
-        {
-            return this.ShortName == other.ShortName;
-        }
+        //public bool Equals(ContainerObject other)
+        //{
+        //    return this.ShortName == other.ShortName;
+        //}
 
         #endregion
     }

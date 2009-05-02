@@ -76,7 +76,7 @@ namespace House
         /// <summary>
         /// The player object
         /// </summary>
-        private Player player = new Player();
+        //private Player player = new Player();
 
         /// <summary>
         /// The name of the current room
@@ -217,18 +217,18 @@ namespace House
         /// Gets or sets the player.
         /// </summary>
         /// <value>The player.</value>
-        public Player Player
-        {
-            get
-            {
-                return this.player;
-            }
+        //public Player Player
+        //{
+        //    get
+        //    {
+        //        return this.player;
+        //    }
 
-            set
-            {
-                this.player = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.player = value;
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the name of the room.
@@ -263,7 +263,8 @@ namespace House
 
             while (!this.gameEnded)
             {
-                Player.NumberOfMoves++;
+                this.housePresenter.IncrementNumberOfMoves();
+                //Player.NumberOfMoves++;
                 Console.Write("What to do \r\n");
                 stringArrayCommand = new string[] { };
                 string stringLine = Console.ReadLine();

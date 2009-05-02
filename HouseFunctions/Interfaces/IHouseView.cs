@@ -32,7 +32,7 @@ namespace HouseCore.Interfaces
         /// Gets or sets the player.
         /// </summary>
         /// <value>The player.</value>
-        Player Player { get; set;}
+        //Player Player { get; set;}
 
         /// <summary>
         /// Gets or sets the argument.

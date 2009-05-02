@@ -20,18 +20,18 @@ namespace HouseCore
     [XmlInclude(typeof(CushioningObject))]
     [XmlInclude(typeof(StationaryObject))]
     [XmlInclude(typeof(LockableDoorObject))]
-    public class InanimateObject : GameEntity//, IEquatable<InanimateObject>
+    public abstract class InanimateObject : GameEntity//, IEquatable<InanimateObject>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InanimateObject"/> class.
         /// </summary>
-        public InanimateObject() : base() { }
+        protected InanimateObject() : base() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InanimateObject"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public InanimateObject(string name) : base(name) { }
+        protected InanimateObject(string name) : base(name) { }
 
         ///// <summary>
         ///// Initializes a new instance of the <see cref="InanimateObject"/> class.
@@ -49,7 +49,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
-        public InanimateObject(string name, Room room)
+        protected InanimateObject(string name, Room room)
             : base(name)
         {
             room.Items.Add(this);
@@ -61,7 +61,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
         /// <param name="shortName">The short name.</param>
-        public InanimateObject(string name, Room room, string shortName)
+        protected InanimateObject(string name, Room room, string shortName)
             : base(name, shortName)
         {
             room.Items.Add(this);
@@ -74,10 +74,10 @@ namespace HouseCore
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(InanimateObject other)
-        {
-            return this.Name == other.Name;
-        }
+        //public bool Equals(InanimateObject other)
+        //{
+        //    return this.Name == other.Name;
+        //}
 
         #endregion
 

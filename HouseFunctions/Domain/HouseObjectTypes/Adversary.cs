@@ -103,10 +103,10 @@ namespace HouseCore
         /// <returns>
         /// true if the current object is equal to the other parameter; otherwise, false.
         /// </returns>
-        public bool Equals(Adversary other)
-        {
-            return this.Name == other.Name;
-        }
+        //public bool Equals(Adversary other)
+        //{
+        //    return this.Name == other.Name;
+        //}
 
         #endregion
     }

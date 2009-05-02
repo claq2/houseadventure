@@ -20,7 +20,7 @@ namespace HouseCore
         /// <summary>
         /// Private instance of the inventory
         /// </summary>
-        private InanimateObjectKeyedCollection inventory;
+        //private InanimateObjectKeyedCollection inventory;
 
         /// <summary>
         /// Number of items removes from the house
@@ -46,7 +46,7 @@ namespace HouseCore
         /// </summary>
         public Player()
         {
-            this.inventory = new InanimateObjectKeyedCollection();
+            //this.inventory = new InanimateObjectKeyedCollection();
             Location.Floor = Floor.FirstFloor;
             Location.RoomNumber = 1;
         }

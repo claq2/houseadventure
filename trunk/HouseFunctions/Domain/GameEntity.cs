@@ -8,7 +8,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class GameEntity : IEquatable<GameEntity>
+    public abstract class GameEntity : IEquatable<GameEntity>
     {
         //private LocationType location;
         private String name = String.Empty;
@@ -41,7 +41,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="GameEntity"/> class.
         /// </summary>
-        public GameEntity()
+        protected GameEntity()
         {
             //this.Location = new LocationType();
         }
@@ -50,7 +50,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="GameEntity"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public GameEntity(string name)
+        protected GameEntity(string name)
         {
             //this.Location = new LocationType();
             this.Name = name;
@@ -61,7 +61,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="shortName">The short name.</param>
-        public GameEntity(string name, string shortName)
+        protected GameEntity(string name, string shortName)
         {
             //this.Location = new LocationType();
             this.name = name;

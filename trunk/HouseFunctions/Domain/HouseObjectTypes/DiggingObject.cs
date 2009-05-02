@@ -7,7 +7,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class DiggingObject : PortableObject,IEquatable<DiggingObject>
+    public class DiggingObject : PortableObject//,IEquatable<DiggingObject>
     {
         #region IEquatable<DiggingObject> Members
 
@@ -16,10 +16,10 @@ namespace HouseCore
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(DiggingObject other)
-        {
-            return this.Name == other.Name;
-        }
+        //public bool Equals(DiggingObject other)
+        //{
+        //    return this.Name == other.Name;
+        //}
 
         #endregion
     }

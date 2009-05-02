@@ -153,10 +153,10 @@ namespace HouseCore
         /// </summary>
         /// <param name="other">The PortableObject to compare to</param>
         /// <returns>A value indicating whether the two items are the same</returns>
-        public bool Equals(PortableObject other)
-        {
-            return this.ShortName == other.ShortName;
-        }
+        //public bool Equals(PortableObject other)
+        //{
+        //    return this.ShortName == other.ShortName;
+        //}
 
         #endregion
     }

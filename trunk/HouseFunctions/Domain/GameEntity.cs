@@ -76,13 +76,13 @@ namespace HouseCore
         /// </returns>
         public override string ToString()
         {
-            if (String.IsNullOrEmpty(shortName))
+            if (String.IsNullOrEmpty(ShortName))
             {
-                return name;
+                return Name;
             }
             else
             {
-                return shortName;
+                return ShortName;
             }
         }
 
@@ -94,13 +94,13 @@ namespace HouseCore
         {
             get
             {
-                if (String.IsNullOrEmpty(shortName))
+                if (String.IsNullOrEmpty(ShortName))
                 {
-                    return name;
+                    return Name;
                 }
                 else
                 {
-                    return shortName;
+                    return ShortName;
                 }
             }
         }
@@ -123,7 +123,6 @@ namespace HouseCore
         public string ShortName
         {
             get { return this.shortName; }
-            set { this.shortName = value; }
         }
 
         #region IEquatable<GameEntity> Members
@@ -137,11 +136,11 @@ namespace HouseCore
         {
             if (String.IsNullOrEmpty(ShortName))
             {
-                return this.name == other.Name;
+                return this.Name == other.Name;
             }
             else
             {
-                return this.shortName == other.ShortName;
+                return this.ShortName == other.ShortName;
             }
         }
 

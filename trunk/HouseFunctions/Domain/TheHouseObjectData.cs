@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HouseCore
 {
-    using System.Collections.ObjectModel;
     /// <summary>
     /// All data relating to items in the house
     /// </summary>

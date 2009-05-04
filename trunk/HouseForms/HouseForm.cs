@@ -39,6 +39,8 @@ namespace HouseForms
 
         // Private Methods (17) 
 
+        public InanimateObjectKeyedCollection Inventory { get; private set; }
+
         /// <summary>
         /// Brushes the specified item.
         /// </summary>
@@ -76,6 +78,8 @@ namespace HouseForms
         private void buttonInventory_Click(object sender, EventArgs e)
         {
             //this.listBoxInventory.DataSource = TheSingletonHouse.Instance.Player.Inventory;
+            this.listBoxInventory.Items.Add("1");
+            this.listBoxInventory.Items.Add("2");
         }
 
         /// <summary>
@@ -175,7 +179,7 @@ namespace HouseForms
                 optionsImpostorMessage |= MessageBoxOptions.RtlReading |
                 MessageBoxOptions.RightAlign;
             }
-
+            //MessageBox.Show("last");
             MessageBox.Show((Control)sender, "House Adventure\r\n\r\nRemember the Impostor is last\r\n", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, optionsImpostorMessage);
 
             foreach (string arg in args)
@@ -211,11 +215,12 @@ namespace HouseForms
         /// </returns>
         private static bool IsRightToLeft(IWin32Window owner)
         {
-            using (Control control = owner as Control)
-            {
+            Control control = owner as Control;
+            //using (Control control = owner as Control)
+            //{
                 if (control != null)
                     return control.RightToLeft == RightToLeft.Yes;
-            }
+            //}
 
             // If no parent control is available, ask the CurrentUICulture
             // if we are running under right-to-left.

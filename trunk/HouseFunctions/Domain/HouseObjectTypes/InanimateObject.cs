@@ -66,6 +66,16 @@ namespace HouseCore
         {
             room.Items.Add(this);
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameEntity"></see> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="shortName">The short name.</param>
+        protected InanimateObject(string name, string shortName)
+            : base(name, shortName)
+        {
+        }
+         
 
         #region IEquatable<InanimateObject> Members
 

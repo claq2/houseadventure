@@ -61,6 +61,7 @@
     <Compile Include="Domain\AdversaryCollection.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="DirectionShortName.cs" />
+    <Compile Include="Domain\HouseObjectTypes\InanimateObjectKeyedCollection.cs" />
     <Compile Include="Domain\TheHouseAdversaryData.cs" />
     <Compile Include="Domain\TheHouseObjectData.cs" />
     <Compile Include="Domain\TheHouseRoomData.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Domain\HouseObjectTypes\DelicateObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\DiggingObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\InanimateObject.cs" />
-    <Compile Include="Domain\HouseObjectTypes\InanimateObjects.cs" />
+    <Compile Include="Domain\HouseObjectTypes\InanimateObjectsCollection.cs" />
     <Compile Include="Domain\HouseObjectTypes\Item.cs" />
     <Compile Include="Domain\HouseObjectTypes\LockableDoorObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\MultiplePieceObject.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Domain\HouseObjectTypes\Switch.cs" />
     <Compile Include="Domain\HouseObjectTypes\Impostor.cs" />
     <Compile Include="Domain\Player.cs" />
+    <Compile Include="NullObject.cs" />
     <Compile Include="Presenters\HousePresenter.cs" />
     <Compile Include="Domain\SaveData.cs" />
     <Compile Include="Domain\LocationType.cs" />

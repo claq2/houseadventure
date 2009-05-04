@@ -8,7 +8,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class RoomKeyedCollection:KeyedCollection<LocationType, Room>
+    public class RoomKeyedCollection : KeyedCollection<LocationType, Room>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RoomKeyedCollection"/> class.

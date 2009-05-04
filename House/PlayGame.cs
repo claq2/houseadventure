@@ -24,11 +24,6 @@ namespace House
         // Fields (15) 
 
         /// <summary>
-        /// Indicates that the look action preceeded a vertical movement
-        /// </summary>
-        private bool afterVerticalMovement;
-
-        /// <summary>
         /// The presenter for actions
         /// </summary>
         private HousePresenter housePresenter;
@@ -44,24 +39,14 @@ namespace House
         private string argument = String.Empty;
 
         /// <summary>
-        /// Indicator for whether to clear the screen before outputting the action results
-        /// </summary>
-        private bool clearScreen;
-
-        /// <summary>
         /// The exits in the room
         /// </summary>
         private List<string> exitDirections = new List<string>();
 
         /// <summary>
-        /// Indicator for whether the action ended the game
-        /// </summary>
-        private bool gameEnded;
-
-        /// <summary>
         /// The house in which the game is taking place
         /// </summary>
-        private HouseCore.HouseType house = new HouseCore.HouseType(true);
+        private HouseType house = new HouseType(true);
 
         /// <summary>
         /// The items in the room
@@ -111,10 +96,7 @@ namespace House
         /// Gets a value indicating whether a vertical movement was just performed
         /// </summary>
         /// <value>true if done after a vertical movement, false otherwise</value>
-        public bool AfterVerticalMovement
-        {
-            get { return this.afterVerticalMovement; }
-        }
+        public bool AfterVerticalMovement { get; private set; }
 
         /// <summary>
         /// Gets or sets the argument.
@@ -137,18 +119,7 @@ namespace House
         /// Gets or sets a value indicating whether [clear screen].
         /// </summary>
         /// <value><c>true</c> if [clear screen]; otherwise, <c>false</c>.</value>
-        public bool ClearScreen
-        {
-            get
-            {
-                return this.clearScreen;
-            }
-
-            set
-            {
-                this.clearScreen = value;
-            }
-        }
+        public bool ClearScreen { get; set; }
 
         /// <summary>
         /// Gets the exit directions.
@@ -163,17 +134,19 @@ namespace House
         /// Gets or sets a value indicating whether [game ended].
         /// </summary>
         /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
-        public bool GameEnded
-        {
-            get { return this.gameEnded; }
-            set { this.gameEnded = value; }
-        }
+        public bool GameEnded { get; set; }
+
+        /// <summary>
+        /// Gets the inventory.
+        /// </summary>
+        /// <value>The inventory.</value>
+        public InanimateObjectKeyedCollection Inventory { get; private set; }
 
         /// <summary>
         /// Gets or sets the house.
         /// </summary>
         /// <value>The house.</value>
-        public HouseCore.HouseType House
+        public HouseType House
         {
             get
             {
@@ -261,7 +234,7 @@ namespace House
             this.housePresenter.Look();
             Console.WriteLine(this.ProcessLookReturn());
 
-            while (!this.gameEnded)
+            while (!this.GameEnded)
             {
                 this.housePresenter.IncrementNumberOfMoves();
                 //Player.NumberOfMoves++;
@@ -280,7 +253,7 @@ namespace House
                     if (String.Compare(stringShortenedCommand, "qui", true, CultureInfo.CurrentCulture) == 0)
                     {
                         this.housePresenter.Quit();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -291,7 +264,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Brush();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -302,7 +275,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Spray();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -313,7 +286,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Say();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -324,7 +297,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Open();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -335,7 +308,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Open();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -346,7 +319,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Play();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -357,7 +330,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Wave();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -368,7 +341,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Dig();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -379,7 +352,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Read();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -389,7 +362,7 @@ namespace House
                     else if (String.Compare(stringShortenedCommand, "loo", true, CultureInfo.CurrentCulture) == 0)
                     {
                         this.housePresenter.Look();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -399,7 +372,7 @@ namespace House
                     else if (String.Compare(stringShortenedCommand, "sav", true, CultureInfo.CurrentCulture) == 0)
                     {
                         this.housePresenter.Save();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -409,7 +382,7 @@ namespace House
                     else if (String.Compare(stringShortenedCommand, "loa", true, CultureInfo.CurrentCulture) == 0)
                     {
                         this.housePresenter.Load();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -428,7 +401,7 @@ namespace House
                         }
 
                         this.housePresenter.Light();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -439,7 +412,7 @@ namespace House
                     {
                         this.argument = "on";
                         this.housePresenter.Light();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -450,7 +423,7 @@ namespace House
                     {
                         this.argument = "off";
                         this.housePresenter.Light();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -461,7 +434,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Get();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -472,7 +445,7 @@ namespace House
                     {
                         this.argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Drop();
-                        if (this.clearScreen)
+                        if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
@@ -485,19 +458,27 @@ namespace House
 
                         stringBuilderOutput.Append("You are presently carrying\r\n");
 //                        if (this.player.Inventory.Count == 0)
-                        if (this.house.Rooms[TheHouseRoomData.LocationInventory].Items.Count == 0)
+                        foreach (InanimateObject inanimateObject in this.House.Rooms[TheHouseRoomData.LocationInventory].Items)
+                        {
+                            stringBuilderOutput.Append(inanimateObject.Name);
+                            stringBuilderOutput.Append(Environment.NewLine);
+                        }
+
+                        /*
+                        if (this.House.Rooms[TheHouseRoomData.LocationInventory].Items.Count == 0)
                         {
                             stringBuilderOutput.Append("nothing");
                         }
                         else
                         {
 //                            foreach (InanimateObject inanimateObject in this.player.Inventory)
-                            foreach (InanimateObject inanimateObject in this.house.Rooms[TheHouseRoomData.LocationInventory].Items)
+                            foreach (InanimateObject inanimateObject in this.House.Rooms[TheHouseRoomData.LocationInventory].Items)
                             {
                                 stringBuilderOutput.Append(inanimateObject.Name);
                                 stringBuilderOutput.Append(Environment.NewLine);
                             }
                         }
+                         */
 
                         Console.WriteLine(stringBuilderOutput.ToString());
                     }
@@ -508,14 +489,14 @@ namespace House
                         if (String.Compare(stringShortenedCommand, "n", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.North();
-                            if (this.clearScreen)
+                            if (this.ClearScreen)
                             {
                                 Console.Clear();
                             }
 
                             if (String.IsNullOrEmpty(this.Message.ToString()))
                             {
-                                this.afterVerticalMovement = false;
+                                this.AfterVerticalMovement = false;
                                 this.housePresenter.Look();
                                 Console.WriteLine(this.ProcessLookReturn());
                             }
@@ -527,14 +508,14 @@ namespace House
                         else if (String.Compare(stringShortenedCommand, "s", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.South();
-                            if (this.clearScreen)
+                            if (this.ClearScreen)
                             {
                                 Console.Clear();
                             }
 
                             if (String.IsNullOrEmpty(this.Message.ToString()))
                             {
-                                this.afterVerticalMovement = false;
+                                this.AfterVerticalMovement = false;
                                 this.housePresenter.Look();
                                 Console.WriteLine(this.ProcessLookReturn());
                             }
@@ -546,14 +527,14 @@ namespace House
                         else if (String.Compare(stringShortenedCommand, "e", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.East();
-                            if (this.clearScreen)
+                            if (this.ClearScreen)
                             {
                                 Console.Clear();
                             }
 
                             if (String.IsNullOrEmpty(this.Message.ToString()))
                             {
-                                this.afterVerticalMovement = false;
+                                this.AfterVerticalMovement = false;
                                 this.housePresenter.Look();
                                 Console.WriteLine(this.ProcessLookReturn());
                             }
@@ -565,14 +546,14 @@ namespace House
                         else if (String.Compare(stringShortenedCommand, "w", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.West();
-                            if (this.clearScreen)
+                            if (this.ClearScreen)
                             {
                                 Console.Clear();
                             }
 
                             if (String.IsNullOrEmpty(this.Message.ToString()))
                             {
-                                this.afterVerticalMovement = false;
+                                this.AfterVerticalMovement = false;
                                 this.housePresenter.Look();
                                 Console.WriteLine(this.ProcessLookReturn());
                             }
@@ -584,14 +565,14 @@ namespace House
                         else if (String.Compare(stringShortenedCommand, "u", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.Up();
-                            if (this.clearScreen)
+                            if (this.ClearScreen)
                             {
                                 Console.Clear();
                             }
 
                             if (String.IsNullOrEmpty(this.Message.ToString()))
                             {
-                                this.afterVerticalMovement = true;
+                                this.AfterVerticalMovement = true;
                                 this.housePresenter.Look();
                                 Console.WriteLine(this.ProcessLookReturn());
                             }
@@ -603,14 +584,14 @@ namespace House
                         else if (String.Compare(stringShortenedCommand, "d", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.Down();
-                            if (this.clearScreen)
+                            if (this.ClearScreen)
                             {
                                 Console.Clear();
                             }
 
                             if (String.IsNullOrEmpty(this.Message.ToString()))
                             {
-                                this.afterVerticalMovement = true;
+                                this.AfterVerticalMovement = true;
                                 this.housePresenter.Look();
                                 Console.WriteLine(this.ProcessLookReturn());
                             }

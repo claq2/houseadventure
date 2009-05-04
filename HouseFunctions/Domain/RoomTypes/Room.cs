@@ -38,6 +38,7 @@ namespace HouseCore
             get { return magicWordForRoom; }
             set { magicWordForRoom = value; }
         }
+
         private AdversaryCollection adversaries;
 
         /// <summary>

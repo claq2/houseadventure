@@ -16,6 +16,8 @@ namespace HouseCore.Interfaces
         /// <value>The message.</value>
         StringBuilder Message { get; set;}
 
+        InanimateObjectKeyedCollection Inventory { get; }
+
         /// <summary>
         /// Gets or sets a value indicating whether [clear screen].
         /// </summary>

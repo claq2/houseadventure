@@ -17,77 +17,31 @@ namespace UnitTests
     /// </summary>
     public class MockView : IHouseView
     {
-		#region Data Members (22) 
 
-		// Fields (11) 
+		#region Data Members (14) 
 
-        private List<string> adversariesInRoom;
-        private bool afterVerticalMovement;
-        private string argument;
-        private bool clearScreen;
-        private List<string> exitDirections;
-        private bool gameEnded;
+
+		// Fields (2) 
+
         private HouseType house = new HouseType(true);
-        private List<string> itemsInRoom;
-        private StringBuilder message;
         private Player player = new Player();
-        private string roomName;
 
 
-		// Properties (11) 
+		// Properties (12) 
 
-        public IList<string> AdversariesInRoom
-        {
-            get { return this.adversariesInRoom; }
-        }
+        public IList<string> AdversariesInRoom { get; private set; }
 
-        public bool AfterVerticalMovement
-        {
-            get { return this.afterVerticalMovement; }
-        }
+        public bool AfterVerticalMovement { get; private set; }
 
-        public string Argument
-        {
-            get
-            {
-                return this.argument;
-            }
-            set
-            {
-                this.argument = value;
-            }
-        }
+        public string Argument { get; set; }
 
-        public bool ClearScreen
-        {
-            get
-            {
-                return this.clearScreen;
-            }
-            set
-            {
-                this.clearScreen = value;
-            }
-        }
+        public bool ClearScreen { get; set; }
 
-        public IList<string> ExitDirections
-        {
-            get { return this.exitDirections; }
-        }
+        public IList<string> ExitDirections { get; private set; }
 
-        public bool GameEnded
-        {
-            get
-            {
-                return this.gameEnded;
-            }
-            set
-            {
-                this.gameEnded = value;
-            }
-        }
+        public bool GameEnded { get; set; }
 
-        public HouseCore.HouseType House
+        public HouseType House
         {
             get
             {
@@ -99,46 +53,21 @@ namespace UnitTests
             }
         }
 
-        public IList<string> ItemsInRoom
-        {
-            get { return this.itemsInRoom; }
-        }
+        public InanimateObjectKeyedCollection Inventory { get; private set; }
 
-        public StringBuilder Message
-        {
-            get
-            {
-                return this.message;
-            }
-            set
-            {
-                this.message = value;
-            }
-        }
+        public IList<string> ItemsInRoom { get; private set; }
 
-        public HouseCore.Player Player
+        public StringBuilder Message { get; set; }
+
+        public Player Player
         {
             get
             {
                 return this.player;
             }
-            set
-            {
-                this.player = value;
-            }
         }
 
-        public string RoomName
-        {
-            get
-            {
-                return this.roomName;
-            }
-            set
-            {
-                this.roomName = value;
-            }
-        }
+        public string RoomName { get; set; }
 
 
 		#endregion Data Members 

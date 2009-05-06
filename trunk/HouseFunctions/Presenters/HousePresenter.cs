@@ -6,7 +6,6 @@ namespace HouseCore.Presenters
     using System.Text;
     using System.Xml.Serialization;
     using System.IO;
-    using HouseCore;
     using HouseCore.Interfaces;
 
     /// <summary>
@@ -894,8 +893,8 @@ namespace HouseCore.Presenters
                     {
                         if (this.view.House.Inventory.ContainsByType(typeof(ContainerObject)))
                         {
-                            this.view.House.Inventory.Add(portableObjectTarget);
-                            room.Items.Remove(portableObjectTarget);
+                            this.view.House.AddToInventory(portableObjectTarget);
+                            //room.Items.Remove(portableObjectTarget);
                         }
                         else
                         {
@@ -915,8 +914,8 @@ namespace HouseCore.Presenters
 
                         if (boolHasProtectiveItem)
                         {
-                            this.view.House.Inventory.Add(portableObjectTarget);
-                            room.Items.Remove(portableObjectTarget);
+                            this.view.House.AddToInventory(portableObjectTarget);
+                            //room.Items.Remove(portableObjectTarget);
                         }
                         else
                         {

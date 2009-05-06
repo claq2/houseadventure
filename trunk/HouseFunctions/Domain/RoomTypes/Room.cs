@@ -59,13 +59,14 @@ namespace HouseCore
         //    set { inanimateObjects = value; }
         //}
 
-        private InanimateObjectsCollection items;
+        //private InanimateObjectsCollection items;
+        private InanimateObjectKeyedCollection items;
 
         /// <summary>
         /// Gets or sets the items.
         /// </summary>
         /// <value>The items.</value>
-        public InanimateObjectsCollection Items
+        public InanimateObjectKeyedCollection Items
         {
             get {return items;}
             //set {items = value;}
@@ -85,7 +86,7 @@ namespace HouseCore
         private void InitializeCollections()
         {
             adversaries = new AdversaryCollection();
-            items = new InanimateObjectsCollection();
+            items = new InanimateObjectKeyedCollection();
             exits = new ExitSetKeyedCollection();
         }
 
@@ -198,6 +199,17 @@ namespace HouseCore
             InitializeCollections();
             this.exits = exits;
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PositionedEntity"></see> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="location">The location.</param>
+        public Room(string name, LocationType location)
+            : base(name, location)
+        {
+            
+        }
+         
 
     }
 }

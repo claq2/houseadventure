@@ -123,6 +123,10 @@ namespace HouseCore
         public string ShortName
         {
             get { return this.shortName; }
+            set
+            {
+            	this.shortName = value;
+            }
         }
 
         #region IEquatable<GameEntity> Members

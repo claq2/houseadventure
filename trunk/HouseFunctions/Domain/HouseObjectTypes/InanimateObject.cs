@@ -20,6 +20,8 @@ namespace HouseCore
     [XmlInclude(typeof(CushioningObject))]
     [XmlInclude(typeof(StationaryObject))]
     [XmlInclude(typeof(LockableDoorObject))]
+    [XmlInclude(typeof(NullObject))]
+    [XmlInclude(typeof(GameEntity))]
     public abstract class InanimateObject : GameEntity//, IEquatable<InanimateObject>
     {
         /// <summary>

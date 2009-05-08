@@ -13,6 +13,7 @@ namespace HouseCore.Presenters
     /// </summary>
     public class HousePresenter
     {
+        private Random random = new Random();
         private IHouseView view;
         
         //TODO:  Move house objects or fields into the presenter
@@ -524,7 +525,6 @@ namespace HouseCore.Presenters
         {
             this.view.Message = new StringBuilder();
             bool boolWordIsMagic = false;
-            Random random = new Random();
             MagicWord theword = MagicWord.NA;
             try
             {
@@ -557,7 +557,7 @@ namespace HouseCore.Presenters
                 else if (this.view.House.Rooms[this.player.Location].Magic && this.view.House.Rooms[this.player.Location].MagicWordForRoom != theword)
                 {
                     this.view.Message.Append("You experience disortientation");
-                    this.player.Location = new LocationType(random.Next(10), (Floor)random.Next(4));
+                    this.player.Location = new LocationType(this.random.Next(10), (Floor)this.random.Next(4));
                 }
                 else
                 {
@@ -949,7 +949,6 @@ namespace HouseCore.Presenters
         public void Look()
         {
             Room room = this.view.House.Rooms[this.player.Location];
-            Random random = new Random();
             this.view.GameEnded = false;
             this.view.ClearScreen = true;
             this.view.ExitDirections.Clear();
@@ -960,17 +959,17 @@ namespace HouseCore.Presenters
             TelephoneBooth telephoneBooth = room as TelephoneBooth;
             if (!this.view.AfterVerticalMovement && this.view.House.Inventory.Contains(TheHouseObjectData.DimeShortName) && telephoneBooth != null)
             {
-                this.player.Location.Floor = (Floor)random.Next(4);
+                this.player.Location.Floor = (Floor)this.random.Next(4);
                 room = this.view.House.Rooms[this.player.Location];
             }
 
             this.view.RoomName = room.Name;
-            if (random.Next(50) < 10)
+            if (this.random.Next(50) < 10)
             {
                 this.view.House.RemoveFrontPorchItems();
             }
 
-            if (random.Next(50) < 40)
+            if (this.random.Next(50) < 40)
             {
                 this.view.House.UpdateMonstersInHangout();
             }

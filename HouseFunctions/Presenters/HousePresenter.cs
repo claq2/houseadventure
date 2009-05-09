@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="HousePresenter.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 namespace HouseCore.Presenters
 {
     using System;
@@ -13,6 +19,9 @@ namespace HouseCore.Presenters
     /// </summary>
     public class HousePresenter
     {
+        //TODO: Add inventory function.
+        //TODO: Make views call the inventory function
+
         private Random random = new Random();
         private IHouseView view;
         
@@ -30,6 +39,12 @@ namespace HouseCore.Presenters
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HousePresenter"/> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        /// <param name="player">The player.</param>
+        /// <param name="house">The house.</param>
         public HousePresenter(IHouseView view, Player player, HouseType house)
         {
             this.view = view;
@@ -37,6 +52,9 @@ namespace HouseCore.Presenters
             this._house = house;
         }
 
+        /// <summary>
+        /// Increments the number of moves.
+        /// </summary>
         public void IncrementNumberOfMoves()
         {
             this.player.NumberOfMoves++;

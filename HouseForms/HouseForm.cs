@@ -39,7 +39,21 @@ namespace HouseForms
 
         // Private Methods (17) 
 
-        public InanimateObjectKeyedCollection Inventory { get; private set; }
+        /// <summary>
+        /// Gets or sets the inventory.
+        /// </summary>
+        /// <value>The inventory.</value>
+        public InanimateObjectKeyedCollection Inventory
+        {
+            set
+            {
+                listBoxInventory.Items.Clear();
+                foreach (InanimateObject obj in value)
+                {
+                    this.listBoxInventory.Items.Add(obj.Name);
+                }
+            }
+        }
 
         /// <summary>
         /// Brushes the specified item.
@@ -295,6 +309,10 @@ namespace HouseForms
     
         #region IHouseView Members
 
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>The message.</value>
         public StringBuilder Message
         {
             get
@@ -307,6 +325,10 @@ namespace HouseForms
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [clear screen].
+        /// </summary>
+        /// <value><c>true</c> if [clear screen]; otherwise, <c>false</c>.</value>
         public bool ClearScreen
         {
             get
@@ -319,6 +341,10 @@ namespace HouseForms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the house.
+        /// </summary>
+        /// <value>The house.</value>
         public HouseType House
         {
             get
@@ -331,6 +357,10 @@ namespace HouseForms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the player.
+        /// </summary>
+        /// <value>The player.</value>
         public Player Player
         {
             get
@@ -343,6 +373,10 @@ namespace HouseForms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the argument.
+        /// </summary>
+        /// <value>The argument.</value>
         public string Argument
         {
             get
@@ -355,6 +389,10 @@ namespace HouseForms
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [game ended].
+        /// </summary>
+        /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
         public bool GameEnded
         {
             get
@@ -367,26 +405,46 @@ namespace HouseForms
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the look action preceeded a vertical movement
+        /// </summary>
+        /// <value></value>
         public bool AfterVerticalMovement
         {
             get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
+        /// <summary>
+        /// Gets the adversaries.
+        /// </summary>
+        /// <value>The adversaries.</value>
         public IList<string> AdversariesInRoom
         {
             get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <value>The items.</value>
         public IList<string> ItemsInRoom
         {
             get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
+        /// <summary>
+        /// Gets the exit directions.
+        /// </summary>
+        /// <value>The exit directions.</value>
         public IList<string> ExitDirections
         {
             get { throw new NotImplementedException("The method or operation is not implemented."); }
         }
 
+        /// <summary>
+        /// Gets or sets the name of the room.
+        /// </summary>
+        /// <value>The name of the room.</value>
         public string RoomName
         {
             get

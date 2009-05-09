@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("HouseForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("a")]
+[assembly: AssemblyCompany("James McLachlan")]
 [assembly: AssemblyProduct("HouseForms")]
-[assembly: AssemblyCopyright("Copyright © a 2008")]
+[assembly: AssemblyCopyright("Copyright © James McLachlan 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,6 +30,6 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyFileVersion("1.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

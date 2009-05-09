@@ -137,10 +137,24 @@ namespace House
         public bool GameEnded { get; set; }
 
         /// <summary>
+        /// Private backing store for the inventory
+        /// </summary>
+        private List<string> inventory;
+
+        /// <summary>
         /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        public InanimateObjectKeyedCollection Inventory { get; private set; }
+        public InanimateObjectKeyedCollection Inventory
+        {
+            set
+            {
+                foreach (InanimateObject obj in value)
+                {
+                    this.inventory.Add(obj.Name);
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the house.

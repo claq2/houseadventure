@@ -23,7 +23,8 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="SaveData"/> class.
         /// </summary>
-        /// <param name="view">The view.</param>
+        /// <param name="player">The player.</param>
+        /// <param name="rooms">The rooms.</param>
         public SaveData(Player player, RoomKeyedCollection rooms)
         {
             //this.house = view.House;

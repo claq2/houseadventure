@@ -53,7 +53,7 @@ namespace UnitTests
             }
         }
 
-        public InanimateObjectKeyedCollection Inventory { get; private set; }
+        public InanimateObjectKeyedCollection Inventory { get; set; }
 
         public IList<string> ItemsInRoom { get; private set; }
 

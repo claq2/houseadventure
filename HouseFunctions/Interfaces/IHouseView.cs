@@ -10,6 +10,7 @@ namespace HouseCore.Interfaces
     /// </summary>
     public interface IHouseView
     {
+        //TODO: make this a sring with just a set
         /// <summary>
         /// Gets or sets the message.
         /// </summary>
@@ -26,7 +27,7 @@ namespace HouseCore.Interfaces
         /// Gets or sets a value indicating whether [clear screen].
         /// </summary>
         /// <value><c>true</c> if [clear screen]; otherwise, <c>false</c>.</value>
-        Boolean ClearScreen { get; set;}
+        Boolean ClearScreen { set;}
 
         ///// <summary>
         ///// Gets or sets the house.
@@ -44,13 +45,13 @@ namespace HouseCore.Interfaces
         /// Gets or sets the argument.
         /// </summary>
         /// <value>The argument.</value>
-        String Argument { get; set;}
+        String Argument { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [game ended].
         /// </summary>
         /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
-        Boolean GameEnded { get;set;}
+        Boolean GameEnded { set;}
 
         /// <summary>
         /// Gets a value indicating whether the look action preceeded a vertical movement
@@ -79,6 +80,6 @@ namespace HouseCore.Interfaces
         /// Gets or sets the name of the room.
         /// </summary>
         /// <value>The name of the room.</value>
-        String RoomName { get; set; }
+        String RoomName { set; }
     }
 }

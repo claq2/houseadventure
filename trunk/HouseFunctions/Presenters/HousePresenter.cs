@@ -19,16 +19,9 @@ namespace HouseCore.Presenters
     /// </summary>
     public class HousePresenter
     {
-        //TODO: Add inventory function.
-        //TODO: Make views call the inventory function
-
         private Random random = new Random();
         private IHouseView view;
-        
-        //TODO:  Move house objects or fields into the presenter
-
         private Player player;
-
         private HouseType house;
 
         /// <summary>
@@ -815,13 +808,14 @@ namespace HouseCore.Presenters
             {
                 string stringArgumentBackup = this.view.Argument;
                 StringBuilder stringBuilderMessageBackup = this.view.Message;
-                bool boolClearScreenBackup = this.view.ClearScreen;
+                //TODO: fix this
+                //bool boolClearScreenBackup = this.view.ClearScreen;
                 HousePresenter argumentActionPresenter = new HousePresenter(this.view);
-                this.view.Argument = "off";
+                //this.view.Argument = "off";
                 argumentActionPresenter.Light();
-                this.view.Argument = stringArgumentBackup;
+                //this.view.Argument = stringArgumentBackup;
                 this.view.Message = stringBuilderMessageBackup;
-                this.view.ClearScreen = boolClearScreenBackup;
+                //this.view.ClearScreen = boolClearScreenBackup;
                 this.view.Message.Append(this.view.Argument);
                 this.view.Message.Append(" dropped");
             }

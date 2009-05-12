@@ -136,11 +136,10 @@ namespace House
         /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
         public bool GameEnded { get; set; }
 
-        private IList<string> inventory = new List<string>();
         /// <summary>
         /// Private backing store for the inventory
         /// </summary>
-        private List<string> inventory;
+        private IList<string> inventory = new List<string>();
 
         /// <summary>
         /// Gets the inventory.

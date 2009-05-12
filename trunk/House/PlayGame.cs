@@ -19,7 +19,7 @@ namespace House
     /// </summary>
     public class PlayGame : IHouseView
     {
-        #region Data Members (25) 
+        #region Data Members (25)
 
         // Fields (15) 
 
@@ -43,10 +43,10 @@ namespace House
         /// </summary>
         private List<string> exitDirections = new List<string>();
 
-        /// <summary>
-        /// The house in which the game is taking place
-        /// </summary>
-        private HouseType house = new HouseType(true);
+        ///// <summary>
+        ///// The house in which the game is taking place
+        ///// </summary>
+        //private HouseType house = new HouseType(true);
 
         /// <summary>
         /// The items in the room
@@ -136,6 +136,7 @@ namespace House
         /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
         public bool GameEnded { get; set; }
 
+        private IList<string> inventory = new List<string>();
         /// <summary>
         /// Private backing store for the inventory
         /// </summary>
@@ -145,34 +146,31 @@ namespace House
         /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        public InanimateObjectKeyedCollection Inventory
-        {
-            set
-            {
-                foreach (InanimateObject obj in value)
-                {
-                    this.inventory.Add(obj.Name);
-                }
-            }
+        public IList<string> Inventory 
+        { 
+            get 
+            { 
+                return inventory; 
+            } 
         }
 
-        /// <summary>
-        /// Gets or sets the house.
-        /// </summary>
-        /// <value>The house.</value>
-        public HouseType House
-        {
-            get
-            {
-                return this.house;
-            }
+        ///// <summary>
+        ///// Gets or sets the house.
+        ///// </summary>
+        ///// <value>The house.</value>
+        //public HouseType House
+        //{
+        //    get
+        //    {
+        //        return this.house;
+        //    }
 
-            //set
-            //{
-            //    ////this.house = value;
-            //    this.house.RestoreHouse(value);
-            //}
-        }
+        //    //set
+        //    //{
+        //    //    ////this.house = value;
+        //    //    this.house.RestoreHouse(value);
+        //    //}
+        //}
 
         /// <summary>
         /// Gets the items.
@@ -227,9 +225,9 @@ namespace House
             set { this.roomName = value; }
         }
 
-        #endregion Data Members 
+        #endregion Data Members
 
-        #region Plumbing Code (3) 
+        #region Plumbing Code (3)
 
         /// <summary>
         /// Thes the loop.
@@ -468,13 +466,14 @@ namespace House
                     }
                     else if (String.Compare(stringShortenedCommand, "inv", true, CultureInfo.CurrentCulture) == 0)
                     {
+                        this.housePresenter.PopulateInventory();
                         StringBuilder stringBuilderOutput = new StringBuilder();
 
                         stringBuilderOutput.Append("You are presently carrying\r\n");
-//                        if (this.player.Inventory.Count == 0)
-                        foreach (InanimateObject inanimateObject in this.House.Rooms[TheHouseRoomData.LocationInventory].Items)
+                        //                        if (this.player.Inventory.Count == 0)
+                        foreach (string item in this.Inventory)
                         {
-                            stringBuilderOutput.Append(inanimateObject.Name);
+                            stringBuilderOutput.Append(item);
                             stringBuilderOutput.Append(Environment.NewLine);
                         }
 
@@ -697,6 +696,6 @@ namespace House
             return stringBuilderOutput.ToString();
         }
 
-        #endregion Plumbing Code 
+        #endregion Plumbing Code
     }
 }

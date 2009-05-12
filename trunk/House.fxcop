@@ -475,13 +475,13 @@
         <Types>
          <Type Name="HousePresenter">
           <Members>
-           <Member Name="#Load()">
+           <Member Name="#Get()">
             <Messages>
-             <Message Id="stringBuilderOutput" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-04-27 20:40:33Z">
+             <Message Id="room" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-05-11 20:36:56Z">
               <Issue>
-               <Item>'HousePresenter.Load()'</Item>
-               <Item>'stringBuilderOutput'</Item>
-               <Item>'StringBuilder'</Item>
+               <Item>'HousePresenter.Get()'</Item>
+               <Item>'room'</Item>
+               <Item>'Room'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -493,17 +493,6 @@
                <Item>'HousePresenter.ProcessMovement(Direction)'</Item>
                <Item>'verticalMovement'</Item>
                <Item>'bool'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Save()">
-            <Messages>
-             <Message Id="stringBuilderOutput" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-04-27 20:40:33Z">
-              <Issue>
-               <Item>'HousePresenter.Save()'</Item>
-               <Item>'stringBuilderOutput'</Item>
-               <Item>'StringBuilder'</Item>
               </Issue>
              </Message>
             </Messages>

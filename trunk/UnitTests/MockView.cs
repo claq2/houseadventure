@@ -23,8 +23,8 @@ namespace UnitTests
 
 		// Fields (2) 
 
-        private HouseType house = new HouseType(true);
-        private Player player = new Player();
+        //private HouseType house = new HouseType(true);
+        //private Player player = new Player();
 
 
 		// Properties (12) 
@@ -41,31 +41,39 @@ namespace UnitTests
 
         public bool GameEnded { get; set; }
 
-        public HouseType House
+        //public HouseType House
+        //{
+        //    get
+        //    {
+        //        return this.house;
+        //    }
+        //    set
+        //    {
+        //        this.house = value;
+        //    }
+        //}
+
+        private IList<string> inventory = new List<string>();
+
+        public IList<string> Inventory
         {
             get
             {
-                return this.house;
-            }
-            set
-            {
-                this.house = value;
+                return inventory;
             }
         }
-
-        public InanimateObjectKeyedCollection Inventory { get; set; }
 
         public IList<string> ItemsInRoom { get; private set; }
 
         public StringBuilder Message { get; set; }
 
-        public Player Player
-        {
-            get
-            {
-                return this.player;
-            }
-        }
+        //public Player Player
+        //{
+        //    get
+        //    {
+        //        return this.player;
+        //    }
+        //}
 
         public string RoomName { get; set; }
 

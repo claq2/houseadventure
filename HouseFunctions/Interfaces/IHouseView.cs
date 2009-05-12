@@ -17,10 +17,10 @@ namespace HouseCore.Interfaces
         StringBuilder Message { get; set;}
 
         /// <summary>
-        /// Gets or sets the inventory.
+        /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        InanimateObjectKeyedCollection Inventory { set; }
+        IList<string> Inventory { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [clear screen].
@@ -28,11 +28,11 @@ namespace HouseCore.Interfaces
         /// <value><c>true</c> if [clear screen]; otherwise, <c>false</c>.</value>
         Boolean ClearScreen { get; set;}
 
-        /// <summary>
-        /// Gets or sets the house.
-        /// </summary>
-        /// <value>The house.</value>
-        HouseType House { get;}// set;}
+        ///// <summary>
+        ///// Gets or sets the house.
+        ///// </summary>
+        ///// <value>The house.</value>
+        //HouseType House { get;}// set;}
 
         /// <summary>
         /// Gets or sets the player.

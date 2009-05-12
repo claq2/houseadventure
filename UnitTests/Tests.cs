@@ -44,10 +44,10 @@ namespace UnitTests
         [Test]
         public void GetBox()
         {
-            this.view.Argument = "box";
+            this.view.Argument = TheHouseObjectData.BoxShortName;
             this.housePresenter.Get();
-            ContainerObject woodenBox = this.view.House.PortableObjects[TheHouseObjectData.BoxShortName] as ContainerObject;
-            Assert.AreEqual(true, this.view.House.Inventory.Contains(woodenBox));
+            this.housePresenter.PopulateInventory();
+            Assert.AreEqual(true, this.view.Inventory.Contains(TheHouseObjectData.BoxName));
         }
     }
 }

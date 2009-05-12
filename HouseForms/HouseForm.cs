@@ -39,19 +39,17 @@ namespace HouseForms
 
         // Private Methods (17) 
 
+        private IList<string> inventory = new List<string>();
+
         /// <summary>
-        /// Gets or sets the inventory.
+        /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        public InanimateObjectKeyedCollection Inventory
+        public IList<string> Inventory
         {
-            set
+            get
             {
-                listBoxInventory.Items.Clear();
-                foreach (InanimateObject obj in value)
-                {
-                    this.listBoxInventory.Items.Add(obj.Name);
-                }
+                return inventory;
             }
         }
 
@@ -341,37 +339,37 @@ namespace HouseForms
             }
         }
 
-        /// <summary>
-        /// Gets or sets the house.
-        /// </summary>
-        /// <value>The house.</value>
-        public HouseType House
-        {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-            set
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the house.
+        ///// </summary>
+        ///// <value>The house.</value>
+        //public HouseType House
+        //{
+        //    get
+        //    {
+        //        throw new NotImplementedException("The method or operation is not implemented.");
+        //    }
+        //    set
+        //    {
+        //        throw new NotImplementedException("The method or operation is not implemented.");
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets the player.
-        /// </summary>
-        /// <value>The player.</value>
-        public Player Player
-        {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-            set
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the player.
+        ///// </summary>
+        ///// <value>The player.</value>
+        //public Player Player
+        //{
+        //    get
+        //    {
+        //        throw new NotImplementedException("The method or operation is not implemented.");
+        //    }
+        //    set
+        //    {
+        //        throw new NotImplementedException("The method or operation is not implemented.");
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the argument.

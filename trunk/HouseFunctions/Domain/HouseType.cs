@@ -274,11 +274,17 @@ namespace HouseCore
             this.adversaries.Add(new Adversary(TheHouseAdversaryData.MonkName, this.rooms[TheHouseRoomData.LocationSecondFloorGuestroom1], TheHouseAdversaryData.MonkShortName));
             this.adversaries.Add(new Adversary(TheHouseAdversaryData.VampireName, this.rooms[TheHouseRoomData.LocationFirstFloorKitchen], TheHouseAdversaryData.VampireShortName));
             this.adversaries.Add(new Adversary(TheHouseAdversaryData.WerewolfName, this.rooms[TheHouseRoomData.LocationThirdFloorArtHall], TheHouseAdversaryData.WerewolfShortName));
+#if (DEBUG)
+            int intImpostorItemNumber = 0;
+            int intImpostorRoomNumber = 0;
+            Floor floorImpostorFloor = Floor.SecondFloor;
+#else
             int intImpostorItemNumber = this.random.Next(this.PortableObjects.Count);
-            string stringImpostorDisplayName = this.PortableObjects[intImpostorItemNumber].Name;
-            string stringImpostorShortName = this.PortableObjects[intImpostorItemNumber].ShortName;
             int intImpostorRoomNumber = this.random.Next(10);
             Floor floorImpostorFloor = (Floor)this.random.Next(4);
+#endif
+            string stringImpostorDisplayName = this.PortableObjects[intImpostorItemNumber].Name;
+            string stringImpostorShortName = this.PortableObjects[intImpostorItemNumber].ShortName;
             LocationType locationImpostorLocation = new LocationType(intImpostorRoomNumber, floorImpostorFloor);
             this.adversaries.Add(new Impostor(stringImpostorDisplayName, this.rooms[locationImpostorLocation], stringImpostorShortName));
         }
@@ -330,7 +336,12 @@ namespace HouseCore
             this.rooms.Add(new Room(TheHouseRoomData.FurnaceRoomName, TheHouseRoomData.LocationBasementFurnaceRoom, TheHouseRoomData.ExitsBasementFurnaceRoom));
             this.rooms.Add(new Room(TheHouseRoomData.LaboratoryName, TheHouseRoomData.LocationBasementLaboratory, TheHouseRoomData.ExitsBasementLaboratory));
             this.rooms.Add(new Room(TheHouseRoomData.PumpRoomName, TheHouseRoomData.LocationBasementPumpRoom, TheHouseRoomData.ExitsBasementPumpRoom));
-            this.rooms.Add(new TelephoneBooth(TheHouseRoomData.TelephoneBoothName, TheHouseRoomData.LocationBasementTelephoneBooth, TheHouseRoomData.ExitsBasementTelephoneBooth, true, (MagicWord)this.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1));
+#if (DEBUG)
+            MagicWord word = MagicWord.Seersucker;
+#else
+            MagicWord word = (MagicWord)this.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1);
+#endif
+            this.rooms.Add(new TelephoneBooth(TheHouseRoomData.TelephoneBoothName, TheHouseRoomData.LocationBasementTelephoneBooth, TheHouseRoomData.ExitsBasementTelephoneBooth, true, word));
             this.rooms.Add(new Room(TheHouseRoomData.TortureChamberName, TheHouseRoomData.LocationBasementTortureChamber, TheHouseRoomData.ExitsBasementTortureChamber));
             this.rooms.Add(new Room(TheHouseRoomData.WorkshopName, TheHouseRoomData.LocationBasementWorkshop, TheHouseRoomData.ExitsBasementWorkshop));
         }
@@ -342,7 +353,12 @@ namespace HouseCore
         {
             this.rooms.Add(new Room(TheHouseRoomData.BedroomName, TheHouseRoomData.LocationFirstFloorBedroom, TheHouseRoomData.ExitsFirstFloorBedroom));
             this.rooms.Add(new Room(TheHouseRoomData.CoatClosetName, TheHouseRoomData.LocationFirstFloorCoatCloset, TheHouseRoomData.ExitsFirstFloorCoatCloset));
-            this.rooms.Add(new Room(TheHouseRoomData.DiningRoomName, TheHouseRoomData.LocationFirstFloorDiningRoom, TheHouseRoomData.ExitsFirstFloorDiningRoom, true, (MagicWord)this.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1));
+#if (DEBUG)
+            MagicWord word = MagicWord.Seersucker;
+#else
+            MagicWord word = (MagicWord)this.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1);
+#endif
+            this.rooms.Add(new Room(TheHouseRoomData.DiningRoomName, TheHouseRoomData.LocationFirstFloorDiningRoom, TheHouseRoomData.ExitsFirstFloorDiningRoom, true, word));
             this.rooms.Add(new Elevator(TheHouseRoomData.FirstFloorElevatorName, TheHouseRoomData.LocationFirstFloorElevator, TheHouseRoomData.ExitsFirstFloorElevator));
             this.rooms.Add(new Room(TheHouseRoomData.FamilyRoomName, TheHouseRoomData.LocationFirstFloorFamilyRoom, TheHouseRoomData.ExitsFirstFloorFamilyRoom));
             this.rooms.Add(new Room(TheHouseRoomData.FoyerName, TheHouseRoomData.LocationFirstFloorFoyer, TheHouseRoomData.ExitsFirstFloorFoyer));
@@ -460,8 +476,13 @@ namespace HouseCore
             {
                 Adversary adversary = monsterHangout.Adversaries[i];
                 monsterHangout.Adversaries.RemoveAt(i);
+#if (DEBUG)
+                int intRoom = 2;
+                Floor floor = Floor.FirstFloor;
+#else
                 int intRoom = this.random.Next(10);
                 Floor floor = (Floor)this.random.Next(4);
+#endif
                 LocationType locationNew = new LocationType(intRoom, floor);
                 this.rooms[locationNew].Adversaries.Add(adversary);
             }

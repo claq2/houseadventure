@@ -311,7 +311,7 @@ namespace HouseForms
         /// Gets or sets the message.
         /// </summary>
         /// <value>The message.</value>
-        public StringBuilder Message
+        public string Message
         {
             get
             {

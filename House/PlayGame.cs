@@ -34,11 +34,6 @@ namespace House
         private List<string> adversariesInRoom = new List<string>();
 
         /// <summary>
-        /// The action argument
-        /// </summary>
-        private string argument = String.Empty;
-
-        /// <summary>
         /// The exits in the room
         /// </summary>
         private List<string> exitDirections = new List<string>();
@@ -54,19 +49,9 @@ namespace House
         private List<string> itemsInRoom = new List<string>();
 
         /// <summary>
-        /// The output from the action
-        /// </summary>
-        private StringBuilder message = new StringBuilder();
-
-        /// <summary>
         /// The player object
         /// </summary>
         //private Player player = new Player();
-
-        /// <summary>
-        /// The name of the current room
-        /// </summary>
-        private string roomName = String.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PlayGame"/> class.
@@ -102,18 +87,7 @@ namespace House
         /// Gets or sets the argument.
         /// </summary>
         /// <value>The argument.</value>
-        public string Argument
-        {
-            get
-            {
-                return this.argument;
-            }
-
-            set
-            {
-                this.argument = value;
-            }
-        }
+        public string Argument { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [clear screen].
@@ -134,7 +108,7 @@ namespace House
         /// Gets or sets a value indicating whether [game ended].
         /// </summary>
         /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
-        public bool GameEnded { get; set; }
+        public bool GameEnded { private get; set; }
 
         /// <summary>
         /// Private backing store for the inventory
@@ -184,18 +158,7 @@ namespace House
         /// Gets or sets the message.
         /// </summary>
         /// <value>The message.</value>
-        public StringBuilder Message
-        {
-            get
-            {
-                return this.message;
-            }
-
-            set
-            {
-                this.message = value;
-            }
-        }
+        public string Message { private get; set; }
 
         /// <summary>
         /// Gets or sets the player.
@@ -218,11 +181,7 @@ namespace House
         /// Gets or sets the name of the room.
         /// </summary>
         /// <value>The name of the room.</value>
-        public string RoomName
-        {
-            get { return this.roomName; }
-            set { this.roomName = value; }
-        }
+        public string RoomName { private get; set; }
 
         #endregion Data Members
 
@@ -269,106 +228,106 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "bru", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Brush();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "spr", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Spray();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "say", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Say();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "ope", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Open();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "unl", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Open();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "pla", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Play();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "wav", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Wave();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "dig", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Dig();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "rea", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Read();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "loo", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -404,11 +363,11 @@ namespace House
                     {
                         if (stringArrayCommand.Length > 1)
                         {
-                            this.argument = stringArrayCommand[1];
+                            this.Argument = stringArrayCommand[1];
                         }
                         else
                         {
-                            this.argument = String.Empty;
+                            this.Argument = String.Empty;
                         }
 
                         this.housePresenter.Light();
@@ -421,7 +380,7 @@ namespace House
                     }
                     else if (String.Compare(stringShortenedCommand, "on", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = "on";
+                        this.Argument = "on";
                         this.housePresenter.Light();
                         if (this.ClearScreen)
                         {
@@ -432,7 +391,7 @@ namespace House
                     }
                     else if (String.Compare(stringShortenedCommand, "off", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = "off";
+                        this.Argument = "off";
                         this.housePresenter.Light();
                         if (this.ClearScreen)
                         {
@@ -443,25 +402,25 @@ namespace House
                     }
                     else if (String.Compare(stringShortenedCommand, "get", true, CultureInfo.CurrentCulture) == 0 || String.Compare(stringArrayCommand[0], "take", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Get();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "dro", true, CultureInfo.CurrentCulture) == 0)
                     {
-                        this.argument = CollectArgument(stringArrayCommand);
+                        this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Drop();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.message);
+                        Console.WriteLine(this.Message);
                     }
                     else if (String.Compare(stringShortenedCommand, "inv", true, CultureInfo.CurrentCulture) == 0)
                     {

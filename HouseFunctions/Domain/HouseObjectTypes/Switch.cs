@@ -9,6 +9,10 @@ namespace HouseCore
     /// </summary>
     public enum Switch
     {
+        /// <summary>
+        /// Initial value for a Switch
+        /// </summary>
+        Unknown,
 
         /// <summary>
         /// Means the object is off

@@ -65,7 +65,7 @@ namespace UnitTests
 
         public IList<string> ItemsInRoom { get; private set; }
 
-        public StringBuilder Message { get; set; }
+        public string Message { private get; set; }
 
         //public Player Player
         //{

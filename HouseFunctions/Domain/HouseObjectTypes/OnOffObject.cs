@@ -18,7 +18,7 @@ namespace HouseCore
         /// <summary>
         /// The state of the object
         /// </summary>
-        private Switch state;
+        private Switch state = Switch.Off;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnOffObject"/> class.
@@ -64,6 +64,26 @@ namespace HouseCore
         public OnOffObject(string name, Room room, string shortName) 
             : base(name, room, shortName) 
         { 
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortableObject"></see> class.
+        /// </summary>
+        /// <param name="name">The display name of the item.</param>
+        /// <param name="room">The name of the room.</param>
+        /// <param name="buried">if set to <c>true</c> item is buried.</param>
+        /// <param name="visible">if set to <c>true</c> item is visible.</param>
+        public OnOffObject(string name, Room room, bool buried, bool visible)
+            : base(name, room, buried, visible)
+        {
+            
+        }
+
+        ////this.shortName = shortName;
+        public OnOffObject(string name, Room room, bool buried, bool visible, string shortName)
+            : base(name, room, buried, visible, shortName)
+        {
+            
         }
 
         /// <summary>

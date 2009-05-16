@@ -27,15 +27,30 @@ namespace UnitTests
         /// <summary>
         /// The mock view
         /// </summary>
-        private MockView view = new MockView();
+        private MockView view;
 
         /// <summary>
         /// Sets up the tests.
         /// </summary>
-        [TestFixtureSetUp]
+        [SetUp]
         public void Setup()
         {
+            this.view = new MockView();
             this.housePresenter = new HousePresenter(this.view);
+        }
+
+        [Test]
+        public void DieInDark()
+        {
+            this.housePresenter.West();
+            this.housePresenter.West();
+            this.housePresenter.Down();
+            Assert.AreEqual(TheHouseRoomData.BasementElevatorName, this.view.RoomName);
+            this.housePresenter.North();
+            this.housePresenter.North();
+            Assert.AreEqual(false, this.view.GameEnded);
+            this.housePresenter.West();
+            Assert.AreEqual(true, this.view.GameEnded);
         }
 
         /// <summary>

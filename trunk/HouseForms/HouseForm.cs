@@ -17,13 +17,20 @@ namespace HouseForms
     using System.Globalization;
     using HouseCore;
     using HouseCore.Interfaces;
+    using HouseCore.Presenters;
 
     /// <summary>
     /// The Form
     /// </summary>
     public partial class FormHouse : Form, IHouseView
     {
-        #region Constructors (1) 
+
+        /// <summary>
+        /// The presenter for actions
+        /// </summary>
+        private HousePresenter housePresenter;
+
+        #region Constructors (1)
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FormHouse"/> class.
@@ -31,11 +38,12 @@ namespace HouseForms
         public FormHouse()
         {
             InitializeComponent();
+            this.housePresenter = new HousePresenter(this);
         }
 
-        #endregion Constructors 
+        #endregion Constructors
 
-        #region Methods (17) 
+        #region Methods (17)
 
         // Private Methods (17) 
 
@@ -205,7 +213,7 @@ namespace HouseForms
             listBoxActions.DataSource = TheHouseData.Actions;
 
             labelMessage.Text = String.Empty;
-            this.Look(false);
+            this.Look();
         }
 
         /// <summary>
@@ -230,8 +238,8 @@ namespace HouseForms
             Control control = owner as Control;
             //using (Control control = owner as Control)
             //{
-                if (control != null)
-                    return control.RightToLeft == RightToLeft.Yes;
+            if (control != null)
+                return control.RightToLeft == RightToLeft.Yes;
             //}
 
             // If no parent control is available, ask the CurrentUICulture
@@ -243,14 +251,29 @@ namespace HouseForms
         /// Looks this instance.
         /// </summary>
         /// <param name="afterVerticalMovement">if set to <c>true</c> [after vertical movement].</param>
-        private void Look(bool afterVerticalMovement)
+        private void Look()
         {
-            //LookHelper lookHelper = TheSingletonHouse.Instance.Player.Look(afterVerticalMovement);
+            this.housePresenter.Look();
+            this.listBoxExits.DataSource = this.ExitDirections;
+            List<string> itemsInRoom = new List<string>();
+            foreach (string adversary in this.AdversariesInRoom)
+            {
+                itemsInRoom.Add(adversary);
+            }
 
-            //labelLocation.Text = lookHelper.RoomName;
-            //listBoxRoomContents.DataSource = lookHelper.Items;
-            //listBoxExits.DataSource = lookHelper.ExitDirections;
-            //labelMessage.Text = lookHelper.Output;
+            foreach (string inanimateObject in this.ItemsInRoom)
+            {
+                itemsInRoom.Add(inanimateObject);
+            }
+
+            this.listBoxRoomContents.DataSource = itemsInRoom;
+            List<string> exitsInRoom = new List<string>();
+            foreach (string exitDirection in this.ExitDirections)
+            {
+                exitsInRoom.Add(exitDirection);
+            }
+
+            this.listBoxExits.DataSource = exitsInRoom;
         }
 
         /// <summary>
@@ -295,7 +318,7 @@ namespace HouseForms
             }
             else if (String.Compare(action, "look", true, CultureInfo.CurrentCulture) == 0)
             {
-                this.Look(false);
+                this.Look();
             }
             else
             {
@@ -303,8 +326,8 @@ namespace HouseForms
             }
         }
 
-		#endregion Methods 
-    
+        #endregion Methods
+
         #region IHouseView Members
 
         /// <summary>
@@ -313,13 +336,9 @@ namespace HouseForms
         /// <value>The message.</value>
         public string Message
         {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
             set
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+                this.labelMessage.Text = value;
             }
         }
 
@@ -327,17 +346,7 @@ namespace HouseForms
         /// Gets or sets a value indicating whether [clear screen].
         /// </summary>
         /// <value><c>true</c> if [clear screen]; otherwise, <c>false</c>.</value>
-        public bool ClearScreen
-        {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-            set
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-        }
+        public bool ClearScreen { private get; set; }
 
         ///// <summary>
         ///// Gets or sets the house.
@@ -375,42 +384,15 @@ namespace HouseForms
         /// Gets or sets the argument.
         /// </summary>
         /// <value>The argument.</value>
-        public string Argument
-        {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-            set
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-        }
+        public string Argument { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [game ended].
         /// </summary>
         /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
-        public bool GameEnded
-        {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-            set
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
-        }
+        public bool GameEnded { private get; set; }
 
-        /// <summary>
-        /// Gets a value indicating whether the look action preceeded a vertical movement
-        /// </summary>
-        /// <value></value>
-        public bool AfterVerticalMovement
-        {
-            get { throw new NotImplementedException("The method or operation is not implemented."); }
-        }
+        private IList<string> adversariesInRoom = new List<string>();
 
         /// <summary>
         /// Gets the adversaries.
@@ -418,8 +400,10 @@ namespace HouseForms
         /// <value>The adversaries.</value>
         public IList<string> AdversariesInRoom
         {
-            get { throw new NotImplementedException("The method or operation is not implemented."); }
+            get { return this.adversariesInRoom; }
         }
+
+        private IList<string> itemsInRoom = new List<string>();
 
         /// <summary>
         /// Gets the items.
@@ -427,8 +411,10 @@ namespace HouseForms
         /// <value>The items.</value>
         public IList<string> ItemsInRoom
         {
-            get { throw new NotImplementedException("The method or operation is not implemented."); }
+            get { return this.itemsInRoom; }
         }
+
+        private IList<string> exitDirections = new List<string>();
 
         /// <summary>
         /// Gets the exit directions.
@@ -436,7 +422,7 @@ namespace HouseForms
         /// <value>The exit directions.</value>
         public IList<string> ExitDirections
         {
-            get { throw new NotImplementedException("The method or operation is not implemented."); }
+            get { return this.exitDirections; }
         }
 
         /// <summary>
@@ -445,13 +431,9 @@ namespace HouseForms
         /// <value>The name of the room.</value>
         public string RoomName
         {
-            get
-            {
-                throw new NotImplementedException("The method or operation is not implemented.");
-            }
             set
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+                this.labelLocation.Text = value;
             }
         }
 

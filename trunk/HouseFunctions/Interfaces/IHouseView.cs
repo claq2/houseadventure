@@ -23,9 +23,9 @@ namespace HouseCore.Interfaces
         IList<string> Inventory { get; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [clear screen].
+        /// Gets or sets a value indicating whether the screen should be cleared of information.
         /// </summary>
-        /// <value><c>true</c> if [clear screen]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if the screen should be cleared; otherwise, <c>false</c>.</value>
         Boolean ClearScreen { set;}
 
         /// <summary>
@@ -35,15 +35,10 @@ namespace HouseCore.Interfaces
         String Argument { get; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [game ended].
+        /// Gets or sets a value indicating whether the game has ended.
         /// </summary>
-        /// <value><c>true</c> if [game ended]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if the game has ended; otherwise, <c>false</c>.</value>
         Boolean GameEnded { set;}
-
-        /// <summary>
-        /// Gets a value indicating whether the look action preceeded a vertical movement
-        /// </summary>
-        Boolean AfterVerticalMovement { get; }
 
         /// <summary>
         /// Gets the adversaries.

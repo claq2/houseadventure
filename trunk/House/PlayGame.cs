@@ -78,12 +78,6 @@ namespace House
         }
 
         /// <summary>
-        /// Gets a value indicating whether a vertical movement was just performed
-        /// </summary>
-        /// <value>true if done after a vertical movement, false otherwise</value>
-        public bool AfterVerticalMovement { get; private set; }
-
-        /// <summary>
         /// Gets or sets the argument.
         /// </summary>
         /// <value>The argument.</value>
@@ -119,12 +113,12 @@ namespace House
         /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
-        public IList<string> Inventory 
-        { 
-            get 
-            { 
-                return inventory; 
-            } 
+        public IList<string> Inventory
+        {
+            get
+            {
+                return inventory;
+            }
         }
 
         ///// <summary>
@@ -461,115 +455,49 @@ namespace House
                         {
                             this.housePresenter.North();
                             if (this.ClearScreen)
-                            {
                                 Console.Clear();
-                            }
 
-                            if (String.IsNullOrEmpty(this.Message.ToString()))
-                            {
-                                this.AfterVerticalMovement = false;
-                                this.housePresenter.Look();
-                                Console.WriteLine(this.ProcessLookReturn());
-                            }
-                            else
-                            {
-                                Console.WriteLine(this.Message);
-                            }
+                            Console.WriteLine(this.ProcessLookReturn());
                         }
                         else if (String.Compare(stringShortenedCommand, "s", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.South();
                             if (this.ClearScreen)
-                            {
                                 Console.Clear();
-                            }
 
-                            if (String.IsNullOrEmpty(this.Message.ToString()))
-                            {
-                                this.AfterVerticalMovement = false;
-                                this.housePresenter.Look();
-                                Console.WriteLine(this.ProcessLookReturn());
-                            }
-                            else
-                            {
-                                Console.WriteLine(this.Message);
-                            }
+                            Console.WriteLine(this.ProcessLookReturn());
                         }
                         else if (String.Compare(stringShortenedCommand, "e", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.East();
                             if (this.ClearScreen)
-                            {
                                 Console.Clear();
-                            }
 
-                            if (String.IsNullOrEmpty(this.Message.ToString()))
-                            {
-                                this.AfterVerticalMovement = false;
-                                this.housePresenter.Look();
-                                Console.WriteLine(this.ProcessLookReturn());
-                            }
-                            else
-                            {
-                                Console.WriteLine(this.Message);
-                            }
+                            Console.WriteLine(this.ProcessLookReturn());
                         }
                         else if (String.Compare(stringShortenedCommand, "w", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.West();
                             if (this.ClearScreen)
-                            {
                                 Console.Clear();
-                            }
 
-                            if (String.IsNullOrEmpty(this.Message.ToString()))
-                            {
-                                this.AfterVerticalMovement = false;
-                                this.housePresenter.Look();
-                                Console.WriteLine(this.ProcessLookReturn());
-                            }
-                            else
-                            {
-                                Console.WriteLine(this.Message);
-                            }
+                            Console.WriteLine(this.ProcessLookReturn());
                         }
                         else if (String.Compare(stringShortenedCommand, "u", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.Up();
                             if (this.ClearScreen)
-                            {
                                 Console.Clear();
-                            }
 
-                            if (String.IsNullOrEmpty(this.Message.ToString()))
-                            {
-                                this.AfterVerticalMovement = true;
-                                this.housePresenter.Look();
-                                Console.WriteLine(this.ProcessLookReturn());
-                            }
-                            else
-                            {
-                                Console.WriteLine(this.Message);
-                            }
+                            Console.WriteLine(this.ProcessLookReturn());
                         }
                         else if (String.Compare(stringShortenedCommand, "d", true, CultureInfo.CurrentCulture) == 0)
                         {
                             this.housePresenter.Down();
                             if (this.ClearScreen)
-                            {
                                 Console.Clear();
-                            }
 
-                            if (String.IsNullOrEmpty(this.Message.ToString()))
-                            {
-                                this.AfterVerticalMovement = true;
-                                this.housePresenter.Look();
-                                Console.WriteLine(this.ProcessLookReturn());
-                            }
-                            else
-                            {
-                                Console.WriteLine(this.Message);
-                            }
+                            Console.WriteLine(this.ProcessLookReturn());
                         }
                     }
                 }

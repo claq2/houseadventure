@@ -52,8 +52,10 @@ namespace HouseForms
             this.buttonQuit = new System.Windows.Forms.Button();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
             this.labelMessage = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBoxMove.SuspendLayout();
             this.groupBoxOutput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxRoomContents
@@ -286,11 +288,23 @@ namespace HouseForms
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "labelMessage";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(537, 142);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 23;
+            // 
             // FormHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 462);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBoxOutput);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.labelExitDirections);
@@ -314,6 +328,7 @@ namespace HouseForms
             this.groupBoxMove.ResumeLayout(false);
             this.groupBoxOutput.ResumeLayout(false);
             this.groupBoxOutput.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +360,7 @@ namespace HouseForms
         private System.Windows.Forms.Button buttonQuit;
         private System.Windows.Forms.GroupBox groupBoxOutput;
         private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

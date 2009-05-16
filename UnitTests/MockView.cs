@@ -18,26 +18,34 @@ namespace UnitTests
     public class MockView : IHouseView
     {
 
-		#region Data Members (14) 
+        #region Data Members (14)
 
 
-		// Fields (2) 
+        // Fields (2) 
 
         //private HouseType house = new HouseType(true);
         //private Player player = new Player();
 
 
-		// Properties (12) 
+        // Properties (12) 
 
-        public IList<string> AdversariesInRoom { get; private set; }
+        private List<string> adversariesInRoom = new List<string>();
 
-        public bool AfterVerticalMovement { get; private set; }
+        public IList<string> AdversariesInRoom
+        {
+            get { return this.adversariesInRoom; }
+        }
 
         public string Argument { get; set; }
 
         public bool ClearScreen { get; set; }
 
-        public IList<string> ExitDirections { get; private set; }
+        private List<string> exitDirections = new List<string>();
+
+        public IList<string> ExitDirections
+        {
+            get { return this.exitDirections; }
+        }
 
         public bool GameEnded { get; set; }
 
@@ -63,9 +71,13 @@ namespace UnitTests
             }
         }
 
-        public IList<string> ItemsInRoom { get; private set; }
+        private IList<string> itemsInRoom = new List<string>();
+        public IList<string> ItemsInRoom
+        {
+            get { return this.itemsInRoom; }
+        }
 
-        public string Message { private get; set; }
+        public string Message { get; set; }
 
         //public Player Player
         //{
@@ -77,8 +89,7 @@ namespace UnitTests
 
         public string RoomName { get; set; }
 
-
-		#endregion Data Members 
+        #endregion Data Members
 
     }
 }

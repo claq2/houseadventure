@@ -28,7 +28,8 @@ namespace HouseCore.Presenters
         /// Initializes a new instance of the <see cref="HousePresenter"/> class.
         /// </summary>
         /// <param name="view">The view.</param>
-        public HousePresenter(IHouseView view):this(view, new Player(), new HouseType(true))
+        public HousePresenter(IHouseView view)
+            : this(view, new Player(), new HouseType(true))
         {
         }
 
@@ -155,12 +156,11 @@ namespace HouseCore.Presenters
         /// <param name="direction">The direction.</param>
         private void ProcessMovement(Direction direction)
         {
-            bool verticalMovement = direction == Direction.Up || direction == Direction.Down;
             if (this.Move(direction))
             {
                 this.view.ClearScreen = true;
                 this.view.Message = String.Empty;
-                //// this.Look(verticalMovement);
+                this.Look(direction == Direction.Up || direction == Direction.Down);
             }
             else
             {
@@ -180,17 +180,17 @@ namespace HouseCore.Presenters
             Elevator elevatorCurrent = roomCurrent as Elevator;
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[TheHouseObjectData.FlashlightShortName] as OnOffObject;
             ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[TheHouseObjectData.BatteriesShortName] as ConsumableObject;
+            if (onOffObjectFlashlight.State == Switch.On)
+            {
+                consumableObjectBatteries.IncrementTimesUsed();
+                if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
+                {
+                    onOffObjectFlashlight.State = Switch.Off;
+                }
+            }
+
             if (direction == Direction.North || direction == Direction.East || direction == Direction.West || direction == Direction.South)
             {
-                if (onOffObjectFlashlight.State == Switch.On)
-                {
-                    consumableObjectBatteries.IncrementTimesUsed();
-                    if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
-                    {
-                        onOffObjectFlashlight.State = Switch.Off;
-                    }
-                }
-
                 if (roomCurrent.Exits.Contains(direction))
                 {
                     this.player.Location.RoomNumber = roomCurrent.Exits[direction].ExitDestination;
@@ -408,11 +408,12 @@ namespace HouseCore.Presenters
             }
             */
 #endif
-            if (String.Compare(this.view.Argument, lockableDoor.Identity, true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) != 0)
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
+            if (String.Compare(stringShortenedArgument, lockableDoor.Identity, true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) != 0)
             {
                 stringBuilderMessage.Append("I'm sorry, I only know how to unlock doors and drawers.");
             }
-            else if (String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) == 0)
+            else if (String.Compare(stringShortenedArgument, "dra", true, CultureInfo.CurrentCulture) == 0)
             {
                 stringBuilderMessage.Append("Show me a drawer and I'll open it!!!");
             }
@@ -988,6 +989,14 @@ namespace HouseCore.Presenters
         /// </summary>
         public void Look()
         {
+            this.Look(false);
+        }
+
+        /// <summary>
+        /// Looks in the current room.
+        /// </summary>
+        private void Look(bool afterVerticalMovement)
+        {
             Room room = this.house.Rooms[this.player.Location];
             this.view.GameEnded = false;
             this.view.ClearScreen = true;
@@ -997,7 +1006,7 @@ namespace HouseCore.Presenters
             this.view.RoomName = String.Empty;
             StringBuilder stringBuilderMessage = new StringBuilder();
             bool boolInTelephoneBooth = room as TelephoneBooth != null;
-            if (!this.view.AfterVerticalMovement && this.house.Inventory.Contains(TheHouseObjectData.DimeShortName) && boolInTelephoneBooth)
+            if (!afterVerticalMovement && this.house.Inventory.Contains(TheHouseObjectData.DimeShortName) && boolInTelephoneBooth)
             {
 #if (DEBUG)
                 if (this.player.Location.Floor == Floor.ThirdFloor)

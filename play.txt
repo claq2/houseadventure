@@ -53,3 +53,29 @@ u
 off
 w
 say seersucker
+drop can
+drop par
+get dim
+n
+n
+e
+n
+s
+get sho
+n
+e
+n
+n
+n
+n
+d
+drop dim
+d
+lig
+n
+n
+w
+n
+dig dirt
+dig dirt
+get key

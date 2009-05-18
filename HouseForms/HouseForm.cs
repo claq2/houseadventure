@@ -77,7 +77,8 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonDown_Click(object sender, EventArgs e)
         {
-            this.MovePlayer(Direction.Down);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.ProcessLook(this.housePresenter.Down());
         }
 
         /// <summary>
@@ -87,7 +88,8 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonEast_Click(object sender, EventArgs e)
         {
-            this.MovePlayer(Direction.East);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.ProcessLook(this.housePresenter.East());
         }
 
         /// <summary>
@@ -97,9 +99,9 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonInventory_Click(object sender, EventArgs e)
         {
-            //this.listBoxInventory.DataSource = TheSingletonHouse.Instance.Player.Inventory;
-            this.listBoxInventory.Items.Add("1");
-            this.listBoxInventory.Items.Add("2");
+            this.housePresenter.IncrementNumberOfMoves();
+            this.housePresenter.PopulateInventory();
+            this.listBoxInventory.DataSource = this.Inventory;
         }
 
         /// <summary>
@@ -109,7 +111,9 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonLook_Click(object sender, EventArgs e)
         {
-            this.PerformAction("look", String.Empty);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.housePresenter.Look();
+            this.ProcessLook(true);
         }
 
         /// <summary>
@@ -119,7 +123,8 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonNorth_Click(object sender, EventArgs e)
         {
-            this.MovePlayer(Direction.North);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.ProcessLook(this.housePresenter.North());
         }
 
         /// <summary>
@@ -151,6 +156,15 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonQuit_Click(object sender, EventArgs e)
         {
+            this.housePresenter.Quit();
+            MessageBoxOptions optionsMessage = (MessageBoxOptions)0;
+            if (IsRightToLeft((IWin32Window)sender))
+            {
+                optionsMessage |= MessageBoxOptions.RtlReading |
+                MessageBoxOptions.RightAlign;
+            }
+
+            MessageBox.Show((Control)sender, this.Message, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, optionsMessage);
             this.Close();
         }
 
@@ -161,7 +175,8 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonSouth_Click(object sender, EventArgs e)
         {
-            this.MovePlayer(Direction.South);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.ProcessLook(this.housePresenter.South());
         }
 
         /// <summary>
@@ -171,7 +186,8 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonUp_Click(object sender, EventArgs e)
         {
-            this.MovePlayer(Direction.Up);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.ProcessLook(this.housePresenter.Up());
         }
 
         /// <summary>
@@ -181,7 +197,18 @@ namespace HouseForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void buttonWest_Click(object sender, EventArgs e)
         {
-            this.MovePlayer(Direction.West);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.ProcessLook(this.housePresenter.West());
+        }
+
+        private void ClearBoxes()
+        {
+            this.listBoxInventory.DataSource = null;
+            this.listBoxInventory.Items.Clear();
+            this.listBoxRoomContents.DataSource = null;
+            this.listBoxRoomContents.Items.Clear();
+            this.listBoxExits.DataSource = null;
+            this.listBoxExits.Items.Clear();
         }
 
         /// <summary>
@@ -210,10 +237,11 @@ namespace HouseForms
                 }
             }
 
-            listBoxActions.DataSource = TheHouseData.Actions;
-
-            labelMessage.Text = String.Empty;
-            this.Look();
+            this.listBoxActions.DataSource = TheHouseData.Actions;
+            this.housePresenter.IncrementNumberOfMoves();
+            this.labelMessage.Text = String.Empty;
+            this.housePresenter.Look();
+            this.ProcessLook(true);
         }
 
         /// <summary>
@@ -250,11 +278,20 @@ namespace HouseForms
         /// <summary>
         /// Looks this instance.
         /// </summary>
-        /// <param name="afterVerticalMovement">if set to <c>true</c> [after vertical movement].</param>
-        private void Look()
+        /// <param name="successfulMovementOrManualLook">if set to <c>true</c> [successful movement].</param>
+        private void ProcessLook(bool successfulMovementOrManualLook)
         {
-            this.housePresenter.Look();
-            this.listBoxExits.DataSource = this.ExitDirections;
+            if (this.ClearScreen)
+            {
+                this.ClearBoxes();
+            }
+
+            if (!successfulMovementOrManualLook)
+            {
+                this.labelMessage.Text = this.Message;
+                return;
+            }
+
             List<string> itemsInRoom = new List<string>();
             foreach (string adversary in this.AdversariesInRoom)
             {
@@ -267,13 +304,7 @@ namespace HouseForms
             }
 
             this.listBoxRoomContents.DataSource = itemsInRoom;
-            List<string> exitsInRoom = new List<string>();
-            foreach (string exitDirection in this.ExitDirections)
-            {
-                exitsInRoom.Add(exitDirection);
-            }
-
-            this.listBoxExits.DataSource = exitsInRoom;
+            this.listBoxExits.DataSource = this.ExitDirections;
         }
 
         /// <summary>
@@ -316,10 +347,6 @@ namespace HouseForms
             {
                 this.Get(item);
             }
-            else if (String.Compare(action, "look", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Look();
-            }
             else
             {
                 labelMessage.Text = "I don't understand";
@@ -336,10 +363,8 @@ namespace HouseForms
         /// <value>The message.</value>
         public string Message
         {
-            set
-            {
-                this.labelMessage.Text = value;
-            }
+            private get;
+            set;
         }
 
         /// <summary>

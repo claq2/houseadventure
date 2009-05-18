@@ -105,67 +105,69 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Northes this instance.
         /// </summary>
-        public void North()
+        public bool North()
         {
-            this.ProcessMovement(Direction.North);
+            return this.ProcessMovement(Direction.North);
         }
 
         /// <summary>
         /// Southes this instance.
         /// </summary>
-        public void South()
+        public bool South()
         {
-            this.ProcessMovement(Direction.South);
+            return this.ProcessMovement(Direction.South);
         }
 
         /// <summary>
         /// Easts this instance.
         /// </summary>
-        public void East()
+        public bool East()
         {
-            this.ProcessMovement(Direction.East);
+            return this.ProcessMovement(Direction.East);
         }
 
         /// <summary>
         /// Wests this instance.
         /// </summary>
-        public void West()
+        public bool West()
         {
-            this.ProcessMovement(Direction.West);
+            return this.ProcessMovement(Direction.West);
         }
 
         /// <summary>
         /// Ups this instance.
         /// </summary>
-        public void Up()
+        public bool Up()
         {
-            this.ProcessMovement(Direction.Up);
+            return this.ProcessMovement(Direction.Up);
         }
 
         /// <summary>
         /// Downs this instance.
         /// </summary>
-        public void Down()
+        public bool Down()
         {
-            this.ProcessMovement(Direction.Down);
+            return this.ProcessMovement(Direction.Down);
         }
 
         /// <summary>
         /// Processes the movement.
         /// </summary>
         /// <param name="direction">The direction.</param>
-        private void ProcessMovement(Direction direction)
+        private bool ProcessMovement(Direction direction)
         {
             if (this.Move(direction))
             {
                 this.view.ClearScreen = true;
                 this.view.Message = String.Empty;
                 this.Look(direction == Direction.Up || direction == Direction.Down);
+                return true;
             }
             else
             {
                 this.view.ClearScreen = false;
                 this.view.Message = TheHouseData.DisallowedDirectionValue;
+                return false;
             }
         }
 

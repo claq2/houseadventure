@@ -196,7 +196,7 @@ namespace House
             Console.Write("House Adventure" + Environment.NewLine + Environment.NewLine + "Remember the Impostor is last" + Environment.NewLine);
             ////Thread.Sleep(5000);
             this.housePresenter.Look();
-            Console.WriteLine(this.ProcessLookReturn());
+            Console.WriteLine(this.ProcessLookReturn(true));
 
             while (!this.GameEnded)
             {
@@ -331,7 +331,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.ProcessLookReturn());
+                        Console.WriteLine(this.ProcessLookReturn(true));
                     }
                     else if (String.Compare(stringShortenedCommand, "sav", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -453,51 +453,27 @@ namespace House
                         stringShortenedCommand = stringShortenedCommand.Substring(0, 1);
                         if (String.Compare(stringShortenedCommand, "n", true, CultureInfo.CurrentCulture) == 0)
                         {
-                            this.housePresenter.North();
-                            if (this.ClearScreen)
-                                Console.Clear();
-
-                            Console.WriteLine(this.ProcessLookReturn());
+                            Console.WriteLine(this.ProcessLookReturn(this.housePresenter.North()));
                         }
                         else if (String.Compare(stringShortenedCommand, "s", true, CultureInfo.CurrentCulture) == 0)
                         {
-                            this.housePresenter.South();
-                            if (this.ClearScreen)
-                                Console.Clear();
-
-                            Console.WriteLine(this.ProcessLookReturn());
+                            Console.WriteLine(this.ProcessLookReturn(this.housePresenter.South()));
                         }
                         else if (String.Compare(stringShortenedCommand, "e", true, CultureInfo.CurrentCulture) == 0)
                         {
-                            this.housePresenter.East();
-                            if (this.ClearScreen)
-                                Console.Clear();
-
-                            Console.WriteLine(this.ProcessLookReturn());
+                            Console.WriteLine(this.ProcessLookReturn(this.housePresenter.East()));
                         }
                         else if (String.Compare(stringShortenedCommand, "w", true, CultureInfo.CurrentCulture) == 0)
                         {
-                            this.housePresenter.West();
-                            if (this.ClearScreen)
-                                Console.Clear();
-
-                            Console.WriteLine(this.ProcessLookReturn());
+                            Console.WriteLine(this.ProcessLookReturn(this.housePresenter.West()));
                         }
                         else if (String.Compare(stringShortenedCommand, "u", true, CultureInfo.CurrentCulture) == 0)
                         {
-                            this.housePresenter.Up();
-                            if (this.ClearScreen)
-                                Console.Clear();
-
-                            Console.WriteLine(this.ProcessLookReturn());
+                            Console.WriteLine(this.ProcessLookReturn(this.housePresenter.Up()));
                         }
                         else if (String.Compare(stringShortenedCommand, "d", true, CultureInfo.CurrentCulture) == 0)
                         {
-                            this.housePresenter.Down();
-                            if (this.ClearScreen)
-                                Console.Clear();
-
-                            Console.WriteLine(this.ProcessLookReturn());
+                            Console.WriteLine(this.ProcessLookReturn(this.housePresenter.Down()));
                         }
                     }
                 }
@@ -540,8 +516,14 @@ namespace House
         /// Processes the look helper.
         /// </summary>
         /// <returns>String to show the user</returns>
-        private string ProcessLookReturn()
+        private string ProcessLookReturn(bool successfulMovementOrManualLook)
         {
+            if (this.ClearScreen)
+                Console.Clear();
+
+            if (!successfulMovementOrManualLook)
+                return this.Message;
+
             StringBuilder stringBuilderOutput = new StringBuilder();
             stringBuilderOutput.Append("\r\n\r\n");
             stringBuilderOutput.Append("You are ");

@@ -250,8 +250,9 @@ namespace HouseForms
         /// <param name="item">The item.</param>
         private void Get(string item)
         {
-            //GetHelper getHelper = TheSingletonHouse.Instance.Player.Get(item);
-            //labelMessage.Text = getHelper.Output;
+            this.Argument = item;
+            this.housePresenter.Get();
+            this.labelMessage.Text = this.Message;
         }
 
         /// <summary>

@@ -1005,6 +1005,7 @@ namespace HouseCore.Presenters
             this.view.ExitDirections.Clear();
             this.view.AdversariesInRoom.Clear();
             this.view.ItemsInRoom.Clear();
+            this.view.ItemsInRoomShortNames.Clear();
             this.view.RoomName = String.Empty;
             StringBuilder stringBuilderMessage = new StringBuilder();
             bool boolInTelephoneBooth = room as TelephoneBooth != null;
@@ -1061,10 +1062,12 @@ namespace HouseCore.Presenters
                     {
                         // If it's a stationary object
                         this.view.ItemsInRoom.Add(inanimateObject.Name);
+                        this.view.ItemsInRoomShortNames.Add(inanimateObject.ShortName);
                     }
                     else if (portableObject.Visible && !portableObject.Buried)
                     {
                         this.view.ItemsInRoom.Add(inanimateObject.Name);
+                        this.view.ItemsInRoomShortNames.Add(inanimateObject.ShortName);
                     }
                 }
 

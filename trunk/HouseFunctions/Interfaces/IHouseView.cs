@@ -53,6 +53,12 @@ namespace HouseCore.Interfaces
         IList<string> ItemsInRoom { get; }
 
         /// <summary>
+        /// Gets the items in room short names.
+        /// </summary>
+        /// <value>The items in room short names.</value>
+        IList<string> ItemsInRoomShortNames { get; }
+
+        /// <summary>
         /// Gets the exit directions.
         /// </summary>
         /// <value>The exit directions.</value>

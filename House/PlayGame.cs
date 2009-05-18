@@ -148,6 +148,17 @@ namespace House
             get { return this.itemsInRoom; }
         }
 
+        private IList<string> itemsInRoomShortNames = new List<string>();
+
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <value>The items.</value>
+        public IList<string> ItemsInRoomShortNames
+        {
+            get { return this.itemsInRoomShortNames; }
+        }
+
         /// <summary>
         /// Gets or sets the message.
         /// </summary>

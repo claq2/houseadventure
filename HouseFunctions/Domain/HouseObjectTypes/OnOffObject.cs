@@ -80,6 +80,14 @@ namespace HouseCore
         }
 
         ////this.shortName = shortName;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OnOffObject"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="room">The room.</param>
+        /// <param name="buried">if set to <c>true</c> [buried].</param>
+        /// <param name="visible">if set to <c>true</c> [visible].</param>
+        /// <param name="shortName">The short name.</param>
         public OnOffObject(string name, Room room, bool buried, bool visible, string shortName)
             : base(name, room, buried, visible, shortName)
         {

@@ -29,6 +29,17 @@ namespace UnitTests
 
         // Properties (12) 
 
+        private IList<string> itemsInRoomShortNames = new List<string>();
+
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <value>The items.</value>
+        public IList<string> ItemsInRoomShortNames
+        {
+            get { return this.itemsInRoomShortNames; }
+        }
+
         private List<string> adversariesInRoom = new List<string>();
 
         public IList<string> AdversariesInRoom

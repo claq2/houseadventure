@@ -67,7 +67,10 @@ namespace HouseForms
         /// <param name="item">The item.</param>
         private void Brush(string item)
         {
-            //labelMessage.Text = TheSingletonHouse.Instance.Player.Brush(item);
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Brush();
+            this.labelMessage.Text = this.Message;
         }
 
         /// <summary>
@@ -143,7 +146,7 @@ namespace HouseForms
 
             if (this.listBoxRoomContents.SelectedIndex != -1)
             {
-                stringItem = this.listBoxRoomContents.SelectedValue.ToString();
+                stringItem = this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex];
             }
 
             this.PerformAction(stringAction, stringItem);
@@ -209,6 +212,7 @@ namespace HouseForms
             this.listBoxRoomContents.Items.Clear();
             this.listBoxExits.DataSource = null;
             this.listBoxExits.Items.Clear();
+            this.labelMessage.Text = String.Empty;
         }
 
         /// <summary>
@@ -250,6 +254,7 @@ namespace HouseForms
         /// <param name="item">The item.</param>
         private void Get(string item)
         {
+            this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Get();
             this.labelMessage.Text = this.Message;
@@ -308,27 +313,29 @@ namespace HouseForms
             this.listBoxExits.DataSource = this.ExitDirections;
         }
 
-        /// <summary>
-        /// Moves the player.
-        /// </summary>
-        /// <param name="direction">The direction.</param>
-        private void MovePlayer(Direction direction)
-        {
-            bool afterVerticalMovement = false;
-            if (direction == Direction.Down || direction == Direction.Up)
-            {
-                afterVerticalMovement = true;
-            }
+        ///// <summary>
+        ///// Moves the player.
+        ///// </summary>
+        ///// <param name="direction">The direction.</param>
+        //private void MovePlayer(Direction direction)
+        //{
+        //    bool afterVerticalMovement = false;
+        //    if (direction == Direction.Down || direction == Direction.Up)
+        //    {
+        //        afterVerticalMovement = true;
+        //    }
 
-            //if (TheSingletonHouse.Instance.Player.Move(direction))
-            //{
-            //    this.Look(afterVerticalMovement);
-            //}
-            //else
-            //{
-            //    labelMessage.Text = TheHouseData.DisallowedDirectionValue;
-            //}
-        }
+        //    //if (TheSingletonHouse.Instance.Player.Move(direction))
+        //    //{
+        //    //    this.Look(afterVerticalMovement);
+        //    //}
+        //    //else
+        //    //{
+        //    //    labelMessage.Text = TheHouseData.DisallowedDirectionValue;
+        //    //}
+        //}
+
+        //TODO: collect word to say
 
         /// <summary>
         /// Performs the action.
@@ -438,6 +445,17 @@ namespace HouseForms
         public IList<string> ItemsInRoom
         {
             get { return this.itemsInRoom; }
+        }
+
+        private IList<string> itemsInRoomShortNames = new List<string>();
+
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <value>The items.</value>
+        public IList<string> ItemsInRoomShortNames
+        {
+            get { return this.itemsInRoomShortNames; }
         }
 
         private IList<string> exitDirections = new List<string>();

@@ -13,7 +13,7 @@ namespace HouseCore
     {
         private static string[] inventoryActions = new string[] { "Drop", "Play", "Read", "Wave" };
         private static string[] freeFormArgumentActions = new string[] { "Say", "Dig" };
-        private static string[] roomItemActions = new string[] { "Get", "Kill", "Stab", "Brush", "Unlock", "Spray" };
+        private static string[] roomItemActions = new string[] { "Get", "Kill", "Stab", "Brush", "Unlock", "Spray", "Open" };
         private static string[] nonArgumentActions = new string[] { "Light", "On", "Off" };
         //private static string[] actions = new string[] { "Get", "Drop", "Say", "Kill", "Stab", "Light", "Play", "Read", "Dig", "On", "Off", "Brush", "Wave", "Unlock", "Spray" };
 

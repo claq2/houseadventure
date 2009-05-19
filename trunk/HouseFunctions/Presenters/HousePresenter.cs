@@ -60,9 +60,11 @@ namespace HouseCore.Presenters
         public void PopulateInventory()
         {
             this.view.Inventory.Clear();
+            this.view.InventoryShortNames.Clear();
             foreach (InanimateObject obj in this.house.Rooms[TheHouseRoomData.LocationInventory].Items)
             {
                 this.view.Inventory.Add(obj.Name);
+                this.view.InventoryShortNames.Add(obj.ShortName);
             }
         }
 

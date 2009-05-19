@@ -23,8 +23,6 @@ namespace HouseCore
             base.SetItem(index, item);
         }
 
-        // TODO: Prevent duplicate items
-
         /// <summary>
         /// Determines whether [contains by type] [the specified item].
         /// </summary>

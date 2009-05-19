@@ -144,6 +144,8 @@ namespace HouseForms
                 stringAction = this.listBoxActions.SelectedValue.ToString();
             }
 
+            //TODO: move selection logic to performaction
+
             if (this.listBoxRoomContents.SelectedIndex != -1)
             {
                 stringItem = this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex];
@@ -313,6 +315,58 @@ namespace HouseForms
             this.listBoxExits.DataSource = this.ExitDirections;
         }
 
+        private void Drop(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Say(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Kill(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Stab(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Light()
+        {
+            throw new NotImplementedException();
+        }
+        private void Play(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Read(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Dig(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void On()
+        {
+            throw new NotImplementedException();
+        }
+        private void Off()
+        {
+            throw new NotImplementedException();
+        }
+        private void Wave(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Unlock(string item)
+        {
+            throw new NotImplementedException();
+        }
+        private void Spray(string item)
+        {
+            throw new NotImplementedException();
+        }
         ///// <summary>
         ///// Moves the player.
         ///// </summary>
@@ -354,6 +408,58 @@ namespace HouseForms
             else if (String.Compare(action, "get", true, CultureInfo.CurrentCulture) == 0)
             {
                 this.Get(item);
+            }
+            else if (String.Compare(action, "drop", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Drop(item);
+            }
+            else if (String.Compare(action, "say", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Say(item);
+            }
+            else if (String.Compare(action, "kill", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Kill(item);
+            }
+            else if (String.Compare(action, "stab", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Stab(item);
+            }
+            else if (String.Compare(action, "light", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Light();
+            }
+            else if (String.Compare(action, "play", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Play(item);
+            }
+            else if (String.Compare(action, "read", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Read(item);
+            }
+            else if (String.Compare(action, "dig", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Dig(item);
+            }
+            else if (String.Compare(action, "on", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.On();
+            }
+            else if (String.Compare(action, "off", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Off();
+            }
+            else if (String.Compare(action, "wave", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Wave(item);
+            }
+            else if (String.Compare(action, "unlock", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Unlock(item);
+            }
+            else if (String.Compare(action, "spray", true, CultureInfo.CurrentCulture) == 0)
+            {
+                this.Spray(item);
             }
             else
             {
@@ -482,5 +588,6 @@ namespace HouseForms
         }
 
         #endregion
+
     }
 }

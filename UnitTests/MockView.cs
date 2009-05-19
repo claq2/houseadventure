@@ -82,7 +82,22 @@ namespace UnitTests
             }
         }
 
+        private IList<string> inventoryShortNames = new List<string>();
+
+        /// <summary>
+        /// Gets the inventory items short names.
+        /// </summary>
+        /// <value>The inventory items short names.</value>
+        public IList<string> InventoryShortNames
+        {
+            get
+            {
+                return inventoryShortNames;
+            }
+        }
+
         private IList<string> itemsInRoom = new List<string>();
+
         public IList<string> ItemsInRoom
         {
             get { return this.itemsInRoom; }

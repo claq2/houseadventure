@@ -324,7 +324,10 @@ namespace HouseForms
 
         private void Drop(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Drop();
+            this.labelMessage.Text = this.Message;
         }
 
         private void Say(string item)
@@ -335,25 +338,33 @@ namespace HouseForms
             this.labelMessage.Text = this.Message;
         }
 
-        private void Kill(string item)
-        {
-            throw new NotImplementedException();
-        }
         private void Stab(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Stab();
+            this.labelMessage.Text = this.Message;
         }
+
         private void Light()
         {
             throw new NotImplementedException();
         }
+
         private void Play(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Play();
+            this.labelMessage.Text = this.Message;
         }
+
         private void Read(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Read();
+            this.labelMessage.Text = this.Message;
         }
 
         private void Dig(string item)
@@ -366,23 +377,42 @@ namespace HouseForms
 
         private void On()
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = "on";
+            this.housePresenter.Light();
+            this.labelMessage.Text = this.Message;
         }
+
         private void Off()
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = "off";
+            this.housePresenter.Light();
+            this.labelMessage.Text = this.Message;
         }
+
         private void Wave(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Wave();
+            this.labelMessage.Text = this.Message;
         }
-        private void Unlock(string item)
+
+        private void Open(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Open();
+            this.labelMessage.Text = this.Message;
         }
+
         private void Spray(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Spray();
+            this.labelMessage.Text = this.Message;
         }
 
         private void PerformRoomItemAction(string action)
@@ -397,14 +427,12 @@ namespace HouseForms
                 this.Brush(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
             else if (String.Compare(action, "get", true, CultureInfo.CurrentCulture) == 0)
                 this.Get(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
-            else if (String.Compare(action, "kill", true, CultureInfo.CurrentCulture) == 0)
-                this.Kill(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
-            else if (String.Compare(action, "stab", true, CultureInfo.CurrentCulture) == 0)
+            else if (String.Compare(action, "kill", true, CultureInfo.CurrentCulture) == 0 || String.Compare(action, "stab", true, CultureInfo.CurrentCulture) == 0)
                 this.Stab(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
             else if (String.Compare(action, "spray", true, CultureInfo.CurrentCulture) == 0)
                 this.Spray(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
-            else if (String.Compare(action, "unlock", true, CultureInfo.CurrentCulture) == 0)
-                this.Unlock(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+            else if (String.Compare(action, "unlock", true, CultureInfo.CurrentCulture) == 0 || String.Compare(action, "open", true, CultureInfo.CurrentCulture) == 0)
+                this.Open(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
 
         }
 

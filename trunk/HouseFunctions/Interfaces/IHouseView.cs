@@ -23,6 +23,12 @@ namespace HouseCore.Interfaces
         IList<string> Inventory { get; }
 
         /// <summary>
+        /// Gets the inventory items short names.
+        /// </summary>
+        /// <value>The inventory items short names.</value>
+        IList<string> InventoryShortNames { get; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the screen should be cleared of information.
         /// </summary>
         /// <value><c>true</c> if the screen should be cleared; otherwise, <c>false</c>.</value>

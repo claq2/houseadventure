@@ -121,6 +121,20 @@ namespace House
             }
         }
 
+        private IList<string> inventoryShortNames = new List<string>();
+
+        /// <summary>
+        /// Gets the inventory items short names.
+        /// </summary>
+        /// <value>The inventory items short names.</value>
+        public IList<string> InventoryShortNames
+        {
+            get
+            {
+                return inventoryShortNames;
+            }
+        }
+        
         ///// <summary>
         ///// Gets or sets the house.
         ///// </summary>

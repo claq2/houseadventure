@@ -52,8 +52,10 @@ namespace HouseForms
             this.buttonQuit = new System.Windows.Forms.Button();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
             this.labelMessage = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxMove.SuspendLayout();
             this.groupBoxOutput.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxRoomContents
@@ -135,14 +137,14 @@ namespace HouseForms
             // listBoxActions
             // 
             this.listBoxActions.FormattingEnabled = true;
-            this.listBoxActions.Location = new System.Drawing.Point(13, 13);
+            this.listBoxActions.Location = new System.Drawing.Point(6, 17);
             this.listBoxActions.Name = "listBoxActions";
             this.listBoxActions.Size = new System.Drawing.Size(75, 212);
             this.listBoxActions.TabIndex = 8;
             // 
             // buttonPerformAction
             // 
-            this.buttonPerformAction.Location = new System.Drawing.Point(12, 247);
+            this.buttonPerformAction.Location = new System.Drawing.Point(1, 235);
             this.buttonPerformAction.Name = "buttonPerformAction";
             this.buttonPerformAction.Size = new System.Drawing.Size(85, 23);
             this.buttonPerformAction.TabIndex = 9;
@@ -237,7 +239,7 @@ namespace HouseForms
             this.groupBoxMove.Size = new System.Drawing.Size(273, 180);
             this.groupBoxMove.TabIndex = 18;
             this.groupBoxMove.TabStop = false;
-            this.groupBoxMove.Text = "Move";
+            this.groupBoxMove.Text = "Movement";
             // 
             // listBoxExits
             // 
@@ -286,11 +288,23 @@ namespace HouseForms
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "labelMessage";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.listBoxActions);
+            this.groupBox1.Controls.Add(this.buttonPerformAction);
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(88, 376);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Actions";
+            // 
             // FormHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 462);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxOutput);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.labelExitDirections);
@@ -304,8 +318,6 @@ namespace HouseForms
             this.Controls.Add(this.labelISee);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.buttonPerformAction);
-            this.Controls.Add(this.listBoxActions);
             this.Controls.Add(this.listBoxInventory);
             this.Controls.Add(this.listBoxRoomContents);
             this.Name = "FormHouse";
@@ -314,6 +326,7 @@ namespace HouseForms
             this.groupBoxMove.ResumeLayout(false);
             this.groupBoxOutput.ResumeLayout(false);
             this.groupBoxOutput.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +358,7 @@ namespace HouseForms
         private System.Windows.Forms.Button buttonQuit;
         private System.Windows.Forms.GroupBox groupBoxOutput;
         private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

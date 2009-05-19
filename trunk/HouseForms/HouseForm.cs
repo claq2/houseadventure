@@ -61,6 +61,20 @@ namespace HouseForms
             }
         }
 
+        private IList<string> inventoryShortNames = new List<string>();
+
+        /// <summary>
+        /// Gets the inventory items short names.
+        /// </summary>
+        /// <value>The inventory items short names.</value>
+        public IList<string> InventoryShortNames
+        {
+            get
+            {
+                return inventoryShortNames;
+            }
+        }
+
         /// <summary>
         /// Brushes the specified item.
         /// </summary>
@@ -140,18 +154,11 @@ namespace HouseForms
             string stringAction = String.Empty;
             string stringItem = String.Empty;
             if (this.listBoxActions.SelectedIndex != -1)
-            {
                 stringAction = this.listBoxActions.SelectedValue.ToString();
-            }
+            else
+                MessageBox.Show("Please select an action from the Actions list");
 
-            //TODO: move selection logic to performaction
-
-            if (this.listBoxRoomContents.SelectedIndex != -1)
-            {
-                stringItem = this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex];
-            }
-
-            this.PerformAction(stringAction, stringItem);
+            this.PerformAction(stringAction);
         }
 
         /// <summary>
@@ -319,10 +326,15 @@ namespace HouseForms
         {
             throw new NotImplementedException();
         }
+
         private void Say(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Say();
+            this.labelMessage.Text = this.Message;
         }
+
         private void Kill(string item)
         {
             throw new NotImplementedException();
@@ -343,10 +355,15 @@ namespace HouseForms
         {
             throw new NotImplementedException();
         }
+
         private void Dig(string item)
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.Argument = item;
+            this.housePresenter.Dig();
+            this.labelMessage.Text = this.Message;
         }
+
         private void On()
         {
             throw new NotImplementedException();
@@ -367,6 +384,73 @@ namespace HouseForms
         {
             throw new NotImplementedException();
         }
+
+        private void PerformRoomItemAction(string action)
+        {
+            if (this.listBoxRoomContents.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an item in the room.");
+                return;
+            }
+
+            if (String.Compare(action, "brush", true, CultureInfo.CurrentCulture) == 0)
+                this.Brush(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+            else if (String.Compare(action, "get", true, CultureInfo.CurrentCulture) == 0)
+                this.Get(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+            else if (String.Compare(action, "kill", true, CultureInfo.CurrentCulture) == 0)
+                this.Kill(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+            else if (String.Compare(action, "stab", true, CultureInfo.CurrentCulture) == 0)
+                this.Stab(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+            else if (String.Compare(action, "spray", true, CultureInfo.CurrentCulture) == 0)
+                this.Spray(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+            else if (String.Compare(action, "unlock", true, CultureInfo.CurrentCulture) == 0)
+                this.Unlock(this.ItemsInRoomShortNames[this.listBoxRoomContents.SelectedIndex]);
+
+        }
+
+        private void PerformNonArgumentAction(string action)
+        {
+            if (String.Compare(action, "light", true, CultureInfo.CurrentCulture) == 0)
+                this.Light();
+            else if (String.Compare(action, "on", true, CultureInfo.CurrentCulture) == 0)
+                this.On();
+            else if (String.Compare(action, "off", true, CultureInfo.CurrentCulture) == 0)
+                this.Off();
+
+        }
+
+        private void PerformInventoryAction(string action)
+        {
+            if (this.listBoxInventory.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an item in the inventory.");
+                return;
+            }
+
+            if (String.Compare(action, "drop", true, CultureInfo.CurrentCulture) == 0)
+                this.Drop(this.InventoryShortNames[this.listBoxInventory.SelectedIndex]);
+            else if (String.Compare(action, "play", true, CultureInfo.CurrentCulture) == 0)
+                this.Play(this.InventoryShortNames[this.listBoxInventory.SelectedIndex]);
+            else if (String.Compare(action, "read", true, CultureInfo.CurrentCulture) == 0)
+                this.Read(this.InventoryShortNames[this.listBoxInventory.SelectedIndex]);
+            else if (String.Compare(action, "wave", true, CultureInfo.CurrentCulture) == 0)
+                this.Wave(this.InventoryShortNames[this.listBoxRoomContents.SelectedIndex]);
+        }
+
+        private void PerformFreeFormArgumentAction(string action)
+        {
+            using (Input input = new Input(action))
+            {
+                DialogResult result = input.ShowDialog(this);
+                if (result == DialogResult.OK)
+                    if (String.Compare(action, "say", true, CultureInfo.CurrentCulture) == 0)
+                        this.Say(input.Argument);
+                    else
+                        if (String.Compare(action, "dig", true, CultureInfo.CurrentCulture) == 0)
+                            this.Dig(input.Argument);
+            }
+        }
+
         ///// <summary>
         ///// Moves the player.
         ///// </summary>
@@ -389,82 +473,38 @@ namespace HouseForms
         //    //}
         //}
 
-        //TODO: collect word to say
-
         /// <summary>
         /// Performs the action.
         /// </summary>
         /// <param name="action">The action.</param>
-        /// <param name="item">The item.</param>
-        private void PerformAction(string action, string item)
+        private void PerformAction(string action)
         {
-            if (String.Compare(action, "quit", true, CultureInfo.CurrentCulture) == 0)
+            //TODO: collect the right info for each function
+            if (TheHouseData.RoomItemActions.Contains(action))
             {
+                this.PerformRoomItemAction(action);
+                return;
             }
-            else if (String.Compare(action, "brush", true, CultureInfo.CurrentCulture) == 0)
+
+            if (TheHouseData.NonArgumentActions.Contains(action))
             {
-                this.Brush(item);
+                this.PerformNonArgumentAction(action);
+                return;
             }
-            else if (String.Compare(action, "get", true, CultureInfo.CurrentCulture) == 0)
+
+            if (TheHouseData.InventoryActions.Contains(action))
             {
-                this.Get(item);
+                this.PerformInventoryAction(action);
+                return;
             }
-            else if (String.Compare(action, "drop", true, CultureInfo.CurrentCulture) == 0)
+
+            if (TheHouseData.FreeFormArgumentActions.Contains(action))
             {
-                this.Drop(item);
+                this.PerformFreeFormArgumentAction(action);
+                return;
             }
-            else if (String.Compare(action, "say", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Say(item);
-            }
-            else if (String.Compare(action, "kill", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Kill(item);
-            }
-            else if (String.Compare(action, "stab", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Stab(item);
-            }
-            else if (String.Compare(action, "light", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Light();
-            }
-            else if (String.Compare(action, "play", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Play(item);
-            }
-            else if (String.Compare(action, "read", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Read(item);
-            }
-            else if (String.Compare(action, "dig", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Dig(item);
-            }
-            else if (String.Compare(action, "on", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.On();
-            }
-            else if (String.Compare(action, "off", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Off();
-            }
-            else if (String.Compare(action, "wave", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Wave(item);
-            }
-            else if (String.Compare(action, "unlock", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Unlock(item);
-            }
-            else if (String.Compare(action, "spray", true, CultureInfo.CurrentCulture) == 0)
-            {
-                this.Spray(item);
-            }
-            else
-            {
-                labelMessage.Text = "I don't understand";
-            }
+
+            labelMessage.Text = "I don't understand";
         }
 
         #endregion Methods

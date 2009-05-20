@@ -348,7 +348,9 @@ namespace HouseForms
 
         private void Light()
         {
-            throw new NotImplementedException();
+            this.housePresenter.IncrementNumberOfMoves();
+            this.housePresenter.Light();
+            this.labelMessage.Text = this.Message;
         }
 
         private void Play(string item)

@@ -194,10 +194,10 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// 
+        /// Transfers an item from the inventory to the room
         /// </summary>
-        /// <param name="portableObject"></param>
-        /// <param name="location"></param>
+        /// <param name="portableObject">The object to remove from the inventory</param>
+        /// <param name="location">The room in which to put the object down</param>
         public void RemoveFromInventory(PortableObject portableObject, LocationType location)
         {
             this.Rooms[TheHouseRoomData.LocationInventory].Items.Remove(portableObject);
@@ -440,13 +440,19 @@ namespace HouseCore
         internal void RemoveFrontPorchItems()
         {
             //TODO: can't modify collection in loop
-            Room room = this.rooms[TheHouseRoomData.LocationFirstFloorFrontPorch];
-            foreach (InanimateObject io in room.Items)
+            Room roomPorch = this.rooms[TheHouseRoomData.LocationFirstFloorFrontPorch];
+            List<InanimateObject> listItemsToRemove = new List<InanimateObject>();
+            foreach (InanimateObject io in roomPorch.Items)
             {
                 if (io is PortableObject)
                 {
-                    room.Items.Remove(io);
+                    listItemsToRemove.Add(io);
                 }
+            }
+
+            foreach (InanimateObject io in listItemsToRemove)
+            {
+                roomPorch.Items.Remove(io);
             }
         }
 
@@ -455,28 +461,24 @@ namespace HouseCore
         /// </summary>
         internal void UpdateMonstersInHangout()
         {
-            // TODO: can't modify adversries in the foreach loop
             MonsterHangout monsterHangout = this.rooms[TheHouseRoomData.LocationMonsterHangout] as MonsterHangout;
-            int intMonsterCount = monsterHangout.Adversaries.Count;
-            List<int> listIntMonstersToBringBack = new List<int>();
-            ////foreach (Adversary adversary in room.Adversaries)
-            for (int i=0 ; i < intMonsterCount ; i++)
+            List<Adversary> listAdversariesToBringBack = new List<Adversary>();
+            foreach (Adversary adversary in monsterHangout.Adversaries)
             {
-                if (monsterHangout.Adversaries[i].MovesUntilUnhidden > 1)
+                if (adversary.MovesUntilUnhidden > 1)
                 {
-                    monsterHangout.Adversaries[i].MovesUntilUnhidden--;
+                    adversary.MovesUntilUnhidden--;
                 }
-                else if (monsterHangout.Adversaries[i].MovesUntilUnhidden == 1)
+                else if (adversary.MovesUntilUnhidden == 1)
                 {
-                    listIntMonstersToBringBack.Add(i);
-                    monsterHangout.Adversaries[i].MovesUntilUnhidden--;
+                    listAdversariesToBringBack.Add(adversary);
+                    adversary.MovesUntilUnhidden--;
                 }
             }
 
-            foreach (int i in listIntMonstersToBringBack)
+            foreach (Adversary adversary in listAdversariesToBringBack)
             {
-                Adversary adversary = monsterHangout.Adversaries[i];
-                monsterHangout.Adversaries.RemoveAt(i);
+                monsterHangout.Adversaries.Remove(adversary);
 #if (DEBUG)
                 int intRoom = 2;
                 Floor floor = Floor.FirstFloor;

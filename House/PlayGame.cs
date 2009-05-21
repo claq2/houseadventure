@@ -419,10 +419,21 @@ namespace House
 
                         Console.WriteLine(this.Message);
                     }
-                    else if (String.Compare(stringShortenedCommand, "get", true, CultureInfo.CurrentCulture) == 0 || String.Compare(stringArrayCommand[0], "take", true, CultureInfo.CurrentCulture) == 0)
+                    else if (String.Compare(stringShortenedCommand, "get", true, CultureInfo.CurrentCulture) == 0 || String.Compare(stringShortenedCommand, "tak", true, CultureInfo.CurrentCulture) == 0)
                     {
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Get();
+                        if (this.ClearScreen)
+                        {
+                            Console.Clear();
+                        }
+
+                        Console.WriteLine(this.Message);
+                    }
+                    else if (String.Compare(stringShortenedCommand, "sta", true, CultureInfo.CurrentCulture) == 0 || String.Compare(stringShortenedCommand, "kil", true, CultureInfo.CurrentCulture) == 0)
+                    {
+                        this.Argument = CollectArgument(stringArrayCommand);
+                        this.housePresenter.Stab();
                         if (this.ClearScreen)
                         {
                             Console.Clear();
@@ -499,6 +510,10 @@ namespace House
                         else if (String.Compare(stringShortenedCommand, "d", true, CultureInfo.CurrentCulture) == 0)
                         {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.Down()));
+                        }
+                        else
+                        {
+                            Console.WriteLine("I don't understand");
                         }
                     }
                 }

@@ -509,7 +509,6 @@ namespace HouseForms
         /// <param name="action">The action.</param>
         private void PerformAction(string action)
         {
-            //TODO: collect the right info for each function
             if (TheHouseData.RoomItemActions.Contains(action))
             {
                 this.PerformRoomItemAction(action);

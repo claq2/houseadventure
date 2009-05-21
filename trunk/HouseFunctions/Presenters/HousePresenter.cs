@@ -702,7 +702,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("You have nothing with which to kill the ");
                 stringBuilderMessage.Append(this.view.Argument);
             }
-            else if (!adversaryTarget.Equals(adversaryMonk))
+            else if (!this.house.Adversaries[this.view.Argument].Equals(adversaryMonk))
             {
                 stringBuilderMessage.Append("The ");
                 stringBuilderMessage.Append(this.view.Argument);
@@ -835,8 +835,20 @@ namespace HouseCore.Presenters
             {
                 OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[TheHouseObjectData.FlashlightShortName] as OnOffObject;
                 onOffObjectFlashlight.State = Switch.Off;
+                this.house.RemoveFromInventory(portableObjectTarget, this.player.Location);
                 stringBuilderMessage.Append(this.view.Argument);
                 stringBuilderMessage.Append(" dropped");
+                if (this.player.Location.Equals(TheHouseRoomData.LocationFirstFloorFrontPorch))
+                {
+                    this.player.ItemsRemovedFromHouse++;
+                    if (this.player.ItemsRemovedFromHouse == this.house.PortableObjects.Count)
+                    {
+                        this.view.GameEnded = true;
+                        stringBuilderMessage.Append(Environment.NewLine);
+                        stringBuilderMessage.Append(Environment.NewLine);
+                        stringBuilderMessage.Append(String.Format(CultureInfo.CurrentCulture, "Congratulations--you have successfully completed House Adventure \r\nYou removed all 20 objects in {0} moves", player.NumberOfMoves));
+                    }
+                }
             }
             else if (inanimateObjectTarget is ContainerObject && this.house.Inventory.ContainsByType(typeof(MultiplePieceObject), multiplePieceObjectsInInventory))
             {
@@ -874,6 +886,8 @@ namespace HouseCore.Presenters
                     if (this.player.ItemsRemovedFromHouse == this.house.PortableObjects.Count)
                     {
                         this.view.GameEnded = true;
+                        stringBuilderMessage.Append(Environment.NewLine);
+                        stringBuilderMessage.Append(Environment.NewLine);
                         stringBuilderMessage.Append(String.Format(CultureInfo.CurrentCulture, "Congratulations--you have successfully completed House Adventure \r\nYou removed all 20 objects in {0} moves", player.NumberOfMoves));
                     }
                 }
@@ -937,7 +951,8 @@ namespace HouseCore.Presenters
                         if (this.house.Inventory.ContainsByType(typeof(ContainerObject)))
                         {
                             this.house.AddToInventory(portableObjectTarget);
-                            //room.Items.Remove(portableObjectTarget);
+                            stringBuilderMessage.Append(this.view.Argument);
+                            stringBuilderMessage.Append(" taken");
                         }
                         else
                         {
@@ -958,7 +973,8 @@ namespace HouseCore.Presenters
                         if (boolHasProtectiveItem)
                         {
                             this.house.AddToInventory(portableObjectTarget);
-                            //room.Items.Remove(portableObjectTarget);
+                            stringBuilderMessage.Append(this.view.Argument);
+                            stringBuilderMessage.Append(" taken");
                         }
                         else
                         {
@@ -1046,7 +1062,12 @@ namespace HouseCore.Presenters
                 this.player.TimesLookedInDark++;
                 if (this.player.TimesLookedInDark > TheHouseData.MaximumLooksInDark)
                 {
-                    stringBuilderMessage.Append("Aughhhh . . .\r\nBeware of things unseen !!");
+                    stringBuilderMessage.Append(Environment.NewLine);
+                    stringBuilderMessage.Append(Environment.NewLine);
+                    stringBuilderMessage.Append("Aughhhh . . .");
+                    stringBuilderMessage.Append(Environment.NewLine);
+                    stringBuilderMessage.Append(Environment.NewLine);
+                    stringBuilderMessage.Append("Beware of things unseen !!");
                     this.view.GameEnded = true;
                 }
             }

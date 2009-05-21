@@ -79,3 +79,203 @@ n
 dig dirt
 dig dirt
 get key
+s
+e
+s
+s
+off
+u
+e
+e
+open doo
+s
+dro key
+dro sho
+n
+get box
+w
+w
+u
+s
+s
+s
+s
+w
+get coi
+e
+n
+n
+n
+n
+d
+e
+e
+s
+dro coi
+dro box
+n
+w
+w
+u
+s
+s
+s
+s
+get hai
+get boo
+n
+n
+n
+n
+d
+e
+e
+s
+dro hai
+dro boo
+n
+w
+w
+u
+w
+s
+get dia
+n
+e
+d
+e
+e
+s
+dro dia
+n
+e
+s
+get can
+get par
+n
+w
+s
+dro can
+dro par
+n
+w
+w
+d
+on
+n
+n
+get ban
+w
+n
+get gar
+s
+e
+s
+s
+off
+u
+e
+e
+s
+dro ban
+n
+w
+w
+get dim
+dro fla
+dro bat
+n
+n
+n
+s
+s
+s
+wave gar
+get pil
+n
+w
+w
+e
+n
+n
+n
+n
+d
+e
+e
+s
+dro gar
+n
+w
+w
+dro dim
+get fla
+get bat
+n
+on
+wave fla
+off
+get kni
+s
+dro fla
+dro bat
+u
+w
+s
+s
+sta mon
+get vas
+n
+n
+e
+d
+e
+e
+s
+dro pil
+dro vas
+dro kni
+n
+w
+w
+get bat
+get fla
+d
+on
+s
+say seersucker
+get glo
+s
+get gol
+n
+n
+off
+u
+e
+e
+s
+dro gol
+dro bat
+dro fla
+n
+w
+w
+get dim
+n
+n
+n
+e
+get ice
+w
+e
+n
+n
+n
+n
+d
+e
+e
+s
+dro dim
+dro ice
+dro glo

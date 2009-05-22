@@ -937,7 +937,7 @@ namespace HouseCore.Presenters
                         stringBuilderMessage.Append(" here");
                     }
                 }
-                else if (this.house.Rooms[this.player.Location].Adversaries.ContainsNonImpostor())
+                else if (this.house.Rooms[this.player.Location].Adversaries.ContainsNonImpostor)
                 {
                     // Room has an adversary that is not the imposter
                     stringBuilderMessage.Append("This room's occupant seems to have grown very attached to the ");

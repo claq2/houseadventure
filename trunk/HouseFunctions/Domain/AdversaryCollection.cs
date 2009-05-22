@@ -91,17 +91,19 @@ namespace HouseCore
         /// <returns>
         /// 	<c>true</c> if collection contains an adversary that is not an impostor; otherwise, <c>false</c>.
         /// </returns>
-        public bool ContainsNonImpostor()
+        public bool ContainsNonImpostor
         {
-            bool boolReturn = false;
-            foreach (Adversary adversary in this)
+            get
             {
-                if (!(adversary is Impostor))
+                foreach (Adversary adversary in this)
                 {
-                    return true;
+                    if (!(adversary is Impostor))
+                    {
+                        return true;
+                    }
                 }
+                return false;
             }
-            return boolReturn;
         }
     }
 }

@@ -84,7 +84,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Brush();
-            this.labelMessage.Text = this.Message;
         }
 
         /// <summary>
@@ -176,7 +175,7 @@ namespace HouseForms
                 MessageBoxOptions.RightAlign;
             }
 
-            MessageBox.Show((Control)sender, this.Message, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, optionsMessage);
+            MessageBox.Show((Control)sender, this.labelMessage.Text, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, optionsMessage);
             this.Close();
         }
 
@@ -266,7 +265,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Get();
-            this.labelMessage.Text = this.Message;
         }
 
         /// <summary>
@@ -302,10 +300,7 @@ namespace HouseForms
             }
 
             if (!successfulMovementOrManualLook)
-            {
-                this.labelMessage.Text = this.Message;
                 return;
-            }
 
             List<string> itemsInRoom = new List<string>();
             foreach (string adversary in this.AdversariesInRoom)
@@ -327,7 +322,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Drop();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Say(string item)
@@ -335,7 +329,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Say();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Stab(string item)
@@ -343,14 +336,12 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Stab();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Light()
         {
             this.housePresenter.IncrementNumberOfMoves();
             this.housePresenter.Light();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Play(string item)
@@ -358,7 +349,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Play();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Read(string item)
@@ -366,7 +356,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Read();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Dig(string item)
@@ -374,7 +363,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Dig();
-            this.labelMessage.Text = this.Message;
         }
 
         private void On()
@@ -382,7 +370,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = "on";
             this.housePresenter.Light();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Off()
@@ -390,7 +377,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = "off";
             this.housePresenter.Light();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Wave(string item)
@@ -398,7 +384,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Wave();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Open(string item)
@@ -406,7 +391,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Open();
-            this.labelMessage.Text = this.Message;
         }
 
         private void Spray(string item)
@@ -414,7 +398,6 @@ namespace HouseForms
             this.housePresenter.IncrementNumberOfMoves();
             this.Argument = item;
             this.housePresenter.Spray();
-            this.labelMessage.Text = this.Message;
         }
 
         private void PerformRoomItemAction(string action)
@@ -546,8 +529,10 @@ namespace HouseForms
         /// <value>The message.</value>
         public string Message
         {
-            private get;
-            set;
+            set
+            {
+                this.labelMessage.Text = value;
+            }
         }
 
         /// <summary>

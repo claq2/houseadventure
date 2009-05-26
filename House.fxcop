@@ -324,6 +324,19 @@
            </Member>
           </Members>
          </Type>
+         <Type Name="HouseType">
+          <Members>
+           <Member Name="#random">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2009-05-26 02:17:16Z">
+              <Issue>
+               <Item>'HouseType.random'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
          <Type Name="InanimateObjectShortName">
           <Members>
            <Member Name="#Coi">
@@ -458,6 +471,57 @@
            </Member>
           </Members>
          </Type>
+         <Type Name="TheHouseData">
+          <Members>
+           <Member Name="#FreeFormArgumentActions">
+            <Messages>
+             <Message Id="FreeForm" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-05-26 02:17:16Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>FreeForm</Item>
+               <Item>'TheHouseData.FreeFormArgumentActions'</Item>
+               <Item>Freeform</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:26:25Z">
+              <Issue>
+               <Item>'TheHouseData.FreeFormArgumentActions'</Item>
+               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#InventoryActions">
+            <Messages>
+             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:26:25Z">
+              <Issue>
+               <Item>'TheHouseData.InventoryActions'</Item>
+               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#NonArgumentActions">
+            <Messages>
+             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:24:49Z">
+              <Issue>
+               <Item>'TheHouseData.NonArgumentActions'</Item>
+               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RoomItemActions">
+            <Messages>
+             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:26:25Z">
+              <Issue>
+               <Item>'TheHouseData.RoomItemActions'</Item>
+               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
          <Type Name="TheHouseRoomData">
           <Messages>
            <Message Id="HouseRoom" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-04-27 20:40:33Z">
@@ -468,6 +532,50 @@
             </Issue>
            </Message>
           </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="HouseCore.Interfaces">
+        <Types>
+         <Type Name="IHouseView">
+          <Members>
+           <Member Name="#ClearScreen">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotBeWriteOnly" Category="Microsoft.Design" CheckId="CA1044" Created="2009-05-26 02:17:16Z">
+              <Issue Name="AddGetter">
+               <Item>'IHouseView.ClearScreen'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GameEnded">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotBeWriteOnly" Category="Microsoft.Design" CheckId="CA1044" Created="2009-05-26 02:17:16Z">
+              <Issue Name="AddGetter">
+               <Item>'IHouseView.GameEnded'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Message">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotBeWriteOnly" Category="Microsoft.Design" CheckId="CA1044" Created="2009-05-26 02:17:16Z">
+              <Issue Name="AddGetter">
+               <Item>'IHouseView.Message'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RoomName">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotBeWriteOnly" Category="Microsoft.Design" CheckId="CA1044" Created="2009-05-26 02:17:16Z">
+              <Issue Name="AddGetter">
+               <Item>'IHouseView.RoomName'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
          </Type>
         </Types>
        </Namespace>
@@ -486,13 +594,22 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#ProcessMovement(HouseCore.Direction)">
+           <Member Name="#random">
             <Messages>
-             <Message Id="verticalMovement" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-04-27 20:40:33Z">
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2009-05-26 02:17:16Z">
               <Issue>
-               <Item>'HousePresenter.ProcessMovement(Direction)'</Item>
-               <Item>'verticalMovement'</Item>
-               <Item>'bool'</Item>
+               <Item>'HousePresenter.random'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Stab()">
+            <Messages>
+             <Message Id="adversaryTarget" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-05-26 02:17:16Z">
+              <Issue>
+               <Item>'HousePresenter.Stab()'</Item>
+               <Item>'adversaryTarget'</Item>
+               <Item>'Adversary'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -510,15 +627,25 @@
    <Rule TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020">
     <Resolution Name="Default">Consider merging the types defined in '{0}' with another namespace.</Resolution>
    </Rule>
+   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+    <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   </Rule>
    <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+    <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
     <Resolution Name="TypeShouldBeDiscreteTerm">The compound word '{0}' in type name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}'.</Resolution>
    </Rule>
    <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
     <Resolution Name="Parameter">{0}, a parameter, is cast to type {1} multiple times in method {2}. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant {3} instruction.</Resolution>
    </Rule>
+   <Rule TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104">
+    <Resolution Name="Default">Remove the read-only designation from {0} or change the field to one that is an immutable reference type. If the reference type {1} is, in fact, immutable, exclude this message.</Resolution>
+   </Rule>
    <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
     <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
     <Resolution Name="MemberMoreMeaningfulName">Consider providing a more meaningful name than member name {0}.</Resolution>
+   </Rule>
+   <Rule TypeName="PropertiesShouldNotBeWriteOnly" Category="Microsoft.Design" CheckId="CA1044">
+    <Resolution Name="AddGetter">Because property {0} is write-only, either add a property getter with an accessibility that is greater than or equal to its setter or convert this property into a method.</Resolution>
    </Rule>
    <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
     <Resolution Name="Default">{0} declares a variable, {1}, of type {2}, which is never used or is only assigned to. Use this variable or remove it.</Resolution>

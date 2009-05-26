@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace HouseForms
 {
+    /// <summary>
+    /// Form for collecting action argument
+    /// </summary>
     public partial class Input : Form
     {
 

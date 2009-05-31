@@ -48,7 +48,7 @@ namespace UnitTests
             this.housePresenter.West();
             this.housePresenter.West();
             this.housePresenter.Down();
-            Assert.AreEqual(TheHouseRoomData.BasementElevatorName, this.view.RoomName);
+            Assert.AreEqual(RoomData.BasementElevatorName, this.view.RoomName);
             this.housePresenter.North();
             this.housePresenter.North();
             Assert.AreEqual(false, this.view.GameEnded);
@@ -62,34 +62,34 @@ namespace UnitTests
         [Test]
         public void GetTests()
         {
-            this.view.Argument = TheHouseObjectData.BoxShortName;
+            this.view.Argument = ObjectData.BoxShortName;
             this.housePresenter.Get();
             this.housePresenter.PopulateInventory();
-            Assert.AreEqual(true, this.view.Inventory.Contains(TheHouseObjectData.BoxName));
-            Assert.AreEqual(false, this.house.Rooms[this.player.Location].Items.Contains(TheHouseObjectData.BoxShortName));
+            Assert.AreEqual(true, this.view.Inventory.Contains(ObjectData.BoxName));
+            Assert.AreEqual(false, this.house.Rooms[this.player.Location].Items.Contains(ObjectData.BoxShortName));
             Assert.AreEqual("box taken", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
-            this.view.Argument = TheHouseObjectData.LockedDoorShortName;
+            this.view.Argument = ObjectData.LockedDoorShortName;
             this.housePresenter.Get();
-            Assert.AreEqual(false, this.view.Inventory.Contains(TheHouseObjectData.LockedDoorName));
-            Assert.AreEqual(true, this.house.Rooms[this.player.Location].Items.Contains(TheHouseObjectData.LockedDoorShortName));
+            Assert.AreEqual(false, this.view.Inventory.Contains(ObjectData.LockedDoorName));
+            Assert.AreEqual(true, this.house.Rooms[this.player.Location].Items.Contains(ObjectData.LockedDoorShortName));
             Assert.AreEqual("You can't take the doo", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
-            this.view.Argument = TheHouseObjectData.KnifeShortName;
+            this.view.Argument = ObjectData.KnifeShortName;
             this.housePresenter.Get();
             Assert.AreEqual("I see no kni here", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
-            this.player.Location = TheHouseRoomData.LocationFirstFloorKitchen;
-            this.view.Argument = TheHouseObjectData.KnifeShortName;
+            this.player.Location = RoomData.LocationFirstFloorKitchen;
+            this.view.Argument = ObjectData.KnifeShortName;
             this.housePresenter.Get();
             Assert.AreEqual("This room's occupant seems to have grown very attached to the kni and won't let you have it", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
-            this.player.Location = TheHouseRoomData.LocationSecondFloorSewingRoom;
-            this.view.Argument = TheHouseObjectData.BagOfGoldShortName;
+            this.player.Location = RoomData.LocationSecondFloorSewingRoom;
+            this.view.Argument = ObjectData.BagOfGoldShortName;
             this.housePresenter.Get();
             Assert.AreEqual(true, this.view.Message.Contains("Remember?!"));
             Assert.AreEqual(true, this.view.GameEnded);

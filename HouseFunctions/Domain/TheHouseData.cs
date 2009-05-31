@@ -20,22 +20,22 @@ namespace HouseCore
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ReadOnlyCollection<string> InventoryActions = new ReadOnlyCollection<string>(inventoryActions);
+        public static ReadOnlyCollection<string> InventoryActions = new ReadOnlyCollection<string>(inventoryActions);
 
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ReadOnlyCollection<string> FreeFormArgumentActions = new ReadOnlyCollection<string>(freeFormArgumentActions);
+        public static ReadOnlyCollection<string> FreeformArgumentActions = new ReadOnlyCollection<string>(freeFormArgumentActions);
 
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ReadOnlyCollection<string> RoomItemActions = new ReadOnlyCollection<string>(roomItemActions);
+        public static ReadOnlyCollection<string> RoomItemActions = new ReadOnlyCollection<string>(roomItemActions);
 
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ReadOnlyCollection<string> NonArgumentActions = new ReadOnlyCollection<string>(nonArgumentActions);
+        public static ReadOnlyCollection<string> NonArgumentActions = new ReadOnlyCollection<string>(nonArgumentActions);
 
         /// <summary>
         /// String to display when a player tries to go in a direction that doesn't exist.

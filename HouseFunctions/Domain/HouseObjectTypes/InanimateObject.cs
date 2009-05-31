@@ -22,7 +22,7 @@ namespace HouseCore
     [XmlInclude(typeof(LockableDoorObject))]
     [XmlInclude(typeof(NullObject))]
     [XmlInclude(typeof(GameEntity))]
-    public abstract class InanimateObject : GameEntity//, IEquatable<InanimateObject>
+    public abstract class InanimateObject : GameEntity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InanimateObject"/> class.
@@ -77,21 +77,5 @@ namespace HouseCore
             : base(name, shortName)
         {
         }
-         
-
-        #region IEquatable<InanimateObject> Members
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        //public bool Equals(InanimateObject other)
-        //{
-        //    return this.Name == other.Name;
-        //}
-
-        #endregion
-
     }
 }

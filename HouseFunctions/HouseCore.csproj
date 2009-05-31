@@ -56,23 +56,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionShortName.cs" />
-    <Compile Include="Actions.cs" />
     <Compile Include="Domain\AdversaryCollection.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="DirectionShortName.cs" />
     <Compile Include="Domain\HouseObjectTypes\InanimateObjectKeyedCollection.cs" />
-    <Compile Include="Domain\TheHouseAdversaryData.cs" />
-    <Compile Include="Domain\TheHouseObjectData.cs" />
-    <Compile Include="Domain\TheHouseRoomData.cs" />
-    <Compile Include="Exit.cs" />
-    <Compile Include="ExitSet.cs" />
+    <Compile Include="Domain\AdversaryData.cs" />
+    <Compile Include="Domain\ObjectData.cs" />
+    <Compile Include="Domain\RoomData.cs" />
+    <Compile Include="RoomExit.cs" />
+    <Compile Include="ExitSetKeyedCollection.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="Domain\GameEntity.cs" />
     <Compile Include="Domain\HouseType.cs" />
     <Compile Include="Interfaces\IHouseView.cs" />
     <Compile Include="Domain\HouseObjectTypes\Adversary.cs" />
-    <Compile Include="Domain\HouseObjectTypes\AdversaryShortName.cs" />
     <Compile Include="Domain\HouseObjectTypes\ConsumeableDependentObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\ConsumableObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\ContainerObject.cs" />
@@ -81,7 +77,6 @@
     <Compile Include="Domain\HouseObjectTypes\DiggingObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\InanimateObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\InanimateObjectsCollection.cs" />
-    <Compile Include="Domain\HouseObjectTypes\Item.cs" />
     <Compile Include="Domain\HouseObjectTypes\LockableDoorObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\MultiplePieceObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\StationaryObject.cs" />

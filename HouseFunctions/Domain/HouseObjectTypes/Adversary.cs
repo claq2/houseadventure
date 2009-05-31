@@ -15,7 +15,7 @@ namespace HouseCore
     /// Class that represents an adversary
     /// </summary>
     [XmlInclude(typeof(Impostor))]
-    public class Adversary : GameEntity//, IEquatable<Adversary>
+    public class Adversary : GameEntity
     {
         /// <summary>
         /// The number of moves left until the hiding adversary reappears
@@ -93,21 +93,5 @@ namespace HouseCore
             get { return this.movesUntilUnhidden; }
             set { this.movesUntilUnhidden = value; }
         }
-
-        #region IEquatable<Adversary> Members
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the other parameter; otherwise, false.
-        /// </returns>
-        //public bool Equals(Adversary other)
-        //{
-        //    return this.Name == other.Name;
-        //}
-
-        #endregion
     }
 }

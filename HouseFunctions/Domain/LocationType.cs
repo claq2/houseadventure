@@ -84,12 +84,14 @@ namespace HouseCore
         /// </returns>
         public override bool Equals(Object obj)
         {
+            LocationType location = obj as LocationType;
             if (obj == null)
                 return base.Equals(obj);
-            if (!(obj is LocationType))
+
+            if (location == null)
                 return false;
             else
-                return Equals(obj as LocationType);
+                return Equals(location);
         }
 
         /// <summary>

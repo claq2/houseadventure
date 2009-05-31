@@ -510,7 +510,7 @@ namespace HouseForms
                 return;
             }
 
-            if (TheHouseData.FreeFormArgumentActions.Contains(action))
+            if (TheHouseData.FreeformArgumentActions.Contains(action))
             {
                 this.PerformFreeFormArgumentAction(action);
                 return;

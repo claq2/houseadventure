@@ -5,22 +5,9 @@ using System.Text;
 namespace HouseCore
 {
     /// <summary>
-    /// 
+    /// Object that can be used for digging
     /// </summary>
-    public class DiggingObject : PortableObject//,IEquatable<DiggingObject>
+    public class DiggingObject : PortableObject
     {
-        #region IEquatable<DiggingObject> Members
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        //public bool Equals(DiggingObject other)
-        //{
-        //    return this.Name == other.Name;
-        //}
-
-        #endregion
     }
 }

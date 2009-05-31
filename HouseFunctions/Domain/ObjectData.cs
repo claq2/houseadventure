@@ -5,7 +5,7 @@ namespace HouseCore
     /// <summary>
     /// All data relating to items in the house
     /// </summary>
-    public static class TheHouseObjectData
+    public static class ObjectData
     {
         private const string m_BagOfGoldName = "a bag of gold";
         private const string m_BagOfGoldShortName = "gol";

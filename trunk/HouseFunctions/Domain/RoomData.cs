@@ -8,7 +8,7 @@ namespace HouseCore
     /// <summary>
     /// All data relating to rooms
     /// </summary>
-    public static class TheHouseRoomData
+    public static class RoomData
     {
         private readonly static ExitSetKeyedCollection exitsBasementCoalBin = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) });
         private readonly static ExitSetKeyedCollection exitsBasementDirtFlooredRoom = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.West, 7), new RoomExit(Direction.South, 1) });
@@ -139,7 +139,7 @@ namespace HouseCore
         /// <value>The exits for the basement coal bin.</value>
         public static ExitSetKeyedCollection ExitsBasementCoalBin
         {
-            get { return TheHouseRoomData.exitsBasementCoalBin; }
+            get { return RoomData.exitsBasementCoalBin; }
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace HouseCore
         /// <value>The exits for the basement dirt floored room.</value>
         public static ExitSetKeyedCollection ExitsBasementDirtFlooredRoom
         {
-            get { return TheHouseRoomData.exitsBasementDirtFlooredRoom; }
+            get { return RoomData.exitsBasementDirtFlooredRoom; }
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace HouseCore
         /// <value>The exits for the basement elevator.</value>
         public static ExitSetKeyedCollection ExitsBasementElevator
         {
-            get { return TheHouseRoomData.exitsBasementElevator; }
+            get { return RoomData.exitsBasementElevator; }
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace HouseCore
         /// <value>The exits for the basement freezer.</value>
         public static ExitSetKeyedCollection ExitsBasementFreezer
         {
-            get { return TheHouseRoomData.exitsBasementFreezer; }
+            get { return RoomData.exitsBasementFreezer; }
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace HouseCore
         /// <value>The exits for the basement furnace room.</value>
         public static ExitSetKeyedCollection ExitsBasementFurnaceRoom
         {
-            get { return TheHouseRoomData.exitsBasementFurnaceRoom; }
+            get { return RoomData.exitsBasementFurnaceRoom; }
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace HouseCore
         /// <value>The exits for the basement laboratory.</value>
         public static ExitSetKeyedCollection ExitsBasementLaboratory
         {
-            get { return TheHouseRoomData.exitsBasementLaboratory; }
+            get { return RoomData.exitsBasementLaboratory; }
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace HouseCore
         /// <value>The exits for the basement pump room.</value>
         public static ExitSetKeyedCollection ExitsBasementPumpRoom
         {
-            get { return TheHouseRoomData.exitsBasementPumpRoom; }
+            get { return RoomData.exitsBasementPumpRoom; }
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace HouseCore
         /// <value>The exits for the basement telephone booth.</value>
         public static ExitSetKeyedCollection ExitsBasementTelephoneBooth
         {
-            get { return TheHouseRoomData.exitsBasementTelephoneBooth; }
+            get { return RoomData.exitsBasementTelephoneBooth; }
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace HouseCore
         /// <value>The exits for the basement torture chamber.</value>
         public static ExitSetKeyedCollection ExitsBasementTortureChamber
         {
-            get { return TheHouseRoomData.exitsBasementTortureChamber; }
+            get { return RoomData.exitsBasementTortureChamber; }
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace HouseCore
         /// <value>The exits for the basement workshop.</value>
         public static ExitSetKeyedCollection ExitsBasementWorkshop
         {
-            get { return TheHouseRoomData.exitsBasementWorkshop; }
+            get { return RoomData.exitsBasementWorkshop; }
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace HouseCore
         /// <value>The exits for the first floor bedroom.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorBedroom
         {
-            get { return TheHouseRoomData.exitsFirstFloorBedroom; }
+            get { return RoomData.exitsFirstFloorBedroom; }
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace HouseCore
         /// <value>The exits for the first floor coat closet.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorCoatCloset
         {
-            get { return TheHouseRoomData.exitsFirstFloorCoatCloset; }
+            get { return RoomData.exitsFirstFloorCoatCloset; }
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace HouseCore
         /// <value>The exits for the first floor dining room.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorDiningRoom
         {
-            get { return TheHouseRoomData.exitsFirstFloorDiningRoom; }
+            get { return RoomData.exitsFirstFloorDiningRoom; }
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace HouseCore
         /// <value>The exits for the first floor elevator.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorElevator
         {
-            get { return TheHouseRoomData.exitsFirstFloorElevator; }
+            get { return RoomData.exitsFirstFloorElevator; }
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace HouseCore
         /// <value>The exits for the first floor family room.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorFamilyRoom
         {
-            get { return TheHouseRoomData.exitsFirstFloorFamilyRoom; }
+            get { return RoomData.exitsFirstFloorFamilyRoom; }
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace HouseCore
         /// <value>The exits for the first floor foyer.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorFoyer
         {
-            get { return TheHouseRoomData.exitsFirstFloorFoyer; }
+            get { return RoomData.exitsFirstFloorFoyer; }
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace HouseCore
         /// <value>The exits for the first floor front porch.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorFrontPorch
         {
-            get { return TheHouseRoomData.exitsFirstFloorFrontPorch; }
+            get { return RoomData.exitsFirstFloorFrontPorch; }
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace HouseCore
         /// <value>The exits for the first floor kitchen.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorKitchen
         {
-            get { return TheHouseRoomData.exitsFirstFloorKitchen; }
+            get { return RoomData.exitsFirstFloorKitchen; }
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace HouseCore
         /// <value>The exits for the first floor pantry.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorPantry
         {
-            get { return TheHouseRoomData.exitsFirstFloorPantry; }
+            get { return RoomData.exitsFirstFloorPantry; }
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace HouseCore
         /// <value>The exits for the first floor telephone booth.</value>
         public static ExitSetKeyedCollection ExitsFirstFloorTelephoneBooth
         {
-            get { return TheHouseRoomData.exitsFirstFloorTelephoneBooth; }
+            get { return RoomData.exitsFirstFloorTelephoneBooth; }
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace HouseCore
         /// <value>The exits of the monster hangout.</value>
         public static ExitSetKeyedCollection ExitsMonsterHangout
         {
-            get { return TheHouseRoomData.exitsMonsterHangout; }
+            get { return RoomData.exitsMonsterHangout; }
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace HouseCore
         /// <value>The exits of the inventory room.</value>
         public static ExitSetKeyedCollection ExitsInventory
         {
-            get { return TheHouseRoomData.exitsInventory; }
+            get { return RoomData.exitsInventory; }
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace HouseCore
         /// <value>The exits for the second floor bathroom.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorBathroom
         {
-            get { return TheHouseRoomData.exitsSecondFloorBathroom; }
+            get { return RoomData.exitsSecondFloorBathroom; }
         }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace HouseCore
         /// <value>The exits for the second floor closet.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorCloset
         {
-            get { return TheHouseRoomData.exitsSecondFloorCloset; }
+            get { return RoomData.exitsSecondFloorCloset; }
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace HouseCore
         /// <value>The exits for the second floor den.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorDen
         {
-            get { return TheHouseRoomData.exitsSecondFloorDen; }
+            get { return RoomData.exitsSecondFloorDen; }
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace HouseCore
         /// <value>The exits for the second floor elevator.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorElevator
         {
-            get { return TheHouseRoomData.exitsSecondFloorElevator; }
+            get { return RoomData.exitsSecondFloorElevator; }
         }
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace HouseCore
         /// <value>The exits for the second floor guest room1.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorGuestroom1
         {
-            get { return TheHouseRoomData.exitsSecondFloorGuestroom1; }
+            get { return RoomData.exitsSecondFloorGuestroom1; }
         }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace HouseCore
         /// <value>The exits for the second floor guest room2.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorGuestroom2
         {
-            get { return TheHouseRoomData.exitsSecondFloorGuestroom2; }
+            get { return RoomData.exitsSecondFloorGuestroom2; }
         }
 
         /// <summary>
@@ -391,7 +391,7 @@ namespace HouseCore
         /// <value>The exits for the second floor master bedroom.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorMasterBedroom
         {
-            get { return TheHouseRoomData.exitsSecondFloorMasterBedroom; }
+            get { return RoomData.exitsSecondFloorMasterBedroom; }
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace HouseCore
         /// <value>The exits for the second floor sewing room.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorSewingRoom
         {
-            get { return TheHouseRoomData.exitsSecondFloorSewingRoom; }
+            get { return RoomData.exitsSecondFloorSewingRoom; }
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace HouseCore
         /// <value>The exits for the second floor sitting room.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorSittingRoom
         {
-            get { return TheHouseRoomData.exitsSecondFloorSittingRoom; }
+            get { return RoomData.exitsSecondFloorSittingRoom; }
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace HouseCore
         /// <value>The exits for the second floor telephone booth.</value>
         public static ExitSetKeyedCollection ExitsSecondFloorTelephoneBooth
         {
-            get { return TheHouseRoomData.exitsSecondFloorTelephoneBooth; }
+            get { return RoomData.exitsSecondFloorTelephoneBooth; }
         }
 
         /// <summary>
@@ -427,7 +427,7 @@ namespace HouseCore
         /// <value>The exits for the third floor art hall.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorArtHall
         {
-            get { return TheHouseRoomData.exitsThirdFloorArtHall; }
+            get { return RoomData.exitsThirdFloorArtHall; }
         }
 
         /// <summary>
@@ -436,7 +436,7 @@ namespace HouseCore
         /// <value>The exits for the third floor bar room.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorBarroom
         {
-            get { return TheHouseRoomData.exitsThirdFloorBarroom; }
+            get { return RoomData.exitsThirdFloorBarroom; }
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace HouseCore
         /// <value>The exits for the third floor bedroom.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorBedroom
         {
-            get { return TheHouseRoomData.exitsThirdFloorBedroom; }
+            get { return RoomData.exitsThirdFloorBedroom; }
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace HouseCore
         /// <value>The exits for the third floor computer room.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorComputerRoom
         {
-            get { return TheHouseRoomData.exitsThirdFloorComputerRoom; }
+            get { return RoomData.exitsThirdFloorComputerRoom; }
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace HouseCore
         /// <value>The exits for the third floor elevator.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorElevator
         {
-            get { return TheHouseRoomData.exitsThirdFloorElevator; }
+            get { return RoomData.exitsThirdFloorElevator; }
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace HouseCore
         /// <value>The exits for the third floor game room.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorGameRoom
         {
-            get { return TheHouseRoomData.exitsThirdFloorGameRoom; }
+            get { return RoomData.exitsThirdFloorGameRoom; }
         }
 
         /// <summary>
@@ -481,7 +481,7 @@ namespace HouseCore
         /// <value>The exits for the third floor library.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorLibrary
         {
-            get { return TheHouseRoomData.exitsThirdFloorLibrary; }
+            get { return RoomData.exitsThirdFloorLibrary; }
         }
 
         /// <summary>
@@ -490,7 +490,7 @@ namespace HouseCore
         /// <value>The exits for the third floor living room.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorLivingRoom
         {
-            get { return TheHouseRoomData.exitsThirdFloorLivingRoom; }
+            get { return RoomData.exitsThirdFloorLivingRoom; }
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace HouseCore
         /// <value>The exits for the third floor telephone booth.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorTelephoneBooth
         {
-            get { return TheHouseRoomData.exitsThirdFloorTelephoneBooth; }
+            get { return RoomData.exitsThirdFloorTelephoneBooth; }
         }
 
         /// <summary>
@@ -508,7 +508,7 @@ namespace HouseCore
         /// <value>The exits for the third floor trophy room.</value>
         public static ExitSetKeyedCollection ExitsThirdFloorTrophyRoom
         {
-            get { return TheHouseRoomData.exitsThirdFloorTrophyRoom; }
+            get { return RoomData.exitsThirdFloorTrophyRoom; }
         }
 
         /// <summary>
@@ -733,7 +733,7 @@ namespace HouseCore
         /// <value>The location of the basement coal bin.</value>
         public static LocationType LocationBasementCoalBin
         {
-            get { return TheHouseRoomData.locationBasementCoalBin; }
+            get { return RoomData.locationBasementCoalBin; }
         }
 
         /// <summary>
@@ -742,7 +742,7 @@ namespace HouseCore
         /// <value>The location of the basement dirt floored room.</value>
         public static LocationType LocationBasementDirtFlooredRoom
         {
-            get { return TheHouseRoomData.locationBasementDirtFlooredRoom; }
+            get { return RoomData.locationBasementDirtFlooredRoom; }
         }
 
         /// <summary>
@@ -751,7 +751,7 @@ namespace HouseCore
         /// <value>The location of the basement elevator.</value>
         public static LocationType LocationBasementElevator
         {
-            get { return TheHouseRoomData.locationBasementElevator; }
+            get { return RoomData.locationBasementElevator; }
         }
 
         /// <summary>
@@ -760,7 +760,7 @@ namespace HouseCore
         /// <value>The location of the basement freezer.</value>
         public static LocationType LocationBasementFreezer
         {
-            get { return TheHouseRoomData.locationBasementFreezer; }
+            get { return RoomData.locationBasementFreezer; }
         }
 
         /// <summary>
@@ -769,7 +769,7 @@ namespace HouseCore
         /// <value>The location of the basement furnace room.</value>
         public static LocationType LocationBasementFurnaceRoom
         {
-            get { return TheHouseRoomData.locationBasementFurnaceRoom; }
+            get { return RoomData.locationBasementFurnaceRoom; }
         }
 
         /// <summary>
@@ -778,7 +778,7 @@ namespace HouseCore
         /// <value>The location of the basement laboratory.</value>
         public static LocationType LocationBasementLaboratory
         {
-            get { return TheHouseRoomData.locationBasementLaboratory; }
+            get { return RoomData.locationBasementLaboratory; }
         }
 
         /// <summary>
@@ -787,7 +787,7 @@ namespace HouseCore
         /// <value>The location of the basement pump room.</value>
         public static LocationType LocationBasementPumpRoom
         {
-            get { return TheHouseRoomData.locationBasementPumpRoom; }
+            get { return RoomData.locationBasementPumpRoom; }
         }
 
         /// <summary>
@@ -796,7 +796,7 @@ namespace HouseCore
         /// <value>The location of the basement telephone booth.</value>
         public static LocationType LocationBasementTelephoneBooth
         {
-            get { return TheHouseRoomData.locationBasementTelephoneBooth; }
+            get { return RoomData.locationBasementTelephoneBooth; }
         }
 
         /// <summary>
@@ -805,7 +805,7 @@ namespace HouseCore
         /// <value>The location of the basement torture chamber.</value>
         public static LocationType LocationBasementTortureChamber
         {
-            get { return TheHouseRoomData.locationBasementTortureChamber; }
+            get { return RoomData.locationBasementTortureChamber; }
         }
 
         /// <summary>
@@ -814,7 +814,7 @@ namespace HouseCore
         /// <value>The location of the basement workshop.</value>
         public static LocationType LocationBasementWorkshop
         {
-            get { return TheHouseRoomData.locationBasementWorkshop; }
+            get { return RoomData.locationBasementWorkshop; }
         }
 
         /// <summary>
@@ -823,7 +823,7 @@ namespace HouseCore
         /// <value>The location of the first floor bedroom.</value>
         public static LocationType LocationFirstFloorBedroom
         {
-            get { return TheHouseRoomData.locationFirstFloorBedroom; }
+            get { return RoomData.locationFirstFloorBedroom; }
         }
 
         /// <summary>
@@ -832,7 +832,7 @@ namespace HouseCore
         /// <value>The location of the first floor coat closet.</value>
         public static LocationType LocationFirstFloorCoatCloset
         {
-            get { return TheHouseRoomData.locationFirstFloorCoatCloset; }
+            get { return RoomData.locationFirstFloorCoatCloset; }
         }
 
         /// <summary>
@@ -841,7 +841,7 @@ namespace HouseCore
         /// <value>The location of the first floor dining room.</value>
         public static LocationType LocationFirstFloorDiningRoom
         {
-            get { return TheHouseRoomData.locationFirstFloorDiningRoom; }
+            get { return RoomData.locationFirstFloorDiningRoom; }
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace HouseCore
         /// <value>The location of the first floor elevator.</value>
         public static LocationType LocationFirstFloorElevator
         {
-            get { return TheHouseRoomData.locationFirstFloorElevator; }
+            get { return RoomData.locationFirstFloorElevator; }
         }
 
         /// <summary>
@@ -859,7 +859,7 @@ namespace HouseCore
         /// <value>The location of the first floor family room.</value>
         public static LocationType LocationFirstFloorFamilyRoom
         {
-            get { return TheHouseRoomData.locationFirstFloorFamilyRoom; }
+            get { return RoomData.locationFirstFloorFamilyRoom; }
         }
 
         /// <summary>
@@ -868,7 +868,7 @@ namespace HouseCore
         /// <value>The location of the first floor foyer.</value>
         public static LocationType LocationFirstFloorFoyer
         {
-            get { return TheHouseRoomData.locationFirstFloorFoyer; }
+            get { return RoomData.locationFirstFloorFoyer; }
         }
 
         /// <summary>
@@ -877,7 +877,7 @@ namespace HouseCore
         /// <value>The location of the first floor front porch.</value>
         public static LocationType LocationFirstFloorFrontPorch
         {
-            get { return TheHouseRoomData.locationFirstFloorFrontPorch; }
+            get { return RoomData.locationFirstFloorFrontPorch; }
         }
 
         /// <summary>
@@ -886,7 +886,7 @@ namespace HouseCore
         /// <value>The location of the first floor kitchen.</value>
         public static LocationType LocationFirstFloorKitchen
         {
-            get { return TheHouseRoomData.locationFirstFloorKitchen; }
+            get { return RoomData.locationFirstFloorKitchen; }
         }
 
         /// <summary>
@@ -895,7 +895,7 @@ namespace HouseCore
         /// <value>The location of the first floor pantry.</value>
         public static LocationType LocationFirstFloorPantry
         {
-            get { return TheHouseRoomData.locationFirstFloorPantry; }
+            get { return RoomData.locationFirstFloorPantry; }
         }
 
         /// <summary>
@@ -904,7 +904,7 @@ namespace HouseCore
         /// <value>The location of the first floor telephone booth.</value>
         public static LocationType LocationFirstFloorTelephoneBooth
         {
-            get { return TheHouseRoomData.locationFirstFloorTelephoneBooth; }
+            get { return RoomData.locationFirstFloorTelephoneBooth; }
         }
 
         /// <summary>
@@ -913,7 +913,7 @@ namespace HouseCore
         /// <value>The location of the monster hangout.</value>
         public static LocationType LocationMonsterHangout
         {
-            get { return TheHouseRoomData.locationMonsterHangout; }
+            get { return RoomData.locationMonsterHangout; }
         }
 
         /// <summary>
@@ -922,7 +922,7 @@ namespace HouseCore
         /// <value>The location of the inventory.</value>
         public static LocationType LocationInventory
         {
-            get { return TheHouseRoomData.locationInventory; }
+            get { return RoomData.locationInventory; }
         }
 
         /// <summary>
@@ -931,7 +931,7 @@ namespace HouseCore
         /// <value>The location of the second floor bathroom.</value>
         public static LocationType LocationSecondFloorBathroom
         {
-            get { return TheHouseRoomData.locationSecondFloorBathroom; }
+            get { return RoomData.locationSecondFloorBathroom; }
         }
 
         /// <summary>
@@ -940,7 +940,7 @@ namespace HouseCore
         /// <value>The location of the second floor closet.</value>
         public static LocationType LocationSecondFloorCloset
         {
-            get { return TheHouseRoomData.locationSecondFloorCloset; }
+            get { return RoomData.locationSecondFloorCloset; }
         }
 
         /// <summary>
@@ -949,7 +949,7 @@ namespace HouseCore
         /// <value>The location of the second floor den.</value>
         public static LocationType LocationSecondFloorDen
         {
-            get { return TheHouseRoomData.locationSecondFloorDen; }
+            get { return RoomData.locationSecondFloorDen; }
         }
 
         /// <summary>
@@ -958,7 +958,7 @@ namespace HouseCore
         /// <value>The location of the second floor elevator.</value>
         public static LocationType LocationSecondFloorElevator
         {
-            get { return TheHouseRoomData.locationSecondFloorElevator; }
+            get { return RoomData.locationSecondFloorElevator; }
         }
 
         /// <summary>
@@ -967,7 +967,7 @@ namespace HouseCore
         /// <value>The location of the second floor guest room1.</value>
         public static LocationType LocationSecondFloorGuestroom1
         {
-            get { return TheHouseRoomData.locationSecondFloorGuestroom1; }
+            get { return RoomData.locationSecondFloorGuestroom1; }
         }
 
         /// <summary>
@@ -976,7 +976,7 @@ namespace HouseCore
         /// <value>The location of the second floor guest room2.</value>
         public static LocationType LocationSecondFloorGuestroom2
         {
-            get { return TheHouseRoomData.locationSecondFloorGuestroom2; }
+            get { return RoomData.locationSecondFloorGuestroom2; }
         }
 
         /// <summary>
@@ -985,7 +985,7 @@ namespace HouseCore
         /// <value>The location of the second floor master bedroom.</value>
         public static LocationType LocationSecondFloorMasterBedroom
         {
-            get { return TheHouseRoomData.locationSecondFloorMasterBedroom; }
+            get { return RoomData.locationSecondFloorMasterBedroom; }
         }
 
         /// <summary>
@@ -994,7 +994,7 @@ namespace HouseCore
         /// <value>The location of the second floor sewing room.</value>
         public static LocationType LocationSecondFloorSewingRoom
         {
-            get { return TheHouseRoomData.locationSecondFloorSewingRoom; }
+            get { return RoomData.locationSecondFloorSewingRoom; }
         }
 
         /// <summary>
@@ -1003,7 +1003,7 @@ namespace HouseCore
         /// <value>The location of the second floor sitting room.</value>
         public static LocationType LocationSecondFloorSittingRoom
         {
-            get { return TheHouseRoomData.locationSecondFloorSittingRoom; }
+            get { return RoomData.locationSecondFloorSittingRoom; }
         }
 
         /// <summary>
@@ -1012,7 +1012,7 @@ namespace HouseCore
         /// <value>The location of the second floor telephone booth.</value>
         public static LocationType LocationSecondFloorTelephoneBooth
         {
-            get { return TheHouseRoomData.locationSecondFloorTelephoneBooth; }
+            get { return RoomData.locationSecondFloorTelephoneBooth; }
         }
 
         /// <summary>
@@ -1021,7 +1021,7 @@ namespace HouseCore
         /// <value>The location of the third floor art hall.</value>
         public static LocationType LocationThirdFloorArtHall
         {
-            get { return TheHouseRoomData.locationThirdFloorArtHall; }
+            get { return RoomData.locationThirdFloorArtHall; }
         }
 
         /// <summary>
@@ -1030,7 +1030,7 @@ namespace HouseCore
         /// <value>The location of the third floor bar room.</value>
         public static LocationType LocationThirdFloorBarroom
         {
-            get { return TheHouseRoomData.locationThirdFloorBarroom; }
+            get { return RoomData.locationThirdFloorBarroom; }
         }
 
         /// <summary>
@@ -1039,7 +1039,7 @@ namespace HouseCore
         /// <value>The location of the third floor bedroom.</value>
         public static LocationType LocationThirdFloorBedroom
         {
-            get { return TheHouseRoomData.locationThirdFloorBedroom; }
+            get { return RoomData.locationThirdFloorBedroom; }
         }
 
         /// <summary>
@@ -1048,7 +1048,7 @@ namespace HouseCore
         /// <value>The location of the third floor computer room.</value>
         public static LocationType LocationThirdFloorComputerRoom
         {
-            get { return TheHouseRoomData.locationThirdFloorComputerRoom; }
+            get { return RoomData.locationThirdFloorComputerRoom; }
         }
 
         /// <summary>
@@ -1057,7 +1057,7 @@ namespace HouseCore
         /// <value>The location of the third floor elevator.</value>
         public static LocationType LocationThirdFloorElevator
         {
-            get { return TheHouseRoomData.locationThirdFloorElevator; }
+            get { return RoomData.locationThirdFloorElevator; }
         }
 
         /// <summary>
@@ -1066,7 +1066,7 @@ namespace HouseCore
         /// <value>The location of the third floor game room.</value>
         public static LocationType LocationThirdFloorGameRoom
         {
-            get { return TheHouseRoomData.locationThirdFloorGameRoom; }
+            get { return RoomData.locationThirdFloorGameRoom; }
         }
 
         /// <summary>
@@ -1075,7 +1075,7 @@ namespace HouseCore
         /// <value>The location of the third floor library.</value>
         public static LocationType LocationThirdFloorLibrary
         {
-            get { return TheHouseRoomData.locationThirdFloorLibrary; }
+            get { return RoomData.locationThirdFloorLibrary; }
         }
 
         /// <summary>
@@ -1084,7 +1084,7 @@ namespace HouseCore
         /// <value>The location of the third floor living room.</value>
         public static LocationType LocationThirdFloorLivingRoom
         {
-            get { return TheHouseRoomData.locationThirdFloorLivingRoom; }
+            get { return RoomData.locationThirdFloorLivingRoom; }
         }
 
         /// <summary>
@@ -1093,7 +1093,7 @@ namespace HouseCore
         /// <value>The location of the third floor telephone booth.</value>
         public static LocationType LocationThirdFloorTelephoneBooth
         {
-            get { return TheHouseRoomData.locationThirdFloorTelephoneBooth; }
+            get { return RoomData.locationThirdFloorTelephoneBooth; }
         }
 
         /// <summary>
@@ -1102,7 +1102,7 @@ namespace HouseCore
         /// <value>The location of the third floor trophy room.</value>
         public static LocationType LocationThirdFloorTrophyRoom
         {
-            get { return TheHouseRoomData.locationThirdFloorTrophyRoom; }
+            get { return RoomData.locationThirdFloorTrophyRoom; }
         }
 
         /// <summary>

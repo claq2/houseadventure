@@ -13,7 +13,7 @@ namespace HouseCore
     /// <summary>
     /// Class that represents an item allows getting a multiple piece object
     /// </summary>
-    public class ContainerObject : PortableObject//, IEquatable<ContainerObject>
+    public class ContainerObject : PortableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ContainerObject"/> class.
@@ -60,21 +60,5 @@ namespace HouseCore
             : base(name, room, shortName)
         {
         }
-
-        #region IEquatable<ContainerObject> Members
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
-        /// </returns>
-        //public bool Equals(ContainerObject other)
-        //{
-        //    return this.ShortName == other.ShortName;
-        //}
-
-        #endregion
     }
 }

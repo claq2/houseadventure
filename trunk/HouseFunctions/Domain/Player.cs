@@ -18,11 +18,6 @@ namespace HouseCore
         #region Fields (4) 
 
         /// <summary>
-        /// Private instance of the inventory
-        /// </summary>
-        //private InanimateObjectKeyedCollection inventory;
-
-        /// <summary>
         /// Number of items removes from the house
         /// </summary>
         private int itemsRemovedFromHouse;
@@ -54,15 +49,6 @@ namespace HouseCore
         #endregion Constructors 
 
         #region Properties (4) 
-
-        /// <summary>
-        /// Gets the inventory.
-        /// </summary>
-        /// <value>The inventory.</value>
-     //   public InanimateObjectKeyedCollection Inventory
-      //  {
-       //     get { return this.inventory; }
-       // }
 
         /// <summary>
         /// Gets or sets the items removed from house.

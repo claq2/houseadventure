@@ -13,7 +13,7 @@ namespace HouseCore
     /// <summary>
     /// Class that represents an item that can be picked up
     /// </summary>
-    public class PortableObject : InanimateObject//, IEquatable<PortableObject>
+    public class PortableObject : InanimateObject
     {
         #region Fields (2) 
 
@@ -145,19 +145,5 @@ namespace HouseCore
         //    get { return this.shortName; }
         //}
         #endregion Properties 
-
-        #region IEquatable<PortableObject> Members
-
-        /// <summary>
-        /// Determines whether two PortableObjects are the name
-        /// </summary>
-        /// <param name="other">The PortableObject to compare to</param>
-        /// <returns>A value indicating whether the two items are the same</returns>
-        //public bool Equals(PortableObject other)
-        //{
-        //    return this.ShortName == other.ShortName;
-        //}
-
-        #endregion
     }
 }

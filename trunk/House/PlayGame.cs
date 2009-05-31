@@ -49,11 +49,6 @@ namespace House
         private List<string> itemsInRoom = new List<string>();
 
         /// <summary>
-        /// The player object
-        /// </summary>
-        //private Player player = new Player();
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="PlayGame"/> class.
         /// </summary>
         public PlayGame()
@@ -180,23 +175,6 @@ namespace House
         public string Message { private get; set; }
 
         /// <summary>
-        /// Gets or sets the player.
-        /// </summary>
-        /// <value>The player.</value>
-        //public Player Player
-        //{
-        //    get
-        //    {
-        //        return this.player;
-        //    }
-
-        //    set
-        //    {
-        //        this.player = value;
-        //    }
-        //}
-
-        /// <summary>
         /// Gets or sets the name of the room.
         /// </summary>
         /// <value>The name of the room.</value>
@@ -211,7 +189,6 @@ namespace House
         /// </summary>
         public void TheLoop()
         {
-            string command = String.Empty;
             string[] stringArrayCommand;
             char[] charArraySplitChars = new char[] { ' ' };
 
@@ -238,7 +215,6 @@ namespace House
                 if (stringArrayCommand.Length > 0 && stringArrayCommand[0].Length > 0)
                 {
                     string stringShortenedCommand = stringArrayCommand[0].PadRight(3, ' ').Substring(0, 3).Trim();
-                    string stringFormattedCommand = FormatCommand(stringArrayCommand[0]);
                     if (String.Compare(stringShortenedCommand, "qui", true, CultureInfo.CurrentCulture) == 0)
                     {
                         this.housePresenter.Quit();

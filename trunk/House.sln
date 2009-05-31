@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseCore", "HouseFunctions
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{F9A94E55-3B09-4D7A-9A20-C82E085BD1D4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HousePackage", "HousePackage\HousePackage.vdproj", "{4C3A7F65-E645-4452-A934-29052EB303AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,8 @@ Global
 		{F9A94E55-3B09-4D7A-9A20-C82E085BD1D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9A94E55-3B09-4D7A-9A20-C82E085BD1D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9A94E55-3B09-4D7A-9A20-C82E085BD1D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3A7F65-E645-4452-A934-29052EB303AA}.Debug|Any CPU.ActiveCfg = Debug
+		{4C3A7F65-E645-4452-A934-29052EB303AA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

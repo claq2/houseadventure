@@ -8,7 +8,7 @@ namespace HouseCore
     /// <summary>
     /// All data relating to adversaries in the house
     /// </summary>
-    public static class TheHouseAdversaryData
+    public static class AdversaryData
     {
         private const string m_BeastName = "a savage beast";
         private const string m_BeastShortName = "bea";

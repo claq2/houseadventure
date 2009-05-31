@@ -46,7 +46,7 @@
   <Namespaces>
    <Namespace Name="HouseCore.Interfaces">
     <Messages>
-     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2009-04-27 20:40:33Z">
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2009-04-27 20:40:33Z">
       <Issue>
        <Item>HouseCore.Interfaces</Item>
       </Issue>
@@ -55,7 +55,7 @@
    </Namespace>
    <Namespace Name="HouseCore.Presenters">
     <Messages>
-     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2009-04-27 20:40:33Z">
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2009-04-27 20:40:33Z">
       <Issue>
        <Item>HouseCore.Presenters</Item>
       </Issue>
@@ -70,28 +70,6 @@
       <Namespaces>
        <Namespace Name="House">
         <Types>
-         <Type Name="PlayGame">
-          <Members>
-           <Member Name="#TheLoop()">
-            <Messages>
-             <Message Id="command" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-04-27 20:40:33Z">
-              <Issue>
-               <Item>'PlayGame.TheLoop()'</Item>
-               <Item>'command'</Item>
-               <Item>'string'</Item>
-              </Issue>
-             </Message>
-             <Message Id="stringFormattedCommand" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-04-27 20:40:33Z">
-              <Issue>
-               <Item>'PlayGame.TheLoop()'</Item>
-               <Item>'stringFormattedCommand'</Item>
-               <Item>'string'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="Program">
           <Members>
            <Member Name="#Main(System.String[])">
@@ -118,340 +96,11 @@
       <Namespaces>
        <Namespace Name="HouseCore">
         <Types>
-         <Type Name="ActionShortName">
-          <Members>
-           <Member Name="#Bru">
-            <Messages>
-             <Message Id="Bru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Bru</Item>
-               <Item>'ActionShortName.Bru'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Dro">
-            <Messages>
-             <Message Id="Dro" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Dro</Item>
-               <Item>'ActionShortName.Dro'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Kil">
-            <Messages>
-             <Message Id="Kil" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Kil</Item>
-               <Item>'ActionShortName.Kil'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Lig">
-            <Messages>
-             <Message Id="Lig" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Lig</Item>
-               <Item>'ActionShortName.Lig'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Loo">
-            <Messages>
-             <Message Id="Loo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Loo</Item>
-               <Item>'ActionShortName.Loo'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Ope">
-            <Messages>
-             <Message Id="Ope" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Ope</Item>
-               <Item>'ActionShortName.Ope'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Pla">
-            <Messages>
-             <Message Id="Pla" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Pla</Item>
-               <Item>'ActionShortName.Pla'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Sav">
-            <Messages>
-             <Message Id="Sav" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Sav</Item>
-               <Item>'ActionShortName.Sav'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Spr">
-            <Messages>
-             <Message Id="Spr" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Spr</Item>
-               <Item>'ActionShortName.Spr'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Tak">
-            <Messages>
-             <Message Id="Tak" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Tak</Item>
-               <Item>'ActionShortName.Tak'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Unl">
-            <Messages>
-             <Message Id="Unl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Unl</Item>
-               <Item>'ActionShortName.Unl'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="AdversaryShortName">
-          <Members>
-           <Member Name="#Blo">
-            <Messages>
-             <Message Id="Blo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Blo</Item>
-               <Item>'AdversaryShortName.Blo'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Vam">
-            <Messages>
-             <Message Id="Vam" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Vam</Item>
-               <Item>'AdversaryShortName.Vam'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Wer">
-            <Messages>
-             <Message Id="Wer" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Wer</Item>
-               <Item>'AdversaryShortName.Wer'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="DirectionShortName">
-          <Members>
-           <Member Name="#D">
-            <Messages>
-             <Message Id="D" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="MemberMoreMeaningfulName">
-               <Item>'DirectionShortName.D'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#E">
-            <Messages>
-             <Message Id="E" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="MemberMoreMeaningfulName">
-               <Item>'DirectionShortName.E'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#N">
-            <Messages>
-             <Message Id="N" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="MemberMoreMeaningfulName">
-               <Item>'DirectionShortName.N'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#S">
-            <Messages>
-             <Message Id="S" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="MemberMoreMeaningfulName">
-               <Item>'DirectionShortName.S'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#U">
-            <Messages>
-             <Message Id="U" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="MemberMoreMeaningfulName">
-               <Item>'DirectionShortName.U'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#W">
-            <Messages>
-             <Message Id="W" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="MemberMoreMeaningfulName">
-               <Item>'DirectionShortName.W'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="HouseType">
-          <Members>
-           <Member Name="#random">
-            <Messages>
-             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2009-05-26 02:17:16Z">
-              <Issue>
-               <Item>'HouseType.random'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="InanimateObjectShortName">
-          <Members>
-           <Member Name="#Coi">
-            <Messages>
-             <Message Id="Coi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Coi</Item>
-               <Item>'InanimateObjectShortName.Coi'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Dia">
-            <Messages>
-             <Message Id="Dia" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Dia</Item>
-               <Item>'InanimateObjectShortName.Dia'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Fla">
-            <Messages>
-             <Message Id="Fla" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Fla</Item>
-               <Item>'InanimateObjectShortName.Fla'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Glo">
-            <Messages>
-             <Message Id="Glo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Glo</Item>
-               <Item>'InanimateObjectShortName.Glo'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Gol">
-            <Messages>
-             <Message Id="Gol" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Gol</Item>
-               <Item>'InanimateObjectShortName.Gol'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Hai">
-            <Messages>
-             <Message Id="Hai" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Hai</Item>
-               <Item>'InanimateObjectShortName.Hai'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Kni">
-            <Messages>
-             <Message Id="Kni" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Kni</Item>
-               <Item>'InanimateObjectShortName.Kni'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Pil">
-            <Messages>
-             <Message Id="Pil" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Pil</Item>
-               <Item>'InanimateObjectShortName.Pil'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Sho">
-            <Messages>
-             <Message Id="Sho" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Member">
-               <Item>Sho</Item>
-               <Item>'InanimateObjectShortName.Sho'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="LocationType">
-          <Members>
-           <Member Name="#Equals(System.Object)">
-            <Messages>
-             <Message TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800" Created="2009-04-27 20:40:33Z">
-              <Issue Name="Parameter">
-               <Item>'obj'</Item>
-               <Item>'LocationType'</Item>
-               <Item>'LocationType.Equals(object)'</Item>
-               <Item>isint</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="MagicWord">
           <Members>
            <Member Name="#Shazaam">
             <Messages>
-             <Message Id="Shazaam" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
+             <Message Id="Shazaam" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-04-27 20:40:33Z">
               <Issue Name="Member">
                <Item>Shazaam</Item>
                <Item>'MagicWord.Shazaam'</Item>
@@ -461,7 +110,7 @@
            </Member>
            <Member Name="#Ugaboom">
             <Messages>
-             <Message Id="Ugaboom" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-04-27 20:40:33Z">
+             <Message Id="Ugaboom" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-04-27 20:40:33Z">
               <Issue Name="Member">
                <Item>Ugaboom</Item>
                <Item>'MagicWord.Ugaboom'</Item>
@@ -473,65 +122,43 @@
          </Type>
          <Type Name="TheHouseData">
           <Members>
-           <Member Name="#FreeFormArgumentActions">
+           <Member Name="#FreeformArgumentActions">
             <Messages>
-             <Message Id="FreeForm" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-05-26 02:17:16Z">
-              <Issue Name="MemberShouldBeDiscreteTerm">
-               <Item>FreeForm</Item>
-               <Item>'TheHouseData.FreeFormArgumentActions'</Item>
-               <Item>Freeform</Item>
-              </Issue>
-             </Message>
-             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:26:25Z">
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Excluded" Created="2009-05-31 04:45:46Z">
               <Issue>
-               <Item>'TheHouseData.FreeFormArgumentActions'</Item>
-               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
+               <Item>'TheHouseData.FreeformArgumentActions'</Item>
               </Issue>
              </Message>
             </Messages>
            </Member>
            <Member Name="#InventoryActions">
             <Messages>
-             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:26:25Z">
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Excluded" Created="2009-05-31 04:45:46Z">
               <Issue>
                <Item>'TheHouseData.InventoryActions'</Item>
-               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
               </Issue>
              </Message>
             </Messages>
            </Member>
            <Member Name="#NonArgumentActions">
             <Messages>
-             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:24:49Z">
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Excluded" Created="2009-05-31 04:45:46Z">
               <Issue>
                <Item>'TheHouseData.NonArgumentActions'</Item>
-               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
               </Issue>
              </Message>
             </Messages>
            </Member>
            <Member Name="#RoomItemActions">
             <Messages>
-             <Message TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104" Created="2009-05-26 02:26:25Z">
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Excluded" Created="2009-05-31 04:45:46Z">
               <Issue>
                <Item>'TheHouseData.RoomItemActions'</Item>
-               <Item>'ReadOnlyCollection&lt;string&gt;'</Item>
               </Issue>
              </Message>
             </Messages>
            </Member>
           </Members>
-         </Type>
-         <Type Name="TheHouseRoomData">
-          <Messages>
-           <Message Id="HouseRoom" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-04-27 20:40:33Z">
-            <Issue Name="TypeShouldBeDiscreteTerm">
-             <Item>HouseRoom</Item>
-             <Item>'TheHouseRoomData'</Item>
-             <Item>Houseroom</Item>
-            </Issue>
-           </Message>
-          </Messages>
          </Type>
         </Types>
        </Namespace>
@@ -579,45 +206,6 @@
          </Type>
         </Types>
        </Namespace>
-       <Namespace Name="HouseCore.Presenters">
-        <Types>
-         <Type Name="HousePresenter">
-          <Members>
-           <Member Name="#Get()">
-            <Messages>
-             <Message Id="room" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-05-11 20:36:56Z">
-              <Issue>
-               <Item>'HousePresenter.Get()'</Item>
-               <Item>'room'</Item>
-               <Item>'Room'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#random">
-            <Messages>
-             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2009-05-26 02:17:16Z">
-              <Issue>
-               <Item>'HousePresenter.random'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Stab()">
-            <Messages>
-             <Message Id="adversaryTarget" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Created="2009-05-26 02:17:16Z">
-              <Issue>
-               <Item>'HousePresenter.Stab()'</Item>
-               <Item>'adversaryTarget'</Item>
-               <Item>'Adversary'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-        </Types>
-       </Namespace>
       </Namespaces>
      </Module>
     </Modules>
@@ -627,28 +215,14 @@
    <Rule TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020">
     <Resolution Name="Default">Consider merging the types defined in '{0}' with another namespace.</Resolution>
    </Rule>
-   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
-    <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
-   </Rule>
-   <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
-    <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
-    <Resolution Name="TypeShouldBeDiscreteTerm">The compound word '{0}' in type name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}'.</Resolution>
-   </Rule>
-   <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
-    <Resolution Name="Parameter">{0}, a parameter, is cast to type {1} multiple times in method {2}. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant {3} instruction.</Resolution>
-   </Rule>
-   <Rule TypeName="DoNotDeclareReadOnlyMutableReferenceTypes" Category="Microsoft.Security" CheckId="CA2104">
-    <Resolution Name="Default">Remove the read-only designation from {0} or change the field to one that is an immutable reference type. If the reference type {1} is, in fact, immutable, exclude this message.</Resolution>
-   </Rule>
    <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
     <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
-    <Resolution Name="MemberMoreMeaningfulName">Consider providing a more meaningful name than member name {0}.</Resolution>
+   </Rule>
+   <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+    <Resolution Name="Default">Consider making {0} non-public or a constant.</Resolution>
    </Rule>
    <Rule TypeName="PropertiesShouldNotBeWriteOnly" Category="Microsoft.Design" CheckId="CA1044">
     <Resolution Name="AddGetter">Because property {0} is write-only, either add a property getter with an accessibility that is greater than or equal to its setter or convert this property into a method.</Resolution>
-   </Rule>
-   <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
-    <Resolution Name="Default">{0} declares a variable, {1}, of type {2}, which is never used or is only assigned to. Use this variable or remove it.</Resolution>
    </Rule>
    <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
     <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>

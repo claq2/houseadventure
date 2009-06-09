@@ -107,7 +107,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Northes this instance.
+        /// Attempts to move player north.
         /// </summary>
         public bool North()
         {
@@ -115,7 +115,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Southes this instance.
+        /// Attempts to move player south.
         /// </summary>
         public bool South()
         {
@@ -123,7 +123,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Easts this instance.
+        /// Attempts to move player east.
         /// </summary>
         public bool East()
         {
@@ -131,7 +131,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Wests this instance.
+        /// Attempts to move player west.
         /// </summary>
         public bool West()
         {
@@ -139,7 +139,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Ups this instance.
+        /// Attempts to move player to the next floor up.
         /// </summary>
         public bool Up()
         {
@@ -147,7 +147,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Downs this instance.
+        /// Attempts to move player to the next floor down.
         /// </summary>
         public bool Down()
         {

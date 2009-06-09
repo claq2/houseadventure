@@ -231,7 +231,6 @@ namespace HouseForms
         private void FormHouse_Load(object sender, EventArgs e)
         {
             string[] args = Environment.GetCommandLineArgs();
-            bool bDebugMode = false;
             MessageBoxOptions optionsImpostorMessage = (MessageBoxOptions)0;
             if (IsRightToLeft((IWin32Window)sender))
             {
@@ -239,16 +238,9 @@ namespace HouseForms
                 MessageBoxOptions.RightAlign;
             }
             //MessageBox.Show("last");
+#if(!DEBUG)
             MessageBox.Show((Control)sender, "House Adventure\r\n\r\nRemember the Impostor is last\r\n", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, optionsImpostorMessage);
-
-            foreach (string arg in args)
-            {
-                if (String.Compare(arg, "debug", true, CultureInfo.CurrentCulture) == 0)
-                {
-                    bDebugMode = true;
-                }
-            }
-
+#endif
             this.listBoxActions.DataSource = TheHouseData.Actions;
             this.housePresenter.IncrementNumberOfMoves();
             this.labelMessage.Text = String.Empty;

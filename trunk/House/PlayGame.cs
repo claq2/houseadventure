@@ -13,6 +13,7 @@ namespace House
     using HouseCore;
     using HouseCore.Interfaces;
     using HouseCore.Presenters;
+    using System.Threading;
 
     /// <summary>
     /// Class that maintains state and determines actions that the user is attempting to execute
@@ -196,7 +197,9 @@ namespace House
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.Write("House Adventure" + Environment.NewLine + Environment.NewLine + "Remember the Impostor is last" + Environment.NewLine);
-            ////Thread.Sleep(5000);
+#if (!DEBUG)
+            Thread.Sleep(5000);
+#endif
             this.housePresenter.Look();
             Console.WriteLine(this.ProcessLookReturn(true));
 

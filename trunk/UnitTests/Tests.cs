@@ -93,7 +93,40 @@ namespace UnitTests
             this.housePresenter.Get();
             Assert.AreEqual(true, this.view.Message.Contains("Remember?!"));
             Assert.AreEqual(true, this.view.GameEnded);
+        }
 
+        [Test]
+        public void MoveTests()
+        {
+            Assert.AreEqual(RoomData.LocationFirstFloorFoyer.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorFoyer.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.West();
+            Assert.AreEqual(RoomData.LocationFirstFloorCoatCloset.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorCoatCloset.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.West();
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.West();
+            Assert.AreEqual(RoomData.LocationFirstFloorDiningRoom.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorDiningRoom.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.East();
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.North();
+            Assert.AreEqual(RoomData.LocationFirstFloorKitchen.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorKitchen.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.South();
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.Up();
+            Assert.AreEqual(RoomData.LocationSecondFloorElevator.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationSecondFloorElevator.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.Down();
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.RoomNumber, this.player.Location.RoomNumber);
+            this.housePresenter.South();
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.Floor, this.player.Location.Floor);
+            Assert.AreEqual(RoomData.LocationFirstFloorElevator.RoomNumber, this.player.Location.RoomNumber);
         }
     }
 }

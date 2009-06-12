@@ -28,6 +28,7 @@ namespace HouseForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHouse));
             this.listBoxRoomContents = new System.Windows.Forms.ListBox();
             this.listBoxInventory = new System.Windows.Forms.ListBox();
             this.buttonNorth = new System.Windows.Forms.Button();
@@ -320,6 +321,7 @@ namespace HouseForms
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.listBoxInventory);
             this.Controls.Add(this.listBoxRoomContents);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormHouse";
             this.Text = "House Adventure";
             this.Load += new System.EventHandler(this.FormHouse_Load);

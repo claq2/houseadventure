@@ -21,19 +21,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A08946F815684F2D9503BAFE1A4F329B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BC9CDBBFBC914FFA84DF55E1AA39864C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F53B2C8141E0E405666E6DA2D827CF45"
+        "MsmKey" = "8:_DFBA879B6C7657A74B4C23B9CE2FF375"
         "OwnerKey" = "8:_7B6FBB4ED1ED47958449F26C7CF9B110"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F53B2C8141E0E405666E6DA2D827CF45"
+        "MsmKey" = "8:_DFBA879B6C7657A74B4C23B9CE2FF375"
         "OwnerKey" = "8:_BC9CDBBFBC914FFA84DF55E1AA39864C"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -46,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F53B2C8141E0E405666E6DA2D827CF45"
+        "OwnerKey" = "8:_DFBA879B6C7657A74B4C23B9CE2FF375"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,14 +166,34 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F53B2C8141E0E405666E6DA2D827CF45"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A08946F815684F2D9503BAFE1A4F329B"
+            {
+            "SourcePath" = "8:..\\HouseFunctions\\HouseAdventure.ico"
+            "TargetName" = "8:HouseAdventure.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_EEF4518F12E44C399A956CE492C0ADF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFBA879B6C7657A74B4C23B9CE2FF375"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HouseCore, Version=1.0.3446.19104, Culture=neutral, PublicKeyToken=c87e648f295c94ec, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:HouseCore, Version=1.0.3449.37630, Culture=neutral, PublicKeyToken=c87e648f295c94ec, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F53B2C8141E0E405666E6DA2D827CF45"
+                    "_DFBA879B6C7657A74B4C23B9CE2FF375"
                     {
                     "Name" = "8:HouseCore.dll"
                     "Attributes" = "3:512"
@@ -248,7 +274,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:House Adventure"
         "ProductCode" = "8:{BAB17239-D19A-427B-A542-11CC73023C37}"
-        "PackageCode" = "8:{231EC7A0-F44A-437F-A34A-72A6219B0C78}"
+        "PackageCode" = "8:{B3467811-065A-4B0D-8ACB-4583B81EC43E}"
         "UpgradeCode" = "8:{0041DD01-14FE-448B-8109-BA079466943C}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -367,6 +393,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_17B5FAA9084E45458B4DC5CA7B5985A2"
+            {
+            "Name" = "8:House Adventure GUI"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_BC9CDBBFBC914FFA84DF55E1AA39864C"
+            "Folder" = "8:_2A9A0077E3E14EA4ACDD48C35D74B406"
+            "WorkingFolder" = "8:_EEF4518F12E44C399A956CE492C0ADF2"
+            "Icon" = "8:_A08946F815684F2D9503BAFE1A4F329B"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_ACC7A5BFBBDE4A59A584D9C17494E503"
+            {
+            "Name" = "8:House Adventure"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7B6FBB4ED1ED47958449F26C7CF9B110"
+            "Folder" = "8:_2A9A0077E3E14EA4ACDD48C35D74B406"
+            "WorkingFolder" = "8:_EEF4518F12E44C399A956CE492C0ADF2"
+            "Icon" = "8:_A08946F815684F2D9503BAFE1A4F329B"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

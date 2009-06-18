@@ -17,6 +17,18 @@ namespace HouseCore
         public AdversaryCollection() : base() { }
 
         /// <summary>
+        /// Gets the <see cref="HouseCore.Adversary"/> with the specified item.
+        /// </summary>
+        /// <value></value>
+        public new Adversary this[string item]
+        {
+            get
+            {
+                string stringItemShortenedValue = item.Length > 3 ? item.Substring(0, 3) : item;
+                return base[stringItemShortenedValue];
+            }
+        }
+        /// <summary>
         /// When implemented in a derived class, extracts the key from the specified element.
         /// </summary>
         /// <param name="item">The element from which to extract the key.</param>
@@ -64,19 +76,23 @@ namespace HouseCore
         /// </returns>
         public bool Contains(string item, bool includeImpostors)
         {
+            if (String.IsNullOrEmpty(item))
+                return false;
+
             foreach (Adversary adversary in this.Items)
             {
                 Impostor imposter = adversary as Impostor;
+                string stringItemShortened = item.Length > 3 ? item.Substring(0, 3) : item;
                 if (imposter != null && includeImpostors)
                 {
-                    if (String.Compare(adversary.ShortName, item, StringComparison.OrdinalIgnoreCase) == 0)
+                    if (String.Compare(adversary.ShortName, stringItemShortened, StringComparison.OrdinalIgnoreCase) == 0)
                     {
                         return true;
                     }
                 }
                 else if (imposter == null)
                 {
-                    if (String.Compare(adversary.ShortName, item, StringComparison.OrdinalIgnoreCase) == 0)
+                    if (String.Compare(adversary.ShortName, stringItemShortened, StringComparison.OrdinalIgnoreCase) == 0)
                     {
                         return true;
                     }

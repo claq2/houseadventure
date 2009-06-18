@@ -13,6 +13,7 @@ namespace HouseCore.Presenters
     using System.Xml.Serialization;
     using System.IO;
     using HouseCore.Interfaces;
+    using HouseCore.Exceptions;
 
     /// <summary>
     /// The functions that can be done in the house
@@ -242,6 +243,9 @@ namespace HouseCore.Presenters
         /// </summary>
         public void Brush()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             Room room = this.house.Rooms[this.player.Location];
             Adversary adversaryLeopard = this.house.Adversaries[AdversaryData.LeopardShortName];
@@ -287,11 +291,12 @@ namespace HouseCore.Presenters
         /// </summary>
         public void Dig()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             Room room = this.house.Rooms[this.player.Location];
-#if DEBUG
-            ////this._player.Inventory.Add(this.house.InanimateObjects[TheHouseData.ShovelShortName]);
-#endif
+            //TODO: Compare only first 3 chars for DIR, don't accept floor
             if (String.Compare(this.view.Argument, "dirt", true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "floor", true, CultureInfo.CurrentCulture) != 0)
             {
                 stringBuilderMessage.Append("You can't dig the ");
@@ -399,21 +404,17 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Opens this instance.
+        /// Attempts to open the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null or empty.</exception>
         public void Open()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             LockableDoorObject lockableDoor = this.house.InanimateObjects[ObjectData.LockedDoorShortName] as LockableDoorObject;
             PortableObject portableObjectKey = this.house.PortableObjects[ObjectData.RustedKeyShortName] as PortableObject;
-#if DEBUG
-            /*
-            if (!this._player.Inventory.Contains(portableObjectKey))
-            {
-                this._player.Inventory.Add(portableObjectKey);
-            }
-            */
-#endif
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             if (String.Compare(stringShortenedArgument, lockableDoor.Identity, true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) != 0)
             {
@@ -442,20 +443,22 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Plays this instance.
+        /// Plays the item specified in the view's Argument
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null or empty.</exception>
         public void Play()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             PortableObject portableObjectBanjo = this.house.PortableObjects[ObjectData.BanjoShortName] as PortableObject;
             Adversary adversaryBeast = this.house.Adversaries[AdversaryData.BeastShortName];
-#if DEBUG
-            ////this._player.Inventory.Add(portableObjectBanjo);
-#endif
             InanimateObject inanimateObjectTarget = null;
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
-                inanimateObjectTarget = this.house.PortableObjects[this.view.Argument];
+                inanimateObjectTarget = this.house.PortableObjects[stringShortenedArgument];
             }
             catch (KeyNotFoundException)
             {
@@ -484,30 +487,22 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Reads this instance.
+        /// Reads this item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null or empty.</exception>
         public void Read()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             PortableObject portableObjectSorcerersBook = this.house.InanimateObjects[ObjectData.BookShortName] as PortableObject;
             PortableObject portableObjectParchment = this.house.InanimateObjects[ObjectData.ParchmentShortName] as PortableObject;
-#if DEBUG
-            /*
-            if (!this._player.Inventory.Contains(portableObjectSorcerersBook))
-            {
-                this._player.Inventory.Add(portableObjectSorcerersBook);
-            }
-
-            if (!this._player.Inventory.Contains(portableObjectParchment))
-            {
-                this._player.Inventory.Add(portableObjectParchment);
-            }
-            */
-#endif
             InanimateObject inanimateObjectTarget = null;
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
-                inanimateObjectTarget = this.house.InanimateObjects[this.view.Argument];
+                inanimateObjectTarget = this.house.InanimateObjects[stringShortenedArgument];
             }
             catch (KeyNotFoundException)
             {
@@ -550,6 +545,10 @@ namespace HouseCore.Presenters
                 // One non-magic decoy room to make things a little harder
                 LocationType locationTypeDecoyRoom = new LocationType(0, Floor.ThirdFloor);
                 stringBuilderMessage.Append(this.house.Rooms[locationTypeDecoyRoom].Name);
+            }
+            else
+            {
+                stringBuilderMessage.Append("You can't read that");
             }
 
             this.view.Message = stringBuilderMessage.ToString();
@@ -895,6 +894,9 @@ namespace HouseCore.Presenters
         /// </summary>
         public void Get()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             this.view.ClearScreen = false;
             PortableObject portableObjectTarget = null;

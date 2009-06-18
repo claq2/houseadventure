@@ -10,6 +10,7 @@ namespace HouseCore
     /// </summary>
     public static class RoomData
     {
+        //TODO: Create replace these with a bunch of ReadOnlyExitSet collections.  The readonly keyword is not protecting these from update!
         private readonly static ExitSetKeyedCollection exitsBasementCoalBin = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) });
         private readonly static ExitSetKeyedCollection exitsBasementDirtFlooredRoom = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.West, 7), new RoomExit(Direction.South, 1) });
         private readonly static ExitSetKeyedCollection exitsBasementElevator = new ExitSetKeyedCollection(new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8) });

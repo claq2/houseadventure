@@ -156,7 +156,6 @@ namespace HouseCore
             {
                 this.exits.Add(exit);
             }
-            //this.exits = exits;
         }
 
         /// <summary>

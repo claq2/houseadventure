@@ -62,6 +62,7 @@
     <Compile Include="Domain\AdversaryData.cs" />
     <Compile Include="Domain\ObjectData.cs" />
     <Compile Include="Domain\RoomData.cs" />
+    <Compile Include="Exceptions\NullViewArgumentException.cs" />
     <Compile Include="RoomExit.cs" />
     <Compile Include="ExitSetKeyedCollection.cs" />
     <Compile Include="Floor.cs" />
@@ -132,6 +133,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HouseAdventure.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

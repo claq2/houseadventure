@@ -152,7 +152,11 @@ namespace HouseCore
             : base(name, location)
         {
             InitializeCollections();
-            this.exits = exits;
+            foreach (RoomExit exit in exits)
+            {
+                this.exits.Add(exit);
+            }
+            //this.exits = exits;
         }
 
         /// <summary>

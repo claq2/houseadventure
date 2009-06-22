@@ -1,11 +1,15 @@
+//-----------------------------------------------------------------------
+// <copyright file="AdversaryCollection.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HouseCore
 {
     using System.Collections.ObjectModel;
-    using System.Globalization;
     /// <summary>
     /// 
     /// </summary>
@@ -14,7 +18,32 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="AdversaryCollection"/> class.
         /// </summary>
-        public AdversaryCollection() : base() { }
+        public AdversaryCollection() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdversaryCollection"/> class.
+        /// </summary>
+        /// <param name="comparer">The comparer.</param>
+        protected AdversaryCollection(IEqualityComparer<string> comparer)
+            : base(comparer)
+        {
+            
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdversaryCollection"/> class.
+        /// </summary>
+        /// <param name="comparer">The implementation of the <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> generic interface to use when comparing keys, or null to use the default equality comparer for the type of the key, obtained from <see cref="P:System.Collections.Generic.EqualityComparer`1.Default"/>.</param>
+        /// <param name="dictionaryCreationThreshold">The number of elements the collection can hold without creating a lookup dictionary (0 creates the lookup dictionary when the first item is added), or –1 to specify that a lookup dictionary is never created.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">
+        /// 	<paramref name="dictionaryCreationThreshold"/> is less than –1.
+        /// </exception>
+        protected AdversaryCollection(IEqualityComparer<string> comparer, int dictionaryCreationThreshold)
+            : base(comparer, dictionaryCreationThreshold)
+        {
+            
+        }
+                                                 
 
         /// <summary>
         /// Gets the <see cref="HouseCore.Adversary"/> with the specified item.

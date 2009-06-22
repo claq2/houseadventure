@@ -63,6 +63,7 @@
     <Compile Include="Domain\ObjectData.cs" />
     <Compile Include="Domain\RoomData.cs" />
     <Compile Include="Exceptions\NullViewArgumentException.cs" />
+    <Compile Include="ReadOnlyExitSet.cs" />
     <Compile Include="RoomExit.cs" />
     <Compile Include="ExitSetKeyedCollection.cs" />
     <Compile Include="Floor.cs" />

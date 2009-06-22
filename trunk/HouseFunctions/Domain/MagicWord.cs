@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="MagicWord.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Text;

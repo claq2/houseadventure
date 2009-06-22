@@ -148,7 +148,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
-        public Room(string name, LocationType location, ExitSetKeyedCollection exits)
+        public Room(string name, LocationType location, ReadOnlyExitSet exits)
             : base(name, location)
         {
             InitializeCollections();
@@ -190,7 +190,7 @@ namespace HouseCore
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> [magic].</param>
         /// <param name="word">The word.</param>
-        public Room(string name, LocationType location, ExitSetKeyedCollection exits, bool magic, MagicWord word)
+        public Room(string name, LocationType location, ReadOnlyExitSet exits, bool magic, MagicWord word)
             : base(name, location)
         {
             InitializeCollections();
@@ -200,7 +200,10 @@ namespace HouseCore
             this.magic = magic;
             this.magicWordForRoom = word;
             InitializeCollections();
-            this.exits = exits;
+            foreach (RoomExit exit in exits)
+            {
+                Exits.Add(exit);
+            }
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="PositionedEntity"></see> class.

@@ -47,7 +47,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
-        public Elevator(string name, LocationType location, ExitSetKeyedCollection exits)
+        public Elevator(string name, LocationType location, ReadOnlyExitSet exits)
             : base(name, location, exits) { }
     }
 }

@@ -50,7 +50,8 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Increments the number of moves.
+        /// Increments the number of moves.  This should be called for all command attempts,
+        /// not just ones that are actual known commands.
         /// </summary>
         public void IncrementNumberOfMoves()
         {
@@ -58,7 +59,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Populates the inventory.
+        /// Populates the view's Inventory property.
         /// </summary>
         public void PopulateInventory()
         {
@@ -72,7 +73,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Saves this instance.
+        /// Saves the game state to file.
         /// </summary>
         public void Save()
         {
@@ -87,7 +88,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Loads this instance.
+        /// Loads the game data from the save file.
         /// </summary>
         public void Load()
         {
@@ -156,7 +157,7 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Processes the movement.
+        /// Processes the movement request.
         /// </summary>
         /// <param name="direction">The direction.</param>
         private bool ProcessMovement(Direction direction)
@@ -239,8 +240,9 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Brushes this instance.
+        /// Brushes the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Brush()
         {
             if (this.view.Argument == null)
@@ -287,8 +289,9 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Digs this instance.
+        /// Digs the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Dig()
         {
             if (this.view.Argument == null)
@@ -329,9 +332,10 @@ namespace HouseCore.Presenters
             this.view.Message = stringBuilderMessage.ToString();
         }
 
-        //private void Light(string )
         /// <summary>
-        /// Lights the specified state.
+        /// Attempts to turn the flashlight on or off.  If the view's Argument is null or empty then 
+        /// the method acts as a toggle.  If the Argument is "on" then the method attempts to turn
+        /// the light on, otherwise off.
         /// </summary>
         public void Light()
         {
@@ -406,7 +410,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to open the item specified in the view's Argument.
         /// </summary>
-        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null or empty.</exception>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Open()
         {
             if (this.view.Argument == null)
@@ -445,7 +449,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Plays the item specified in the view's Argument
         /// </summary>
-        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null or empty.</exception>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Play()
         {
             if (this.view.Argument == null)
@@ -489,7 +493,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Reads this item specified in the view's Argument.
         /// </summary>
-        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null or empty.</exception>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Read()
         {
             if (this.view.Argument == null)
@@ -555,20 +559,27 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Says this instance.
+        /// Says the word specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Say()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             bool boolWordIsMagic = false;
             MagicWord theword = MagicWord.NA;
             try
             {
                 theword = (MagicWord)Enum.Parse(typeof(MagicWord), this.view.Argument, true);
-                boolWordIsMagic = true;
+                if (theword != MagicWord.NA)
+                    boolWordIsMagic = true;
             }
             catch (ArgumentException)
             {
+                boolWordIsMagic = false;
+                theword = MagicWord.NA;
             }
 
             if (!boolWordIsMagic)
@@ -612,21 +623,17 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Sprays this instance.
+        /// Sprays the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Spray()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             ConsumableObject consumableObjectBugSpray = this.house.InanimateObjects[ObjectData.BugSprayShortName] as ConsumableObject;
             Adversary adversaryBlob = this.house.Adversaries[AdversaryData.BlobShortName];
-#if DEBUG
-            /*
-            if (!this._player.Inventory.Contains(consumableObjectBugSpray))
-            {
-                this._player.Inventory.Add(consumableObjectBugSpray);
-            }
-            */
-#endif
             Room room = this.house.Rooms[this.player.Location];
 
             // Trying to spray adversary in the room but don't have the spray?
@@ -634,11 +641,12 @@ namespace HouseCore.Presenters
             {
                 stringBuilderMessage.Append("You have nothing with which to spray the ");
                 stringBuilderMessage.Append(this.view.Argument);
+                stringBuilderMessage.Append("!!");
             }
             else if (!this.house.Adversaries.Contains(this.view.Argument, false))
             {
-                // Trying to brush non adverasry?
-                stringBuilderMessage.Append("You can't spray that");
+                // Trying to spray non adverasry?
+                stringBuilderMessage.Append("You can't spray that!");
             }
             else if (!room.Adversaries.Contains(this.view.Argument, false))
             {
@@ -657,24 +665,28 @@ namespace HouseCore.Presenters
                 consumableObjectBugSpray.IncrementTimesUsed();
                 stringBuilderMessage.Append("The ");
                 stringBuilderMessage.Append(this.view.Argument);
-                stringBuilderMessage.Append(" will become angry if you persist!");
+                stringBuilderMessage.Append(" will become angry if you continue to act this way");
             }
             else
             {
                 // Must be trying to spray the blob in the room that has the blob
                 consumableObjectBugSpray.IncrementTimesUsed();
                 this.house.HideAdversary(adversaryBlob, this.player.Location);
-                stringBuilderMessage.Append("Blob runs away");
+                stringBuilderMessage.Append("Through the spray's mist, you can see the blob disappear down a crevice in the floor");
             }
 
             this.view.Message = stringBuilderMessage.ToString();
         }
 
         /// <summary>
-        /// Stabs this instance.
+        /// Stabs the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Stab()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             Room room = this.house.Rooms[this.player.Location];
             PortableObject portableObjectKnife = this.house.PortableObjects[ObjectData.KnifeShortName] as PortableObject;
@@ -682,13 +694,13 @@ namespace HouseCore.Presenters
 
             if (!this.house.Adversaries.Contains(this.view.Argument, false))
             {
-                stringBuilderMessage.Append("You can't kill that");
+                stringBuilderMessage.Append("You can't kill that!");
             }
             else if (!room.Adversaries.Contains(this.view.Argument, false))
             {
                 stringBuilderMessage.Append("I see no ");
                 stringBuilderMessage.Append(this.view.Argument);
-                stringBuilderMessage.Append(" here");
+                stringBuilderMessage.Append(" here!");
             }
             else if (!this.house.Inventory.Contains(portableObjectKnife))
             {
@@ -704,43 +716,27 @@ namespace HouseCore.Presenters
             else
             {
                 this.house.HideAdversary(adversaryMonk, this.player.Location);
-                stringBuilderMessage.Append("Monk has run away");
+                stringBuilderMessage.Append("The monk has become frightened and run away");
             }
 
             this.view.Message = stringBuilderMessage.ToString();
         }
 
         /// <summary>
-        /// Waves this instance.
+        /// Waves the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Wave()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             Room room = this.house.Rooms[this.player.Location];
             PortableObject portableObjectGarlic = this.house.InanimateObjects[ObjectData.GarlicShortName] as PortableObject;
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
             Adversary adversaryVampire = this.house.Adversaries[AdversaryData.VampireShortName];
             Adversary adversaryWerewolf = this.house.Adversaries[AdversaryData.WerewolfShortName];
-
-#if DEBUG
-            /*
-            ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[TheHouseData.BatteriesShortName] as ConsumableObject;
-            if (!this._player.Inventory.Contains(portableObjectGarlic))
-            {
-                this._player.Inventory.Add(portableObjectGarlic);
-            }
-
-            if (!this._player.Inventory.Contains(onOffObjectFlashlight))
-            {
-                this._player.Inventory.Add(onOffObjectFlashlight);
-            }
-
-            if (!this._player.Inventory.Contains(consumableObjectBatteries))
-            {
-                this._player.Inventory.Add(consumableObjectBatteries);
-            }
-            */
-#endif
             InanimateObject inanimateObjectTarget = null;
             try
             {

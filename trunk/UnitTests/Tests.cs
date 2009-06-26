@@ -7,12 +7,9 @@
 namespace UnitTests
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using HouseCore;
     using HouseCore.Presenters;
     using NUnit.Framework;
-    using HouseCore.Exceptions;
 
     /// <summary>
     /// Tests for the project
@@ -70,37 +67,67 @@ namespace UnitTests
         [Test]
         public void GetTests()
         {
-            this.view.Argument = ObjectData.BoxShortName;
+            this.view.Argument = "box";
             this.housePresenter.Get();
             this.housePresenter.PopulateInventory();
             Assert.AreEqual(true, this.view.Inventory.Contains(ObjectData.BoxName));
             Assert.AreEqual(false, this.house.Rooms[this.player.Location].Items.Contains(ObjectData.BoxShortName));
             Assert.AreEqual("box taken", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
-
-            this.view.Argument = ObjectData.LockedDoorShortName;
+            this.housePresenter.Drop();
+            this.view.Argument = "door";
             this.housePresenter.Get();
             Assert.AreEqual(false, this.view.Inventory.Contains(ObjectData.LockedDoorName));
             Assert.AreEqual(true, this.house.Rooms[this.player.Location].Items.Contains(ObjectData.LockedDoorShortName));
-            Assert.AreEqual("You can't take the doo", this.view.Message);
+            Assert.AreEqual("You can't take the door", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
-            this.view.Argument = ObjectData.KnifeShortName;
+            this.view.Argument = "knife";
             this.housePresenter.Get();
-            Assert.AreEqual("I see no kni here", this.view.Message);
+            Assert.AreEqual("I see no knife here", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
             this.player.Location = RoomData.LocationFirstFloorKitchen;
-            this.view.Argument = ObjectData.KnifeShortName;
+            this.view.Argument = "knife";
             this.housePresenter.Get();
-            Assert.AreEqual("This room's occupant seems to have grown very attached to the kni and won't let you have it", this.view.Message);
+            Assert.AreEqual("This room's occupant seems to have grown very attached to the knife and won't let you have it", this.view.Message);
             Assert.AreEqual(false, this.view.GameEnded);
 
             this.player.Location = RoomData.LocationSecondFloorSewingRoom;
-            this.view.Argument = ObjectData.BagOfGoldShortName;
+            this.view.Argument = "gold";
             this.housePresenter.Get();
             Assert.AreEqual(true, this.view.Message.Contains("Remember?!"));
             Assert.AreEqual(true, this.view.GameEnded);
+            this.player.Location = RoomData.LocationSecondFloorTelephoneBooth;
+            this.view.Argument = "coins";
+            this.housePresenter.Get();
+            Assert.AreEqual("Don't be silly!  You can't carry that many small items!", this.view.Message);
+            ContainerObject containerObjectBox = this.house.InanimateObjects[ObjectData.BoxShortName] as ContainerObject;
+            this.house.AddToInventory(containerObjectBox);
+            this.view.Argument = "coins";
+            this.housePresenter.Get();
+            Assert.AreEqual("coins taken", this.view.Message);
+            this.player.Location = RoomData.LocationThirdFloorBarroom;
+            this.view.Argument = "ice";
+            this.housePresenter.Get();
+            Assert.AreEqual("Ouch!!  That hurts!!  You can't pick that up!", this.view.Message);
+            ProtectiveObject protectiveObjectGlove = this.house.InanimateObjects[ObjectData.GloveShortName] as ProtectiveObject;
+            this.house.AddToInventory(protectiveObjectGlove);
+            this.view.Argument = "ice";
+            this.housePresenter.Get();
+            Assert.AreEqual("ice taken", this.view.Message);
+            Assert.AreEqual(4, this.house.Inventory.Count);
+            this.player.Location = RoomData.LocationThirdFloorTrophyRoom;
+            Assert.IsTrue(this.house.Rooms[this.player.Location].Items.Contains("bat"));
+            this.view.Argument = "batteries";
+            this.housePresenter.Get();
+            Assert.AreEqual("You can't carry that much, you'll have to drop something.", this.view.Message);
+            Assert.IsTrue(this.house.Rooms[this.player.Location].Items.Contains("bat"));
+            Assert.IsFalse(this.house.Inventory.Contains("bat"));
+
+
+
+
         }
 
         [Test]
@@ -541,7 +568,170 @@ namespace UnitTests
         {
             this.view.Argument = "blah";
             this.housePresenter.Wave();
-            Assert.AreEqual("huh", this.view.Message);
+            Assert.AreEqual("You can't wave that!", this.view.Message);
+            this.view.Argument = "flashlight";
+            this.housePresenter.Wave();
+            Assert.AreEqual("You have no flashlight to wave!", this.view.Message);
+            this.view.Argument = "garlic";
+            this.housePresenter.Wave();
+            Assert.AreEqual("You have no garlic to wave!", this.view.Message);
+            this.view.Argument = "batteries";
+            this.housePresenter.Wave();
+            Assert.AreEqual("You have no batteries to wave!", this.view.Message);
+            PortableObject portableObjectGarlic = this.house.InanimateObjects[ObjectData.GarlicShortName] as PortableObject;
+            OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
+            ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
+            this.house.AddToInventory(portableObjectGarlic);
+            this.house.AddToInventory(onOffObjectFlashlight);
+            this.house.AddToInventory(consumableObjectBatteries);
+            this.view.Argument = "flashlight";
+            this.housePresenter.Wave();
+            Assert.AreEqual("Waving the flashlight had no effect", this.view.Message);
+            this.view.Argument = "garlic";
+            this.housePresenter.Wave();
+            Assert.AreEqual("Waving the garlic had no effect", this.view.Message);
+            this.view.Argument = "batteries";
+            this.housePresenter.Wave();
+            Assert.AreEqual("That was fun!! But it had no effect.", this.view.Message);
+            this.player.Location = RoomData.LocationFirstFloorKitchen;
+            Assert.IsTrue(this.house.Rooms[this.player.Location].Adversaries.Contains("vam"));
+            this.view.Argument = "flashlight";
+            onOffObjectFlashlight.State = Switch.On;
+            this.housePresenter.Wave();
+            Assert.AreEqual("The vampire coverd its eyes and flew away!", this.view.Message);
+            Assert.IsFalse(this.house.Rooms[this.player.Location].Adversaries.Contains("vam"));
+            Assert.IsTrue(this.house.Rooms[RoomData.LocationMonsterHangout].Adversaries.Contains("vam"));
+            this.player.Location = RoomData.LocationThirdFloorArtHall;
+            Assert.IsTrue(this.house.Rooms[this.player.Location].Adversaries.Contains("wer"));
+            this.view.Argument = "garlic";
+            this.housePresenter.Wave();
+            Assert.AreEqual("The werewolf howled and ran away in terror!", this.view.Message);
+            Assert.IsFalse(this.house.Rooms[this.player.Location].Adversaries.Contains("wer"));
+            Assert.IsTrue(this.house.Rooms[RoomData.LocationMonsterHangout].Adversaries.Contains("wer"));
         }
+
+        [Test]
+        public void QuitTest()
+        {
+            this.housePresenter.Quit();
+            Assert.IsTrue(this.view.GameEnded);
+            Assert.AreEqual("You got 0 items out of the house in 0 moves", this.view.Message);
+        }
+
+        [Test]
+        [ExpectedException(ExpectedExceptionName = "HouseCore.Exceptions.NullViewArgumentException", ExpectedMessage = "The view's Argument property is null")]
+        public void DropTestException()
+        {
+            this.housePresenter.Drop();
+        }
+
+        [Test]
+        public void DropTests()
+        {
+            this.view.Argument = "blah";
+            this.housePresenter.Drop();
+            Assert.AreEqual("You can't drop the blah", this.view.Message);
+            this.view.Argument = "flashlight";
+            this.housePresenter.Drop();
+            Assert.AreEqual("You have no flashlight to drop", this.view.Message);
+            OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
+            ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
+            this.house.AddToInventory(onOffObjectFlashlight);
+            this.house.AddToInventory(consumableObjectBatteries);
+            this.view.Argument = "flashlight";
+            onOffObjectFlashlight.State = Switch.On;
+            this.housePresenter.Drop();
+            Assert.AreEqual("flashlight dropped", this.view.Message);
+            Assert.IsTrue(onOffObjectFlashlight.State == Switch.Off);
+            Assert.IsFalse(this.house.Inventory.Contains(onOffObjectFlashlight));
+            this.house.AddToInventory(onOffObjectFlashlight);
+            this.view.Argument = "batteries";
+            onOffObjectFlashlight.State = Switch.On;
+            this.housePresenter.Drop();
+            Assert.AreEqual("batteries dropped", this.view.Message);
+            Assert.IsTrue(onOffObjectFlashlight.State == Switch.Off);
+            Assert.IsFalse(this.house.Inventory.Contains(consumableObjectBatteries));
+            MultiplePieceObject multiplePieceObjectCoins = this.house.InanimateObjects[ObjectData.CoinsShortName] as MultiplePieceObject;
+            this.house.AddToInventory(multiplePieceObjectCoins);
+            ContainerObject containerObjectBox = this.house.InanimateObjects[ObjectData.BoxShortName] as ContainerObject;
+            this.house.AddToInventory(containerObjectBox);
+            this.view.Argument = "box";
+            this.housePresenter.Drop();
+            Assert.AreEqual("Try dropping the following items first:  100's of gold coins", this.view.Message);
+            Assert.IsTrue(this.house.Inventory.Contains(containerObjectBox));
+            Assert.IsTrue(this.house.Inventory.Contains(multiplePieceObjectCoins));
+            this.view.Argument = "coins";
+            this.housePresenter.Drop();
+            Assert.AreEqual("coins dropped", this.view.Message);
+            Assert.IsFalse(this.house.Inventory.Contains(multiplePieceObjectCoins));
+            this.view.Argument = "box";
+            this.housePresenter.Drop();
+            Assert.AreEqual("box dropped", this.view.Message);
+            Assert.IsFalse(this.house.Inventory.Contains(containerObjectBox));
+            ProtectiveObject protectiveObjectGlove = this.house.InanimateObjects[ObjectData.GloveShortName] as ProtectiveObject;
+            PainfulObject painfulObjectDryIce = this.house.InanimateObjects[ObjectData.DryIceShortName] as PainfulObject;
+            this.house.AddToInventory(protectiveObjectGlove);
+            this.house.AddToInventory(painfulObjectDryIce);
+            this.view.Argument = "glove";
+            this.housePresenter.Drop();
+            Assert.AreEqual("You'll hurt yourself if you drop the glove now!", this.view.Message);
+            Assert.IsTrue(this.house.Inventory.Contains(protectiveObjectGlove));
+            Assert.IsTrue(this.house.Inventory.Contains(painfulObjectDryIce));
+            this.view.Argument = "ice";
+            this.housePresenter.Drop();
+            Assert.AreEqual("ice dropped", this.view.Message);
+            Assert.IsFalse(this.house.Inventory.Contains(painfulObjectDryIce));
+            this.view.Argument = "glove";
+            this.housePresenter.Drop();
+            Assert.AreEqual("glove dropped", this.view.Message);
+            Assert.IsFalse(this.house.Inventory.Contains(protectiveObjectGlove));
+            DelicateObject delicateObjectMingVase = this.house.InanimateObjects[ObjectData.VaseShortName] as DelicateObject;
+            CushioningObject cushioningObjectPillow = this.house.InanimateObjects[ObjectData.PillowShortName] as CushioningObject;
+            this.house.AddToInventory(delicateObjectMingVase);
+            this.house.AddToInventory(cushioningObjectPillow);
+            this.view.Argument = "vase";
+            this.housePresenter.Drop();
+            Assert.AreEqual("You can't drop that--it'll break", this.view.Message);
+            Assert.IsTrue(this.house.Inventory.Contains(delicateObjectMingVase));
+            Assert.IsTrue(this.house.Inventory.Contains(cushioningObjectPillow));
+            this.view.Argument = "pillow";
+            this.housePresenter.Drop();
+            Assert.AreEqual("pillow dropped", this.view.Message);
+            Assert.IsFalse(this.house.Inventory.Contains(cushioningObjectPillow));
+            this.view.Argument = "vase";
+            this.housePresenter.Drop();
+            Assert.AreEqual("vase dropped", this.view.Message);
+            Assert.IsFalse(this.house.Inventory.Contains(delicateObjectMingVase));
+            //TODO: Winning scenario
+        }
+
+        [Test]
+        public void LookTests()
+        { 
+            Assert.IsTrue(this.view.ExitDirections.Count == 0);
+            Assert.IsTrue(this.view.ItemsInRoom.Count == 0);
+            Assert.IsTrue(this.view.ItemsInRoomShortNames.Count == 0);
+            Assert.IsTrue(this.view.AdversariesInRoom.Count == 0);
+            Assert.AreEqual(null, this.view.RoomName);
+            this.housePresenter.Look();
+            Assert.AreEqual("East", this.view.ExitDirections[0]);
+            Assert.AreEqual("West", this.view.ExitDirections[1]);
+            Assert.IsTrue(this.view.ExitDirections.Count == 2);
+            Assert.AreEqual("a wooden box", this.view.ItemsInRoom[0]);
+            Assert.AreEqual("a locked door", this.view.ItemsInRoom[1]);
+            Assert.AreEqual("box", this.view.ItemsInRoomShortNames[0]);
+            Assert.AreEqual("doo", this.view.ItemsInRoomShortNames[1]);
+            Assert.AreEqual("in the foyer", this.view.RoomName);
+            this.player.Location = RoomData.LocationFirstFloorTelephoneBooth;
+            this.housePresenter.Look();
+            Assert.IsTrue(this.player.Location == RoomData.LocationFirstFloorTelephoneBooth);
+            PortableObject inanimateObjectDime = this.house.InanimateObjects[ObjectData.DimeShortName] as PortableObject;
+            this.house.AddToInventory(inanimateObjectDime);
+            this.player.Location = RoomData.LocationFirstFloorTelephoneBooth;
+            this.housePresenter.Look();
+            Assert.IsFalse(this.player.Location == RoomData.LocationFirstFloorTelephoneBooth);
+        }
+
+        //TODO:  Inventory tests
     }
 }

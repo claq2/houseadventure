@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HouseCore
 {
@@ -24,31 +22,20 @@ namespace HouseCore
         /// <param name="floor">The floor.</param>
         public LocationType(int roomNumber, Floor floor)
         {
-            this.roomNumber = roomNumber;
-            this.floor = floor;
+            this.RoomNumber = roomNumber;
+            this.Floor = floor;
         }
-
-        private Floor floor;
 
         /// <summary>
         /// 
         /// </summary>
-        public Floor Floor
-        {
-            get { return floor; }
-            set { floor = value; }
-        }
-        private int roomNumber;
+        public Floor Floor { get; private set; }
 
         /// <summary>
         /// Gets or sets the room number.
         /// </summary>
         /// <value>The room number.</value>
-        public int RoomNumber
-        {
-            get { return roomNumber; }
-            set { roomNumber = value; }
-        }
+        public int RoomNumber { get; private set; }
    
         #region IEquatable<LocationType> Members
 

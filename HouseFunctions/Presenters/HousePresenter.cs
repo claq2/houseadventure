@@ -201,7 +201,7 @@ namespace HouseCore.Presenters
             {
                 if (roomCurrent.Exits.Contains(direction))
                 {
-                    this.player.Location.RoomNumber = roomCurrent.Exits[direction].ExitDestination;
+                    this.player.Location = new LocationType(roomCurrent.Exits[direction].ExitDestination, this.player.Location.Floor);
                     return true;
                 }
                 else
@@ -213,7 +213,7 @@ namespace HouseCore.Presenters
             {
                 if (elevatorCurrent != null && this.player.Location.Floor != Floor.ThirdFloor)
                 {
-                    this.player.Location.Floor++;
+                    this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor + 1);
                     return true;
                 }
                 else
@@ -225,7 +225,7 @@ namespace HouseCore.Presenters
             {
                 if (elevatorCurrent != null && this.player.Location.Floor != Floor.Basement)
                 {
-                    this.player.Location.Floor--;
+                    this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor - 1);
                     return true;
                 }
                 else
@@ -738,9 +738,10 @@ namespace HouseCore.Presenters
             Adversary adversaryVampire = this.house.Adversaries[AdversaryData.VampireShortName];
             Adversary adversaryWerewolf = this.house.Adversaries[AdversaryData.WerewolfShortName];
             InanimateObject inanimateObjectTarget = null;
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
-                inanimateObjectTarget = this.house.InanimateObjects[this.view.Argument];
+                inanimateObjectTarget = this.house.InanimateObjects[stringShortenedArgument];
             }
             catch (KeyNotFoundException)
             {
@@ -749,36 +750,38 @@ namespace HouseCore.Presenters
             if (inanimateObjectTarget == null || !(inanimateObjectTarget is PortableObject))
             {
                 // is not portable?
-                stringBuilderMessage.Append("You can't wave that.");
+                stringBuilderMessage.Append("You can't wave that!");
             }
             else if (!this.house.Inventory.Contains(inanimateObjectTarget))
             {
                 // is not in inventory?
-                stringBuilderMessage.Append("You don't have a ");
+                stringBuilderMessage.Append("You have no ");
                 stringBuilderMessage.Append(this.view.Argument);
-                stringBuilderMessage.Append(" to wave.");
+                stringBuilderMessage.Append(" to wave!");
             }
             else if (!(inanimateObjectTarget.Equals(portableObjectGarlic) || inanimateObjectTarget.Equals(onOffObjectFlashlight)))
             {
                 // is not light nor garlic?
-                stringBuilderMessage.Append("That was fun.");
+                stringBuilderMessage.Append("That was fun!! But it had no effect.");
             }
             else if (inanimateObjectTarget.Equals(onOffObjectFlashlight) && onOffObjectFlashlight.State == Switch.On && room.Adversaries.Contains(adversaryVampire))
             {
                 // is light and vamp in room and light on?
-                stringBuilderMessage.Append("The vampire has fled.");
+                stringBuilderMessage.Append("The vampire coverd its eyes and flew away!");
                 this.house.HideAdversary(adversaryVampire, this.player.Location);
             }
             else if (inanimateObjectTarget.Equals(portableObjectGarlic) && room.Adversaries.Contains(adversaryWerewolf))
             {
-                // is garlic and ware in room?
-                stringBuilderMessage.Append("The warewolf has fled.");
+                // is garlic and were in room?
+                stringBuilderMessage.Append("The werewolf howled and ran away in terror!");
                 this.house.HideAdversary(adversaryWerewolf, this.player.Location);
             }
             else
             {
                 // otherwise "no effect"
-                stringBuilderMessage.Append("It had no effect");
+                stringBuilderMessage.Append("Waving the ");
+                stringBuilderMessage.Append(this.view.Argument);
+                stringBuilderMessage.Append(" had no effect");
             }
 
             this.view.Message = stringBuilderMessage.ToString();
@@ -794,17 +797,22 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Drops this instance.
+        /// Drops the item sepcified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Drop()
         {
+            if (this.view.Argument == null)
+                throw new NullViewArgumentException("The view's Argument property is null");
+
             StringBuilder stringBuilderMessage = new StringBuilder();
             InanimateObject inanimateObjectTarget = null;
             this.view.GameEnded = false;
             InanimateObjectsCollection multiplePieceObjectsInInventory = new InanimateObjectsCollection();
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
-                inanimateObjectTarget = this.house.InanimateObjects[this.view.Argument];
+                inanimateObjectTarget = this.house.InanimateObjects[stringShortenedArgument];
             }
             catch (KeyNotFoundException)
             {
@@ -813,31 +821,14 @@ namespace HouseCore.Presenters
             PortableObject portableObjectTarget = inanimateObjectTarget as PortableObject;
             if (inanimateObjectTarget == null || portableObjectTarget == null)
             {
-                stringBuilderMessage.Append("You can't drop that");
+                stringBuilderMessage.Append("You can't drop the ");
+                stringBuilderMessage.Append(this.view.Argument);
             }
             else if (!this.house.Inventory.Contains(inanimateObjectTarget.ToString()))
             {
-                stringBuilderMessage.Append("You don't have a ");
+                stringBuilderMessage.Append("You have no ");
                 stringBuilderMessage.Append(this.view.Argument);
-            }
-            else if (inanimateObjectTarget.Equals(this.house.InanimateObjects[ObjectData.BatteriesShortName]) || inanimateObjectTarget.Equals(this.house.InanimateObjects[ObjectData.FlashlightShortName]))
-            {
-                OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
-                onOffObjectFlashlight.State = Switch.Off;
-                this.house.RemoveFromInventory(portableObjectTarget, this.player.Location);
-                stringBuilderMessage.Append(this.view.Argument);
-                stringBuilderMessage.Append(" dropped");
-                if (this.player.Location.Equals(RoomData.LocationFirstFloorFrontPorch))
-                {
-                    this.player.ItemsRemovedFromHouse++;
-                    if (this.player.ItemsRemovedFromHouse == this.house.PortableObjects.Count)
-                    {
-                        this.view.GameEnded = true;
-                        stringBuilderMessage.Append(Environment.NewLine);
-                        stringBuilderMessage.Append(Environment.NewLine);
-                        stringBuilderMessage.Append(String.Format(CultureInfo.CurrentCulture, "Congratulations--you have successfully completed House Adventure \r\nYou removed all 20 objects in {0} moves", player.NumberOfMoves));
-                    }
-                }
+                stringBuilderMessage.Append(" to drop");
             }
             else if (inanimateObjectTarget is ContainerObject && this.house.Inventory.ContainsByType(typeof(MultiplePieceObject), multiplePieceObjectsInInventory))
             {
@@ -855,18 +846,23 @@ namespace HouseCore.Presenters
             }
             else if (inanimateObjectTarget is ProtectiveObject && this.house.Inventory.ContainsByType(typeof(PainfulObject)))
             {
-                stringBuilderMessage.Append("You'll hurt yourself");
+                stringBuilderMessage.Append("You'll hurt yourself if you drop the ");
+                stringBuilderMessage.Append(this.view.Argument);
+                stringBuilderMessage.Append(" now!");
             }
             else if (inanimateObjectTarget is DelicateObject && !this.house.Rooms[this.player.Location].Items.ContainsByType(typeof(CushioningObject)))
             {
-                stringBuilderMessage.Append("It will break");
+                stringBuilderMessage.Append("You can't drop that--it'll break");
             }
             else
             {
-                //PortableObject portableObject = inanimateObjectTarget as PortableObject;
+                if (inanimateObjectTarget.Equals(this.house.InanimateObjects[ObjectData.BatteriesShortName]) || inanimateObjectTarget.Equals(this.house.InanimateObjects[ObjectData.FlashlightShortName]))
+                {
+                    OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
+                    onOffObjectFlashlight.State = Switch.Off;
+                }
+
                 this.house.RemoveFromInventory(portableObjectTarget, this.player.Location);
-                //                    this._player.Inventory.Remove(inanimateObjectTarget.ToString());
-                //                    this.house.Rooms[this._player.Location].Items.Add(inanimateObjectTarget);
                 stringBuilderMessage.Append(this.view.Argument);
                 stringBuilderMessage.Append(" dropped");
                 if (this.player.Location.Equals(RoomData.LocationFirstFloorFrontPorch))
@@ -886,8 +882,9 @@ namespace HouseCore.Presenters
         }
 
         /// <summary>
-        /// Gets this instance.
+        /// Gets the item specified in the view's Argument.
         /// </summary>
+        /// <exception cref="NullViewArgumentException">Thrown if the view object's Argument property is null.</exception>
         public void Get()
         {
             if (this.view.Argument == null)
@@ -897,11 +894,12 @@ namespace HouseCore.Presenters
             this.view.ClearScreen = false;
             PortableObject portableObjectTarget = null;
             this.view.GameEnded = false;
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
 
             // Trying to pick up known object?
             try
             {
-                portableObjectTarget = this.house.InanimateObjects[this.view.Argument] as PortableObject;
+                portableObjectTarget = this.house.InanimateObjects[stringShortenedArgument] as PortableObject;
             }
             catch (KeyNotFoundException)
             {
@@ -910,10 +908,8 @@ namespace HouseCore.Presenters
 
             // Is a known portable item
             if (portableObjectTarget != null)
-            {
                 // Item not in room or item in room but buried or invisible
                 if (!this.house.Rooms[this.player.Location].Items.Contains(portableObjectTarget) || (this.house.Rooms[this.player.Location].Items.Contains(portableObjectTarget) && (portableObjectTarget.Buried || !portableObjectTarget.Visible)))
-                {
                     // Impostor in room and its name is the same as the target item
                     if (portableObjectTarget.Equals(this.house.Adversaries.TheImpostor) && this.house.Rooms[this.player.Location].Adversaries.Contains(this.house.Adversaries.TheImpostor))
                     {
@@ -927,7 +923,6 @@ namespace HouseCore.Presenters
                         stringBuilderMessage.Append(this.view.Argument);
                         stringBuilderMessage.Append(" here");
                     }
-                }
                 else if (this.house.Rooms[this.player.Location].Adversaries.ContainsNonImpostor)
                 {
                     // Room has an adversary that is not the imposter
@@ -936,9 +931,7 @@ namespace HouseCore.Presenters
                     stringBuilderMessage.Append(" and won't let you have it");
                 }
                 else if (this.house.Inventory.Count < TheHouseData.MaximumInventoryItems)
-                {
                     if (portableObjectTarget is MultiplePieceObject)
-                    {
                         if (this.house.Inventory.ContainsByType(typeof(ContainerObject)))
                         {
                             this.house.AddToInventory(portableObjectTarget);
@@ -946,20 +939,13 @@ namespace HouseCore.Presenters
                             stringBuilderMessage.Append(" taken");
                         }
                         else
-                        {
-                            stringBuilderMessage.Append("You can't pick up that many small items!");
-                        }
-                    }
+                            stringBuilderMessage.Append("Don't be silly!  You can't carry that many small items!");
                     else if (portableObjectTarget is PainfulObject)
                     {
                         bool boolHasProtectiveItem = false;
                         foreach (InanimateObject inanimateObject in this.house.Inventory)
-                        {
                             if (inanimateObject is ProtectiveObject)
-                            {
                                 boolHasProtectiveItem = true;
-                            }
-                        }
 
                         if (boolHasProtectiveItem)
                         {
@@ -968,9 +954,7 @@ namespace HouseCore.Presenters
                             stringBuilderMessage.Append(" taken");
                         }
                         else
-                        {
-                            stringBuilderMessage.Append("Ouch! That hurts! You can't pick that up!");
-                        }
+                            stringBuilderMessage.Append("Ouch!!  That hurts!!  You can't pick that up!");
                     }
                     else
                     {
@@ -980,12 +964,8 @@ namespace HouseCore.Presenters
                         stringBuilderMessage.Append(this.view.Argument);
                         stringBuilderMessage.Append(" taken");
                     }
-                }
                 else
-                {
-                    stringBuilderMessage.Append("You can't carry that much.  You'll have to drop something.");
-                }
-            }
+                    stringBuilderMessage.Append("You can't carry that much, you'll have to drop something.");
             else
             {
                 stringBuilderMessage.Append("You can't take the ");
@@ -1022,11 +1002,11 @@ namespace HouseCore.Presenters
             {
 #if (DEBUG)
                 if (this.player.Location.Floor == Floor.ThirdFloor)
-                    this.player.Location.Floor = Floor.SecondFloor;
+                    this.player.Location = new LocationType(this.player.Location.RoomNumber, Floor.SecondFloor);
                 else
-                    this.player.Location.Floor = Floor.ThirdFloor;
+                    this.player.Location = new LocationType(this.player.Location.RoomNumber, Floor.ThirdFloor);
 #else
-                this.player.Location.Floor = (Floor)this.random.Next(4);
+                this.player.Location = new LocationType(this.player.Location.RoomNumber, (Floor)this.random.Next(4));
 #endif
                 room = this.house.Rooms[this.player.Location];
             }

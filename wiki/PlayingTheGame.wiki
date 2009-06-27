@@ -11,6 +11,7 @@ The goal is to get 20 particular objects out of the house.
 
 ==Commands==
 brush
+
 dig
 drop
 get

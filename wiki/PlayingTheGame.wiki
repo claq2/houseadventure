@@ -10,32 +10,32 @@ These are the commands and features of the game.
 The goal is to get 20 particular objects out of the house.
 
 ==Commands==
-* brush
-dig
-drop
-get
-light (also "light on" and "light off")
-save (saves your game)
-load (loads your saved game)
-look
-open
-play
-quit
-read
-say
-spray
-stab
-wave
+  * brush
+  * dig
+  * drop
+  * get
+  * light (also "light on" and "light off")
+  * save (saves your game)
+  * load (loads your saved game)
+  * look
+  * open
+  * play
+  * quit
+  * read
+  * say
+  * spray
+  * stab
+  * wave
 
 All commands can be abbreviated to 3 characters (e.g. bru = brush)
 
 ==Movement Commands==
-east
-north
-south
-west
-up
-down
+  * east
+  * north
+  * south
+  * west
+  * up
+  * down
 
 All movement commands can be abbreviated to 1 character (e.g. n = north)
 

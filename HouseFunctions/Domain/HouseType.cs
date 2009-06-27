@@ -441,7 +441,6 @@ namespace HouseCore
         /// </summary>
         internal void RemoveFrontPorchItems()
         {
-            //TODO: can't modify collection in loop
             Room roomPorch = this.rooms[RoomData.LocationFirstFloorFrontPorch];
             List<InanimateObject> listItemsToRemove = new List<InanimateObject>();
             foreach (InanimateObject io in roomPorch.Items)

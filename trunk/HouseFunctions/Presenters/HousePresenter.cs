@@ -299,8 +299,8 @@ namespace HouseCore.Presenters
 
             StringBuilder stringBuilderMessage = new StringBuilder();
             Room room = this.house.Rooms[this.player.Location];
-            //TODO: Compare only first 3 chars for DIR, don't accept floor
-            if (String.Compare(this.view.Argument, "dirt", true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "floor", true, CultureInfo.CurrentCulture) != 0)
+            string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
+            if (String.Compare(stringShortenedArgument, "dir", true, CultureInfo.CurrentCulture) != 0)
             {
                 stringBuilderMessage.Append("You can't dig the ");
                 stringBuilderMessage.Append(this.view.Argument);

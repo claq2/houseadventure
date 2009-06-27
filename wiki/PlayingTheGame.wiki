@@ -1,9 +1,51 @@
 #summary Features of the Game
 
-= Introduction =
+=Introduction=
 
 These are the commands and features of the game.
 
-= Details =
+=Details=
 
-Objects, adversaries, actions, movement, impostor, etc.
+==Goal==
+The goal is to get 20 particular objects out of the house.
+
+==Commands==
+brush
+dig
+drop
+get
+light (also "light on" and "light off")
+save (saves your game)
+load (loads your saved game)
+look
+open
+play
+quit
+read
+say
+spray
+stab
+wave
+
+All commands can be abbreviated to 3 characters (e.g. bru = brush)
+
+==Movement Commands==
+east
+north
+south
+west
+up
+down
+
+All movement commands can be abbreviated to 1 character (e.g. n = north)
+
+==Objects==
+That's for you to figure out, but all objects can be abbreviated to 3 characters (e.g. get bat = get batteries)
+
+==Adversaries==
+Some rooms have monsters and other adversaries.  They won't hurt you, but they won't let you pick up items in the room.  Each adversary can be made to leave the room for a while in one way.
+
+==Dying==
+There is one object in the house that is a duplicate of another item.  Attempting to pick up this item will cause you to die and the game will end.
+
+Moving too many times in the dark will also cause you die.

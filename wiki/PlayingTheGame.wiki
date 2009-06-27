@@ -10,7 +10,7 @@ These are the commands and features of the game.
 The goal is to get 20 particular objects out of the house.
 
 ==Commands==
-  * brush
+* brush
 dig
 drop
 get

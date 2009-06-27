@@ -107,10 +107,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
                     {
-                    "Name" = "8:.NET Framework 3.5 SP1"
-                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
+                    "Name" = "8:.NET Framework 2.0 (x86)"
+                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
                     {
@@ -172,7 +172,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HouseCore, Version=1.0.3464.35837, Culture=neutral, PublicKeyToken=c87e648f295c94ec, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:HouseCore, Version=1.0.3464.37466, Culture=neutral, PublicKeyToken=c87e648f295c94ec, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_DFBA879B6C7657A74B4C23B9CE2FF375"

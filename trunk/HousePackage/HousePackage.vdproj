@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_4FCF6E11D898DCF58D6D8FA82889CF2B"
+        "OwnerKey" = "8:_7B6FBB4ED1ED47958449F26C7CF9B110"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7B6FBB4ED1ED47958449F26C7CF9B110"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,12 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DFBA879B6C7657A74B4C23B9CE2FF375"
-        "OwnerKey" = "8:_7B6FBB4ED1ED47958449F26C7CF9B110"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7B6FBB4ED1ED47958449F26C7CF9B110"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DFBA879B6C7657A74B4C23B9CE2FF375"
+        "OwnerKey" = "8:_4FCF6E11D898DCF58D6D8FA82889CF2B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -140,7 +140,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:3.5.30729"
+                "Version" = "8:2.0.50727"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -148,34 +148,14 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A08946F815684F2D9503BAFE1A4F329B"
-            {
-            "SourcePath" = "8:..\\HouseFunctions\\HouseAdventure.ico"
-            "TargetName" = "8:HouseAdventure.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_EEF4518F12E44C399A956CE492C0ADF2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFBA879B6C7657A74B4C23B9CE2FF375"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4FCF6E11D898DCF58D6D8FA82889CF2B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HouseCore, Version=1.0.3464.37466, Culture=neutral, PublicKeyToken=c87e648f295c94ec, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:HouseCore, Version=1.0.3466.28436, Culture=neutral, PublicKeyToken=c87e648f295c94ec, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DFBA879B6C7657A74B4C23B9CE2FF375"
+                    "_4FCF6E11D898DCF58D6D8FA82889CF2B"
                     {
                     "Name" = "8:HouseCore.dll"
                     "Attributes" = "3:512"
@@ -197,6 +177,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A08946F815684F2D9503BAFE1A4F329B"
+            {
+            "SourcePath" = "8:..\\HouseFunctions\\HouseAdventure.ico"
+            "TargetName" = "8:HouseAdventure.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_EEF4518F12E44C399A956CE492C0ADF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -256,7 +256,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:House Adventure"
         "ProductCode" = "8:{BAB17239-D19A-427B-A542-11CC73023C37}"
-        "PackageCode" = "8:{7E854199-E86F-48F5-BB2A-5671E4E12ABF}"
+        "PackageCode" = "8:{4B345065-D045-43A1-926D-35797059A825}"
         "UpgradeCode" = "8:{0041DD01-14FE-448B-8109-BA079466943C}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"

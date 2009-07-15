@@ -47,7 +47,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
-        public UnfinishedFlooredRoom(string name, LocationType location, ReadOnlyExitSet exits)
+        public UnfinishedFlooredRoom(string name, LocationType location, ReadOnlyExitSetCollection exits)
             : base(name, location, exits) { }
     }
 }

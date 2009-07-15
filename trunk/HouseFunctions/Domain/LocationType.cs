@@ -1,7 +1,12 @@
-using System;
+//-----------------------------------------------------------------------
+// <copyright file="LocationType.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace HouseCore
 {
+    using System;
     using System.Xml.Serialization;
 
     /// <summary>
@@ -29,13 +34,13 @@ namespace HouseCore
         /// <summary>
         /// 
         /// </summary>
-        public Floor Floor { get; private set; }
+        public Floor Floor { get; set; }
 
         /// <summary>
         /// Gets or sets the room number.
         /// </summary>
         /// <value>The room number.</value>
-        public int RoomNumber { get; private set; }
+        public int RoomNumber { get; set; }
    
         #region IEquatable<LocationType> Members
 
@@ -71,14 +76,15 @@ namespace HouseCore
         /// </returns>
         public override bool Equals(Object obj)
         {
-            LocationType location = obj as LocationType;
+            //TODO: Ignore FxCop warning about multiple castings.
+            //Comparing a locationtype value to null will execute the overridden ==, which will LocationType.Equals(null), which will throw null exception.
             if (obj == null)
                 return base.Equals(obj);
 
-            if (location == null)
+            if (!(obj is LocationType))
                 return false;
             else
-                return Equals(location);
+                return Equals(obj as LocationType);
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace HouseCore
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> [magic].</param>
         /// <param name="word">The word.</param>
-        public TelephoneBooth(string name, LocationType location, ReadOnlyExitSet exits, bool magic, MagicWord word)
+        public TelephoneBooth(string name, LocationType location, ReadOnlyExitSetCollection exits, bool magic, MagicWord word)
             : base(name, location, exits, magic, word)
         {
         }
@@ -73,7 +73,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
-        public TelephoneBooth(string name, LocationType location, ReadOnlyExitSet exits)
+        public TelephoneBooth(string name, LocationType location, ReadOnlyExitSetCollection exits)
             : base(name, location, exits) { }
 
     }

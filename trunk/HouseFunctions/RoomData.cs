@@ -1,54 +1,61 @@
-using System;
+//-----------------------------------------------------------------------
+// <copyright file="RoomData.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace HouseCore
 {
+    using System;
+
     /// <summary>
     /// All data relating to rooms
     /// </summary>
     public static class RoomData
     {
-        private static ReadOnlyExitSet exitsBasementCoalBin = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) }); 
-        private static ReadOnlyExitSet exitsBasementDirtFlooredRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.West, 7), new RoomExit(Direction.South, 1) });
-        private static ReadOnlyExitSet exitsBasementElevator = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8) });
-        private static ReadOnlyExitSet exitsBasementFreezer = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 0), new RoomExit(Direction.West, 6) });
-        private static ReadOnlyExitSet exitsBasementFurnaceRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 4), new RoomExit(Direction.South, 9) });
-        private static ReadOnlyExitSet exitsBasementLaboratory = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.East, 2) });
-        private static ReadOnlyExitSet exitsBasementPumpRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 3) });
-        private static ReadOnlyExitSet exitsBasementTelephoneBooth = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 5) });
-        private static ReadOnlyExitSet exitsBasementTortureChamber = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.South, 6) });
-        private static ReadOnlyExitSet exitsBasementWorkshop = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 4) });
-        private static ReadOnlyExitSet exitsFirstFloorBedroom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 5), new RoomExit(Direction.South, 7) });
-        private static ReadOnlyExitSet exitsFirstFloorCoatCloset = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.West, 9) });
-        private static ReadOnlyExitSet exitsFirstFloorDiningRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 7), new RoomExit(Direction.East, 9) });
-        private static ReadOnlyExitSet exitsFirstFloorElevator = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4) });
-        private static ReadOnlyExitSet exitsFirstFloorFamilyRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 4) });
-        private static ReadOnlyExitSet exitsFirstFloorFoyer = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 3) });
-        private static ReadOnlyExitSet exitsFirstFloorFrontPorch = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 1) });
-        private static ReadOnlyExitSet exitsFirstFloorKitchen = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.South, 9) });
-        private static ReadOnlyExitSet exitsFirstFloorPantry = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.West, 2), new RoomExit(Direction.South, 6) });
-        private static ReadOnlyExitSet exitsFirstFloorTelephoneBooth = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.South, 5) });
-        private static ReadOnlyExitSet exitsMonsterHangout = new ReadOnlyExitSet(new RoomExit[0]);
-        private static ReadOnlyExitSet exitsInventory = new ReadOnlyExitSet(new RoomExit[0]);
-        private static ReadOnlyExitSet exitsSecondFloorBathroom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 6) });
-        private static ReadOnlyExitSet exitsSecondFloorCloset = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.South, 3) });
-        private static ReadOnlyExitSet exitsSecondFloorDen = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.West, 8) });
-        private static ReadOnlyExitSet exitsSecondFloorElevator = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.West, 0), new RoomExit(Direction.South, 2) });
-        private static ReadOnlyExitSet exitsSecondFloorGuestroom1 = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.East, 4), new RoomExit(Direction.West, 5) });
-        private static ReadOnlyExitSet exitsSecondFloorGuestroom2 = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4) });
-        private static ReadOnlyExitSet exitsSecondFloorMasterBedroom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 4) });
-        private static ReadOnlyExitSet exitsSecondFloorSewingRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 9), new RoomExit(Direction.South, 1) });
-        private static ReadOnlyExitSet exitsSecondFloorSittingRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.South, 7) });
-        private static ReadOnlyExitSet exitsSecondFloorTelephoneBooth = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 7) });
-        private static ReadOnlyExitSet exitsThirdFloorArtHall = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.West, 6) });
-        private static ReadOnlyExitSet exitsThirdFloorBarroom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 8) });
-        private static ReadOnlyExitSet exitsThirdFloorBedroom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 7) });
-        private static ReadOnlyExitSet exitsThirdFloorComputerRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.South, 5) });
-        private static ReadOnlyExitSet exitsThirdFloorElevator = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.South, 0) });
-        private static ReadOnlyExitSet exitsThirdFloorGameRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 7) });
-        private static ReadOnlyExitSet exitsThirdFloorLibrary = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.West, 9), new RoomExit(Direction.South, 2) });
-        private static ReadOnlyExitSet exitsThirdFloorLivingRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.East, 2) });
-        private static ReadOnlyExitSet exitsThirdFloorTelephoneBooth = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.South, 4) });
-        private static ReadOnlyExitSet exitsThirdFloorTrophyRoom = new ReadOnlyExitSet(new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.West, 0) });
+        //TODO:  Split this class into a few classes
+        private static ReadOnlyExitSetCollection exitsBasementCoalBin = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) }); 
+        private static ReadOnlyExitSetCollection exitsBasementDirtFlooredRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.West, 7), new RoomExit(Direction.South, 1) });
+        private static ReadOnlyExitSetCollection exitsBasementElevator = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8) });
+        private static ReadOnlyExitSetCollection exitsBasementFreezer = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 0), new RoomExit(Direction.West, 6) });
+        private static ReadOnlyExitSetCollection exitsBasementFurnaceRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 4), new RoomExit(Direction.South, 9) });
+        private static ReadOnlyExitSetCollection exitsBasementLaboratory = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.East, 2) });
+        private static ReadOnlyExitSetCollection exitsBasementPumpRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 3) });
+        private static ReadOnlyExitSetCollection exitsBasementTelephoneBooth = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 5) });
+        private static ReadOnlyExitSetCollection exitsBasementTortureChamber = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.South, 6) });
+        private static ReadOnlyExitSetCollection exitsBasementWorkshop = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 4) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorBedroom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 5), new RoomExit(Direction.South, 7) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorCoatCloset = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.West, 9) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorDiningRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 7), new RoomExit(Direction.East, 9) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorElevator = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorFamilyRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 4) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorFoyer = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 3) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorFrontPorch = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 1) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorKitchen = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.South, 9) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorPantry = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.West, 2), new RoomExit(Direction.South, 6) });
+        private static ReadOnlyExitSetCollection exitsFirstFloorTelephoneBooth = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.South, 5) });
+        private static ReadOnlyExitSetCollection exitsMonsterHangout = new ReadOnlyExitSetCollection(new RoomExit[0]);
+        private static ReadOnlyExitSetCollection exitsInventory = new ReadOnlyExitSetCollection(new RoomExit[0]);
+        private static ReadOnlyExitSetCollection exitsSecondFloorBathroom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 6) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorCloset = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.South, 3) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorDen = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.West, 8) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorElevator = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.West, 0), new RoomExit(Direction.South, 2) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorGuestroom1 = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.East, 4), new RoomExit(Direction.West, 5) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorGuestroom2 = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorMasterBedroom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 4) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorSewingRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 9), new RoomExit(Direction.South, 1) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorSittingRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.South, 7) });
+        private static ReadOnlyExitSetCollection exitsSecondFloorTelephoneBooth = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 7) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorArtHall = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.West, 6) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorBarroom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 8) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorBedroom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 7) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorComputerRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.South, 5) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorElevator = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.South, 0) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorGameRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 7) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorLibrary = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.West, 9), new RoomExit(Direction.South, 2) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorLivingRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.East, 2) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorTelephoneBooth = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.South, 4) });
+        private static ReadOnlyExitSetCollection exitsThirdFloorTrophyRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.West, 0) });
         private readonly static LocationType locationBasementCoalBin = new LocationType(4, Floor.Basement);
         private readonly static LocationType locationBasementDirtFlooredRoom = new LocationType(0, Floor.Basement);
         private readonly static LocationType locationBasementElevator = new LocationType(9, Floor.Basement);
@@ -134,7 +141,7 @@ namespace HouseCore
         /// Gets the exits for the basement coal bin.
         /// </summary>
         /// <value>The exits for the basement coal bin.</value>
-        public static ReadOnlyExitSet ExitsBasementCoalBin
+        public static ReadOnlyExitSetCollection ExitsBasementCoalBin
         {
             get { return RoomData.exitsBasementCoalBin; }
         }
@@ -143,7 +150,7 @@ namespace HouseCore
         /// Gets the exits for the basement dirt floored room.
         /// </summary>
         /// <value>The exits for the basement dirt floored room.</value>
-        public static ReadOnlyExitSet ExitsBasementDirtFlooredRoom
+        public static ReadOnlyExitSetCollection ExitsBasementDirtFlooredRoom
         {
             get { return RoomData.exitsBasementDirtFlooredRoom; }
         }
@@ -152,7 +159,7 @@ namespace HouseCore
         /// Gets the exits for the basement elevator.
         /// </summary>
         /// <value>The exits for the basement elevator.</value>
-        public static ReadOnlyExitSet ExitsBasementElevator
+        public static ReadOnlyExitSetCollection ExitsBasementElevator
         {
             get { return RoomData.exitsBasementElevator; }
         }
@@ -161,7 +168,7 @@ namespace HouseCore
         /// Gets the exits for the basement freezer.
         /// </summary>
         /// <value>The exits for the basement freezer.</value>
-        public static ReadOnlyExitSet ExitsBasementFreezer
+        public static ReadOnlyExitSetCollection ExitsBasementFreezer
         {
             get { return RoomData.exitsBasementFreezer; }
         }
@@ -170,7 +177,7 @@ namespace HouseCore
         /// Gets the exits for the basement furnace room.
         /// </summary>
         /// <value>The exits for the basement furnace room.</value>
-        public static ReadOnlyExitSet ExitsBasementFurnaceRoom
+        public static ReadOnlyExitSetCollection ExitsBasementFurnaceRoom
         {
             get { return RoomData.exitsBasementFurnaceRoom; }
         }
@@ -179,7 +186,7 @@ namespace HouseCore
         /// Gets the exits for the basement laboratory.
         /// </summary>
         /// <value>The exits for the basement laboratory.</value>
-        public static ReadOnlyExitSet ExitsBasementLaboratory
+        public static ReadOnlyExitSetCollection ExitsBasementLaboratory
         {
             get { return RoomData.exitsBasementLaboratory; }
         }
@@ -188,7 +195,7 @@ namespace HouseCore
         /// Gets the exits for the basement pump room.
         /// </summary>
         /// <value>The exits for the basement pump room.</value>
-        public static ReadOnlyExitSet ExitsBasementPumpRoom
+        public static ReadOnlyExitSetCollection ExitsBasementPumpRoom
         {
             get { return RoomData.exitsBasementPumpRoom; }
         }
@@ -197,7 +204,7 @@ namespace HouseCore
         /// Gets the exits for the basement telephone booth.
         /// </summary>
         /// <value>The exits for the basement telephone booth.</value>
-        public static ReadOnlyExitSet ExitsBasementTelephoneBooth
+        public static ReadOnlyExitSetCollection ExitsBasementTelephoneBooth
         {
             get { return RoomData.exitsBasementTelephoneBooth; }
         }
@@ -206,7 +213,7 @@ namespace HouseCore
         /// Gets the exits for the basement torture chamber.
         /// </summary>
         /// <value>The exits for the basement torture chamber.</value>
-        public static ReadOnlyExitSet ExitsBasementTortureChamber
+        public static ReadOnlyExitSetCollection ExitsBasementTortureChamber
         {
             get { return RoomData.exitsBasementTortureChamber; }
         }
@@ -215,7 +222,7 @@ namespace HouseCore
         /// Gets the exits for the basement workshop.
         /// </summary>
         /// <value>The exits for the basement workshop.</value>
-        public static ReadOnlyExitSet ExitsBasementWorkshop
+        public static ReadOnlyExitSetCollection ExitsBasementWorkshop
         {
             get { return RoomData.exitsBasementWorkshop; }
         }
@@ -224,7 +231,7 @@ namespace HouseCore
         /// Gets the exits for the first floor bedroom.
         /// </summary>
         /// <value>The exits for the first floor bedroom.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorBedroom
+        public static ReadOnlyExitSetCollection ExitsFirstFloorBedroom
         {
             get { return RoomData.exitsFirstFloorBedroom; }
         }
@@ -233,7 +240,7 @@ namespace HouseCore
         /// Gets the exits for the first floor coat closet.
         /// </summary>
         /// <value>The exits for the first floor coat closet.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorCoatCloset
+        public static ReadOnlyExitSetCollection ExitsFirstFloorCoatCloset
         {
             get { return RoomData.exitsFirstFloorCoatCloset; }
         }
@@ -242,7 +249,7 @@ namespace HouseCore
         /// Gets the exits for the first floor dining room.
         /// </summary>
         /// <value>The exits for the first floor dining room.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorDiningRoom
+        public static ReadOnlyExitSetCollection ExitsFirstFloorDiningRoom
         {
             get { return RoomData.exitsFirstFloorDiningRoom; }
         }
@@ -251,7 +258,7 @@ namespace HouseCore
         /// Gets the exits for the first floor elevator.
         /// </summary>
         /// <value>The exits for the first floor elevator.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorElevator
+        public static ReadOnlyExitSetCollection ExitsFirstFloorElevator
         {
             get { return RoomData.exitsFirstFloorElevator; }
         }
@@ -260,7 +267,7 @@ namespace HouseCore
         /// Gets the exits for the first floor family room.
         /// </summary>
         /// <value>The exits for the first floor family room.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorFamilyRoom
+        public static ReadOnlyExitSetCollection ExitsFirstFloorFamilyRoom
         {
             get { return RoomData.exitsFirstFloorFamilyRoom; }
         }
@@ -269,7 +276,7 @@ namespace HouseCore
         /// Gets the exits for the first floor foyer.
         /// </summary>
         /// <value>The exits for the first floor foyer.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorFoyer
+        public static ReadOnlyExitSetCollection ExitsFirstFloorFoyer
         {
             get { return RoomData.exitsFirstFloorFoyer; }
         }
@@ -278,7 +285,7 @@ namespace HouseCore
         /// Gets the exits for the first floor front porch.
         /// </summary>
         /// <value>The exits for the first floor front porch.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorFrontPorch
+        public static ReadOnlyExitSetCollection ExitsFirstFloorFrontPorch
         {
             get { return RoomData.exitsFirstFloorFrontPorch; }
         }
@@ -287,7 +294,7 @@ namespace HouseCore
         /// Gets the exits for the first floor kitchen.
         /// </summary>
         /// <value>The exits for the first floor kitchen.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorKitchen
+        public static ReadOnlyExitSetCollection ExitsFirstFloorKitchen
         {
             get { return RoomData.exitsFirstFloorKitchen; }
         }
@@ -296,7 +303,7 @@ namespace HouseCore
         /// Gets the exits for the first floor pantry.
         /// </summary>
         /// <value>The exits for the first floor pantry.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorPantry
+        public static ReadOnlyExitSetCollection ExitsFirstFloorPantry
         {
             get { return RoomData.exitsFirstFloorPantry; }
         }
@@ -305,7 +312,7 @@ namespace HouseCore
         /// Gets the exits for the first floor telephone booth.
         /// </summary>
         /// <value>The exits for the first floor telephone booth.</value>
-        public static ReadOnlyExitSet ExitsFirstFloorTelephoneBooth
+        public static ReadOnlyExitSetCollection ExitsFirstFloorTelephoneBooth
         {
             get { return RoomData.exitsFirstFloorTelephoneBooth; }
         }
@@ -314,7 +321,7 @@ namespace HouseCore
         /// Gets the exits of the monster hangout.
         /// </summary>
         /// <value>The exits of the monster hangout.</value>
-        public static ReadOnlyExitSet ExitsMonsterHangout
+        public static ReadOnlyExitSetCollection ExitsMonsterHangout
         {
             get { return RoomData.exitsMonsterHangout; }
         }
@@ -323,7 +330,7 @@ namespace HouseCore
         /// Gets the exits of the inventory room.
         /// </summary>
         /// <value>The exits of the inventory room.</value>
-        public static ReadOnlyExitSet ExitsInventory
+        public static ReadOnlyExitSetCollection ExitsInventory
         {
             get { return RoomData.exitsInventory; }
         }
@@ -332,7 +339,7 @@ namespace HouseCore
         /// Gets the exits for the second floor bathroom.
         /// </summary>
         /// <value>The exits for the second floor bathroom.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorBathroom
+        public static ReadOnlyExitSetCollection ExitsSecondFloorBathroom
         {
             get { return RoomData.exitsSecondFloorBathroom; }
         }
@@ -341,7 +348,7 @@ namespace HouseCore
         /// Gets the exits for the second floor closet.
         /// </summary>
         /// <value>The exits for the second floor closet.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorCloset
+        public static ReadOnlyExitSetCollection ExitsSecondFloorCloset
         {
             get { return RoomData.exitsSecondFloorCloset; }
         }
@@ -350,7 +357,7 @@ namespace HouseCore
         /// Gets the exits for the second floor den.
         /// </summary>
         /// <value>The exits for the second floor den.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorDen
+        public static ReadOnlyExitSetCollection ExitsSecondFloorDen
         {
             get { return RoomData.exitsSecondFloorDen; }
         }
@@ -359,7 +366,7 @@ namespace HouseCore
         /// Gets the exits for the second floor elevator.
         /// </summary>
         /// <value>The exits for the second floor elevator.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorElevator
+        public static ReadOnlyExitSetCollection ExitsSecondFloorElevator
         {
             get { return RoomData.exitsSecondFloorElevator; }
         }
@@ -368,7 +375,7 @@ namespace HouseCore
         /// Gets the exits for the second floor guest room1.
         /// </summary>
         /// <value>The exits for the second floor guest room1.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorGuestroom1
+        public static ReadOnlyExitSetCollection ExitsSecondFloorGuestroom1
         {
             get { return RoomData.exitsSecondFloorGuestroom1; }
         }
@@ -377,7 +384,7 @@ namespace HouseCore
         /// Gets the exits for the second floor guest room2.
         /// </summary>
         /// <value>The exits for the second floor guest room2.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorGuestroom2
+        public static ReadOnlyExitSetCollection ExitsSecondFloorGuestroom2
         {
             get { return RoomData.exitsSecondFloorGuestroom2; }
         }
@@ -386,7 +393,7 @@ namespace HouseCore
         /// Gets the exits for the second floor master bedroom.
         /// </summary>
         /// <value>The exits for the second floor master bedroom.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorMasterBedroom
+        public static ReadOnlyExitSetCollection ExitsSecondFloorMasterBedroom
         {
             get { return RoomData.exitsSecondFloorMasterBedroom; }
         }
@@ -395,7 +402,7 @@ namespace HouseCore
         /// Gets the exits for the second floor sewing room.
         /// </summary>
         /// <value>The exits for the second floor sewing room.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorSewingRoom
+        public static ReadOnlyExitSetCollection ExitsSecondFloorSewingRoom
         {
             get { return RoomData.exitsSecondFloorSewingRoom; }
         }
@@ -404,7 +411,7 @@ namespace HouseCore
         /// Gets the exits for the second floor sitting room.
         /// </summary>
         /// <value>The exits for the second floor sitting room.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorSittingRoom
+        public static ReadOnlyExitSetCollection ExitsSecondFloorSittingRoom
         {
             get { return RoomData.exitsSecondFloorSittingRoom; }
         }
@@ -413,7 +420,7 @@ namespace HouseCore
         /// Gets the exits for the second floor telephone booth.
         /// </summary>
         /// <value>The exits for the second floor telephone booth.</value>
-        public static ReadOnlyExitSet ExitsSecondFloorTelephoneBooth
+        public static ReadOnlyExitSetCollection ExitsSecondFloorTelephoneBooth
         {
             get { return RoomData.exitsSecondFloorTelephoneBooth; }
         }
@@ -422,7 +429,7 @@ namespace HouseCore
         /// Gets the exits for the third floor art hall.
         /// </summary>
         /// <value>The exits for the third floor art hall.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorArtHall
+        public static ReadOnlyExitSetCollection ExitsThirdFloorArtHall
         {
             get { return RoomData.exitsThirdFloorArtHall; }
         }
@@ -431,7 +438,7 @@ namespace HouseCore
         /// Gets the exits for the third floor bar room.
         /// </summary>
         /// <value>The exits for the third floor bar room.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorBarroom
+        public static ReadOnlyExitSetCollection ExitsThirdFloorBarroom
         {
             get { return RoomData.exitsThirdFloorBarroom; }
         }
@@ -440,7 +447,7 @@ namespace HouseCore
         /// Gets the exits for the third floor bedroom.
         /// </summary>
         /// <value>The exits for the third floor bedroom.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorBedroom
+        public static ReadOnlyExitSetCollection ExitsThirdFloorBedroom
         {
             get { return RoomData.exitsThirdFloorBedroom; }
         }
@@ -449,7 +456,7 @@ namespace HouseCore
         /// Gets the exits for the third floor computer room.
         /// </summary>
         /// <value>The exits for the third floor computer room.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorComputerRoom
+        public static ReadOnlyExitSetCollection ExitsThirdFloorComputerRoom
         {
             get { return RoomData.exitsThirdFloorComputerRoom; }
         }
@@ -458,7 +465,7 @@ namespace HouseCore
         /// Gets the exits for the third floor elevator.
         /// </summary>
         /// <value>The exits for the third floor elevator.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorElevator
+        public static ReadOnlyExitSetCollection ExitsThirdFloorElevator
         {
             get { return RoomData.exitsThirdFloorElevator; }
         }
@@ -467,7 +474,7 @@ namespace HouseCore
         /// Gets the exits for the third floor game room.
         /// </summary>
         /// <value>The exits for the third floor game room.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorGameRoom
+        public static ReadOnlyExitSetCollection ExitsThirdFloorGameRoom
         {
             get { return RoomData.exitsThirdFloorGameRoom; }
         }
@@ -476,7 +483,7 @@ namespace HouseCore
         /// Gets the exits for the third floor library.
         /// </summary>
         /// <value>The exits for the third floor library.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorLibrary
+        public static ReadOnlyExitSetCollection ExitsThirdFloorLibrary
         {
             get { return RoomData.exitsThirdFloorLibrary; }
         }
@@ -485,7 +492,7 @@ namespace HouseCore
         /// Gets the exits for the third floor living room.
         /// </summary>
         /// <value>The exits for the third floor living room.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorLivingRoom
+        public static ReadOnlyExitSetCollection ExitsThirdFloorLivingRoom
         {
             get { return RoomData.exitsThirdFloorLivingRoom; }
         }
@@ -494,7 +501,7 @@ namespace HouseCore
         /// Gets the exits for the third floor telephone booth.
         /// </summary>
         /// <value>The exits for the third floor telephone booth.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorTelephoneBooth
+        public static ReadOnlyExitSetCollection ExitsThirdFloorTelephoneBooth
         {
             get { return RoomData.exitsThirdFloorTelephoneBooth; }
         }
@@ -503,7 +510,7 @@ namespace HouseCore
         /// Gets the exits for the third floor trophy room.
         /// </summary>
         /// <value>The exits for the third floor trophy room.</value>
-        public static ReadOnlyExitSet ExitsThirdFloorTrophyRoom
+        public static ReadOnlyExitSetCollection ExitsThirdFloorTrophyRoom
         {
             get { return RoomData.exitsThirdFloorTrophyRoom; }
         }

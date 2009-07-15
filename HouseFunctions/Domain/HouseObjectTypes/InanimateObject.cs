@@ -14,7 +14,6 @@ namespace HouseCore
     [XmlInclude(typeof(ProtectiveObject))]
     [XmlInclude(typeof(PainfulObject))]
     [XmlInclude(typeof(OnOffObject))]
-    [XmlInclude(typeof(DiggingObject))]
     [XmlInclude(typeof(MultiplePieceObject))]
     [XmlInclude(typeof(DelicateObject))]
     [XmlInclude(typeof(CushioningObject))]

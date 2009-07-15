@@ -15,17 +15,12 @@ namespace HouseCore
     [XmlInclude(typeof(MonsterHangout))]
     public class Room : PositionedEntity
     {
-        private bool magic;
-
+        //TODO: remove creator overloads if possible
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Room"/> is magic.
         /// </summary>
         /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
-        public bool Magic
-        {
-            get { return magic; }
-            set { magic = value; }
-        }
+        public bool Magic { get; set; }
 
         private MagicWord magicWordForRoom = MagicWord.NA;
 
@@ -39,55 +34,28 @@ namespace HouseCore
             set { magicWordForRoom = value; }
         }
 
-        private AdversaryCollection adversaries;
-
         /// <summary>
         /// Gets or sets the adversaries.
         /// </summary>
         /// <value>The adversaries.</value>
-        public AdversaryCollection Adversaries
-        {
-            get { return adversaries; }
-            //set { adversaries = value; }
-        }
-
-        //private Collection<InanimateObject> inanimateObjects;
-
-        //public Collection<InanimateObject> InanimateObjects
-        //{
-        //    get { return inanimateObjects; }
-        //    set { inanimateObjects = value; }
-        //}
-
-        //private InanimateObjectsCollection items;
-        private InanimateObjectKeyedCollection items;
+        public AdversaryCollection Adversaries { get; set; }
 
         /// <summary>
         /// Gets or sets the items.
         /// </summary>
         /// <value>The items.</value>
-        public InanimateObjectKeyedCollection Items
-        {
-            get {return items;}
-            //set {items = value;}
-        }
-
-        private ExitSetKeyedCollection exits;
+        public InanimateObjectKeyedCollection Items { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public ExitSetKeyedCollection Exits
-        {
-            get { return exits; }
-            //set { exits = value; }
-        }
+        public ExitSetKeyedCollection Exits { get; set; }
 
         private void InitializeCollections()
         {
-            adversaries = new AdversaryCollection();
-            items = new InanimateObjectKeyedCollection();
-            exits = new ExitSetKeyedCollection();
+            Adversaries = new AdversaryCollection();
+            Items = new InanimateObjectKeyedCollection();
+            Exits = new ExitSetKeyedCollection();
         }
 
         /// <summary>
@@ -148,13 +116,13 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
-        public Room(string name, LocationType location, ReadOnlyExitSet exits)
+        public Room(string name, LocationType location, ReadOnlyExitSetCollection exits)
             : base(name, location)
         {
             InitializeCollections();
             foreach (RoomExit exit in exits)
             {
-                this.exits.Add(exit);
+                this.Exits.Add(exit);
             }
         }
 
@@ -174,7 +142,7 @@ namespace HouseCore
             //adversaries = new AdversaryCollection();
             //items = new InanimateObjectsCollection();
             //exits = new ExitSetKeyedCollection();
-            this.magic = magic;
+            this.Magic = magic;
             this.magicWordForRoom = word;
             foreach (RoomExit exit in exits)
             {
@@ -190,14 +158,14 @@ namespace HouseCore
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> [magic].</param>
         /// <param name="word">The word.</param>
-        public Room(string name, LocationType location, ReadOnlyExitSet exits, bool magic, MagicWord word)
+        public Room(string name, LocationType location, ReadOnlyExitSetCollection exits, bool magic, MagicWord word)
             : base(name, location)
         {
             InitializeCollections();
             //adversaries = new AdversaryCollection();
             //items = new InanimateObjectsCollection();
             //exits = new ExitSetKeyedCollection();
-            this.magic = magic;
+            this.Magic = magic;
             this.magicWordForRoom = word;
             InitializeCollections();
             foreach (RoomExit exit in exits)

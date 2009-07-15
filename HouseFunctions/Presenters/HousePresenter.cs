@@ -9,11 +9,11 @@ namespace HouseCore.Presenters
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.IO;
     using System.Text;
     using System.Xml.Serialization;
-    using System.IO;
-    using HouseCore.Interfaces;
     using HouseCore.Exceptions;
+    using HouseCore.Interfaces;
 
     /// <summary>
     /// The functions that can be done in the house
@@ -808,6 +808,7 @@ namespace HouseCore.Presenters
             StringBuilder stringBuilderMessage = new StringBuilder();
             InanimateObject inanimateObjectTarget = null;
             this.view.GameEnded = false;
+            //TODO: replace with keyedcollection
             InanimateObjectsCollection multiplePieceObjectsInInventory = new InanimateObjectsCollection();
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try

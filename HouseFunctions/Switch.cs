@@ -1,9 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+//-----------------------------------------------------------------------
+// <copyright file="Switch.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace HouseCore
 {
+    using System;
+
     /// <summary>
     /// States of on/off objects
     /// </summary>

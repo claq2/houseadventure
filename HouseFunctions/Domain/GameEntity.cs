@@ -1,6 +1,10 @@
+//-----------------------------------------------------------------------
+// <copyright file="GameEntity.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 [assembly: System.CLSCompliant(true)]
 namespace HouseCore
@@ -27,16 +31,6 @@ namespace HouseCore
             get { return name; }
             set { name = value; }
         }
-
-        ///// <summary>
-        ///// Gets or sets the location.
-        ///// </summary>
-        ///// <value>The location.</value>
-        //public LocationType Location
-        //{
-        //    get { return location; }
-        //    set { location = value; }
-        //}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameEntity"/> class.
@@ -104,17 +98,6 @@ namespace HouseCore
                 }
             }
         }
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="GameEntity"/> class.
-        ///// </summary>
-        ///// <param name="name">The name.</param>
-        ///// <param name="roomNumber">The room number.</param>
-        ///// <param name="floor">The floor.</param>
-        //public GameEntity(string name, int roomNumber, Floor floor)
-        //{
-        //    this.Location = new LocationType(roomNumber, floor);
-        //    this.Name = name;
-        //}
 
         /// <summary>
         /// Gets or sets the short name.

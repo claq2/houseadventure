@@ -9,13 +9,14 @@ namespace HouseCore
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Class that maintains the state of the house
     /// </summary>
     public class HouseType
     {
-		#region Fields (6) 
+        #region Fields (6)
 
         /// <summary>
         /// The adversaries in the house
@@ -35,9 +36,9 @@ namespace HouseCore
 #if !(DEBUG)
         private Random random = new Random();
 #endif
-		#endregion Fields 
+        #endregion Fields
 
-		#region Constructors (2) 
+        #region Constructors (2)
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HouseType"/> class.
@@ -60,9 +61,9 @@ namespace HouseCore
         {
         }
 
-		#endregion Constructors 
+        #endregion Constructors
 
-		#region Properties (8) 
+        #region Properties (8)
 
         /// <summary>
         /// Gets the adversaries.
@@ -84,14 +85,16 @@ namespace HouseCore
             get { return this.inanimateObjects; }
         }
 
+        private FloorKeyedCollection floors = new FloorKeyedCollection();
+
         /// <summary>
         /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
         public InanimateObjectKeyedCollection Inventory
         {
-            get 
-            { 
+            get
+            {
                 InanimateObjectKeyedCollection result = new InanimateObjectKeyedCollection();
                 foreach (InanimateObject obj in this.Rooms[RoomData.LocationInventory].Items)
                 {
@@ -152,11 +155,11 @@ namespace HouseCore
         /// <value>The times looked in dark.</value>
         public int TimesLookedInDark { get; set; }
 
-		#endregion Properties 
+        #endregion Properties
 
-		#region Methods (2) 
+        #region Methods (2)
 
-		// Public Methods (2) 
+        // Public Methods (2) 
 
         /// <summary>
         /// 
@@ -211,7 +214,7 @@ namespace HouseCore
 
         }
 
-		#endregion Methods 
+        #endregion Methods
 
         // Public Methods (3)
         ///// <summary>
@@ -331,11 +334,19 @@ namespace HouseCore
         /// </summary>
         private void InitBasementRooms()
         {
+            Room2KeyedCollection room2Collection = new Room2KeyedCollection();
+            room2Collection.RoomFloor = Floor.Basement;
+            this.floors.Add(room2Collection);
             this.rooms.Add(new Room(RoomData.CoalBinName, RoomData.LocationBasementCoalBin, RoomData.ExitsBasementCoalBin));
+            this.floors[Floor.Basement].Add(new Room2(RoomData.CoalBinName, RoomData.LocationBasementCoalBin.RoomNumber, RoomData.ExitsBasementCoalBin));
             this.rooms.Add(new UnfinishedFlooredRoom(RoomData.DirtFlooredRoomName, RoomData.LocationBasementDirtFlooredRoom, RoomData.ExitsBasementDirtFlooredRoom));
+            this.floors[Floor.Basement].Add(new UnfinishedFlooredRoom2(RoomData.DirtFlooredRoomName, RoomData.LocationBasementDirtFlooredRoom.RoomNumber, RoomData.ExitsBasementDirtFlooredRoom));
             this.rooms.Add(new Elevator(RoomData.BasementElevatorName, RoomData.LocationBasementElevator, RoomData.ExitsBasementElevator));
+            this.floors[Floor.Basement].Add(new Elevator2(RoomData.BasementElevatorName, RoomData.LocationBasementElevator.RoomNumber, RoomData.ExitsBasementElevator));
             this.rooms.Add(new Room(RoomData.FreezerName, RoomData.LocationBasementFreezer, RoomData.ExitsBasementFreezer));
+            this.floors[Floor.Basement].Add(new Room2(RoomData.FreezerName, RoomData.LocationBasementFreezer.RoomNumber, RoomData.ExitsBasementFreezer));
             this.rooms.Add(new Room(RoomData.FurnaceRoomName, RoomData.LocationBasementFurnaceRoom, RoomData.ExitsBasementFurnaceRoom));
+            this.floors[Floor.Basement].Add(new Room2(RoomData.FurnaceRoomName, RoomData.LocationBasementFurnaceRoom.RoomNumber, RoomData.ExitsBasementFurnaceRoom));
             this.rooms.Add(new Room(RoomData.LaboratoryName, RoomData.LocationBasementLaboratory, RoomData.ExitsBasementLaboratory));
             this.rooms.Add(new Room(RoomData.PumpRoomName, RoomData.LocationBasementPumpRoom, RoomData.ExitsBasementPumpRoom));
 #if (DEBUG)
@@ -409,7 +420,7 @@ namespace HouseCore
         /// </summary>
         private void InitMonsterHangoutRooms()
         {
-            this.rooms.Add(new MonsterHangout(RoomData.MonsterHangoutName, RoomData.LocationMonsterHangout, RoomData.ExitsMonsterHangout));
+            this.rooms.Add(new Room(RoomData.MonsterHangoutName, RoomData.LocationMonsterHangout, RoomData.ExitsMonsterHangout));
         }
 
         /// <summary>
@@ -434,7 +445,7 @@ namespace HouseCore
             this.rooms[RoomData.LocationInventory].Items.Add(new NullObject());
         }
 
-         // Internal Methods (2) 
+        // Internal Methods (2) 
 
         /// <summary>
         /// Removes the front porch items.
@@ -462,9 +473,10 @@ namespace HouseCore
         /// </summary>
         internal void UpdateMonstersInHangout()
         {
-            MonsterHangout monsterHangout = this.rooms[RoomData.LocationMonsterHangout] as MonsterHangout;
+            Room roomMonsterHangout = this.rooms[RoomData.LocationMonsterHangout];
             List<Adversary> listAdversariesToBringBack = new List<Adversary>();
-            foreach (Adversary adversary in monsterHangout.Adversaries)
+            //TODO: decrement randomly, not every time
+            foreach (Adversary adversary in roomMonsterHangout.Adversaries)
             {
                 if (adversary.MovesUntilUnhidden > 1)
                 {
@@ -479,7 +491,7 @@ namespace HouseCore
 
             foreach (Adversary adversary in listAdversariesToBringBack)
             {
-                monsterHangout.Adversaries.Remove(adversary);
+                roomMonsterHangout.Adversaries.Remove(adversary);
 #if (DEBUG)
                 int intRoom = 2;
                 Floor floor = Floor.FirstFloor;
@@ -516,12 +528,12 @@ namespace HouseCore
             int intCountRooms = value.Count;
             for (int i = 0; i < intCountRooms; i++)
             {
-//                this.rooms.Remove(value.Rooms[i].Location);
+                //                this.rooms.Remove(value.Rooms[i].Location);
                 this.rooms.Add(value[i]);
                 int intCountAdversariesInRoom = value[i].Adversaries.Count;
                 for (int j = 0; j < intCountAdversariesInRoom; j++)
                 {
-//                    this.adversaries.Remove(value.Rooms[i].Adversaries[j].Identity);
+                    //                    this.adversaries.Remove(value.Rooms[i].Adversaries[j].Identity);
                     this.adversaries.Add(value[i].Adversaries[j]);
                 }
 

@@ -60,9 +60,8 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         protected PositionedEntity(string name, LocationType location)
-            : base(name)
+            : this(name, location.RoomNumber, location.Floor)
         {
-            this.Location = location;
         }
     }
 }

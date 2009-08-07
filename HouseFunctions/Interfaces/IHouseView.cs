@@ -11,10 +11,10 @@ namespace HouseCore.Interfaces
     public interface IHouseView
     {
         /// <summary>
-        /// Gets or sets the message.
+        /// Sets the message.
         /// </summary>
-        /// <value>The message.</value>
-        String Message { set;}
+        /// <param name="message">The message.</param>
+        void SetMessage(String message);
 
         /// <summary>
         /// Gets the inventory.
@@ -28,20 +28,22 @@ namespace HouseCore.Interfaces
         /// <value>The inventory items short names.</value>
         IList<string> InventoryShortNames { get; }
 
+        //TODO: Turn this into a method
         /// <summary>
-        /// Gets or sets a value indicating whether the screen should be cleared of information.
+        /// Sets a value indicating whether the screen should be cleared of information.
         /// </summary>
         /// <value><c>true</c> if the screen should be cleared; otherwise, <c>false</c>.</value>
         Boolean ClearScreen { set;}
 
         /// <summary>
-        /// Gets or sets the argument.
+        /// Gets the argument.
         /// </summary>
         /// <value>The argument.</value>
         String Argument { get; }
 
+        //TODO: Turn this into a method
         /// <summary>
-        /// Gets or sets a value indicating whether the game has ended.
+        /// Sets a value indicating whether the game has ended.
         /// </summary>
         /// <value><c>true</c> if the game has ended; otherwise, <c>false</c>.</value>
         Boolean GameEnded { set;}
@@ -70,8 +72,9 @@ namespace HouseCore.Interfaces
         /// <value>The exit directions.</value>
         IList<string> ExitDirections { get; }
 
+        //TODO: Turn this into a method
         /// <summary>
-        /// Gets or sets the name of the room.
+        /// Sets the name of the room.
         /// </summary>
         /// <value>The name of the room.</value>
         String RoomName { set; }

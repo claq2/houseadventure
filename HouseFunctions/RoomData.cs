@@ -99,43 +99,43 @@ namespace HouseCore
         private readonly static LocationType locationThirdFloorTelephoneBooth = new LocationType(8, Floor.ThirdFloor);
         private readonly static LocationType locationThirdFloorTrophyRoom = new LocationType(2, Floor.ThirdFloor);
 
-        private const string m_ArtHallName = "in the art hall";
-        private const string m_BarroomName = "in the barroom";
-        private const string m_BasementElevatorName = "in the basement elevator";
-        private const string m_BathroomName = "in a bathroom";
-        private const string m_BedroomName = "in a bedroom";
-        private const string m_ClosetName = "in a closet";
-        private const string m_CoalBinName = "in a dusty coal bin";
-        private const string m_CoatClosetName = "in a coat closet";
-        private const string m_ComputerRoomName = "in the computer-room";
-        private const string m_DenName = "in the den";
-        private const string m_DiningRoomName = "in the dining room";
-        private const string m_DirtFlooredRoomName = "in a dirt-floored room";
-        private const string m_FamilyRoomName = "in the family room";
-        private const string m_FirstFloorElevatorName = "in the first floor elevator";
-        private const string m_FoyerName = "in the foyer";
-        private const string m_FreezerName = "in a walk-in freezer";
-        private const string m_FrontPorchName = "on the front porch";
-        private const string m_FurnaceRoomName = "in the furnace room";
-        private const string m_GameRoomName = "in the game room";
-        private const string m_GuestroomName = "in a guest room";
-        private const string m_KitchenName = "in the kitchen";
-        private const string m_LaboratoryName = "in the laboratory";
-        private const string m_LibraryName = "in the library";
-        private const string m_LivingRoomName = "in the living room";
-        private const string m_MasterBedroomName = "in the master bedroom";
-        private const string m_MonsterHangoutName = "in the monster hangout";
-        private const string m_PantryName = "in the pantry";
-        private const string m_PumpRoomName = "in the pumproom";
-        private const string m_SecondFloorElevatorName = "in the second floor elevator";
-        private const string m_SewingRoomName = "in the sewing room";
-        private const string m_SittingRoomName = "in a sitting room";
-        private const string m_TelephoneBoothName = "in a telephone booth";
-        private const string m_ThirdFloorElevatorName = "in the third floor elevator";
-        private const string m_TortureChamberName = "in the torture chamber";
-        private const string m_TrophyRoomName = "in the trophy room";
-        private const string m_WorkshopName = "in the workshop";
-        private const string m_InventoryName = "in your inventory";
+        private const string artHallName = "in the art hall";
+        private const string barroomName = "in the barroom";
+        private const string basementElevatorName = "in the basement elevator";
+        private const string bathroomName = "in a bathroom";
+        private const string bedroomName = "in a bedroom";
+        private const string closetName = "in a closet";
+        private const string coalBinName = "in a dusty coal bin";
+        private const string coatClosetName = "in a coat closet";
+        private const string computerRoomName = "in the computer-room";
+        private const string denName = "in the den";
+        private const string diningRoomName = "in the dining room";
+        private const string dirtFlooredRoomName = "in a dirt-floored room";
+        private const string familyRoomName = "in the family room";
+        private const string firstFloorElevatorName = "in the first floor elevator";
+        private const string foyerName = "in the foyer";
+        private const string freezerName = "in a walk-in freezer";
+        private const string frontPorchName = "on the front porch";
+        private const string furnaceRoomName = "in the furnace room";
+        private const string gameRoomName = "in the game room";
+        private const string guestroomName = "in a guest room";
+        private const string kitchenName = "in the kitchen";
+        private const string laboratoryName = "in the laboratory";
+        private const string libraryName = "in the library";
+        private const string livingRoomName = "in the living room";
+        private const string masterBedroomName = "in the master bedroom";
+        private const string monsterHangoutName = "in the monster hangout";
+        private const string pantryName = "in the pantry";
+        private const string pumpRoomName = "in the pumproom";
+        private const string secondFloorElevatorName = "in the second floor elevator";
+        private const string sewingRoomName = "in the sewing room";
+        private const string sittingRoomName = "in a sitting room";
+        private const string telephoneBoothName = "in a telephone booth";
+        private const string thirdFloorElevatorName = "in the third floor elevator";
+        private const string tortureChamberName = "in the torture chamber";
+        private const string trophyRoomName = "in the trophy room";
+        private const string workshopName = "in the workshop";
+        private const string inventoryName = "in your inventory";
 
         /// <summary>
         /// Gets the exits for the basement coal bin.
@@ -521,7 +521,7 @@ namespace HouseCore
         /// <value>The name of the art hall.</value>
         public static string ArtHallName
         {
-            get { return m_ArtHallName; }
+            get { return artHallName; }
         }
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace HouseCore
         /// <value>The name of the bar room.</value>
         public static string BarroomName
         {
-            get { return m_BarroomName; }
+            get { return barroomName; }
         }
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace HouseCore
         /// <value>The name of the basement elevator.</value>
         public static string BasementElevatorName
         {
-            get { return m_BasementElevatorName; }
+            get { return basementElevatorName; }
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace HouseCore
         /// <value>The name of the bathroom.</value>
         public static string BathroomName
         {
-            get { return m_BathroomName; }
+            get { return bathroomName; }
         }
 
         /// <summary>
@@ -557,7 +557,7 @@ namespace HouseCore
         /// <value>The name of the bedroom.</value>
         public static string BedroomName
         {
-            get { return m_BedroomName; }
+            get { return bedroomName; }
         }
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace HouseCore
         /// <value>The name of the closet.</value>
         public static string ClosetName
         {
-            get { return m_ClosetName; }
+            get { return closetName; }
         }
 
         /// <summary>
@@ -575,7 +575,7 @@ namespace HouseCore
         /// <value>The name of the coal bin.</value>
         public static string CoalBinName
         {
-            get { return m_CoalBinName; }
+            get { return coalBinName; }
         }
 
         /// <summary>
@@ -584,7 +584,7 @@ namespace HouseCore
         /// <value>The coat closet name.</value>
         public static string CoatClosetName
         {
-            get { return m_CoatClosetName; }
+            get { return coatClosetName; }
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace HouseCore
         /// <value>The name of the computer room.</value>
         public static string ComputerRoomName
         {
-            get { return m_ComputerRoomName; }
+            get { return computerRoomName; }
         }
 
         /// <summary>
@@ -602,7 +602,7 @@ namespace HouseCore
         /// <value>The name of the den.</value>
         public static string DenName
         {
-            get { return m_DenName; }
+            get { return denName; }
         }
 
         /// <summary>
@@ -611,7 +611,7 @@ namespace HouseCore
         /// <value>The name of the dining room.</value>
         public static string DiningRoomName
         {
-            get { return m_DiningRoomName; }
+            get { return diningRoomName; }
         }
 
         /// <summary>
@@ -620,7 +620,7 @@ namespace HouseCore
         /// <value>The name of the dirt floored room.</value>
         public static string DirtFlooredRoomName
         {
-            get { return m_DirtFlooredRoomName; }
+            get { return dirtFlooredRoomName; }
         }
 
         /// <summary>
@@ -629,7 +629,7 @@ namespace HouseCore
         /// <value>The name of the family room.</value>
         public static string FamilyRoomName
         {
-            get { return m_FamilyRoomName; }
+            get { return familyRoomName; }
         }
 
         /// <summary>
@@ -638,7 +638,7 @@ namespace HouseCore
         /// <value>The first name of the floor elevator.</value>
         public static string FirstFloorElevatorName
         {
-            get { return m_FirstFloorElevatorName; }
+            get { return firstFloorElevatorName; }
         }
 
         /// <summary>
@@ -647,7 +647,7 @@ namespace HouseCore
         /// <value>The name of the foyer.</value>
         public static string FoyerName
         {
-            get { return m_FoyerName; }
+            get { return foyerName; }
         }
 
         /// <summary>
@@ -656,7 +656,7 @@ namespace HouseCore
         /// <value>The name of the freezer.</value>
         public static string FreezerName
         {
-            get { return m_FreezerName; }
+            get { return freezerName; }
         }
 
         /// <summary>
@@ -665,7 +665,7 @@ namespace HouseCore
         /// <value>The name of the front porch.</value>
         public static string FrontPorchName
         {
-            get { return m_FrontPorchName; }
+            get { return frontPorchName; }
         }
 
         /// <summary>
@@ -674,7 +674,7 @@ namespace HouseCore
         /// <value>The name of the furnace room.</value>
         public static string FurnaceRoomName
         {
-            get { return m_FurnaceRoomName; }
+            get { return furnaceRoomName; }
         }
 
         /// <summary>
@@ -683,7 +683,7 @@ namespace HouseCore
         /// <value>The name of the game room.</value>
         public static string GameRoomName
         {
-            get { return m_GameRoomName; }
+            get { return gameRoomName; }
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace HouseCore
         /// <value>The name of the guest room.</value>
         public static string GuestroomName
         {
-            get { return m_GuestroomName; }
+            get { return guestroomName; }
         }
 
         /// <summary>
@@ -701,7 +701,7 @@ namespace HouseCore
         /// <value>The name of the kitchen.</value>
         public static string KitchenName
         {
-            get { return m_KitchenName; }
+            get { return kitchenName; }
         }
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace HouseCore
         /// <value>The name of the laboratory.</value>
         public static string LaboratoryName
         {
-            get { return m_LaboratoryName; }
+            get { return laboratoryName; }
         }
 
         /// <summary>
@@ -719,7 +719,7 @@ namespace HouseCore
         /// <value>The name of the library.</value>
         public static string LibraryName
         {
-            get { return m_LibraryName; }
+            get { return libraryName; }
         }
 
         /// <summary>
@@ -728,7 +728,7 @@ namespace HouseCore
         /// <value>The name of the living room.</value>
         public static string LivingRoomName
         {
-            get { return m_LivingRoomName; }
+            get { return livingRoomName; }
         }
 
         /// <summary>
@@ -1115,7 +1115,7 @@ namespace HouseCore
         /// <value>The name of the master bedroom.</value>
         public static string MasterBedroomName
         {
-            get { return m_MasterBedroomName; }
+            get { return masterBedroomName; }
         }
 
         /// <summary>
@@ -1124,7 +1124,7 @@ namespace HouseCore
         /// <value>The name of the monster hangout.</value>
         public static string MonsterHangoutName
         {
-            get { return m_MonsterHangoutName; }
+            get { return monsterHangoutName; }
         }
 
         /// <summary>
@@ -1133,7 +1133,7 @@ namespace HouseCore
         /// <value>The name of the inventory.</value>
         public static string InventoryName
         {
-            get { return m_InventoryName; }
+            get { return inventoryName; }
         }
 
         /// <summary>
@@ -1142,7 +1142,7 @@ namespace HouseCore
         /// <value>The name of the pantry.</value>
         public static string PantryName
         {
-            get { return m_PantryName; }
+            get { return pantryName; }
         }
 
         /// <summary>
@@ -1151,7 +1151,7 @@ namespace HouseCore
         /// <value>The name of the pump room.</value>
         public static string PumpRoomName
         {
-            get { return m_PumpRoomName; }
+            get { return pumpRoomName; }
         }
 
         /// <summary>
@@ -1160,7 +1160,7 @@ namespace HouseCore
         /// <value>The name of the second floor elevator.</value>
         public static string SecondFloorElevatorName
         {
-            get { return m_SecondFloorElevatorName; }
+            get { return secondFloorElevatorName; }
         }
 
         /// <summary>
@@ -1169,7 +1169,7 @@ namespace HouseCore
         /// <value>The name of the sewing room.</value>
         public static string SewingRoomName
         {
-            get { return m_SewingRoomName; }
+            get { return sewingRoomName; }
         }
 
         /// <summary>
@@ -1178,7 +1178,7 @@ namespace HouseCore
         /// <value>The name of the sitting room.</value>
         public static string SittingRoomName
         {
-            get { return m_SittingRoomName; }
+            get { return sittingRoomName; }
         }
 
         /// <summary>
@@ -1187,7 +1187,7 @@ namespace HouseCore
         /// <value>The name of the telephone booth.</value>
         public static string TelephoneBoothName
         {
-            get { return m_TelephoneBoothName; }
+            get { return telephoneBoothName; }
         }
 
         /// <summary>
@@ -1196,7 +1196,7 @@ namespace HouseCore
         /// <value>The name of the third floor elevator.</value>
         public static string ThirdFloorElevatorName
         {
-            get { return m_ThirdFloorElevatorName; }
+            get { return thirdFloorElevatorName; }
         }
 
         /// <summary>
@@ -1205,7 +1205,7 @@ namespace HouseCore
         /// <value>The name of the torture chamber.</value>
         public static string TortureChamberName
         {
-            get { return m_TortureChamberName; }
+            get { return tortureChamberName; }
         }
 
         /// <summary>
@@ -1214,7 +1214,7 @@ namespace HouseCore
         /// <value>The name of the trophy room.</value>
         public static string TrophyRoomName
         {
-            get { return m_TrophyRoomName; }
+            get { return trophyRoomName; }
         }
 
         /// <summary>
@@ -1223,7 +1223,7 @@ namespace HouseCore
         /// <value>The name of the workshop.</value>
         public static string WorkshopName
         {
-            get { return m_WorkshopName; }
+            get { return workshopName; }
         }
     }
 }

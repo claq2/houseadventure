@@ -31,6 +31,8 @@ namespace UnitTests
 
         private IList<string> itemsInRoomShortNames = new List<string>();
 
+        private string message;
+
         /// <summary>
         /// Gets the items.
         /// </summary>
@@ -42,38 +44,52 @@ namespace UnitTests
 
         private List<string> adversariesInRoom = new List<string>();
 
+        /// <summary>
+        /// Gets the adversaries.
+        /// </summary>
+        /// <value>The adversaries.</value>
         public IList<string> AdversariesInRoom
         {
             get { return this.adversariesInRoom; }
         }
 
+        /// <summary>
+        /// Gets the argument.
+        /// </summary>
+        /// <value>The argument.</value>
         public string Argument { get; set; }
 
-        public bool ClearScreen { get; set; }
+        /// <summary>
+        /// Sets a value indicating whether the screen should be cleared of information.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if the screen should be cleared; otherwise, <c>false</c>.
+        /// </value>
+        public bool ClearScreen { set; get; }
 
         private List<string> exitDirections = new List<string>();
 
+        /// <summary>
+        /// Gets the exit directions.
+        /// </summary>
+        /// <value>The exit directions.</value>
         public IList<string> ExitDirections
         {
             get { return this.exitDirections; }
         }
 
-        public bool GameEnded { get; set; }
-
-        //public HouseType House
-        //{
-        //    get
-        //    {
-        //        return this.house;
-        //    }
-        //    set
-        //    {
-        //        this.house = value;
-        //    }
-        //}
+        /// <summary>
+        /// Gets or sets a value indicating whether the game has ended.
+        /// </summary>
+        /// <value><c>true</c> if the game has ended; otherwise, <c>false</c>.</value>
+        public bool GameEnded { set; get; }
 
         private IList<string> inventory = new List<string>();
 
+        /// <summary>
+        /// Gets the inventory.
+        /// </summary>
+        /// <value>The inventory.</value>
         public IList<string> Inventory
         {
             get
@@ -98,22 +114,38 @@ namespace UnitTests
 
         private IList<string> itemsInRoom = new List<string>();
 
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <value>The items.</value>
         public IList<string> ItemsInRoom
         {
             get { return this.itemsInRoom; }
         }
 
-        public string Message { get; set; }
+        /// <summary>
+        /// Gets the message.
+        /// </summary>
+        /// <value>The message.</value>
+        public string Message
+        {
+            get { return this.message; }
+        }
 
-        //public Player Player
-        //{
-        //    get
-        //    {
-        //        return this.player;
-        //    }
-        //}
+        /// <summary>
+        /// Sets the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void SetMessage(string message)
+        {
+            this.message = message;
+        }
 
-        public string RoomName { get; set; }
+        /// <summary>
+        /// Sets the name of the room.
+        /// </summary>
+        /// <value>The name of the room.</value>
+        public string RoomName { set; get; }
 
         #endregion Data Members
 

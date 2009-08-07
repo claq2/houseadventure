@@ -1,10 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+//-----------------------------------------------------------------------
+// <copyright file="RoomKeyedCollection.cs" company="James McLachlan">
+//     Copyright (c) James McLachlan. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace HouseCore
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Text;
+
     /// <summary>
     /// 
     /// </summary>

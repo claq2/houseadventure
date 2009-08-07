@@ -7,61 +7,61 @@ namespace HouseCore
     /// </summary>
     public static class ObjectData
     {
-        private const string m_BagOfGoldName = "a bag of gold";
-        private const string m_BagOfGoldShortName = "gol";
-        private const string m_BanjoName = "a banjo";
-        private const string m_BanjoShortName = "ban";
-        private const string m_BathtubName = "a brass bathtub";
-        private const string m_BatteriesName = "a set of batteries";
-        private const string m_BatteriesShortName = "bat";
-        private const string m_BedName = "a king sized bed";
-        private const string m_BookName = "a sorcerer's hand book";
-        private const string m_BookShortName = "boo";
-        private const string m_BoxName = "a wooden box";
-        private const string m_BoxShortName = "box";
-        private const string m_BrushName = "a hairbrush";
-        private const string m_BrushShortName = "hai";
-        private const string m_BugSprayName = "a can of bug spray";
-        private const string m_BugSprayShortName = "can";
-        private const string m_CoinsName = "100's of gold coins";
-        private const string m_CoinsShortName = "coi";
-        private const string m_DiamondName = "a small diamond";
-        private const string m_DiamondShortName = "dia";
-        private const string m_DimeName = "an aluminum dime";
-        private const string m_DimeShortName = "dim";
-        private const string m_DryIceName = "a block of dry ice";
-        private const string m_DryIceShortName = "ice";
-        private const string m_FlashlightName = "a flashlight";
-        private const string m_FlashlightShortName = "fla";
-        private const string m_FrontYardName = "the front yard";
-        private const string m_GarlicName = "a clove of garlic";
-        private const string m_GarlicShortName = "gar";
-        private const string m_GloveName = "an old leather glove";
-        private const string m_GloveShortName = "glo";
-        private const string m_KnifeName = "a carving knife";
-        private const string m_KnifeShortName = "kni";
-        private const string m_LockedDoorName = "a locked door";
-        private const string m_LockedDoorShortName = "doo";
-        private const string m_MainframeName = "a unitron 30/50 mainframe";
-        private const string m_MooseHeadName = "a dusty moose head";
-        private const string m_ParchmentName = "a wrinkled parchment";
-        private const string m_ParchmentShortName = "par";
-        private const string m_PillowName = "a silk pillow";
-        private const string m_PillowShortName = "pil";
-        private const string m_RustedKeyName = "a rusted key";
-        private const string m_RustedKeyShortName = "key";
-        private const string m_ShovelName = "a shovel";
-        private const string m_ShovelShortName = "sho";
-        private const string m_StocksName = "a set of stocks";
-        private const string m_VaseName = "a ming vase";
-        private const string m_VaseShortName = "vas";
+        private const string bagOfGoldName = "a bag of gold";
+        private const string bagOfGoldShortName = "gol";
+        private const string banjoName = "a banjo";
+        private const string banjoShortName = "ban";
+        private const string bathtubName = "a brass bathtub";
+        private const string batteriesName = "a set of batteries";
+        private const string batteriesShortName = "bat";
+        private const string bedName = "a king sized bed";
+        private const string bookName = "a sorcerer's hand book";
+        private const string bookShortName = "boo";
+        private const string boxName = "a wooden box";
+        private const string boxShortName = "box";
+        private const string brushName = "a hairbrush";
+        private const string brushShortName = "hai";
+        private const string bugSprayName = "a can of bug spray";
+        private const string bugSprayShortName = "can";
+        private const string coinsName = "100's of gold coins";
+        private const string coinsShortName = "coi";
+        private const string diamondName = "a small diamond";
+        private const string diamondShortName = "dia";
+        private const string dimeName = "an aluminum dime";
+        private const string dimeShortName = "dim";
+        private const string dryIceName = "a block of dry ice";
+        private const string dryIceShortName = "ice";
+        private const string flashlightName = "a flashlight";
+        private const string flashlightShortName = "fla";
+        private const string frontYardName = "the front yard";
+        private const string garlicName = "a clove of garlic";
+        private const string garlicShortName = "gar";
+        private const string gloveName = "an old leather glove";
+        private const string gloveShortName = "glo";
+        private const string knifeName = "a carving knife";
+        private const string knifeShortName = "kni";
+        private const string lockedDoorName = "a locked door";
+        private const string lockedDoorShortName = "doo";
+        private const string mainframeName = "a unitron 30/50 mainframe";
+        private const string mooseHeadName = "a dusty moose head";
+        private const string parchmentName = "a wrinkled parchment";
+        private const string parchmentShortName = "par";
+        private const string pillowName = "a silk pillow";
+        private const string pillowShortName = "pil";
+        private const string rustedKeyName = "a rusted key";
+        private const string rustedKeyShortName = "key";
+        private const string shovelName = "a shovel";
+        private const string shovelShortName = "sho";
+        private const string stocksName = "a set of stocks";
+        private const string vaseName = "a ming vase";
+        private const string vaseShortName = "vas";
         /// <summary>
         /// Gets the name of the bag of gold.
         /// </summary>
         /// <value>The name of the bag of gold.</value>
         public static string BagOfGoldName
         {
-            get { return m_BagOfGoldName; }
+            get { return bagOfGoldName; }
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace HouseCore
         /// <value>The short name of the bag of gold.</value>
         public static string BagOfGoldShortName
         {
-            get { return m_BagOfGoldShortName; }
+            get { return bagOfGoldShortName; }
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace HouseCore
         /// <value>The name of the banjo.</value>
         public static string BanjoName
         {
-            get { return m_BanjoName; }
+            get { return banjoName; }
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace HouseCore
         /// <value>The short name of the banjo.</value>
         public static string BanjoShortName
         {
-            get { return m_BanjoShortName; }
+            get { return banjoShortName; }
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace HouseCore
         /// <value>The name of the bathtub.</value>
         public static string BathtubName
         {
-            get { return m_BathtubName; }
+            get { return bathtubName; }
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace HouseCore
         /// <value>The name of the batteries.</value>
         public static string BatteriesName
         {
-            get { return m_BatteriesName; }
+            get { return batteriesName; }
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace HouseCore
         /// <value>The short name of the batteries.</value>
         public static string BatteriesShortName
         {
-            get { return m_BatteriesShortName; }
+            get { return batteriesShortName; }
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace HouseCore
         /// <value>The name of the bed.</value>
         public static string BedName
         {
-            get { return m_BedName; }
+            get { return bedName; }
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace HouseCore
         /// <value>The name of the book.</value>
         public static string BookName
         {
-            get { return m_BookName; }
+            get { return bookName; }
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace HouseCore
         /// <value>The short name of the book.</value>
         public static string BookShortName
         {
-            get { return m_BookShortName; }
+            get { return bookShortName; }
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace HouseCore
         /// <value>The name of the box.</value>
         public static string BoxName
         {
-            get { return m_BoxName; }
+            get { return boxName; }
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace HouseCore
         /// <value>The short name of the box.</value>
         public static string BoxShortName
         {
-            get { return m_BoxShortName; }
+            get { return boxShortName; }
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace HouseCore
         /// <value>The name of the brush.</value>
         public static string BrushName
         {
-            get { return m_BrushName; }
+            get { return brushName; }
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace HouseCore
         /// <value>The short name of the brush.</value>
         public static string BrushShortName
         {
-            get { return m_BrushShortName; }
+            get { return brushShortName; }
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace HouseCore
         /// <value>The name of the bug spray.</value>
         public static string BugSprayName
         {
-            get { return m_BugSprayName; }
+            get { return bugSprayName; }
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace HouseCore
         /// <value>The short name of the bug spray.</value>
         public static string BugSprayShortName
         {
-            get { return m_BugSprayShortName; }
+            get { return bugSprayShortName; }
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace HouseCore
         /// <value>The name of the coins.</value>
         public static string CoinsName
         {
-            get { return m_CoinsName; }
+            get { return coinsName; }
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace HouseCore
         /// <value>The short name of the coins.</value>
         public static string CoinsShortName
         {
-            get { return m_CoinsShortName; }
+            get { return coinsShortName; }
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace HouseCore
         /// <value>The name of the diamond.</value>
         public static string DiamondName
         {
-            get { return m_DiamondName; }
+            get { return diamondName; }
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace HouseCore
         /// <value>The short name of the diamond.</value>
         public static string DiamondShortName
         {
-            get { return m_DiamondShortName; }
+            get { return diamondShortName; }
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace HouseCore
         /// <value>The name of the dime.</value>
         public static string DimeName
         {
-            get { return m_DimeName; }
+            get { return dimeName; }
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace HouseCore
         /// <value>The short name of the dime.</value>
         public static string DimeShortName
         {
-            get { return m_DimeShortName; }
+            get { return dimeShortName; }
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace HouseCore
         /// <value>The name of the dry ice.</value>
         public static string DryIceName
         {
-            get { return m_DryIceName; }
+            get { return dryIceName; }
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace HouseCore
         /// <value>The short name of the dry ice.</value>
         public static string DryIceShortName
         {
-            get { return m_DryIceShortName; }
+            get { return dryIceShortName; }
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace HouseCore
         /// <value>The name of the flashlight.</value>
         public static string FlashlightName
         {
-            get { return m_FlashlightName; }
+            get { return flashlightName; }
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace HouseCore
         /// <value>The short name of the flashlight.</value>
         public static string FlashlightShortName
         {
-            get { return m_FlashlightShortName; }
+            get { return flashlightShortName; }
         }
 
         /// <summary>
@@ -295,7 +295,7 @@ namespace HouseCore
         /// <value>The name of the front yard.</value>
         public static string FrontYardName
         {
-            get { return m_FrontYardName; }
+            get { return frontYardName; }
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace HouseCore
         /// <value>The name of the garlic.</value>
         public static string GarlicName
         {
-            get { return m_GarlicName; }
+            get { return garlicName; }
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace HouseCore
         /// <value>The short name of the garlic.</value>
         public static string GarlicShortName
         {
-            get { return m_GarlicShortName; }
+            get { return garlicShortName; }
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace HouseCore
         /// <value>The name of the glove.</value>
         public static string GloveName
         {
-            get { return m_GloveName; }
+            get { return gloveName; }
         }
 
         /// <summary>
@@ -331,7 +331,7 @@ namespace HouseCore
         /// <value>The short name of the glove.</value>
         public static string GloveShortName
         {
-            get { return m_GloveShortName; }
+            get { return gloveShortName; }
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace HouseCore
         /// <value>The name of the knife.</value>
         public static string KnifeName
         {
-            get { return m_KnifeName; }
+            get { return knifeName; }
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace HouseCore
         /// <value>The short name of the knife.</value>
         public static string KnifeShortName
         {
-            get { return m_KnifeShortName; }
+            get { return knifeShortName; }
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace HouseCore
         /// <value>The name of the locked door.</value>
         public static string LockedDoorName
         {
-            get { return m_LockedDoorName; }
+            get { return lockedDoorName; }
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace HouseCore
         /// <value>The short name of the locked door.</value>
         public static string LockedDoorShortName
         {
-            get { return m_LockedDoorShortName; }
+            get { return lockedDoorShortName; }
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace HouseCore
         /// <value>The name of the mainframe.</value>
         public static string MainframeName
         {
-            get { return m_MainframeName; }
+            get { return mainframeName; }
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace HouseCore
         /// <value>The name of the moose head.</value>
         public static string MooseHeadName
         {
-            get { return m_MooseHeadName; }
+            get { return mooseHeadName; }
         }
 
         /// <summary>
@@ -394,7 +394,7 @@ namespace HouseCore
         /// <value>The name of the parchment.</value>
         public static string ParchmentName
         {
-            get { return m_ParchmentName; }
+            get { return parchmentName; }
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace HouseCore
         /// <value>The short name of the parchment.</value>
         public static string ParchmentShortName
         {
-            get { return m_ParchmentShortName; }
+            get { return parchmentShortName; }
         }
 
         /// <summary>
@@ -412,7 +412,7 @@ namespace HouseCore
         /// <value>The name of the pillow.</value>
         public static string PillowName
         {
-            get { return m_PillowName; }
+            get { return pillowName; }
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace HouseCore
         /// <value>The short name of the pillow.</value>
         public static string PillowShortName
         {
-            get { return m_PillowShortName; }
+            get { return pillowShortName; }
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace HouseCore
         /// <value>The name of the rusted key.</value>
         public static string RustedKeyName
         {
-            get { return m_RustedKeyName; }
+            get { return rustedKeyName; }
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace HouseCore
         /// <value>The short name of the rusted key.</value>
         public static string RustedKeyShortName
         {
-            get { return m_RustedKeyShortName; }
+            get { return rustedKeyShortName; }
         }
 
         /// <summary>
@@ -448,7 +448,7 @@ namespace HouseCore
         /// <value>The name of the shovel.</value>
         public static string ShovelName
         {
-            get { return m_ShovelName; }
+            get { return shovelName; }
         }
 
         /// <summary>
@@ -457,7 +457,7 @@ namespace HouseCore
         /// <value>The short name of the shovel.</value>
         public static string ShovelShortName
         {
-            get { return m_ShovelShortName; }
+            get { return shovelShortName; }
         }
 
         /// <summary>
@@ -466,7 +466,7 @@ namespace HouseCore
         /// <value>The name of the stocks.</value>
         public static string StocksName
         {
-            get { return m_StocksName; }
+            get { return stocksName; }
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace HouseCore
         /// <value>The name of the vase.</value>
         public static string VaseName
         {
-            get { return m_VaseName; }
+            get { return vaseName; }
         }
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace HouseCore
         /// <value>The short name of the vase.</value>
         public static string VaseShortName
         {
-            get { return m_VaseShortName; }
+            get { return vaseShortName; }
         }
     }
 }

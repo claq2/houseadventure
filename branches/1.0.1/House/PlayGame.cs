@@ -29,6 +29,8 @@ namespace House
         /// </summary>
         private HousePresenter housePresenter;
 
+        private string message;
+
         /// <summary>
         /// The adversaries in the room
         /// </summary>
@@ -170,10 +172,13 @@ namespace House
         }
 
         /// <summary>
-        /// Gets or sets the message.
+        /// Sets the message.
         /// </summary>
-        /// <value>The message.</value>
-        public string Message { private get; set; }
+        /// <param name="message">The message.</param>
+        public void SetMessage(String message)
+        {
+            this.message = message;
+        }
 
         /// <summary>
         /// Gets or sets the name of the room.
@@ -226,7 +231,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "bru", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -237,7 +242,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "spr", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -248,7 +253,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "say", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -259,7 +264,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "ope", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -270,7 +275,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "unl", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -281,7 +286,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "pla", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -292,7 +297,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "wav", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -303,7 +308,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "dig", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -314,7 +319,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "rea", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -325,7 +330,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "loo", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -345,7 +350,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "loa", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -355,7 +360,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "lig", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -374,7 +379,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "on", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -385,7 +390,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "off", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -396,7 +401,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "get", true, CultureInfo.CurrentCulture) == 0 || String.Compare(stringShortenedCommand, "tak", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -407,7 +412,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "sta", true, CultureInfo.CurrentCulture) == 0 || String.Compare(stringShortenedCommand, "kil", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -418,7 +423,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "dro", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -429,7 +434,7 @@ namespace House
                             Console.Clear();
                         }
 
-                        Console.WriteLine(this.Message);
+                        Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "inv", true, CultureInfo.CurrentCulture) == 0)
                     {
@@ -541,7 +546,7 @@ namespace House
                 Console.Clear();
 
             if (!successfulMovementOrManualLook)
-                return this.Message;
+                return this.message;
 
             StringBuilder stringBuilderOutput = new StringBuilder();
             stringBuilderOutput.Append("\r\n\r\n");
@@ -549,9 +554,9 @@ namespace House
             stringBuilderOutput.Append(this.RoomName);
             stringBuilderOutput.Append(Environment.NewLine);
             stringBuilderOutput.Append("I see:\r\n");
-            if (!String.IsNullOrEmpty(this.Message.ToString()))
+            if (!String.IsNullOrEmpty(this.message.ToString()))
             {
-                stringBuilderOutput.Append(this.Message);
+                stringBuilderOutput.Append(this.message);
             }
             else
             {

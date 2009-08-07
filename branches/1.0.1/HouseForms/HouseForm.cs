@@ -516,15 +516,12 @@ namespace HouseForms
         #region IHouseView Members
 
         /// <summary>
-        /// Gets or sets the message.
+        /// Sets the message.
         /// </summary>
-        /// <value>The message.</value>
-        public string Message
+        /// <param name="message">The message.</param>
+        public void SetMessage(string message)
         {
-            set
-            {
-                this.labelMessage.Text = value;
-            }
+            this.labelMessage.Text = message;
         }
 
         /// <summary>

@@ -28,6 +28,7 @@ namespace HouseCore
         /// <summary>
         /// A magic word
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Shazaam")]
         Shazaam,
 
         /// <summary>
@@ -38,6 +39,7 @@ namespace HouseCore
         /// <summary>
         /// A magic word
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ugaboom")]
         Ugaboom
     }
 }

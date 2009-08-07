@@ -84,7 +84,7 @@ namespace HouseCore.Presenters
                 serializerSaveData.Serialize(writer, saveData);
             }
 
-            this.view.Message = "Data saved";
+            this.view.SetMessage("Data saved");
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace HouseCore.Presenters
                 this.house.RestoreHouse(saveData.Rooms);
             }
 
-            this.view.Message = "Data loaded";
+            this.view.SetMessage("Data loaded");
         }
 
         /// <summary>
@@ -165,14 +165,14 @@ namespace HouseCore.Presenters
             if (this.Move(direction))
             {
                 this.view.ClearScreen = true;
-                this.view.Message = String.Empty;
+                this.view.SetMessage(String.Empty);
                 this.Look(direction == Direction.Up || direction == Direction.Down);
                 return true;
             }
             else
             {
                 this.view.ClearScreen = false;
-                this.view.Message = TheHouseData.DisallowedDirectionValue;
+                this.view.SetMessage(TheHouseData.DisallowedDirectionValue);
                 return false;
             }
         }
@@ -185,7 +185,7 @@ namespace HouseCore.Presenters
         private bool Move(Direction direction)
         {
             Room roomCurrent = this.house.Rooms[this.player.Location];
-            Elevator elevatorCurrent = roomCurrent as Elevator;
+            Elevator elevatorCurrentRoomAsElevator = roomCurrent as Elevator;
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
             ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
             if (onOffObjectFlashlight.State == Switch.On)
@@ -211,7 +211,7 @@ namespace HouseCore.Presenters
             }
             else if (direction == Direction.Up)
             {
-                if (elevatorCurrent != null && this.player.Location.Floor != Floor.ThirdFloor)
+                if (elevatorCurrentRoomAsElevator != null && this.player.Location.Floor != Floor.ThirdFloor)
                 {
                     this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor + 1);
                     return true;
@@ -223,7 +223,7 @@ namespace HouseCore.Presenters
             }
             else if (direction == Direction.Down)
             {
-                if (elevatorCurrent != null && this.player.Location.Floor != Floor.Basement)
+                if (elevatorCurrentRoomAsElevator != null && this.player.Location.Floor != Floor.Basement)
                 {
                     this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor - 1);
                     return true;
@@ -285,7 +285,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("Purrrrrrr!!!!!!!!  The leopard is very gratified for the grooming and leaves");
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace HouseCore.Presenters
                 }
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -404,7 +404,7 @@ namespace HouseCore.Presenters
                 }
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -443,7 +443,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("<<<<C-L-I-C-K>>>>\r\nOK, it's open now");
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace HouseCore.Presenters
                 }
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -555,7 +555,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("You can't read that");
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -619,7 +619,7 @@ namespace HouseCore.Presenters
                 }
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -675,7 +675,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("Through the spray's mist, you can see the blob disappear down a crevice in the floor");
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -719,7 +719,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("The monk has become frightened and run away");
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -784,7 +784,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(" had no effect");
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -792,7 +792,7 @@ namespace HouseCore.Presenters
         /// </summary>
         public void Quit()
         {
-            this.view.Message = String.Format(CultureInfo.CurrentCulture, "You got {0} items out of the house in {1} moves", this.player.ItemsRemovedFromHouse, this.player.NumberOfMoves);
+            this.view.SetMessage(String.Format(CultureInfo.CurrentCulture, "You got {0} items out of the house in {1} moves", this.player.ItemsRemovedFromHouse, this.player.NumberOfMoves));
             this.view.GameEnded = true;
         }
 
@@ -879,7 +879,7 @@ namespace HouseCore.Presenters
                 }
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -973,7 +973,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(this.view.Argument);
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
 
         /// <summary>
@@ -1072,7 +1072,7 @@ namespace HouseCore.Presenters
                 }
             }
 
-            this.view.Message = stringBuilderMessage.ToString();
+            this.view.SetMessage(stringBuilderMessage.ToString());
         }
     }
 }

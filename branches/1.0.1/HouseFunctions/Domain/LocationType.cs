@@ -74,10 +74,9 @@ namespace HouseCore
         /// <returns>
         /// true if the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>; otherwise, false.
         /// </returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily", Justification="Comparing a locationtype value to null will execute the overridden ==, which will LocationType.Equals(null), which will throw null exception.")]
         public override bool Equals(Object obj)
         {
-            //TODO: Ignore FxCop warning about multiple castings.
-            //Comparing a locationtype value to null will execute the overridden ==, which will LocationType.Equals(null), which will throw null exception.
             if (obj == null)
                 return base.Equals(obj);
 

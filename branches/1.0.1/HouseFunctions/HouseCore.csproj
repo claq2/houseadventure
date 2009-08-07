@@ -58,9 +58,13 @@
   <ItemGroup>
     <Compile Include="AdversaryCollection.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Domain\FloorKeyedCollection.cs" />
+    <Compile Include="Elevator2.cs" />
     <Compile Include="InanimateObjectKeyedCollection.cs" />
     <Compile Include="AdversaryData.cs" />
     <Compile Include="Domain\ObjectData.cs" />
+    <Compile Include="Room2.cs" />
+    <Compile Include="Room2KeyedCollection.cs" />
     <Compile Include="RoomData.cs" />
     <Compile Include="Exceptions\NullViewArgumentException.cs" />
     <Compile Include="ReadOnlyExitSetCollection.cs" />
@@ -92,7 +96,6 @@
     <Compile Include="Domain\SaveData.cs" />
     <Compile Include="Domain\LocationType.cs" />
     <Compile Include="MagicWord.cs" />
-    <Compile Include="Domain\RoomTypes\MonsterHangout.cs" />
     <Compile Include="Domain\PositionedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomKeyedCollection.cs" />
@@ -100,7 +103,9 @@
     <Compile Include="Domain\RoomTypes\Room.cs" />
     <Compile Include="Domain\RoomTypes\TelephoneBooth.cs" />
     <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom.cs" />
+    <Compile Include="TelephoneBooth2.cs" />
     <Compile Include="TheHouseData.cs" />
+    <Compile Include="UnfinishedFlooredRoom2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HouseCore.cd" />

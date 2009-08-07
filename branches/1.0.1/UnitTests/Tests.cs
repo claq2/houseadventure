@@ -3,10 +3,11 @@
 //     Copyright (c) James McLachlan. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
+using System;
 
+[assembly:CLSCompliant(true)]
 namespace UnitTests
 {
-    using System;
     using HouseCore;
     using HouseCore.Presenters;
     using NUnit.Framework;
@@ -814,5 +815,13 @@ namespace UnitTests
         //TODO:  Inventory tests
 
         //TODO: Save and load tests
+        [Test]
+        public void SaveAndLoadTests()
+        {
+            this.housePresenter.Save();
+            this.housePresenter.Load();
+        }
+
+        //TODO: TheHouseData strings tests
     }
 }

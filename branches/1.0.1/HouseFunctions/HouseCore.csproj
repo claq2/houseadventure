@@ -1,0 +1,149 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{300F02C3-4989-4F9A-ACBB-EC07EF031228}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HouseCore</RootNamespace>
+    <AssemblyName>HouseCore</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>housekey.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>http://localhost/HouseCore/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\HouseCore.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdversaryCollection.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="InanimateObjectKeyedCollection.cs" />
+    <Compile Include="AdversaryData.cs" />
+    <Compile Include="Domain\ObjectData.cs" />
+    <Compile Include="RoomData.cs" />
+    <Compile Include="Exceptions\NullViewArgumentException.cs" />
+    <Compile Include="ReadOnlyExitSetCollection.cs" />
+    <Compile Include="Domain\RoomExit.cs" />
+    <Compile Include="ExitSetKeyedCollection.cs" />
+    <Compile Include="Floor.cs" />
+    <Compile Include="Domain\GameEntity.cs" />
+    <Compile Include="Domain\HouseType.cs" />
+    <Compile Include="Interfaces\IHouseView.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Adversary.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ConsumableObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ContainerObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\CushioningObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\DelicateObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\InanimateObject.cs" />
+    <Compile Include="InanimateObjectsCollection.cs" />
+    <Compile Include="Domain\HouseObjectTypes\LockableDoorObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\MultiplePieceObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\StationaryObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\OnOffObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\PainfulObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\PortableObject.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ProtectiveObject.cs" />
+    <Compile Include="Switch.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Impostor.cs" />
+    <Compile Include="Domain\Player.cs" />
+    <Compile Include="Domain\HouseObjectTypes\NullObject.cs" />
+    <Compile Include="Presenters\HousePresenter.cs" />
+    <Compile Include="Domain\SaveData.cs" />
+    <Compile Include="Domain\LocationType.cs" />
+    <Compile Include="MagicWord.cs" />
+    <Compile Include="Domain\RoomTypes\MonsterHangout.cs" />
+    <Compile Include="Domain\PositionedEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomKeyedCollection.cs" />
+    <Compile Include="Domain\RoomTypes\Elevator.cs" />
+    <Compile Include="Domain\RoomTypes\Room.cs" />
+    <Compile Include="Domain\RoomTypes\TelephoneBooth.cs" />
+    <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom.cs" />
+    <Compile Include="TheHouseData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HouseCore.cd" />
+    <None Include="housekey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HouseAdventure.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -25,17 +25,23 @@ namespace HouseCore
         /// <value>The room number.</value>
         public int RoomNumber { get; set; }
 
-                /// <summary>
+        /// <summary>
+        /// Gets or sets the room info.
+        /// </summary>
+        /// <value>The room info.</value>
+        protected RoomInfo RoomInfo { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Room"/> is magic.
         /// </summary>
         /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
         public bool Magic { get; set; }
 
-        private MagicWord magicWordForRoom = MagicWord.NA;
+        private MagicWord magicWordForRoom = MagicWord.Undefined;
 
         private AdversaryCollection adversaries = new AdversaryCollection();
         private InanimateObjectKeyedCollection items = new InanimateObjectKeyedCollection();
-        private ExitSetKeyedCollection exits = new ExitSetKeyedCollection();
+        private ReadOnlyExitSetCollection exits;
 
         /// <summary>
         /// Gets or sets the magic word for room.
@@ -63,13 +69,62 @@ namespace HouseCore
         /// Gets the exits.
         /// </summary>
         /// <value>The exits.</value>
-        public ExitSetKeyedCollection Exits { get { return this.exits; } }
+        public ReadOnlyExitSetCollection Exits { get { return this.exits; } private set { this.exits = value; } }
+
+        /// <summary>
+        /// Gets or sets the room to the north.
+        /// </summary>
+        /// <value>The north.</value>
+        public Room2 North { get; set; }
+
+        /// <summary>
+        /// Gets or sets the room to the south.
+        /// </summary>
+        /// <value>The south.</value>
+        public Room2 South { get; set; }
+
+        /// <summary>
+        /// Gets or sets the room to the east.
+        /// </summary>
+        /// <value>The east.</value>
+        public Room2 East { get; set; }
+
+        /// <summary>
+        /// Gets or sets the room to the west.
+        /// </summary>
+        /// <value>The west.</value>
+        public Room2 West { get; set; }
+
+        /// <summary>
+        /// Gets or sets room above.
+        /// </summary>
+        /// <value>Up.</value>
+        public Room2 Up { get; set; }
+
+        /// <summary>
+        /// Gets or sets room below.
+        /// </summary>
+        /// <value>Down.</value>
+        public Room2 Down { get; set; }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         public Room2()
+            : base()
         {
+            InitializeDirections();
+        }
+
+        private void InitializeDirections()
+        {
+            this.North = null;
+            this.South = null;
+            this.East = null;
+            this.West = null;
+            this.Up = null;
+            this.West = null;
         }
 
         /// <summary>
@@ -79,6 +134,7 @@ namespace HouseCore
         public Room2(string name)
             : base(name)
         {
+            InitializeDirections();
         }
 
         /// <summary>
@@ -87,7 +143,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         public Room2(string name, int roomNumber)
-            : base(name)
+            : this(name)
         {
             this.RoomNumber = roomNumber;
         }
@@ -101,7 +157,7 @@ namespace HouseCore
         public Room2(string name, int roomNumber, RoomExit[] exits)
             : this(name, roomNumber)
         {
-            Array.ForEach(exits, Exits.Add);
+            this.Exits = new ReadOnlyExitSetCollection(exits);
         }
 
         /// <summary>
@@ -113,8 +169,7 @@ namespace HouseCore
         public Room2(string name, int roomNumber, ReadOnlyExitSetCollection exits)
             : this(name, roomNumber)
         {
-            foreach (RoomExit exit in exits)
-                this.Exits.Add(exit);
+            this.Exits = new ReadOnlyExitSetCollection(exits);
         }
 
         /// <summary>
@@ -130,8 +185,7 @@ namespace HouseCore
         {
             this.Magic = magic;
             this.magicWordForRoom = word;
-            foreach (RoomExit exit in exits)
-                Exits.Add(exit);
+            this.Exits = new ReadOnlyExitSetCollection(exits);
         }
 
         /// <summary>
@@ -147,8 +201,24 @@ namespace HouseCore
         {
             this.Magic = magic;
             this.magicWordForRoom = word;
-            foreach (RoomExit exit in exits)
-                Exits.Add(exit);
+            //foreach (RoomExit exit in exits)
+            //    Exits.Add(exit);
+            this.Exits = new ReadOnlyExitSetCollection(exits);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Room2"/> class.
+        /// </summary>
+        /// <param name="roomInfo">The room info.</param>
+        public Room2(RoomInfo roomInfo)
+            : base(roomInfo.Name)
+        {
+            InitializeDirections();
+            this.Name = roomInfo.Name;
+            this.Magic = roomInfo.Magic;
+            this.RoomNumber = roomInfo.RoomNumber;
+            this.MagicWordForRoom = roomInfo.Word;
+            this.Exits = new ReadOnlyExitSetCollection(roomInfo.Exits);
         }
     }
 }

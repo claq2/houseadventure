@@ -52,6 +52,7 @@ namespace HouseCore
             this.InitRooms();
             this.InitObjects();
             this.InitMonsters();
+            this.InitRooms2();
         }
 
         /// <summary>
@@ -329,24 +330,39 @@ namespace HouseCore
             this.inanimateObjects.Add(new StationaryObject(ObjectData.StocksName, this.rooms[RoomData.LocationBasementTortureChamber]));
         }
 
+        private void InitRooms2()
+        {
+            foreach (RoomInfo roomInfo in RoomData.Rooms)
+            {
+                if (!this.floors.Contains(roomInfo.Floor))
+                    this.floors.Add(new Room2KeyedCollection(roomInfo.Floor));
+
+                if (roomInfo is TelephoneBoothInfo)
+                {
+                    this.floors[roomInfo.Floor].Add(new TelephoneBooth2(roomInfo));
+                    continue;
+                }
+
+                if (roomInfo is UnfinishedFlooredRoomInfo)
+                {
+                    this.floors[roomInfo.Floor].Add(new UnfinishedFlooredRoom2(roomInfo));
+                    continue;
+                }
+
+                this.floors[roomInfo.Floor].Add(new Room2(roomInfo));
+            }
+        }
+
         /// <summary>
         /// Inits the basement rooms.
         /// </summary>
         private void InitBasementRooms()
         {
-            Room2KeyedCollection room2Collection = new Room2KeyedCollection();
-            room2Collection.RoomFloor = Floor.Basement;
-            this.floors.Add(room2Collection);
             this.rooms.Add(new Room(RoomData.CoalBinName, RoomData.LocationBasementCoalBin, RoomData.ExitsBasementCoalBin));
-            this.floors[Floor.Basement].Add(new Room2(RoomData.CoalBinName, RoomData.LocationBasementCoalBin.RoomNumber, RoomData.ExitsBasementCoalBin));
             this.rooms.Add(new UnfinishedFlooredRoom(RoomData.DirtFlooredRoomName, RoomData.LocationBasementDirtFlooredRoom, RoomData.ExitsBasementDirtFlooredRoom));
-            this.floors[Floor.Basement].Add(new UnfinishedFlooredRoom2(RoomData.DirtFlooredRoomName, RoomData.LocationBasementDirtFlooredRoom.RoomNumber, RoomData.ExitsBasementDirtFlooredRoom));
             this.rooms.Add(new Elevator(RoomData.BasementElevatorName, RoomData.LocationBasementElevator, RoomData.ExitsBasementElevator));
-            this.floors[Floor.Basement].Add(new Elevator2(RoomData.BasementElevatorName, RoomData.LocationBasementElevator.RoomNumber, RoomData.ExitsBasementElevator));
             this.rooms.Add(new Room(RoomData.FreezerName, RoomData.LocationBasementFreezer, RoomData.ExitsBasementFreezer));
-            this.floors[Floor.Basement].Add(new Room2(RoomData.FreezerName, RoomData.LocationBasementFreezer.RoomNumber, RoomData.ExitsBasementFreezer));
             this.rooms.Add(new Room(RoomData.FurnaceRoomName, RoomData.LocationBasementFurnaceRoom, RoomData.ExitsBasementFurnaceRoom));
-            this.floors[Floor.Basement].Add(new Room2(RoomData.FurnaceRoomName, RoomData.LocationBasementFurnaceRoom.RoomNumber, RoomData.ExitsBasementFurnaceRoom));
             this.rooms.Add(new Room(RoomData.LaboratoryName, RoomData.LocationBasementLaboratory, RoomData.ExitsBasementLaboratory));
             this.rooms.Add(new Room(RoomData.PumpRoomName, RoomData.LocationBasementPumpRoom, RoomData.ExitsBasementPumpRoom));
 #if (DEBUG)

@@ -21,7 +21,7 @@ namespace HouseCore
         /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
         public bool Magic { get; set; }
 
-        private MagicWord magicWordForRoom = MagicWord.NA;
+        private MagicWord magicWordForRoom = MagicWord.Undefined;
 
         private AdversaryCollection adversaries = new AdversaryCollection();
         private InanimateObjectKeyedCollection items = new InanimateObjectKeyedCollection();

@@ -16,9 +16,9 @@ namespace HouseCore
     public enum MagicWord
     {
         /// <summary>
-        /// Magic word is not applicable
+        /// Magic word is undefined
         /// </summary>
-        NA,
+        Undefined,
 
         /// <summary>
         /// A magic word

@@ -7,14 +7,226 @@
 namespace HouseCore
 {
     using System;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Contains readonly information for creating UnfinishedFlooredRoom objects
+    /// </summary>
+    public class UnfinishedFlooredRoomInfo : RoomInfo
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnfinishedFlooredRoomInfo"/> class.
+        /// </summary>
+        public UnfinishedFlooredRoomInfo() : base() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnfinishedFlooredRoomInfo"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="roomNumber">The room number.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="exits">The exits.</param>
+        public UnfinishedFlooredRoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits)
+            : base(name, roomNumber, floor, exits)
+        { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnfinishedFlooredRoomInfo"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="roomNumber">The room number.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="exits">The exits.</param>
+        /// <param name="word">The word.</param>
+        public UnfinishedFlooredRoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits, MagicWord word) : base(name, roomNumber, floor, exits, word) { }
+    }
+
+    /// <summary>
+    /// Contains readonly information for creating TelephoneBooth objects
+    /// </summary>
+    public class TelephoneBoothInfo : RoomInfo
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TelephoneBoothInfo"/> class.
+        /// </summary>
+        public TelephoneBoothInfo() : base() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TelephoneBoothInfo"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="roomNumber">The room number.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="exits">The exits.</param>
+        public TelephoneBoothInfo(string name, int roomNumber, Floor floor, RoomExit[] exits)
+            : base(name, roomNumber, floor, exits)
+        { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TelephoneBoothInfo"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="roomNumber">The room number.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="exits">The exits.</param>
+        /// <param name="word">The word.</param>
+        public TelephoneBoothInfo(string name, int roomNumber, Floor floor, RoomExit[] exits, MagicWord word) : base(name, roomNumber, floor, exits, word) { }
+    }
+
+    /// <summary>
+    /// Contains readonly information for creating Room objects
+    /// </summary>
+    public class RoomInfo
+    {
+        /// <summary>
+        /// Gets or sets the floor.
+        /// </summary>
+        /// <value>The floor.</value>
+        public Floor Floor { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the exits.
+        /// </summary>
+        /// <value>The exits.</value>
+        public ReadOnlyExitSetCollection Exits { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the room number.
+        /// </summary>
+        /// <value>The room number.</value>
+        public int RoomNumber { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="RoomInfo"/> is magic.
+        /// </summary>
+        /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
+        public bool Magic { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the word.
+        /// </summary>
+        /// <value>The word.</value>
+        public MagicWord Word { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomInfo"/> class.
+        /// </summary>
+        public RoomInfo()
+            : this(String.Empty, -1, Floor.Undefined, new RoomExit[] { }, MagicWord.Undefined)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomInfo"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="roomNumber">The room number.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="exits">The exits.</param>
+        public RoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits)
+            : this(name, roomNumber, floor, exits, MagicWord.Undefined)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomInfo"/> class and sets Magic to true if word is not Undefined.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="roomNumber">The room number.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="exits">The exits.</param>
+        /// <param name="word">The magic word.</param>
+        public RoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits, MagicWord word)
+        {
+            this.Name = name;
+            this.Floor = floor;
+            this.RoomNumber = roomNumber;
+            this.Exits = new ReadOnlyExitSetCollection(exits);
+            this.Magic = word != MagicWord.Undefined;
+            this.Word = word;
+        }
+    }
 
     /// <summary>
     /// All data relating to rooms
     /// </summary>
     public static class RoomData
     {
+        private static Random random = new Random();
+        private static List<RoomInfo> rooms = InitializeRooms();
+
+        private static List<RoomInfo> InitializeRooms()
+        {
+            List<RoomInfo> result = new List<RoomInfo>();
+            result.Add(new UnfinishedFlooredRoomInfo("in a dirt-floored room", 0, Floor.Basement, new RoomExit[] { new RoomExit(Direction.West, 7), new RoomExit(Direction.South, 1) }));
+            result.Add(new RoomInfo("in the laboratory", 1, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.East, 2) }));
+            result.Add(new RoomInfo("in the pumproom", 2, Floor.Basement, new RoomExit[] { new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 3) }));
+            result.Add(new RoomInfo("in the furnace room", 3, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 4), new RoomExit(Direction.South, 9) }));
+            result.Add(new RoomInfo("in a dusty coal bin", 4, Floor.Basement, new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) }));
+            result.Add(new RoomInfo("in the torture chamber", 5, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.South, 6) }));
+            result.Add(new RoomInfo("in the workshop", 6, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 4) }));
+            result.Add(new RoomInfo("in a walk-in freezer", 7, Floor.Basement, new RoomExit[] { new RoomExit(Direction.East, 0), new RoomExit(Direction.West, 6) }));
+#if (DEBUG)
+            MagicWord word = MagicWord.Seersucker;
+#else
+            MagicWord word = (MagicWord)RoomData.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1;
+#endif
+            result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 5) }, word));
+            result.Add(new RoomInfo("in the basement elevator", 9, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8), new RoomExit(Direction.Up, 9) }));
+
+            result.Add(new RoomInfo("on the front porch", 0, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 1) }));
+            result.Add(new RoomInfo("in the foyer", 1, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 3) }));
+            result.Add(new RoomInfo("in a bedroom", 2, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.East, 5), new RoomExit(Direction.South, 7) }));
+            result.Add(new RoomInfo("in a coat closet", 3, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.West, 9) }));
+#if (DEBUG)
+            word = MagicWord.Seersucker;
+#else
+            word = (MagicWord)RoomData.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1;
+#endif
+            result.Add(new RoomInfo("in the dining room", 4, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 7), new RoomExit(Direction.East, 9) }, word));
+            result.Add(new RoomInfo("in the pantry", 5, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.West, 2), new RoomExit(Direction.South, 6) }));
+            result.Add(new RoomInfo("in the kitchen", 6, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.South, 9) }));
+            result.Add(new RoomInfo("in the family room", 7, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 4) }));
+            result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.South, 5) }));
+            result.Add(new RoomInfo("in the first floor elevator", 9, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4), new RoomExit(Direction.Up, 9), new RoomExit(Direction.Down, 9) }));
+
+            result.Add(new RoomInfo("in the sewing room", 0, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.East, 9), new RoomExit(Direction.South, 1) }));
+            result.Add(new RoomInfo("in a closet", 1, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.South, 3) }));
+            result.Add(new RoomInfo("in the master bedroom", 2, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 4) }));
+            result.Add(new RoomInfo("in a guest room", 3, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.East, 4), new RoomExit(Direction.West, 5) }));
+            result.Add(new RoomInfo("in a bathroom", 4, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 6) }));
+            result.Add(new RoomInfo("in a guest room", 5, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4) }));
+            result.Add(new RoomInfo("in a sitting room", 6, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.South, 7) }));
+            result.Add(new RoomInfo("in the den", 7, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.West, 8) }));
+            result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.South, 7) }));
+            result.Add(new RoomInfo("in the second floor elevator", 9, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.West, 0), new RoomExit(Direction.South, 2), new RoomExit(Direction.Up, 9), new RoomExit(Direction.Down, 9) }));
+
+            result.Add(new RoomInfo("in the living room", 0, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.East, 2) }));
+            result.Add(new RoomInfo("in the library", 1, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.West, 9), new RoomExit(Direction.South, 2) }));
+            result.Add(new RoomInfo("in the trophy room", 2, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.West, 0) }));
+            result.Add(new RoomInfo("in the barroom", 3, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 5), new RoomExit(Direction.West, 8) }));
+            result.Add(new RoomInfo("in the computer-room", 4, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 8), new RoomExit(Direction.South, 5) }));
+            result.Add(new RoomInfo("in the game room", 5, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.West, 3), new RoomExit(Direction.South, 7) }));
+            result.Add(new RoomInfo("in a bedroom", 6, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 7) }));
+            result.Add(new RoomInfo("in the art hall", 7, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.West, 6) }));
+            result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.South, 4) }));
+            result.Add(new RoomInfo("in the third floor elevator", 9, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.South, 0), new RoomExit(Direction.Down, 9) }));
+
+            result.Add(new RoomInfo("in the monster hangout", 0, Floor.MonsterHangout, new RoomExit[0]));
+
+            result.Add(new RoomInfo("in your inventory", 0, Floor.InHand, new RoomExit[0]));
+
+            return result;
+        }
+
         //TODO:  Split this class into a few classes
-        private static ReadOnlyExitSetCollection exitsBasementCoalBin = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) }); 
+        private static ReadOnlyExitSetCollection exitsBasementCoalBin = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 6), new RoomExit(Direction.West, 3) });
         private static ReadOnlyExitSetCollection exitsBasementDirtFlooredRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.West, 7), new RoomExit(Direction.South, 1) });
         private static ReadOnlyExitSetCollection exitsBasementElevator = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8) });
         private static ReadOnlyExitSetCollection exitsBasementFreezer = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 0), new RoomExit(Direction.West, 6) });
@@ -56,48 +268,54 @@ namespace HouseCore
         private static ReadOnlyExitSetCollection exitsThirdFloorLivingRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.East, 2) });
         private static ReadOnlyExitSetCollection exitsThirdFloorTelephoneBooth = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.South, 4) });
         private static ReadOnlyExitSetCollection exitsThirdFloorTrophyRoom = new ReadOnlyExitSetCollection(new RoomExit[] { new RoomExit(Direction.North, 1), new RoomExit(Direction.West, 0) });
-        private readonly static LocationType locationBasementCoalBin = new LocationType(4, Floor.Basement);
+
         private readonly static LocationType locationBasementDirtFlooredRoom = new LocationType(0, Floor.Basement);
-        private readonly static LocationType locationBasementElevator = new LocationType(9, Floor.Basement);
-        private readonly static LocationType locationBasementFreezer = new LocationType(7, Floor.Basement);
-        private readonly static LocationType locationBasementFurnaceRoom = new LocationType(3, Floor.Basement);
         private readonly static LocationType locationBasementLaboratory = new LocationType(1, Floor.Basement);
         private readonly static LocationType locationBasementPumpRoom = new LocationType(2, Floor.Basement);
-        private readonly static LocationType locationBasementTelephoneBooth = new LocationType(8, Floor.Basement);
+        private readonly static LocationType locationBasementFurnaceRoom = new LocationType(3, Floor.Basement);
+        private readonly static LocationType locationBasementCoalBin = new LocationType(4, Floor.Basement);
         private readonly static LocationType locationBasementTortureChamber = new LocationType(5, Floor.Basement);
         private readonly static LocationType locationBasementWorkshop = new LocationType(6, Floor.Basement);
+        private readonly static LocationType locationBasementFreezer = new LocationType(7, Floor.Basement);
+        private readonly static LocationType locationBasementTelephoneBooth = new LocationType(8, Floor.Basement);
+        private readonly static LocationType locationBasementElevator = new LocationType(9, Floor.Basement);
+
+        private readonly static LocationType locationFirstFloorFrontPorch = new LocationType(0, Floor.FirstFloor);
+        private readonly static LocationType locationFirstFloorFoyer = new LocationType(1, Floor.FirstFloor);
         private readonly static LocationType locationFirstFloorBedroom = new LocationType(2, Floor.FirstFloor);
         private readonly static LocationType locationFirstFloorCoatCloset = new LocationType(3, Floor.FirstFloor);
         private readonly static LocationType locationFirstFloorDiningRoom = new LocationType(4, Floor.FirstFloor);
-        private readonly static LocationType locationFirstFloorElevator = new LocationType(9, Floor.FirstFloor);
-        private readonly static LocationType locationFirstFloorFamilyRoom = new LocationType(7, Floor.FirstFloor);
-        private readonly static LocationType locationFirstFloorFoyer = new LocationType(1, Floor.FirstFloor);
-        private readonly static LocationType locationFirstFloorFrontPorch = new LocationType(0, Floor.FirstFloor);
-        private readonly static LocationType locationFirstFloorKitchen = new LocationType(6, Floor.FirstFloor);
         private readonly static LocationType locationFirstFloorPantry = new LocationType(5, Floor.FirstFloor);
+        private readonly static LocationType locationFirstFloorKitchen = new LocationType(6, Floor.FirstFloor);
+        private readonly static LocationType locationFirstFloorFamilyRoom = new LocationType(7, Floor.FirstFloor);
         private readonly static LocationType locationFirstFloorTelephoneBooth = new LocationType(8, Floor.FirstFloor);
+        private readonly static LocationType locationFirstFloorElevator = new LocationType(9, Floor.FirstFloor);
+
         private readonly static LocationType locationMonsterHangout = new LocationType(0, Floor.MonsterHangout);
+
         private readonly static LocationType locationInventory = new LocationType(-1, Floor.InHand);
-        private readonly static LocationType locationSecondFloorBathroom = new LocationType(4, Floor.SecondFloor);
-        private readonly static LocationType locationSecondFloorCloset = new LocationType(1, Floor.SecondFloor);
-        private readonly static LocationType locationSecondFloorDen = new LocationType(7, Floor.SecondFloor);
-        private readonly static LocationType locationSecondFloorElevator = new LocationType(9, Floor.SecondFloor);
-        private readonly static LocationType locationSecondFloorGuestroom1 = new LocationType(3, Floor.SecondFloor);
-        private readonly static LocationType locationSecondFloorGuestroom2 = new LocationType(5, Floor.SecondFloor);
-        private readonly static LocationType locationSecondFloorMasterBedroom = new LocationType(2, Floor.SecondFloor);
+
         private readonly static LocationType locationSecondFloorSewingRoom = new LocationType(0, Floor.SecondFloor);
+        private readonly static LocationType locationSecondFloorCloset = new LocationType(1, Floor.SecondFloor);
+        private readonly static LocationType locationSecondFloorMasterBedroom = new LocationType(2, Floor.SecondFloor);
+        private readonly static LocationType locationSecondFloorGuestroom1 = new LocationType(3, Floor.SecondFloor);
+        private readonly static LocationType locationSecondFloorBathroom = new LocationType(4, Floor.SecondFloor);
+        private readonly static LocationType locationSecondFloorGuestroom2 = new LocationType(5, Floor.SecondFloor);
         private readonly static LocationType locationSecondFloorSittingRoom = new LocationType(6, Floor.SecondFloor);
+        private readonly static LocationType locationSecondFloorDen = new LocationType(7, Floor.SecondFloor);
         private readonly static LocationType locationSecondFloorTelephoneBooth = new LocationType(8, Floor.SecondFloor);
-        private readonly static LocationType locationThirdFloorArtHall = new LocationType(7, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorBarroom = new LocationType(3, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorBedroom = new LocationType(6, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorComputerRoom = new LocationType(4, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorElevator = new LocationType(9, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorGameRoom = new LocationType(5, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorLibrary = new LocationType(1, Floor.ThirdFloor);
+        private readonly static LocationType locationSecondFloorElevator = new LocationType(9, Floor.SecondFloor);
+
         private readonly static LocationType locationThirdFloorLivingRoom = new LocationType(0, Floor.ThirdFloor);
-        private readonly static LocationType locationThirdFloorTelephoneBooth = new LocationType(8, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorLibrary = new LocationType(1, Floor.ThirdFloor);
         private readonly static LocationType locationThirdFloorTrophyRoom = new LocationType(2, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorBarroom = new LocationType(3, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorComputerRoom = new LocationType(4, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorGameRoom = new LocationType(5, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorBedroom = new LocationType(6, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorArtHall = new LocationType(7, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorTelephoneBooth = new LocationType(8, Floor.ThirdFloor);
+        private readonly static LocationType locationThirdFloorElevator = new LocationType(9, Floor.ThirdFloor);
 
         private const string artHallName = "in the art hall";
         private const string barroomName = "in the barroom";
@@ -136,6 +354,15 @@ namespace HouseCore
         private const string trophyRoomName = "in the trophy room";
         private const string workshopName = "in the workshop";
         private const string inventoryName = "in your inventory";
+
+        /// <summary>
+        /// Gets the rooms.
+        /// </summary>
+        /// <value>The rooms.</value>
+        public static List<RoomInfo> Rooms
+        {
+            get { return RoomData.rooms; }
+        }
 
         /// <summary>
         /// Gets the exits for the basement coal bin.

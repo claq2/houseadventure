@@ -569,17 +569,17 @@ namespace HouseCore.Presenters
 
             StringBuilder stringBuilderMessage = new StringBuilder();
             bool boolWordIsMagic = false;
-            MagicWord theword = MagicWord.NA;
+            MagicWord theword = MagicWord.Undefined;
             try
             {
                 theword = (MagicWord)Enum.Parse(typeof(MagicWord), this.view.Argument, true);
-                if (theword != MagicWord.NA)
+                if (theword != MagicWord.Undefined)
                     boolWordIsMagic = true;
             }
             catch (ArgumentException)
             {
                 boolWordIsMagic = false;
-                theword = MagicWord.NA;
+                theword = MagicWord.Undefined;
             }
 
             if (!boolWordIsMagic)

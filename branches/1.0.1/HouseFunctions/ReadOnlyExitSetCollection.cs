@@ -15,7 +15,6 @@ namespace HouseCore
     /// </summary>
     public class ReadOnlyExitSetCollection : ReadOnlyCollection<RoomExit>
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadOnlyExitSetCollection"/> class.
         /// </summary>

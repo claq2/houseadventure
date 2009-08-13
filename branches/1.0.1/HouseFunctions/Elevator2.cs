@@ -21,5 +21,14 @@ namespace HouseCore
         /// <param name="roomNumber">The room number.</param>
         /// <param name="exits">The exits.</param>
         public Elevator2(string name, int roomNumber, ReadOnlyExitSetCollection exits) : base(name, roomNumber, exits) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Elevator2"/> class.
+        /// </summary>
+        /// <param name="roomInfo">The room info.</param>
+        public Elevator2(RoomInfo roomInfo)
+            : base(roomInfo)
+        {
+        }
     }
 }

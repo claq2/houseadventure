@@ -14,6 +14,11 @@ namespace HouseCore
     public enum Floor
     {
         /// <summary>
+        /// Undefined level 
+        /// </summary>
+        Undefined,
+
+        /// <summary>
         /// The basement level
         /// </summary>
         Basement,

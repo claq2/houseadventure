@@ -31,6 +31,7 @@ namespace HouseCore
                     foreach (Room2 room in roomCollection)
                         if (room.Magic)
                             coll.Add(room);
+
                 return coll;
             }
         }

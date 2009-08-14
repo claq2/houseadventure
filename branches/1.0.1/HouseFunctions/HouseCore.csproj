@@ -59,13 +59,18 @@
     <Compile Include="AdversaryCollection.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Domain\FloorKeyedCollection.cs" />
-    <Compile Include="Elevator2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Adversary2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\Impostor2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\InanimateObject2.cs" />
     <Compile Include="InanimateObjectKeyedCollection.cs" />
-    <Compile Include="AdversaryData.cs" />
-    <Compile Include="Domain\ObjectData.cs" />
-    <Compile Include="Room2.cs" />
+    <Compile Include="StaticData\AdversaryData.cs" />
+    <Compile Include="StaticData\AdversaryInfo.cs" />
+    <Compile Include="StaticData\AdversaryInfoCollection.cs" />
+    <Compile Include="StaticData\ImpostorInfo.cs" />
+    <Compile Include="StaticData\ObjectData.cs" />
+    <Compile Include="Domain\RoomTypes\Room2.cs" />
     <Compile Include="Room2KeyedCollection.cs" />
-    <Compile Include="RoomData.cs" />
+    <Compile Include="StaticData\RoomData.cs" />
     <Compile Include="Exceptions\NullViewArgumentException.cs" />
     <Compile Include="ReadOnlyExitSetCollection.cs" />
     <Compile Include="Domain\RoomExit.cs" />
@@ -88,6 +93,7 @@
     <Compile Include="Domain\HouseObjectTypes\PainfulObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\PortableObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\ProtectiveObject.cs" />
+    <Compile Include="StaticData\RoomInfo.cs" />
     <Compile Include="Switch.cs" />
     <Compile Include="Domain\HouseObjectTypes\Impostor.cs" />
     <Compile Include="Domain\Player.cs" />
@@ -103,9 +109,11 @@
     <Compile Include="Domain\RoomTypes\Room.cs" />
     <Compile Include="Domain\RoomTypes\TelephoneBooth.cs" />
     <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom.cs" />
-    <Compile Include="TelephoneBooth2.cs" />
-    <Compile Include="TheHouseData.cs" />
-    <Compile Include="UnfinishedFlooredRoom2.cs" />
+    <Compile Include="Domain\RoomTypes\TelephoneBooth2.cs" />
+    <Compile Include="StaticData\TelephoneBoothInfo.cs" />
+    <Compile Include="StaticData\TheHouseData.cs" />
+    <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom2.cs" />
+    <Compile Include="StaticData\UnfinishedFlooredRoomInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HouseCore.cd" />

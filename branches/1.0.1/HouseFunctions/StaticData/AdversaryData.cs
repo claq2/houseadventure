@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
+using System;
 namespace HouseCore
 {
     /// <summary>
@@ -11,6 +13,37 @@ namespace HouseCore
     /// </summary>
     public static class AdversaryData
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AdversaryInfoCollection AdversaryInfo = InitializeInfo();
+
+        private static Random random = new Random();
+
+        private static AdversaryInfoCollection InitializeInfo()
+        {
+            AdversaryInfoCollection result = new AdversaryInfoCollection();
+            result.Add(new AdversaryInfo("a savage beast", "bea", 2, Floor.Basement));
+            result.Add(new AdversaryInfo("a protoplasmic blob", "blo", 7, Floor.Basement));
+            result.Add(new AdversaryInfo("a leopard", "leo", 1, Floor.ThirdFloor));
+            result.Add(new AdversaryInfo("an insane monk", "mon", 3, Floor.SecondFloor));
+            result.Add(new AdversaryInfo("a vampire", "vam", 6, Floor.FirstFloor));
+            result.Add(new AdversaryInfo("a werewolf", "wer", 7, Floor.ThirdFloor));
+#if (DEBUG)
+            int intImpostorItemNumber = 0;
+            int intImpostorRoomNumber = 0;
+            Floor floorImpostorFloor = Floor.SecondFloor;
+#else
+            int intImpostorItemNumber = AdversaryData.random.Next(this.PortableObjects.Count);
+            int intImpostorRoomNumber = AdversaryData.random.Next(10);
+            Floor floorImpostorFloor = (Floor)this.random.Next(4) + 1;
+#endif
+            string stringImpostorDisplayName = String.Empty; //this.PortableObjects[intImpostorItemNumber].Name;
+            string stringImpostorShortName = String.Empty; //this.PortableObjects[intImpostorItemNumber].ShortName;
+            result.Add(new ImpostorInfo(stringImpostorDisplayName, stringImpostorShortName, intImpostorRoomNumber, floorImpostorFloor));
+            return result;
+        }
+
         private const string beastName = "a savage beast";
         private const string beastShortName = "bea";
         private const string blobName = "a protoplasmic blob";

@@ -34,17 +34,6 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         protected InanimateObject(string name) : base(name) { }
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="InanimateObject"/> class.
-        ///// </summary>
-        ///// <param name="name">The name.</param>
-        ///// <param name="roomNumber">The room number.</param>
-        ///// <param name="floor">The floor.</param>
-        //public InanimateObject(string name, int roomNumber, Floor floor)
-        //    : base(name, roomNumber, floor)
-        //{
-        //}
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InanimateObject"/> class.
         /// </summary>

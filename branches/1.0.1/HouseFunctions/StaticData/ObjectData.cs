@@ -1,12 +1,81 @@
 using System;
+using System.Collections.ObjectModel;
 
 namespace HouseCore
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public class InanimateObjectInfo
+    {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the short name.
+        /// </summary>
+        /// <value>The short name.</value>
+        public string ShortName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the initial room.
+        /// </summary>
+        /// <value>The initial room.</value>
+        public int InitialRoom { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the initial floor.
+        /// </summary>
+        /// <value>The initial floor.</value>
+        public Floor InitialFloor { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InanimateObjectInfo"/> class.
+        /// </summary>
+        public InanimateObjectInfo() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InanimateObjectInfo"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="shortName">The short name.</param>
+        /// <param name="initialRoom">The initial room.</param>
+        /// <param name="floor">The floor.</param>
+        public InanimateObjectInfo(string name, string shortName, int initialRoom, Floor floor)
+        {
+            this.Name = name;
+            this.ShortName = shortName;
+            this.InitialRoom = initialRoom;
+            this.InitialFloor = floor;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class InanimateObjectInfoCollection : Collection<InanimateObjectInfo>
+    {
+    }
+
     /// <summary>
     /// All data relating to items in the house
     /// </summary>
     public static class ObjectData
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public static InanimateObjectInfoCollection ObjectInfoCollection = InitializeObjectInfo();
+
+        private static InanimateObjectInfoCollection InitializeObjectInfo()
+        {
+            InanimateObjectInfoCollection result = new InanimateObjectInfoCollection();
+            return result;
+        }
+
         private const string bagOfGoldName = "a bag of gold";
         private const string bagOfGoldShortName = "gol";
         private const string banjoName = "a banjo";

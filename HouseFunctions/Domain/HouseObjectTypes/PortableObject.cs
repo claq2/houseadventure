@@ -63,16 +63,7 @@ namespace HouseCore
         {
             this.buried = buried;
             this.visible = visible;
-            ////this.shortName = shortName;
         }
-
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="PortableObject"/> class.
-        ///// </summary>
-        ///// <param name="name">The name.</param>
-        ///// <param name="roomNumber">The room number.</param>
-        ///// <param name="floor">The floor.</param>
-        ////public PortableObject(string name, int roomNumber, Floor floor) : base(name, roomNumber, floor) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PortableObject"/> class and adds the item to the items collection of the given room.
@@ -92,7 +83,6 @@ namespace HouseCore
         public PortableObject(string name, Room room, string shortName)
             : base(name, room, shortName)
         {
-            ////this.shortName = shortName;
         }
 
         /// <summary>
@@ -136,14 +126,6 @@ namespace HouseCore
             set { this.visible = value; }
         }
 
-        ///// <summary>
-        ///// Gets the short name.
-        ///// </summary>
-        ///// <value>The short name.</value>
-        //public string ShortName
-        //{
-        //    get { return this.shortName; }
-        //}
         #endregion Properties 
     }
 }

@@ -17,10 +17,6 @@ namespace HouseCore
     [XmlInclude(typeof(Impostor))]
     public class Adversary : GameEntity
     {
-        /// <summary>
-        /// The number of moves left until the hiding adversary reappears
-        /// </summary>
-        private int movesUntilUnhidden;
 
         ///// <summary>
         ///// The item's short name
@@ -88,10 +84,6 @@ namespace HouseCore
         /// Gets or sets the moves until unhidden.
         /// </summary>
         /// <value>The moves until unhidden.</value>
-        public int MovesUntilUnhidden
-        {
-            get { return this.movesUntilUnhidden; }
-            set { this.movesUntilUnhidden = value; }
-        }
+        public int MovesUntilUnhidden { get; set; }
     }
 }

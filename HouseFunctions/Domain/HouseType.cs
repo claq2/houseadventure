@@ -23,10 +23,14 @@ namespace HouseCore
         /// </summary>
         private AdversaryCollection adversaries = new AdversaryCollection();
 
+        private Adversary2Collection adversaries2 = new Adversary2Collection();
+
         /// <summary>
         /// The inanimate objects in the house
         /// </summary>
         private InanimateObjectKeyedCollection inanimateObjects = new InanimateObjectKeyedCollection();
+
+        private InanimateObject2KeyedCollection inanimateObjects2 = new InanimateObject2KeyedCollection();
 
         /// <summary>
         /// The rooms in the house
@@ -53,6 +57,8 @@ namespace HouseCore
             this.InitObjects();
             this.InitMonsters();
             this.InitRooms2();
+            this.InitObjects2();
+            this.InitMonsters2();
         }
 
         /// <summary>
@@ -287,12 +293,28 @@ namespace HouseCore
 #else
             int intImpostorItemNumber = this.random.Next(this.PortableObjects.Count);
             int intImpostorRoomNumber = this.random.Next(10);
-            Floor floorImpostorFloor = (Floor)this.random.Next(4);
+            Floor floorImpostorFloor = (Floor)this.random.Next(4) + 1;
 #endif
             string stringImpostorDisplayName = this.PortableObjects[intImpostorItemNumber].Name;
             string stringImpostorShortName = this.PortableObjects[intImpostorItemNumber].ShortName;
             LocationType locationImpostorLocation = new LocationType(intImpostorRoomNumber, floorImpostorFloor);
             this.adversaries.Add(new Impostor(stringImpostorDisplayName, this.rooms[locationImpostorLocation], stringImpostorShortName));
+        }
+
+        /// <summary>
+        /// Inits the monsters.
+        /// </summary>
+        private void InitMonsters2()
+        {
+            foreach (AdversaryInfo info in AdversaryData.AdversaryInfo)
+            {
+                if (info is ImpostorInfo)
+                    this.adversaries2.Add(new Impostor2(info));
+                else
+                    this.adversaries2.Add(new Adversary2(info));
+
+                this.floors[info.InitialFloor][info.InitialRoom].Adversaries.Add(this.adversaries2[info.ShortName]);
+            }
         }
 
         /// <summary>
@@ -328,6 +350,63 @@ namespace HouseCore
             this.inanimateObjects.Add(new StationaryObject(ObjectData.MainframeName, this.rooms[RoomData.LocationThirdFloorComputerRoom]));
             this.inanimateObjects.Add(new StationaryObject(ObjectData.MooseHeadName, this.rooms[RoomData.LocationSecondFloorDen]));
             this.inanimateObjects.Add(new StationaryObject(ObjectData.StocksName, this.rooms[RoomData.LocationBasementTortureChamber]));
+        }
+
+        /// <summary>
+        /// Inits the objects.
+        /// </summary>
+        private void InitObjects2()
+        {
+            foreach (InanimateObjectInfo info in ObjectData.ObjectInfoCollection)
+            {
+                if (info is PortableObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new PortableObject2(info));
+                }
+                else if (info is ConsumableObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new ConsumableObject2(info));
+                }
+                else if (info is PainfulObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new PainfulObject2(info));
+                }
+                else if (info is OnOffObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new OnOffObject2(info));
+                }
+                else if (info is ProtectiveObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new ProtectiveObject2(info));
+                }
+                else if (info is MultiplePieceObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new MultiplePieceObject2(info));
+                }
+                else if (info is DelicateObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new DelicateObject2(info));
+                }
+                else if (info is CushioningObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new CushioningObject2(info));
+                }
+                else if (info is ContainerObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new ContainerObject2(info));
+                }
+                else if (info is LockableDoorObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new LockableDoorObject2(info));
+                }
+                else if (info is StationaryObjectInfo)
+                {
+                    this.inanimateObjects2.Add(new StationaryObject2(info));
+                }
+
+                this.floors[info.InitialFloor][info.InitialRoom].Items.Add(this.inanimateObjects2[info.ShortName]);
+
+            }
         }
 
         private void InitRooms2()

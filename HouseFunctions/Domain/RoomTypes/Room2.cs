@@ -16,7 +16,7 @@ namespace HouseCore
     /// </summary>
     [XmlInclude(typeof(UnfinishedFlooredRoom2))]
     [XmlInclude(typeof(TelephoneBooth2))]
-    [XmlInclude(typeof(Elevator2))]
+    //[XmlInclude(typeof(Elevator2))]
     public class Room2 : GameEntity
     {
         /// <summary>
@@ -26,12 +26,6 @@ namespace HouseCore
         public int RoomNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the room info.
-        /// </summary>
-        /// <value>The room info.</value>
-        protected RoomInfo RoomInfo { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Room"/> is magic.
         /// </summary>
         /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
@@ -39,8 +33,8 @@ namespace HouseCore
 
         private MagicWord magicWordForRoom = MagicWord.Undefined;
 
-        private AdversaryCollection adversaries = new AdversaryCollection();
-        private InanimateObjectKeyedCollection items = new InanimateObjectKeyedCollection();
+        private Adversary2Collection adversaries = new Adversary2Collection();
+        private InanimateObject2KeyedCollection items = new InanimateObject2KeyedCollection();
         private ReadOnlyExitSetCollection exits;
 
         /// <summary>
@@ -57,13 +51,13 @@ namespace HouseCore
         /// Gets the adversaries.
         /// </summary>
         /// <value>The adversaries.</value>
-        public AdversaryCollection Adversaries { get { return this.adversaries; } }
+        public Adversary2Collection Adversaries { get { return this.adversaries; } }
 
         /// <summary>
         /// Gets the items.
         /// </summary>
         /// <value>The items.</value>
-        public InanimateObjectKeyedCollection Items { get { return this.items; } }
+        public InanimateObject2KeyedCollection Items { get { return this.items; } }
 
         /// <summary>
         /// Gets the exits.

@@ -55,7 +55,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
-        public LockableDoorObject(string name, Room room) 
+        public LockableDoorObject(string name, NormalRoom room) 
             : base(name, room) 
         { 
         }
@@ -66,7 +66,7 @@ namespace HouseCore
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
         /// <param name="exit">The exit that is added to the room when the door is unlocked.</param>
-        public LockableDoorObject(string name, Room room, RoomExit exit)
+        public LockableDoorObject(string name, NormalRoom room, RoomExit exit)
             : base(name, room)
         {
             this.exitWhenUnlocked = exit;
@@ -79,7 +79,7 @@ namespace HouseCore
         /// <param name="room">The name of the room.</param>
         /// <param name="exit">The exit that is added to the room when the door is unlocked.</param>
         /// <param name="shortName">The short name.</param>
-        public LockableDoorObject(string name, Room room, RoomExit exit, string shortName)
+        public LockableDoorObject(string name, NormalRoom room, RoomExit exit, string shortName)
             : base(name, room, shortName)
         {
             this.exitWhenUnlocked = exit;

@@ -1,12 +1,13 @@
-using System.Collections.ObjectModel;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace HouseCore
 {
     /// <summary>
     /// 
     /// </summary>
-    public class AdversaryInfo
+    public abstract class AdversaryInfo
     {
         /// <summary>
         /// Gets or sets the name.
@@ -35,7 +36,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="AdversaryInfo"/> class.
         /// </summary>
-        public AdversaryInfo() { }
+        protected AdversaryInfo() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AdversaryInfo"/> class.
@@ -44,12 +45,18 @@ namespace HouseCore
         /// <param name="shortName">The short name.</param>
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
-        public AdversaryInfo(string name, string shortName, int initialRoom, Floor floor)
+        protected AdversaryInfo(string name, string shortName, int initialRoom, Floor floor)
         {
             this.Name = name;
             this.ShortName = shortName;
             this.InitialRoom = initialRoom;
             this.InitialFloor = floor;
         }
+
+        /// <summary>
+        /// Creates the adversary.
+        /// </summary>
+        /// <returns></returns>
+        public abstract Adversary2 CreateAdversary();
     }
 }

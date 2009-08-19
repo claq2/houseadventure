@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 
 namespace HouseCore
@@ -12,11 +9,11 @@ namespace HouseCore
     [XmlInclude(typeof(UnfinishedFlooredRoom))]
     [XmlInclude(typeof(TelephoneBooth))]
     [XmlInclude(typeof(Elevator))]
-    public class Room : PositionedEntity
+    public class NormalRoom : PositionedEntity
     {
         //TODO: remove creator overloads if possible
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Room"/> is magic.
+        /// Gets or sets a value indicating whether this <see cref="NormalRoom"/> is magic.
         /// </summary>
         /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
         public bool Magic { get; set; }
@@ -57,50 +54,50 @@ namespace HouseCore
         /// <summary>
         /// 
         /// </summary>
-        public Room()
+        public NormalRoom()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="NormalRoom"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public Room(string name)
+        public NormalRoom(string name)
             : base(name)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="NormalRoom"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="floor">The floor.</param>
-        public Room(string name, int roomNumber, Floor floor)
+        public NormalRoom(string name, int roomNumber, Floor floor)
             : base(name, roomNumber, floor)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="NormalRoom"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="floor">The floor.</param>
         /// <param name="exits">The exits.</param>
-        public Room(string name, int roomNumber, Floor floor, RoomExit[] exits)
+        public NormalRoom(string name, int roomNumber, Floor floor, RoomExit[] exits)
             : base(name, roomNumber, floor)
         {
             Array.ForEach(exits, Exits.Add);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="NormalRoom"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
-        public Room(string name, LocationType location, ReadOnlyExitSetCollection exits)
+        public NormalRoom(string name, LocationType location, ReadOnlyExitSetCollection exits)
             : base(name, location)
         {
             foreach (RoomExit exit in exits)
@@ -108,7 +105,7 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="NormalRoom"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
@@ -116,7 +113,7 @@ namespace HouseCore
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> room is magic.</param>
         /// <param name="word">The word.</param>
-        public Room(string name, int roomNumber, Floor floor, RoomExit[] exits, bool magic, MagicWord word)
+        public NormalRoom(string name, int roomNumber, Floor floor, RoomExit[] exits, bool magic, MagicWord word)
             : base(name, roomNumber, floor)
         {
             this.Magic = magic;
@@ -126,14 +123,14 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="NormalRoom"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="location">The location.</param>
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> [magic].</param>
         /// <param name="word">The word.</param>
-        public Room(string name, LocationType location, ReadOnlyExitSetCollection exits, bool magic, MagicWord word)
+        public NormalRoom(string name, LocationType location, ReadOnlyExitSetCollection exits, bool magic, MagicWord word)
             : base(name, location)
         {
             this.Magic = magic;

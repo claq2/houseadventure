@@ -56,7 +56,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The initial room.</param>
-        public ConsumableObject(string name, Room room) 
+        public ConsumableObject(string name, NormalRoom room) 
             : base(name, room) 
         { 
         }
@@ -67,7 +67,7 @@ namespace HouseCore
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The initial room.</param>
         /// <param name="usageLimit">The usage limit.</param>
-        public ConsumableObject(string name, Room room, int usageLimit)
+        public ConsumableObject(string name, NormalRoom room, int usageLimit)
             : base(name, room)
         {
             this.usageLimit = usageLimit;
@@ -80,7 +80,7 @@ namespace HouseCore
         /// <param name="room">The initial room.</param>
         /// <param name="usageLimit">The usage limit.</param>
         /// <param name="shortName">The short name.</param>
-        public ConsumableObject(string name, Room room, int usageLimit, string shortName)
+        public ConsumableObject(string name, NormalRoom room, int usageLimit, string shortName)
             : base(name, room, shortName)
         {
             this.usageLimit = usageLimit;

@@ -104,9 +104,7 @@ namespace HouseCore
             {
                 InanimateObjectKeyedCollection result = new InanimateObjectKeyedCollection();
                 foreach (InanimateObject obj in this.Rooms[RoomData.LocationInventory].Items)
-                {
                     result.Add(obj);
-                }
 
                 return result;
             }
@@ -138,9 +136,7 @@ namespace HouseCore
                 {
                     PortableObject portableObject = obj as PortableObject;
                     if (portableObject != null)
-                    {
                         result.Add(obj);
-                    }
                 }
 
                 return result;
@@ -175,11 +171,9 @@ namespace HouseCore
         public void AddToInventory(PortableObject portableObject)
         {
             if (this.Rooms[RoomData.LocationInventory].Items.Count == 1 && this.Rooms[RoomData.LocationInventory].Items[0] is NullObject)
-            {
                 this.Rooms[RoomData.LocationInventory].Items.RemoveAt(0);
-            }
 
-            foreach (Room room in this.Rooms)
+            foreach (NormalRoom room in this.Rooms)
             {
                 int intItemNumber = -1;
                 int intCounter = 0;
@@ -223,58 +217,6 @@ namespace HouseCore
 
         #endregion Methods
 
-        // Public Methods (3)
-        ///// <summary>
-        ///// Loads this instance.
-        ///// </summary>
-        ///// <returns>Message indicating success or failure</returns>
-        //public string Load()
-        //{
-        //    StringBuilder stringBuilderOutput = new StringBuilder();
-        //    XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
-        //    // Reading the XML document requires a FileStream.
-        //    using (Stream reader = new FileStream("housedata.txt", FileMode.Open))
-        //    {
-        //        // Call the Deserialize method to restore the object's state.
-        //        SaveData saveData = new SaveData();
-        //        saveData = (SaveData)serializer.Deserialize(reader);
-        //        reader.Close();
-        //        this.RestoreFromSaveData(saveData);
-        //    }
-        //    stringBuilderOutput.Append("Data loaded");
-        //    return stringBuilderOutput.ToString();
-        //}
-        //    /// <summary>
-        //    /// Restores from save data.
-        //    /// </summary>
-        //    /// <param name="data">The data object in which to store state.</param>
-        //    public void RestoreFromSaveData(SaveData data)
-        //    {
-        //        int intCountRooms = data.Rooms.Count;
-        //        for (int i = 0; i < intCountRooms; i++)
-        //        {
-        //            this.rooms.Remove(data.Rooms[i].Location);
-        //            this.rooms.Add(data.Rooms[i]);
-        //            int intCountAdversariesInRoom = data.Rooms[i].Adversaries.Count;
-        //            for (int j = 0; j < intCountAdversariesInRoom; j++)
-        //            {
-        //                this.adversaries.Remove(data.Rooms[i].Adversaries[j].Name);
-        //                this.adversaries.Add(data.Rooms[i].Adversaries[j]);
-        //            }
-
-        //            int intCountItemsInRoom = data.Rooms[i].Items.Count;
-        //            for (int j = 0; j < intCountItemsInRoom; j++)
-        //            {
-        //                this.inanimateObjects.Remove(data.Rooms[i].Items[j].Name);
-        //                this.inanimateObjects.Add(data.Rooms[i].Items[j]);
-        //            }
-        //        }
-
-        //        this.InitPortableObjects();
-        //    }
-
-        // Private Methods (5) 
-
         /// <summary>
         /// Inits the monsters.
         /// </summary>
@@ -308,11 +250,7 @@ namespace HouseCore
         {
             foreach (AdversaryInfo info in AdversaryData.AdversaryInfo)
             {
-                if (info is ImpostorInfo)
-                    this.adversaries2.Add(new Impostor2(info));
-                else
-                    this.adversaries2.Add(new Adversary2(info));
-
+                this.adversaries2.Add(info.CreateAdversary());
                 this.floors[info.InitialFloor][info.InitialRoom].Adversaries.Add(this.adversaries2[info.ShortName]);
             }
         }
@@ -359,56 +297,14 @@ namespace HouseCore
         {
             foreach (InanimateObjectInfo info in ObjectData.ObjectInfoCollection)
             {
-                if (info is PortableObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new PortableObject2(info));
-                }
-                else if (info is ConsumableObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new ConsumableObject2(info));
-                }
-                else if (info is PainfulObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new PainfulObject2(info));
-                }
-                else if (info is OnOffObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new OnOffObject2(info));
-                }
-                else if (info is ProtectiveObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new ProtectiveObject2(info));
-                }
-                else if (info is MultiplePieceObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new MultiplePieceObject2(info));
-                }
-                else if (info is DelicateObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new DelicateObject2(info));
-                }
-                else if (info is CushioningObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new CushioningObject2(info));
-                }
-                else if (info is ContainerObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new ContainerObject2(info));
-                }
-                else if (info is LockableDoorObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new LockableDoorObject2(info));
-                }
-                else if (info is StationaryObjectInfo)
-                {
-                    this.inanimateObjects2.Add(new StationaryObject2(info));
-                }
-
-                this.floors[info.InitialFloor][info.InitialRoom].Items.Add(this.inanimateObjects2[info.ShortName]);
-
+                this.inanimateObjects2.Add(info.CreateObject());
+                this.floors[info.InitialFloor][info.InitialRoom].Items.Add(this.inanimateObjects2[info.Identity]);
             }
         }
 
+        /// <summary>
+        /// Inits the rooms.
+        /// </summary>
         private void InitRooms2()
         {
             foreach (RoomInfo roomInfo in RoomData.Rooms)
@@ -416,19 +312,7 @@ namespace HouseCore
                 if (!this.floors.Contains(roomInfo.Floor))
                     this.floors.Add(new Room2KeyedCollection(roomInfo.Floor));
 
-                if (roomInfo is TelephoneBoothInfo)
-                {
-                    this.floors[roomInfo.Floor].Add(new TelephoneBooth2(roomInfo));
-                    continue;
-                }
-
-                if (roomInfo is UnfinishedFlooredRoomInfo)
-                {
-                    this.floors[roomInfo.Floor].Add(new UnfinishedFlooredRoom2(roomInfo));
-                    continue;
-                }
-
-                this.floors[roomInfo.Floor].Add(new Room2(roomInfo));
+                this.floors[roomInfo.Floor].Add(roomInfo.CreateRoom());
             }
         }
 
@@ -437,21 +321,21 @@ namespace HouseCore
         /// </summary>
         private void InitBasementRooms()
         {
-            this.rooms.Add(new Room(RoomData.CoalBinName, RoomData.LocationBasementCoalBin, RoomData.ExitsBasementCoalBin));
+            this.rooms.Add(new NormalRoom(RoomData.CoalBinName, RoomData.LocationBasementCoalBin, RoomData.ExitsBasementCoalBin));
             this.rooms.Add(new UnfinishedFlooredRoom(RoomData.DirtFlooredRoomName, RoomData.LocationBasementDirtFlooredRoom, RoomData.ExitsBasementDirtFlooredRoom));
             this.rooms.Add(new Elevator(RoomData.BasementElevatorName, RoomData.LocationBasementElevator, RoomData.ExitsBasementElevator));
-            this.rooms.Add(new Room(RoomData.FreezerName, RoomData.LocationBasementFreezer, RoomData.ExitsBasementFreezer));
-            this.rooms.Add(new Room(RoomData.FurnaceRoomName, RoomData.LocationBasementFurnaceRoom, RoomData.ExitsBasementFurnaceRoom));
-            this.rooms.Add(new Room(RoomData.LaboratoryName, RoomData.LocationBasementLaboratory, RoomData.ExitsBasementLaboratory));
-            this.rooms.Add(new Room(RoomData.PumpRoomName, RoomData.LocationBasementPumpRoom, RoomData.ExitsBasementPumpRoom));
+            this.rooms.Add(new NormalRoom(RoomData.FreezerName, RoomData.LocationBasementFreezer, RoomData.ExitsBasementFreezer));
+            this.rooms.Add(new NormalRoom(RoomData.FurnaceRoomName, RoomData.LocationBasementFurnaceRoom, RoomData.ExitsBasementFurnaceRoom));
+            this.rooms.Add(new NormalRoom(RoomData.LaboratoryName, RoomData.LocationBasementLaboratory, RoomData.ExitsBasementLaboratory));
+            this.rooms.Add(new NormalRoom(RoomData.PumpRoomName, RoomData.LocationBasementPumpRoom, RoomData.ExitsBasementPumpRoom));
 #if (DEBUG)
             MagicWord word = MagicWord.Seersucker;
 #else
             MagicWord word = (MagicWord)this.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1;
 #endif
             this.rooms.Add(new TelephoneBooth(RoomData.TelephoneBoothName, RoomData.LocationBasementTelephoneBooth, RoomData.ExitsBasementTelephoneBooth, true, word));
-            this.rooms.Add(new Room(RoomData.TortureChamberName, RoomData.LocationBasementTortureChamber, RoomData.ExitsBasementTortureChamber));
-            this.rooms.Add(new Room(RoomData.WorkshopName, RoomData.LocationBasementWorkshop, RoomData.ExitsBasementWorkshop));
+            this.rooms.Add(new NormalRoom(RoomData.TortureChamberName, RoomData.LocationBasementTortureChamber, RoomData.ExitsBasementTortureChamber));
+            this.rooms.Add(new NormalRoom(RoomData.WorkshopName, RoomData.LocationBasementWorkshop, RoomData.ExitsBasementWorkshop));
         }
 
         /// <summary>
@@ -459,20 +343,20 @@ namespace HouseCore
         /// </summary>
         private void InitFirstFloorRooms()
         {
-            this.rooms.Add(new Room(RoomData.BedroomName, RoomData.LocationFirstFloorBedroom, RoomData.ExitsFirstFloorBedroom));
-            this.rooms.Add(new Room(RoomData.CoatClosetName, RoomData.LocationFirstFloorCoatCloset, RoomData.ExitsFirstFloorCoatCloset));
+            this.rooms.Add(new NormalRoom(RoomData.BedroomName, RoomData.LocationFirstFloorBedroom, RoomData.ExitsFirstFloorBedroom));
+            this.rooms.Add(new NormalRoom(RoomData.CoatClosetName, RoomData.LocationFirstFloorCoatCloset, RoomData.ExitsFirstFloorCoatCloset));
 #if (DEBUG)
             MagicWord word = MagicWord.Seersucker;
 #else
             MagicWord word = (MagicWord)this.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1;
 #endif
-            this.rooms.Add(new Room(RoomData.DiningRoomName, RoomData.LocationFirstFloorDiningRoom, RoomData.ExitsFirstFloorDiningRoom, true, word));
+            this.rooms.Add(new NormalRoom(RoomData.DiningRoomName, RoomData.LocationFirstFloorDiningRoom, RoomData.ExitsFirstFloorDiningRoom, true, word));
             this.rooms.Add(new Elevator(RoomData.FirstFloorElevatorName, RoomData.LocationFirstFloorElevator, RoomData.ExitsFirstFloorElevator));
-            this.rooms.Add(new Room(RoomData.FamilyRoomName, RoomData.LocationFirstFloorFamilyRoom, RoomData.ExitsFirstFloorFamilyRoom));
-            this.rooms.Add(new Room(RoomData.FoyerName, RoomData.LocationFirstFloorFoyer, RoomData.ExitsFirstFloorFoyer));
-            this.rooms.Add(new Room(RoomData.FrontPorchName, RoomData.LocationFirstFloorFrontPorch, RoomData.ExitsFirstFloorFrontPorch));
-            this.rooms.Add(new Room(RoomData.KitchenName, RoomData.LocationFirstFloorKitchen, RoomData.ExitsFirstFloorKitchen));
-            this.rooms.Add(new Room(RoomData.PantryName, RoomData.LocationFirstFloorPantry, RoomData.ExitsFirstFloorPantry));
+            this.rooms.Add(new NormalRoom(RoomData.FamilyRoomName, RoomData.LocationFirstFloorFamilyRoom, RoomData.ExitsFirstFloorFamilyRoom));
+            this.rooms.Add(new NormalRoom(RoomData.FoyerName, RoomData.LocationFirstFloorFoyer, RoomData.ExitsFirstFloorFoyer));
+            this.rooms.Add(new NormalRoom(RoomData.FrontPorchName, RoomData.LocationFirstFloorFrontPorch, RoomData.ExitsFirstFloorFrontPorch));
+            this.rooms.Add(new NormalRoom(RoomData.KitchenName, RoomData.LocationFirstFloorKitchen, RoomData.ExitsFirstFloorKitchen));
+            this.rooms.Add(new NormalRoom(RoomData.PantryName, RoomData.LocationFirstFloorPantry, RoomData.ExitsFirstFloorPantry));
             this.rooms.Add(new TelephoneBooth(RoomData.TelephoneBoothName, RoomData.LocationFirstFloorTelephoneBooth, RoomData.ExitsFirstFloorTelephoneBooth));
         }
 
@@ -481,15 +365,15 @@ namespace HouseCore
         /// </summary>
         private void InitSecondFloorRooms()
         {
-            this.rooms.Add(new Room(RoomData.BathroomName, RoomData.LocationSecondFloorBathroom, RoomData.ExitsSecondFloorBathroom));
-            this.rooms.Add(new Room(RoomData.ClosetName, RoomData.LocationSecondFloorCloset, RoomData.ExitsSecondFloorCloset));
-            this.rooms.Add(new Room(RoomData.DenName, RoomData.LocationSecondFloorDen, RoomData.ExitsSecondFloorDen));
+            this.rooms.Add(new NormalRoom(RoomData.BathroomName, RoomData.LocationSecondFloorBathroom, RoomData.ExitsSecondFloorBathroom));
+            this.rooms.Add(new NormalRoom(RoomData.ClosetName, RoomData.LocationSecondFloorCloset, RoomData.ExitsSecondFloorCloset));
+            this.rooms.Add(new NormalRoom(RoomData.DenName, RoomData.LocationSecondFloorDen, RoomData.ExitsSecondFloorDen));
             this.rooms.Add(new Elevator(RoomData.SecondFloorElevatorName, RoomData.LocationSecondFloorElevator, RoomData.ExitsSecondFloorElevator));
-            this.rooms.Add(new Room(RoomData.GuestroomName, RoomData.LocationSecondFloorGuestroom1, RoomData.ExitsSecondFloorGuestroom1));
-            this.rooms.Add(new Room(RoomData.GuestroomName, RoomData.LocationSecondFloorGuestroom2, RoomData.ExitsSecondFloorGuestroom2));
-            this.rooms.Add(new Room(RoomData.MasterBedroomName, RoomData.LocationSecondFloorMasterBedroom, RoomData.ExitsSecondFloorMasterBedroom));
-            this.rooms.Add(new Room(RoomData.SewingRoomName, RoomData.LocationSecondFloorSewingRoom, RoomData.ExitsSecondFloorSewingRoom));
-            this.rooms.Add(new Room(RoomData.SittingRoomName, RoomData.LocationSecondFloorSittingRoom, RoomData.ExitsSecondFloorSittingRoom));
+            this.rooms.Add(new NormalRoom(RoomData.GuestroomName, RoomData.LocationSecondFloorGuestroom1, RoomData.ExitsSecondFloorGuestroom1));
+            this.rooms.Add(new NormalRoom(RoomData.GuestroomName, RoomData.LocationSecondFloorGuestroom2, RoomData.ExitsSecondFloorGuestroom2));
+            this.rooms.Add(new NormalRoom(RoomData.MasterBedroomName, RoomData.LocationSecondFloorMasterBedroom, RoomData.ExitsSecondFloorMasterBedroom));
+            this.rooms.Add(new NormalRoom(RoomData.SewingRoomName, RoomData.LocationSecondFloorSewingRoom, RoomData.ExitsSecondFloorSewingRoom));
+            this.rooms.Add(new NormalRoom(RoomData.SittingRoomName, RoomData.LocationSecondFloorSittingRoom, RoomData.ExitsSecondFloorSittingRoom));
             this.rooms.Add(new TelephoneBooth(RoomData.TelephoneBoothName, RoomData.LocationSecondFloorTelephoneBooth, RoomData.ExitsSecondFloorTelephoneBooth));
         }
 
@@ -498,16 +382,16 @@ namespace HouseCore
         /// </summary>
         private void InitThirdFloorRooms()
         {
-            this.rooms.Add(new Room(RoomData.ArtHallName, RoomData.LocationThirdFloorArtHall, RoomData.ExitsThirdFloorArtHall));
-            this.rooms.Add(new Room(RoomData.BarroomName, RoomData.LocationThirdFloorBarroom, RoomData.ExitsThirdFloorBarroom));
-            this.rooms.Add(new Room(RoomData.BedroomName, RoomData.LocationThirdFloorBedroom, RoomData.ExitsThirdFloorBedroom));
-            this.rooms.Add(new Room(RoomData.ComputerRoomName, RoomData.LocationThirdFloorComputerRoom, RoomData.ExitsThirdFloorComputerRoom));
+            this.rooms.Add(new NormalRoom(RoomData.ArtHallName, RoomData.LocationThirdFloorArtHall, RoomData.ExitsThirdFloorArtHall));
+            this.rooms.Add(new NormalRoom(RoomData.BarroomName, RoomData.LocationThirdFloorBarroom, RoomData.ExitsThirdFloorBarroom));
+            this.rooms.Add(new NormalRoom(RoomData.BedroomName, RoomData.LocationThirdFloorBedroom, RoomData.ExitsThirdFloorBedroom));
+            this.rooms.Add(new NormalRoom(RoomData.ComputerRoomName, RoomData.LocationThirdFloorComputerRoom, RoomData.ExitsThirdFloorComputerRoom));
             this.rooms.Add(new Elevator(RoomData.ThirdFloorElevatorName, RoomData.LocationThirdFloorElevator, RoomData.ExitsThirdFloorElevator));
-            this.rooms.Add(new Room(RoomData.GameRoomName, RoomData.LocationThirdFloorGameRoom, RoomData.ExitsThirdFloorGameRoom));
-            this.rooms.Add(new Room(RoomData.LibraryName, RoomData.LocationThirdFloorLibrary, RoomData.ExitsThirdFloorLibrary));
-            this.rooms.Add(new Room(RoomData.LivingRoomName, RoomData.LocationThirdFloorLivingRoom, RoomData.ExitsThirdFloorLivingRoom));
+            this.rooms.Add(new NormalRoom(RoomData.GameRoomName, RoomData.LocationThirdFloorGameRoom, RoomData.ExitsThirdFloorGameRoom));
+            this.rooms.Add(new NormalRoom(RoomData.LibraryName, RoomData.LocationThirdFloorLibrary, RoomData.ExitsThirdFloorLibrary));
+            this.rooms.Add(new NormalRoom(RoomData.LivingRoomName, RoomData.LocationThirdFloorLivingRoom, RoomData.ExitsThirdFloorLivingRoom));
             this.rooms.Add(new TelephoneBooth(RoomData.TelephoneBoothName, RoomData.LocationThirdFloorTelephoneBooth, RoomData.ExitsThirdFloorTelephoneBooth));
-            this.rooms.Add(new Room(RoomData.TrophyRoomName, RoomData.LocationThirdFloorTrophyRoom, RoomData.ExitsThirdFloorTrophyRoom));
+            this.rooms.Add(new NormalRoom(RoomData.TrophyRoomName, RoomData.LocationThirdFloorTrophyRoom, RoomData.ExitsThirdFloorTrophyRoom));
         }
 
         /// <summary>
@@ -515,7 +399,7 @@ namespace HouseCore
         /// </summary>
         private void InitMonsterHangoutRooms()
         {
-            this.rooms.Add(new Room(RoomData.MonsterHangoutName, RoomData.LocationMonsterHangout, RoomData.ExitsMonsterHangout));
+            this.rooms.Add(new NormalRoom(RoomData.MonsterHangoutName, RoomData.LocationMonsterHangout, RoomData.ExitsMonsterHangout));
         }
 
         /// <summary>
@@ -536,7 +420,7 @@ namespace HouseCore
         /// </summary>
         private void InitInventoryRoom()
         {
-            this.rooms.Add(new Room(RoomData.InventoryName, RoomData.LocationInventory, RoomData.ExitsInventory));
+            this.rooms.Add(new NormalRoom(RoomData.InventoryName, RoomData.LocationInventory, RoomData.ExitsInventory));
             this.rooms[RoomData.LocationInventory].Items.Add(new NullObject());
         }
 
@@ -547,7 +431,7 @@ namespace HouseCore
         /// </summary>
         internal void RemoveFrontPorchItems()
         {
-            Room roomPorch = this.rooms[RoomData.LocationFirstFloorFrontPorch];
+            NormalRoom roomPorch = this.rooms[RoomData.LocationFirstFloorFrontPorch];
             List<InanimateObject> listItemsToRemove = new List<InanimateObject>();
             foreach (InanimateObject io in roomPorch.Items)
             {
@@ -568,7 +452,7 @@ namespace HouseCore
         /// </summary>
         internal void UpdateMonstersInHangout()
         {
-            Room roomMonsterHangout = this.rooms[RoomData.LocationMonsterHangout];
+            NormalRoom roomMonsterHangout = this.rooms[RoomData.LocationMonsterHangout];
             List<Adversary> listAdversariesToBringBack = new List<Adversary>();
             //TODO: decrement randomly, not every time
             foreach (Adversary adversary in roomMonsterHangout.Adversaries)

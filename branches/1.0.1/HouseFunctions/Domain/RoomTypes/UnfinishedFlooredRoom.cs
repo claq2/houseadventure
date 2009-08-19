@@ -7,7 +7,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class UnfinishedFlooredRoom : Room
+    public class UnfinishedFlooredRoom : NormalRoom
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UnfinishedFlooredRoom"/> class.

@@ -7,7 +7,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class Elevator : Room
+    public class Elevator : NormalRoom
     {
                 /// <summary>
         /// Initializes a new instance of the <see cref="Elevator"/> class.

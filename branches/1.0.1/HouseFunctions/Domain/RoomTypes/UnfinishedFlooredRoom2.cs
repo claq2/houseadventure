@@ -1,13 +1,9 @@
 namespace HouseCore
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// 
     /// </summary>
-    public class UnfinishedFlooredRoom2 : Room2 
+    public class UnfinishedFlooredRoom2 : NormalRoom2
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UnfinishedFlooredRoom2"/> class.
@@ -39,10 +35,9 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="UnfinishedFlooredRoom2"/> class.
         /// </summary>
         /// <param name="roomInfo">The room info.</param>
-        public UnfinishedFlooredRoom2(RoomInfo roomInfo)
+        public UnfinishedFlooredRoom2(NormalRoomInfo roomInfo)
             : base(roomInfo)
         {
         }
-
-}
+    }
 }

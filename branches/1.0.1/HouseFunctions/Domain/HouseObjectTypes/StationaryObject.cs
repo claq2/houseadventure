@@ -39,7 +39,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
-        public StationaryObject(string name, Room room) 
+        public StationaryObject(string name, NormalRoom room) 
             : base(name, room) 
         { 
         }
@@ -50,7 +50,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
         /// <param name="shortName">The short name.</param>
-        public StationaryObject(string name, Room room, string shortName) 
+        public StationaryObject(string name, NormalRoom room, string shortName) 
             : base(name, room, shortName) 
         { 
         }

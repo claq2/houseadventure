@@ -1,23 +1,13 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Room2.cs" company="James McLachlan">
-//     Copyright (c) James McLachlan. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace HouseCore
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Xml.Serialization;
-
     /// <summary>
     /// 
     /// </summary>
-    [XmlInclude(typeof(UnfinishedFlooredRoom2))]
-    [XmlInclude(typeof(TelephoneBooth2))]
-    //[XmlInclude(typeof(Elevator2))]
-    public class Room2 : GameEntity
+    public abstract class Room2 : GameEntity
     {
         /// <summary>
         /// Gets or sets the room number.
@@ -26,7 +16,7 @@ namespace HouseCore
         public int RoomNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Room"/> is magic.
+        /// Gets or sets a value indicating whether this <see cref="NormalRoom"/> is magic.
         /// </summary>
         /// <value><c>true</c> if magic; otherwise, <c>false</c>.</value>
         public bool Magic { get; set; }
@@ -105,7 +95,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
-        public Room2()
+        protected Room2()
             : base()
         {
             InitializeDirections();
@@ -122,59 +112,59 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public Room2(string name)
+        protected Room2(string name)
             : base(name)
         {
             InitializeDirections();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
-        public Room2(string name, int roomNumber)
+        protected Room2(string name, int roomNumber)
             : this(name)
         {
             this.RoomNumber = roomNumber;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="exits">The exits.</param>
-        public Room2(string name, int roomNumber, RoomExit[] exits)
+        protected Room2(string name, int roomNumber, RoomExit[] exits)
             : this(name, roomNumber)
         {
             this.Exits = new ReadOnlyExitSetCollection(exits);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="exits">The exits.</param>
-        public Room2(string name, int roomNumber, ReadOnlyExitSetCollection exits)
+        protected Room2(string name, int roomNumber, ReadOnlyExitSetCollection exits)
             : this(name, roomNumber)
         {
             this.Exits = new ReadOnlyExitSetCollection(exits);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> room is magic.</param>
         /// <param name="word">The word.</param>
-        public Room2(string name, int roomNumber, RoomExit[] exits, bool magic, MagicWord word)
+        protected Room2(string name, int roomNumber, RoomExit[] exits, bool magic, MagicWord word)
             : this(name, roomNumber)
         {
             this.Magic = magic;
@@ -183,14 +173,14 @@ namespace HouseCore
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class.
+        /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="roomNumber">The room number.</param>
         /// <param name="exits">The exits.</param>
         /// <param name="magic">if set to <c>true</c> [magic].</param>
         /// <param name="word">The word.</param>
-        public Room2(string name, int roomNumber, ReadOnlyExitSetCollection exits, bool magic, MagicWord word)
+        protected Room2(string name, int roomNumber, ReadOnlyExitSetCollection exits, bool magic, MagicWord word)
             : this(name, roomNumber)
         {
             this.Magic = magic;
@@ -204,7 +194,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="Room2"/> class.
         /// </summary>
         /// <param name="roomInfo">The room info.</param>
-        public Room2(RoomInfo roomInfo)
+        protected Room2(NormalRoomInfo roomInfo)
             : base(roomInfo.Name)
         {
             InitializeDirections();

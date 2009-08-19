@@ -1,11 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace HouseCore
 {
-    using System;
-    using System.Collections.Generic;
     /// <summary>
-    /// Contains readonly information for creating Room objects
+    /// 
     /// </summary>
-    public class RoomInfo
+    public abstract class RoomInfo
     {
         /// <summary>
         /// Gets or sets the floor.
@@ -46,7 +48,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="RoomInfo"/> class.
         /// </summary>
-        public RoomInfo()
+        protected RoomInfo()
             : this(String.Empty, -1, Floor.Undefined, new RoomExit[] { }, MagicWord.Undefined)
         {
         }
@@ -58,7 +60,7 @@ namespace HouseCore
         /// <param name="roomNumber">The room number.</param>
         /// <param name="floor">The floor.</param>
         /// <param name="exits">The exits.</param>
-        public RoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits)
+        protected RoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits)
             : this(name, roomNumber, floor, exits, MagicWord.Undefined)
         {
         }
@@ -71,7 +73,7 @@ namespace HouseCore
         /// <param name="floor">The floor.</param>
         /// <param name="exits">The exits.</param>
         /// <param name="word">The magic word.</param>
-        public RoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits, MagicWord word)
+        protected RoomInfo(string name, int roomNumber, Floor floor, RoomExit[] exits, MagicWord word)
         {
             this.Name = name;
             this.Floor = floor;
@@ -80,5 +82,11 @@ namespace HouseCore
             this.Magic = word != MagicWord.Undefined;
             this.Word = word;
         }
+
+        /// <summary>
+        /// Creates the room.
+        /// </summary>
+        /// <returns></returns>
+        public abstract Room2 CreateRoom();
     }
 }

@@ -6,9 +6,6 @@
 
 namespace HouseCore
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Xml.Serialization;
 
     /// <summary>
@@ -17,11 +14,6 @@ namespace HouseCore
     [XmlInclude(typeof(Impostor))]
     public class Adversary : GameEntity
     {
-
-        ///// <summary>
-        ///// The item's short name
-        ///// </summary>
-        //private string shortName;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Adversary"/> class.
@@ -40,20 +32,12 @@ namespace HouseCore
         {
         }
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="Adversary"/> class.
-        ///// </summary>
-        ///// <param name="name">The name.</param>
-        ///// <param name="roomNumber">The room number.</param>
-        ///// <param name="floor">The floor.</param>
-        ////public Adversary(string name, int roomNumber, Floor floor) : base(name, roomNumber, floor) { }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Adversary"/> class.
         /// </summary>
         /// <param name="name">The display name of the adversary.</param>
         /// <param name="room">The initial room.</param>
-        public Adversary(string name, Room room) : base(name)
+        public Adversary(string name, NormalRoom room) : base(name)
         {
             room.Adversaries.Add(this);
         }
@@ -64,21 +48,11 @@ namespace HouseCore
         /// <param name="name">The display name of the adversary.</param>
         /// <param name="room">The initial room.</param>
         /// <param name="shortName">The short name of the adversary.</param>
-        public Adversary(string name, Room room, string shortName)
+        public Adversary(string name, NormalRoom room, string shortName)
             : base(name, shortName)
         {
             room.Adversaries.Add(this);
-            ////this.shortName = shortName;
         }
-
-        ///// <summary>
-        ///// Gets the short name.
-        ///// </summary>
-        ///// <value>The short name.</value>
-        //public string ShortName
-        //{
-        //    get { return this.shortName; }
-        //}
 
         /// <summary>
         /// Gets or sets the moves until unhidden.

@@ -14,7 +14,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class RoomKeyedCollection : KeyedCollection<LocationType, Room>
+    public class RoomKeyedCollection : KeyedCollection<LocationType, NormalRoom>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RoomKeyedCollection"/> class.
@@ -26,7 +26,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="item">The element from which to extract the key.</param>
         /// <returns>The key for the specified element.</returns>
-        protected override LocationType GetKeyForItem(Room item)
+        protected override LocationType GetKeyForItem(NormalRoom item)
         {
             return item.Location;
         }
@@ -40,7 +40,7 @@ namespace HouseCore
             get
             {
                 RoomKeyedCollection coll = new RoomKeyedCollection();
-                foreach (Room room in this)
+                foreach (NormalRoom room in this)
                 {
                     if (room.Magic)
                     {

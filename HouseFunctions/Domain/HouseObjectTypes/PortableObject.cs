@@ -6,10 +6,6 @@
 
 namespace HouseCore
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// Class that represents an item that can be picked up
     /// </summary>
@@ -27,11 +23,6 @@ namespace HouseCore
         /// </summary>
         private bool visible = true;
 
-        ///// <summary>
-        ///// The item's short name
-        ///// </summary>
-        //private string shortName;
-
         #endregion Fields 
 
         #region Constructors (5) 
@@ -43,7 +34,7 @@ namespace HouseCore
         /// <param name="room">The name of the room.</param>
         /// <param name="buried">if set to <c>true</c> item is buried.</param>
         /// <param name="visible">if set to <c>true</c> item is visible.</param>
-        public PortableObject(string name, Room room, bool buried, bool visible)
+        public PortableObject(string name, NormalRoom room, bool buried, bool visible)
             : base(name, room)
         {
             this.buried = buried;
@@ -58,7 +49,7 @@ namespace HouseCore
         /// <param name="buried">if set to <c>true</c> item is buried.</param>
         /// <param name="visible">if set to <c>true</c> item is visible.</param>
         /// <param name="shortName">The short name.</param>
-        public PortableObject(string name, Room room, bool buried, bool visible, string shortName)
+        public PortableObject(string name, NormalRoom room, bool buried, bool visible, string shortName)
             : base(name, room, shortName)
         {
             this.buried = buried;
@@ -70,7 +61,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
-        public PortableObject(string name, Room room) : base(name, room)
+        public PortableObject(string name, NormalRoom room) : base(name, room)
         {
         }
 
@@ -80,7 +71,7 @@ namespace HouseCore
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
         /// <param name="shortName">The short name.</param>
-        public PortableObject(string name, Room room, string shortName)
+        public PortableObject(string name, NormalRoom room, string shortName)
             : base(name, room, shortName)
         {
         }

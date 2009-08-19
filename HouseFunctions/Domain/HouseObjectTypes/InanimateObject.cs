@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace HouseCore
@@ -39,7 +36,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
-        protected InanimateObject(string name, Room room)
+        protected InanimateObject(string name, NormalRoom room)
             : base(name)
         {
             room.Items.Add(this);
@@ -51,7 +48,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
         /// <param name="shortName">The short name.</param>
-        protected InanimateObject(string name, Room room, string shortName)
+        protected InanimateObject(string name, NormalRoom room, string shortName)
             : base(name, shortName)
         {
             room.Items.Add(this);

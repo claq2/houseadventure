@@ -45,7 +45,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
-        public CushioningObject(string name, Room room) 
+        public CushioningObject(string name, NormalRoom room) 
             : base(name, room) 
         { 
         }
@@ -56,7 +56,7 @@ namespace HouseCore
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
         /// <param name="shortName">The short name.</param>
-        public CushioningObject(string name, Room room, string shortName)
+        public CushioningObject(string name, NormalRoom room, string shortName)
             : base(name, room, shortName)
         {
         }

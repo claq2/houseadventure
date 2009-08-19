@@ -1,78 +1,52 @@
-using System;
-using System.Collections.ObjectModel;
-
+using System.Collections.Generic;
 namespace HouseCore
 {
     /// <summary>
-    /// 
-    /// </summary>
-    public class InanimateObjectInfo
-    {
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the short name.
-        /// </summary>
-        /// <value>The short name.</value>
-        public string ShortName { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the initial room.
-        /// </summary>
-        /// <value>The initial room.</value>
-        public int InitialRoom { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the initial floor.
-        /// </summary>
-        /// <value>The initial floor.</value>
-        public Floor InitialFloor { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InanimateObjectInfo"/> class.
-        /// </summary>
-        public InanimateObjectInfo() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InanimateObjectInfo"/> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <param name="shortName">The short name.</param>
-        /// <param name="initialRoom">The initial room.</param>
-        /// <param name="floor">The floor.</param>
-        public InanimateObjectInfo(string name, string shortName, int initialRoom, Floor floor)
-        {
-            this.Name = name;
-            this.ShortName = shortName;
-            this.InitialRoom = initialRoom;
-            this.InitialFloor = floor;
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class InanimateObjectInfoCollection : Collection<InanimateObjectInfo>
-    {
-    }
-
-    /// <summary>
     /// All data relating to items in the house
     /// </summary>
-    public static class ObjectData
+    public sealed class ObjectData
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public static InanimateObjectInfoCollection ObjectInfoCollection = InitializeObjectInfo();
 
-        private static InanimateObjectInfoCollection InitializeObjectInfo()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectData"/> class.
+        /// </summary>
+        private ObjectData()
         {
-            InanimateObjectInfoCollection result = new InanimateObjectInfoCollection();
+        }
+
+        private static readonly ReadOnlyInanimateObjectInfoCollection objectInfoCollection = new ReadOnlyInanimateObjectInfoCollection(InitializeObjectInfo());
+
+        private static List<InanimateObjectInfo> InitializeObjectInfo()
+        {
+            List<InanimateObjectInfo> result = new List<InanimateObjectInfo>();
+            result.Add(new PortableObjectInfo("a bag of gold", "gol", 5, Floor.Basement));
+            result.Add(new PortableObjectInfo("a banjo", "ban", 7, Floor.SecondFloor));
+            result.Add(new ConsumableObjectInfo("a set of batteries", "bat", 2, Floor.ThirdFloor, 40));
+            result.Add(new PortableObjectInfo("a hairbrush", "hai", 6, Floor.SecondFloor));
+            result.Add(new ConsumableObjectInfo("a can of bug spray", "can", 2, Floor.Basement, 3));
+            result.Add(new PortableObjectInfo("a small diamond", "dia", 1, Floor.SecondFloor));
+            result.Add(new PortableObjectInfo("an aluminum dime", "dim", 4, Floor.FirstFloor, false));
+            result.Add(new DryIceInfo("a block of dry ice", "ice", 3, Floor.ThirdFloor));
+            result.Add(new FlashlightInfo("a flashlight", "fla", 3, Floor.FirstFloor));
+            result.Add(new PortableObjectInfo("a clove of garlic", "gar", 0, Floor.Basement, false));
+            result.Add(new GloveInfo("an old leather glove", "glo", 8, Floor.Basement));
+            result.Add(new CoinsInfo("100's of gold coins", "coi", 8, Floor.SecondFloor));
+            result.Add(new PortableObjectInfo("a carving knife", "kni", 6, Floor.FirstFloor));
+            result.Add(new VaseInfo("a ming vase", "vas", 3, Floor.SecondFloor));
+            result.Add(new PortableObjectInfo("a wrinkled parchment", "par", 7, Floor.Basement));
+            result.Add(new PillowInfo("a silk pillow", "pil", 7, Floor.ThirdFloor));
+            result.Add(new PortableObjectInfo("a rusted key", "key", 0, Floor.Basement, false));
+            result.Add(new PortableObjectInfo("a shovel", "sho", 4, Floor.ThirdFloor));
+            result.Add(new PortableObjectInfo("a sorcerer's hand book", "boo", 1, Floor.ThirdFloor));
+            result.Add(new BoxInfo("a wooden box", "box", 1, Floor.FirstFloor));
+
+            result.Add(new LockableDoorObjectInfo("a locked door", "doo", 1, Floor.FirstFloor, new RoomExit(Direction.South, 0)));
+            result.Add(new StationaryObjectInfo("a brass bathtub", 4, Floor.SecondFloor));
+            result.Add(new StationaryObjectInfo("the front yard", 0, Floor.FirstFloor));
+            result.Add(new StationaryObjectInfo("a king sized bed", 2, Floor.SecondFloor));
+            result.Add(new StationaryObjectInfo("a unitron 30/50 mainframe", 4, Floor.ThirdFloor));
+            result.Add(new StationaryObjectInfo("a dusty moose head", 7, Floor.SecondFloor));
+            result.Add(new StationaryObjectInfo("a set of stocks", 5, Floor.Basement));
             return result;
         }
 
@@ -124,6 +98,7 @@ namespace HouseCore
         private const string stocksName = "a set of stocks";
         private const string vaseName = "a ming vase";
         private const string vaseShortName = "vas";
+
         /// <summary>
         /// Gets the name of the bag of gold.
         /// </summary>
@@ -455,6 +430,17 @@ namespace HouseCore
         public static string MooseHeadName
         {
             get { return mooseHeadName; }
+        }
+
+        /// <summary>
+        /// The object data collecition
+        /// </summary>
+        public static ReadOnlyInanimateObjectInfoCollection ObjectInfoCollection
+        {
+            get
+            {
+                return objectInfoCollection;
+            }
         }
 
         /// <summary>

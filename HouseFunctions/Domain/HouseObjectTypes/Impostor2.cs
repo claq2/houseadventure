@@ -21,7 +21,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="Impostor2"/> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public Impostor2(AdversaryInfo info)
+        public Impostor2(ImpostorInfo info)
             : base(info)
         {
         }

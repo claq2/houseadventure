@@ -14,7 +14,6 @@ namespace HouseCore
     /// </summary>
     public abstract class GameEntity : IEquatable<GameEntity>
     {
-        //private LocationType location;
         private String name = String.Empty;
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace HouseCore
         /// </summary>
         protected GameEntity()
         {
-            //this.Location = new LocationType();
         }
 
         /// <summary>
@@ -46,7 +44,6 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         protected GameEntity(string name)
         {
-            //this.Location = new LocationType();
             this.Name = name;
         }
 
@@ -57,7 +54,6 @@ namespace HouseCore
         /// <param name="shortName">The short name.</param>
         protected GameEntity(string name, string shortName)
         {
-            //this.Location = new LocationType();
             this.name = name;
             this.shortName = shortName;
         }
@@ -71,13 +67,9 @@ namespace HouseCore
         public override string ToString()
         {
             if (String.IsNullOrEmpty(ShortName))
-            {
                 return Name;
-            }
             else
-            {
                 return ShortName;
-            }
         }
 
         /// <summary>
@@ -89,13 +81,9 @@ namespace HouseCore
             get
             {
                 if (String.IsNullOrEmpty(ShortName))
-                {
                     return Name;
-                }
                 else
-                {
                     return ShortName;
-                }
             }
         }
 
@@ -122,17 +110,11 @@ namespace HouseCore
         public bool Equals(GameEntity other)
         {
             if (String.IsNullOrEmpty(ShortName))
-            {
                 return this.Name == other.Name;
-            }
             else
-            {
                 return this.ShortName == other.ShortName;
-            }
         }
 
         #endregion
-
-
     }
 }

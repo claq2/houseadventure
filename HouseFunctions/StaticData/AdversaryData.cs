@@ -6,6 +6,7 @@
 
 using System.Collections.ObjectModel;
 using System;
+using System.Collections.Generic;
 namespace HouseCore
 {
     /// <summary>
@@ -16,30 +17,30 @@ namespace HouseCore
         /// <summary>
         /// 
         /// </summary>
-        public static AdversaryInfoCollection AdversaryInfo = InitializeInfo();
+        private static readonly ReadOnlyAdversaryInfoCollection adversaryInfo = new ReadOnlyAdversaryInfoCollection(InitializeInfo());
 
         private static Random random = new Random();
 
-        private static AdversaryInfoCollection InitializeInfo()
+        private static List<AdversaryInfo> InitializeInfo()
         {
-            AdversaryInfoCollection result = new AdversaryInfoCollection();
-            result.Add(new AdversaryInfo("a savage beast", "bea", 2, Floor.Basement));
-            result.Add(new AdversaryInfo("a protoplasmic blob", "blo", 7, Floor.Basement));
-            result.Add(new AdversaryInfo("a leopard", "leo", 1, Floor.ThirdFloor));
-            result.Add(new AdversaryInfo("an insane monk", "mon", 3, Floor.SecondFloor));
-            result.Add(new AdversaryInfo("a vampire", "vam", 6, Floor.FirstFloor));
-            result.Add(new AdversaryInfo("a werewolf", "wer", 7, Floor.ThirdFloor));
+            List<AdversaryInfo> result = new List<AdversaryInfo>();
+            result.Add(new NormalAdversaryInfo("a savage beast", "bea", 2, Floor.Basement));
+            result.Add(new NormalAdversaryInfo("a protoplasmic blob", "blo", 7, Floor.Basement));
+            result.Add(new NormalAdversaryInfo("a leopard", "leo", 1, Floor.ThirdFloor));
+            result.Add(new NormalAdversaryInfo("an insane monk", "mon", 3, Floor.SecondFloor));
+            result.Add(new NormalAdversaryInfo("a vampire", "vam", 6, Floor.FirstFloor));
+            result.Add(new NormalAdversaryInfo("a werewolf", "wer", 7, Floor.ThirdFloor));
 #if (DEBUG)
             int intImpostorItemNumber = 0;
             int intImpostorRoomNumber = 0;
             Floor floorImpostorFloor = Floor.SecondFloor;
 #else
-            int intImpostorItemNumber = AdversaryData.random.Next(this.PortableObjects.Count);
+            int intImpostorItemNumber = AdversaryData.random.Next(result.Count);
             int intImpostorRoomNumber = AdversaryData.random.Next(10);
-            Floor floorImpostorFloor = (Floor)this.random.Next(4) + 1;
+            Floor floorImpostorFloor = (Floor)AdversaryData.random.Next(4) + 1;
 #endif
-            string stringImpostorDisplayName = String.Empty; //this.PortableObjects[intImpostorItemNumber].Name;
-            string stringImpostorShortName = String.Empty; //this.PortableObjects[intImpostorItemNumber].ShortName;
+            string stringImpostorDisplayName = String.Empty;
+            string stringImpostorShortName = String.Empty;
             result.Add(new ImpostorInfo(stringImpostorDisplayName, stringImpostorShortName, intImpostorRoomNumber, floorImpostorFloor));
             return result;
         }
@@ -56,6 +57,17 @@ namespace HouseCore
         private const string vampireShortName = "vam";
         private const string werewolfName = "a werewolf";
         private const string werewolfShortName = "wer";
+
+        /// <summary>
+        /// The adversary info collection
+        /// </summary>
+        public static ReadOnlyAdversaryInfoCollection AdversaryInfo
+        {
+            get
+            {
+                return adversaryInfo;
+            }
+        }
 
         /// <summary>
         /// Gets the name of the beast.

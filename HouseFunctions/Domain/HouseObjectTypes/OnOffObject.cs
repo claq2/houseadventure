@@ -50,7 +50,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
-        public OnOffObject(string name, Room room) 
+        public OnOffObject(string name, NormalRoom room) 
             : base(name, room) 
         { 
         }
@@ -61,7 +61,7 @@ namespace HouseCore
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
         /// <param name="shortName">The short name.</param>
-        public OnOffObject(string name, Room room, string shortName) 
+        public OnOffObject(string name, NormalRoom room, string shortName) 
             : base(name, room, shortName) 
         { 
         }
@@ -73,7 +73,7 @@ namespace HouseCore
         /// <param name="room">The name of the room.</param>
         /// <param name="buried">if set to <c>true</c> item is buried.</param>
         /// <param name="visible">if set to <c>true</c> item is visible.</param>
-        public OnOffObject(string name, Room room, bool buried, bool visible)
+        public OnOffObject(string name, NormalRoom room, bool buried, bool visible)
             : base(name, room, buried, visible)
         {
             
@@ -88,7 +88,7 @@ namespace HouseCore
         /// <param name="buried">if set to <c>true</c> [buried].</param>
         /// <param name="visible">if set to <c>true</c> [visible].</param>
         /// <param name="shortName">The short name.</param>
-        public OnOffObject(string name, Room room, bool buried, bool visible, string shortName)
+        public OnOffObject(string name, NormalRoom room, bool buried, bool visible, string shortName)
             : base(name, room, buried, visible, shortName)
         {
             

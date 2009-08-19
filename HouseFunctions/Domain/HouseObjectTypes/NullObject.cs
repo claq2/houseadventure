@@ -29,7 +29,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
-        public NullObject(string name, Room room)
+        public NullObject(string name, NormalRoom room)
             : base(name, room)
         {
         }
@@ -40,7 +40,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="room">The room.</param>
         /// <param name="shortName">The short name.</param>
-        public NullObject(string name, Room room, string shortName)
+        public NullObject(string name, NormalRoom room, string shortName)
             : base(name, room, shortName)
         {
         }

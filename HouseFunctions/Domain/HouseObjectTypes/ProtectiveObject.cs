@@ -45,7 +45,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="room">The name of the room.</param>
-        public ProtectiveObject(string name, Room room) 
+        public ProtectiveObject(string name, NormalRoom room) 
             : base(name, room) 
         { 
         }
@@ -57,7 +57,7 @@ namespace HouseCore
         /// <param name="room">The name of the room.</param>
         /// <param name="buried">if set to <c>true</c> item is buried.</param>
         /// <param name="visible">if set to <c>true</c> item is visible.</param>
-        public ProtectiveObject(string name, Room room, bool buried, bool visible)
+        public ProtectiveObject(string name, NormalRoom room, bool buried, bool visible)
             : base(name, room, buried, visible) 
         { 
         }
@@ -70,7 +70,7 @@ namespace HouseCore
         /// <param name="buried">if set to <c>true</c> item is buried.</param>
         /// <param name="visible">if set to <c>true</c> item is visible.</param>
         /// <param name="shortName">The short name.</param>
-        public ProtectiveObject(string name, Room room, bool buried, bool visible, string shortName)
+        public ProtectiveObject(string name, NormalRoom room, bool buried, bool visible, string shortName)
             : base(name, room, buried, visible, shortName)
         {
         }

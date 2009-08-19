@@ -7,7 +7,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class TelephoneBooth : Room
+    public class TelephoneBooth : NormalRoom
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TelephoneBooth"/> class.

@@ -9,14 +9,14 @@ namespace HouseCore
     /// 
     /// </summary>
     [XmlInclude(typeof(PortableObject2))]
-    [XmlInclude(typeof(ContainerObject2))]
+    [XmlInclude(typeof(Box))]
     [XmlInclude(typeof(ConsumableObject2))]
-    [XmlInclude(typeof(ProtectiveObject2))]
-    [XmlInclude(typeof(PainfulObject2))]
-    [XmlInclude(typeof(OnOffObject2))]
-    [XmlInclude(typeof(MultiplePieceObject2))]
-    [XmlInclude(typeof(DelicateObject2))]
-    [XmlInclude(typeof(CushioningObject2))]
+    [XmlInclude(typeof(Glove))]
+    [XmlInclude(typeof(DryIce))]
+    [XmlInclude(typeof(Flashlight))]
+    [XmlInclude(typeof(Coins))]
+    [XmlInclude(typeof(Vase))]
+    [XmlInclude(typeof(Pillow))]
     [XmlInclude(typeof(StationaryObject2))]
     [XmlInclude(typeof(LockableDoorObject2))]
     [XmlInclude(typeof(NullObject2))]
@@ -37,8 +37,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="InanimateObject2"/> class.
         /// </summary>
-        /// <param name="name">The name.</param>
-        /// <param name="room">The room.</param>
+        /// <param name="info">The info.</param>
         protected InanimateObject2(InanimateObjectInfo info)
             : base(info.Name, info.ShortName)
         {

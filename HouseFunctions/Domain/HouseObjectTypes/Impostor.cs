@@ -6,10 +6,6 @@
 
 namespace HouseCore
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// Class that represents an impostor
     /// </summary>
@@ -28,7 +24,7 @@ namespace HouseCore
         /// </summary>
         /// <param name="name">The name of the item that the impostor is impersonating</param>
         /// <param name="room">The initial room.</param>
-        public Impostor(string name, Room room)
+        public Impostor(string name, NormalRoom room)
             : base(name, room) 
         {
         }
@@ -39,7 +35,7 @@ namespace HouseCore
         /// <param name="name">The name of the item that the impostor is impersonating.</param>
         /// <param name="room">The initial room.</param>
         /// <param name="shortName">The short name of the item that the impostor is impersonating.</param>
-        public Impostor(string name, Room room, string shortName)
+        public Impostor(string name, NormalRoom room, string shortName)
             : base(name, room, shortName)
         {
         }

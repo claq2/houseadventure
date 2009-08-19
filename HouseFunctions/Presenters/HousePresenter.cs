@@ -184,7 +184,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         private bool Move(Direction direction)
         {
-            Room roomCurrent = this.house.Rooms[this.player.Location];
+            NormalRoom roomCurrent = this.house.Rooms[this.player.Location];
             Elevator elevatorCurrentRoomAsElevator = roomCurrent as Elevator;
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
             ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
@@ -249,7 +249,7 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            Room room = this.house.Rooms[this.player.Location];
+            NormalRoom room = this.house.Rooms[this.player.Location];
             Adversary adversaryLeopard = this.house.Adversaries[AdversaryData.LeopardShortName];
             PortableObject portableObjectBrush = this.house.InanimateObjects[ObjectData.BrushShortName] as PortableObject;
 
@@ -298,7 +298,7 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            Room room = this.house.Rooms[this.player.Location];
+            NormalRoom room = this.house.Rooms[this.player.Location];
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             if (String.Compare(stringShortenedArgument, "dir", true, CultureInfo.CurrentCulture) != 0)
             {
@@ -540,7 +540,7 @@ namespace HouseCore.Presenters
             {
                 stringBuilderMessage.Append("The parchment is torn -- it reads:\r\n");
                 stringBuilderMessage.Append(". . . is the place to use them:\r\n");
-                foreach (Room room in this.house.Rooms.MagicRooms)
+                foreach (NormalRoom room in this.house.Rooms.MagicRooms)
                 {
                     stringBuilderMessage.Append(room.Name);
                     stringBuilderMessage.Append(Environment.NewLine);
@@ -634,7 +634,7 @@ namespace HouseCore.Presenters
             StringBuilder stringBuilderMessage = new StringBuilder();
             ConsumableObject consumableObjectBugSpray = this.house.InanimateObjects[ObjectData.BugSprayShortName] as ConsumableObject;
             Adversary adversaryBlob = this.house.Adversaries[AdversaryData.BlobShortName];
-            Room room = this.house.Rooms[this.player.Location];
+            NormalRoom room = this.house.Rooms[this.player.Location];
 
             // Trying to spray adversary in the room but don't have the spray?
             if (!this.house.Inventory.Contains(consumableObjectBugSpray))
@@ -688,7 +688,7 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            Room room = this.house.Rooms[this.player.Location];
+            NormalRoom room = this.house.Rooms[this.player.Location];
             PortableObject portableObjectKnife = this.house.PortableObjects[ObjectData.KnifeShortName] as PortableObject;
             Adversary adversaryMonk = this.house.Adversaries[AdversaryData.MonkShortName];
 
@@ -732,7 +732,7 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            Room room = this.house.Rooms[this.player.Location];
+            NormalRoom room = this.house.Rooms[this.player.Location];
             PortableObject portableObjectGarlic = this.house.InanimateObjects[ObjectData.GarlicShortName] as PortableObject;
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
             Adversary adversaryVampire = this.house.Adversaries[AdversaryData.VampireShortName];
@@ -926,7 +926,7 @@ namespace HouseCore.Presenters
                     }
                 else if (this.house.Rooms[this.player.Location].Adversaries.ContainsNonImpostor)
                 {
-                    // Room has an adversary that is not the imposter
+                    // NormalRoom has an adversary that is not the imposter
                     stringBuilderMessage.Append("This room's occupant seems to have grown very attached to the ");
                     stringBuilderMessage.Append(this.view.Argument);
                     stringBuilderMessage.Append(" and won't let you have it");
@@ -989,7 +989,7 @@ namespace HouseCore.Presenters
         /// </summary>
         private void Look(bool afterVerticalMovement)
         {
-            Room room = this.house.Rooms[this.player.Location];
+            NormalRoom room = this.house.Rooms[this.player.Location];
             this.view.GameEnded = false;
             this.view.ClearScreen = true;
             this.view.ExitDirections.Clear();

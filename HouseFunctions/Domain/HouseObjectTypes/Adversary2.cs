@@ -18,7 +18,7 @@ namespace HouseCore
         public int MovesUntilUnhidden { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Adversary"/> class.
+        /// Initializes a new instance of the <see cref="Adversary2"/> class.
         /// </summary>
         public Adversary2()
             : base()
@@ -29,7 +29,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="Adversary2"/> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public Adversary2(AdversaryInfo info)
+        public Adversary2(NormalAdversaryInfo info)
             : base(info.Name, info.ShortName)
         {
         }

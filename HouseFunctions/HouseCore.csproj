@@ -56,20 +56,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adversary2Collection.cs" />
     <Compile Include="AdversaryCollection.cs" />
+    <Compile Include="StaticData\AdversaryInfo.cs" />
+    <Compile Include="StaticData\ConsumableObjectInfo.cs" />
+    <Compile Include="StaticData\BoxInfo.cs" />
+    <Compile Include="StaticData\CoinsInfo.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Domain\FloorKeyedCollection.cs" />
     <Compile Include="Domain\HouseObjectTypes\Adversary2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ConsumableObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ContainerObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\CushioningObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\DelicateObject2.cs" />
     <Compile Include="Domain\HouseObjectTypes\Impostor2.cs" />
     <Compile Include="Domain\HouseObjectTypes\InanimateObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\LockableDoorObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\MultiplePieceObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\NullObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\OnOffObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\PainfulObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\PortableObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\ProtectiveObject2.cs" />
+    <Compile Include="Domain\HouseObjectTypes\StationaryObject2.cs" />
+    <Compile Include="StaticData\DryIceInfo.cs" />
+    <Compile Include="StaticData\FlashlightInfo.cs" />
+    <Compile Include="StaticData\GloveInfo.cs" />
+    <Compile Include="InanimateObject2KeyedCollection.cs" />
     <Compile Include="InanimateObjectKeyedCollection.cs" />
+    <Compile Include="StaticData\LockableDoorObjectInfo.cs" />
+    <Compile Include="StaticData\NullObjectInfo.cs" />
+    <Compile Include="StaticData\PillowInfo.cs" />
+    <Compile Include="StaticData\PortableObjectInfo.cs" />
+    <Compile Include="Room2.cs" />
+    <Compile Include="StaticData\RoomInfo.cs" />
     <Compile Include="StaticData\AdversaryData.cs" />
-    <Compile Include="StaticData\AdversaryInfo.cs" />
-    <Compile Include="StaticData\AdversaryInfoCollection.cs" />
+    <Compile Include="StaticData\NormalAdversaryInfo.cs" />
+    <Compile Include="StaticData\ReadOnlyAdversaryInfoCollection.cs" />
     <Compile Include="StaticData\ImpostorInfo.cs" />
+    <Compile Include="StaticData\InanimateObjectInfo.cs" />
+    <Compile Include="StaticData\ReadOnlyInanimateObjectInfoCollection.cs" />
     <Compile Include="StaticData\ObjectData.cs" />
-    <Compile Include="Domain\RoomTypes\Room2.cs" />
+    <Compile Include="Domain\RoomTypes\NormalRoom2.cs" />
     <Compile Include="Room2KeyedCollection.cs" />
+    <Compile Include="StaticData\ReadOnlyRoomInfoCollection.cs" />
     <Compile Include="StaticData\RoomData.cs" />
     <Compile Include="Exceptions\NullViewArgumentException.cs" />
     <Compile Include="ReadOnlyExitSetCollection.cs" />
@@ -93,7 +123,8 @@
     <Compile Include="Domain\HouseObjectTypes\PainfulObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\PortableObject.cs" />
     <Compile Include="Domain\HouseObjectTypes\ProtectiveObject.cs" />
-    <Compile Include="StaticData\RoomInfo.cs" />
+    <Compile Include="StaticData\NormalRoomInfo.cs" />
+    <Compile Include="StaticData\StationaryObjectInfo.cs" />
     <Compile Include="Switch.cs" />
     <Compile Include="Domain\HouseObjectTypes\Impostor.cs" />
     <Compile Include="Domain\Player.cs" />
@@ -114,6 +145,7 @@
     <Compile Include="StaticData\TheHouseData.cs" />
     <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom2.cs" />
     <Compile Include="StaticData\UnfinishedFlooredRoomInfo.cs" />
+    <Compile Include="StaticData\VaseInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HouseCore.cd" />

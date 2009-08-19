@@ -165,14 +165,14 @@ namespace House
         //}
 
         /*
-        public static void Initialize(HouseFunctions.PlayerEntity Player, int[, ,] Exits, int[,] Monsters, double[,] Objects, int[,] MagicRooms, HouseEntity house, List<Room> rooms, List<Adversary> adversries, List<InanimateObject> items)
+        public static void Initialize(HouseFunctions.PlayerEntity Player, int[, ,] Exits, int[,] Monsters, double[,] Objects, int[,] MagicRooms, HouseEntity house, List<NormalRoom> rooms, List<Adversary> adversries, List<InanimateObject> items)
         {
 
             TheHouse.Player.Location.Floor = Floor.FirstFloor;
-            TheHouse.Player.Location.Room = 1;
+            TheHouse.Player.Location.NormalRoom = 1;
 
             #region load rooms
-            //house.Rooms = new Collection<Collection<Room>>();
+            //house.Rooms = new Collection<Collection<NormalRoom>>();
             for (int i = 0; i < 4; i++)
             {
                 string[] saRoomNames;
@@ -200,7 +200,7 @@ namespace House
                 }
 
                 //Add new floor to the house
-                house.Rooms.Add(new System.Collections.ObjectModel.Collection<Room>());
+                house.Rooms.Add(new System.Collections.ObjectModel.Collection<NormalRoom>());
 
                 for (int j = 0; j < 10; j++)
                 {
@@ -212,7 +212,7 @@ namespace House
                     }
                     else if (j < 8)
                     {
-                        house.Rooms[i].Add(new Room());
+                        house.Rooms[i].Add(new NormalRoom());
                     }
                     else if (j == 8)
                     {
@@ -224,7 +224,7 @@ namespace House
                     }
                     rooms.Add(house.Rooms[i][j]);
                     house.Rooms[i][j].Location.Floor = (Floor)i;
-                    house.Rooms[i][j].Location.Room = j;
+                    house.Rooms[i][j].Location.NormalRoom = j;
                     house.Rooms[i][j].Name = saRoomNames[j];
                     //house.Rooms[i][j].Exits = new ExitSet();
                     for (int k = 0; k < 4; k++)
@@ -273,7 +273,7 @@ namespace House
                 }
                 inObj.Name = saObjects[i];
                 inObj.Location.Floor=(Floor)iObjectLevel;
-                inObj.Location.Room=iObjectRoom;
+                inObj.Location.NormalRoom=iObjectRoom;
                 //house.Rooms[iObjectLevel][iObjectRoom].InanimateObjects.Add(inObj);
                 house.Rooms[iObjectLevel][iObjectRoom].Items.Add(inObj);
                 items.Add(inObj);
@@ -292,8 +292,8 @@ namespace House
                 boObj.Location=obj.Location;
                 boObj.Name = obj.Name;
                 items[objNum] = boObj;
-                int indexinroom = house.Rooms[(int)boObj.Location.Floor][boObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)boObj.Location.Floor][boObj.Location.Room].Items[indexinroom] = boObj;
+                int indexinroom = house.Rooms[(int)boObj.Location.Floor][boObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)boObj.Location.Floor][boObj.Location.NormalRoom].Items[indexinroom] = boObj;
             }
 
             foreach (int objNum in iaMultiplePieceObjects)
@@ -303,8 +303,8 @@ namespace House
                 mpObj.Location = obj.Location;
                 mpObj.Name = obj.Name;
                 items[objNum] = mpObj;
-                int indexinroom = house.Rooms[(int)mpObj.Location.Floor][mpObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)mpObj.Location.Floor][mpObj.Location.Room].Items[indexinroom] = mpObj;
+                int indexinroom = house.Rooms[(int)mpObj.Location.Floor][mpObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)mpObj.Location.Floor][mpObj.Location.NormalRoom].Items[indexinroom] = mpObj;
             }
 
             foreach (int objNum in iaContainerObjects)
@@ -314,8 +314,8 @@ namespace House
                 cObj.Location = obj.Location;
                 cObj.Name = obj.Name;
                 items[objNum] = cObj;
-                int indexinroom = house.Rooms[(int)cObj.Location.Floor][cObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)cObj.Location.Floor][cObj.Location.Room].Items[indexinroom] = cObj;
+                int indexinroom = house.Rooms[(int)cObj.Location.Floor][cObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)cObj.Location.Floor][cObj.Location.NormalRoom].Items[indexinroom] = cObj;
             }
 
             foreach (int objNum in iaProtectiveObjects)
@@ -325,8 +325,8 @@ namespace House
                 pObj.Location = obj.Location;
                 pObj.Name = obj.Name;
                 items[objNum] = pObj;
-                int indexinroom = house.Rooms[(int)pObj.Location.Floor][pObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)pObj.Location.Floor][pObj.Location.Room].Items[indexinroom] = pObj;
+                int indexinroom = house.Rooms[(int)pObj.Location.Floor][pObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)pObj.Location.Floor][pObj.Location.NormalRoom].Items[indexinroom] = pObj;
             }
 
             foreach (int objNum in iaPainfulObjects)
@@ -336,8 +336,8 @@ namespace House
                 pObj.Location = obj.Location;
                 pObj.Name = obj.Name;
                 items[objNum] = pObj;
-                int indexinroom = house.Rooms[(int)pObj.Location.Floor][pObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)pObj.Location.Floor][pObj.Location.Room].Items[indexinroom] = pObj;
+                int indexinroom = house.Rooms[(int)pObj.Location.Floor][pObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)pObj.Location.Floor][pObj.Location.NormalRoom].Items[indexinroom] = pObj;
             }
 
             foreach (int objNum in iaOnOffObjects)
@@ -347,8 +347,8 @@ namespace House
                 ooObj.Location = obj.Location;
                 ooObj.Name = obj.Name;
                 items[objNum] = ooObj;
-                int indexinroom = house.Rooms[(int)ooObj.Location.Floor][ooObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)ooObj.Location.Floor][ooObj.Location.Room].Items[indexinroom] = ooObj;
+                int indexinroom = house.Rooms[(int)ooObj.Location.Floor][ooObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)ooObj.Location.Floor][ooObj.Location.NormalRoom].Items[indexinroom] = ooObj;
             }
 
             foreach (int objNum in iaDelicateObjects)
@@ -358,8 +358,8 @@ namespace House
                 dObj.Location = obj.Location;
                 dObj.Name = obj.Name;
                 items[objNum] = dObj;
-                int indexinroom = house.Rooms[(int)dObj.Location.Floor][dObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)dObj.Location.Floor][dObj.Location.Room].Items[indexinroom] = dObj;
+                int indexinroom = house.Rooms[(int)dObj.Location.Floor][dObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)dObj.Location.Floor][dObj.Location.NormalRoom].Items[indexinroom] = dObj;
             }
 
             foreach (int objNum in iaCushioningObjects)
@@ -369,8 +369,8 @@ namespace House
                 cObj.Location = obj.Location;
                 cObj.Name = obj.Name;
                 items[objNum] = cObj;
-                int indexinroom = house.Rooms[(int)cObj.Location.Floor][cObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)cObj.Location.Floor][cObj.Location.Room].Items[indexinroom] = cObj;
+                int indexinroom = house.Rooms[(int)cObj.Location.Floor][cObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)cObj.Location.Floor][cObj.Location.NormalRoom].Items[indexinroom] = cObj;
             }
 
             int iConsumableObjectIndex = 0;
@@ -382,8 +382,8 @@ namespace House
                 cObj.Name = obj.Name;
                 cObj.UsageLimit = iaConsumableObjectLimits[iConsumableObjectIndex];
                 items[objNum] = cObj;
-                int indexinroom = house.Rooms[(int)cObj.Location.Floor][cObj.Location.Room].Items.IndexOf(obj);
-                house.Rooms[(int)cObj.Location.Floor][cObj.Location.Room].Items[indexinroom] = cObj;
+                int indexinroom = house.Rooms[(int)cObj.Location.Floor][cObj.Location.NormalRoom].Items.IndexOf(obj);
+                house.Rooms[(int)cObj.Location.Floor][cObj.Location.NormalRoom].Items[indexinroom] = cObj;
                 iConsumableObjectIndex++;
             }
 

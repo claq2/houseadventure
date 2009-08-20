@@ -271,7 +271,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("You have nothing with which to brush the ");
                 stringBuilderMessage.Append(this.view.Argument);
             }
-            else if (!this.house.Adversaries[this.view.Argument].Equals(adversaryLeopard))
+            else if (!room.Adversaries[this.view.Argument].Equals(adversaryLeopard))
             {
                 // Trying to brush adversary in room with your brush but it's not the leopard?
                 stringBuilderMessage.Append("The ");
@@ -281,7 +281,7 @@ namespace HouseCore.Presenters
             else
             {
                 // Must be trying to brush the leopard in the room with the brush
-                this.house.HideAdversary(adversaryLeopard, this.player.Location);
+                this.house.HideAdversary(room.Adversaries[this.view.Argument], this.player.Location);
                 stringBuilderMessage.Append("Purrrrrrr!!!!!!!!  The leopard is very gratified for the grooming and leaves");
             }
 

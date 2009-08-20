@@ -58,6 +58,16 @@
   <ItemGroup>
     <Compile Include="Adversary2Collection.cs" />
     <Compile Include="AdversaryCollection.cs" />
+    <Compile Include="Batteries.cs" />
+    <Compile Include="Beast.cs" />
+    <Compile Include="BeastInfo.cs" />
+    <Compile Include="Blob.cs" />
+    <Compile Include="BlobInfo.cs" />
+    <Compile Include="Leopard.cs" />
+    <Compile Include="LeopardInfo.cs" />
+    <Compile Include="Monk.cs" />
+    <Compile Include="MonkInfo.cs" />
+    <Compile Include="Spray.cs" />
     <Compile Include="StaticData\AdversaryInfo.cs" />
     <Compile Include="StaticData\ConsumableObjectInfo.cs" />
     <Compile Include="StaticData\BoxInfo.cs" />
@@ -146,6 +156,10 @@
     <Compile Include="Domain\RoomTypes\UnfinishedFlooredRoom2.cs" />
     <Compile Include="StaticData\UnfinishedFlooredRoomInfo.cs" />
     <Compile Include="StaticData\VaseInfo.cs" />
+    <Compile Include="Vampire.cs" />
+    <Compile Include="VampireInfo.cs" />
+    <Compile Include="Werewolf.cs" />
+    <Compile Include="WerewolfInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HouseCore.cd" />

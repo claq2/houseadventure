@@ -47,6 +47,8 @@ namespace HouseCore
             result.Add(new StationaryObjectInfo("a unitron 30/50 mainframe", 4, Floor.ThirdFloor));
             result.Add(new StationaryObjectInfo("a dusty moose head", 7, Floor.SecondFloor));
             result.Add(new StationaryObjectInfo("a set of stocks", 5, Floor.Basement));
+
+            result.Add(new NullObjectInfo());
             return result;
         }
 

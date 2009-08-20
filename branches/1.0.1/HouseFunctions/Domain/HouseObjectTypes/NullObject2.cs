@@ -1,27 +1,22 @@
+using System;
 namespace HouseCore
 {
     /// <summary>
     /// Class of object that represents an empty inventory
     /// </summary>
-    public class NullObject2 : InanimateObject2
+    public sealed class NullObject2 : InanimateObject2
     {
-        //TODO: turn this into a Singleton
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="InanimateObject"></see> class.
+        /// Initializes a new instance of the <see cref="NullObject2"></see> class.
         /// </summary>
-        public NullObject2()
-            : base()
+        private NullObject2()
+            : base("nothing")
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NullObject2"/> class.
+        /// The Singleton instance
         /// </summary>
-        /// <param name="info">The info.</param>
-        public NullObject2(NullObjectInfo info)
-            : base(info)
-        {
-        }
+        public static readonly NullObject2 Instance = new NullObject2();
     }
 }

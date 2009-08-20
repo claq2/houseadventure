@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="HouseCore.AdversaryCollection" Collapsed="true">
-    <Position X="66.75" Y="0.5" Width="1.5" />
+    <Position X="82.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAACAiAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>AdversaryCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.GameEntity" Collapsed="true">
-    <Position X="33.75" Y="0.5" Width="1.5" />
+    <Position X="42" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEgAAAAAQAAAAEAIAAAECAAAAAAAA=</HashCode>
       <FileName>Domain\GameEntity.cs</FileName>
@@ -16,196 +16,196 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HouseCore.Adversary" Collapsed="true">
-    <Position X="64.25" Y="1.75" Width="1.5" />
+    <Position X="80.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\Adversary.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ConsumableObject" Collapsed="true">
-    <Position X="5.75" Y="4.5" Width="1.5" />
+    <Position X="6" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAABAAAAAAAAAAACEAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\ConsumableObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ContainerObject" Collapsed="true">
-    <Position X="10.25" Y="4.5" Width="1.5" />
+    <Position X="10.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\ContainerObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.CushioningObject" Collapsed="true">
-    <Position X="14.75" Y="4.5" Width="1.5" />
+    <Position X="15" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\CushioningObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.DelicateObject" Collapsed="true">
-    <Position X="17" Y="4.5" Width="1.5" />
+    <Position X="17.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\DelicateObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Impostor" Collapsed="true">
-    <Position X="64.25" Y="2.75" Width="1.5" />
+    <Position X="80.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\Impostor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.InanimateObject" Collapsed="true">
-    <Position X="13.5" Y="1.75" Width="1.5" />
+    <Position X="13.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\InanimateObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.InanimateObjectsCollection" Collapsed="true">
-    <Position X="66.75" Y="2.5" Width="1.5" />
+    <Position X="86.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>InanimateObjectsCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.LockableDoorObject" Collapsed="true">
-    <Position X="23.75" Y="4.5" Width="1.5" />
+    <Position X="24" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Domain\HouseObjectTypes\LockableDoorObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.MultiplePieceObject" Collapsed="true">
-    <Position X="19.25" Y="4.5" Width="1.5" />
+    <Position X="19.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\MultiplePieceObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.OnOffObject" Collapsed="true">
-    <Position X="3.5" Y="4.5" Width="1.5" />
+    <Position X="3.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\OnOffObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.PainfulObject" Collapsed="true">
-    <Position X="8" Y="4.5" Width="1.5" />
+    <Position X="8.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\PainfulObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.PortableObject" Collapsed="true">
-    <Position X="11.25" Y="3.25" Width="1.5" />
+    <Position X="11.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAIACAACAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\PortableObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ProtectiveObject" Collapsed="true">
-    <Position X="12.5" Y="4.5" Width="1.5" />
+    <Position X="12.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\ProtectiveObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.StationaryObject" Collapsed="true">
-    <Position X="23.75" Y="3.25" Width="1.5" />
+    <Position X="24" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\StationaryObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.HouseType" Collapsed="true">
-    <Position X="68.5" Y="1.5" Width="1.5" />
+    <Position X="82.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIIiBQAARAAIIAAAgoJAAACYAIDAAAIgCAAAgAggIA=</HashCode>
       <FileName>Domain\HouseType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Player" Collapsed="true">
-    <Position X="53" Y="3.25" Width="1.5" />
+    <Position X="55.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAA=</HashCode>
       <FileName>Domain\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.PositionedEntity" Collapsed="true">
-    <Position X="56.25" Y="1.75" Width="1.5" />
+    <Position X="58.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\PositionedEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Elevator" Collapsed="true">
-    <Position X="59.75" Y="4.5" Width="1.5" />
+    <Position X="62.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomTypes\Elevator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NormalRoom" Collapsed="true">
-    <Position X="57.5" Y="3.25" Width="1.5" />
+    <Position X="60" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAkAAAAAABCAAAAAgAAAAAAAAAAAAAQAAAAEEAAIA=</HashCode>
       <FileName>Domain\RoomTypes\Room.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.RoomKeyedCollection" Collapsed="true">
-    <Position X="68.5" Y="3.5" Width="1.5" />
+    <Position X="84.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>RoomKeyedCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.TelephoneBooth" Collapsed="true">
-    <Position X="55.25" Y="4.5" Width="1.5" />
+    <Position X="57.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomTypes\TelephoneBooth.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.UnfinishedFlooredRoom" Collapsed="true">
-    <Position X="57.5" Y="4.5" Width="1.5" />
+    <Position X="60" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomTypes\UnfinishedFlooredRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.SaveData" Collapsed="true">
-    <Position X="70.25" Y="3.5" Width="1.5" />
+    <Position X="86.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAgABAAAAAQAAAAA=</HashCode>
       <FileName>Domain\SaveData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.TheHouseData" Collapsed="true">
-    <Position X="72" Y="3.5" Width="1.5" />
+    <Position X="88" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IACAAAAAIAAQAAAQAAAAABQAAAAAAAAAIAAAABABgEA=</HashCode>
       <FileName>StaticData\TheHouseData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.RoomExit" Collapsed="true">
-    <Position X="66.75" Y="3.5" Width="1.5" />
+    <Position X="82.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAAAEAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomExit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ExitSetKeyedCollection" Collapsed="true">
-    <Position X="72" Y="0.5" Width="1.5" />
+    <Position X="86.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ExitSetKeyedCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.LocationType" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="68.5" Y="2.5" Width="1.5" />
+    <Position X="88" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgAgAAAIAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
       <FileName>Domain\LocationType.cs</FileName>
@@ -213,364 +213,462 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="HouseCore.Presenters.HousePresenter" Collapsed="true">
-    <Position X="66.75" Y="1.5" Width="1.5" />
+    <Position X="88" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACQgIIAAIAQJAJgACAAAgAgEABACIARgQAAQAADAQY=</HashCode>
       <FileName>Presenters\HousePresenter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.InanimateObjectKeyedCollection" Collapsed="true">
-    <Position X="72" Y="1.5" Width="1.5" />
+    <Position X="84.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>InanimateObjectKeyedCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NullObject" Collapsed="true">
-    <Position X="21.5" Y="3.25" Width="1.5" />
+    <Position X="21.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\NullObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NormalRoom2" Collapsed="true">
-    <Position X="49.5" Y="3.25" Width="1.5" />
+    <Position X="52" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomTypes\NormalRoom2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.TelephoneBooth2" Collapsed="true">
-    <Position X="48.5" Y="4.5" Width="1.5" />
+    <Position X="51" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomTypes\TelephoneBooth2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.UnfinishedFlooredRoom2" Collapsed="true">
-    <Position X="50.75" Y="4.5" Width="1.5" />
+    <Position X="53.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\RoomTypes\UnfinishedFlooredRoom2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.InanimateObject2" Collapsed="true">
-    <Position X="36" Y="1.75" Width="1.5" />
+    <Position X="37.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\InanimateObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Adversary2" Collapsed="true">
-    <Position X="62" Y="1.75" Width="1.5" />
+    <Position X="71.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\Adversary2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Impostor2" Collapsed="true">
-    <Position X="62" Y="3.25" Width="1.5" />
+    <Position X="66.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\Impostor2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.AdversaryData" Collapsed="true">
-    <Position X="68.5" Y="0.5" Width="1.5" />
+    <Position X="84.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BKAAQAgAhAAAAIQAAIEAAgBICAAASAhASEQAAkQgAAA=</HashCode>
       <FileName>StaticData\AdversaryData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ObjectData" Collapsed="true">
-    <Position X="70.25" Y="2.5" Width="1.5" />
+    <Position X="82.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>SoTwkugH4AZIYRA2ACkZH4EBCYGgwACQNDcLRBt0HqQ=</HashCode>
       <FileName>StaticData\ObjectData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.RoomData" Collapsed="true">
-    <Position X="72" Y="2.5" Width="1.5" />
+    <Position X="88" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>Q8gHcOMew0P7f7GG97r7dWE73yHtz9WvSPbNLwKgKf8=</HashCode>
       <FileName>StaticData\RoomData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NormalRoomInfo" Collapsed="true">
-    <Position X="1.75" Y="12.75" Width="1.5" />
+    <Position X="5.25" Y="17.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>StaticData\NormalRoomInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.TelephoneBoothInfo" Collapsed="true">
-    <Position X="2.75" Y="14.25" Width="1.5" />
+    <Position X="6.25" Y="19.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>StaticData\TelephoneBoothInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.UnfinishedFlooredRoomInfo" Collapsed="true">
-    <Position X="0.5" Y="14.25" Width="1.5" />
+    <Position X="4" Y="19.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>StaticData\UnfinishedFlooredRoomInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ReadOnlyAdversaryInfoCollection" Collapsed="true">
-    <Position X="70.25" Y="0.5" Width="1.5" />
+    <Position X="84.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\ReadOnlyAdversaryInfoCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NormalAdversaryInfo" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\NormalAdversaryInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ImpostorInfo" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="15.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\ImpostorInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Room2" Collapsed="true">
-    <Position X="49.5" Y="1.75" Width="1.5" />
+    <Position X="52" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAkAIAAAABCAAAAAgAIAACEAAAAAAAQAAAAEEBAIY=</HashCode>
       <FileName>Room2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.RoomInfo" Collapsed="true">
-    <Position X="1.75" Y="11.5" Width="1.5" />
+    <Position X="5.25" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAEAAAAAAAAAgAAAAAIAQAAAAAAAAAAAAAAEAAEAA=</HashCode>
       <FileName>StaticData\RoomInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.AdversaryInfo">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="7.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAAAAAAEAAACQAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\AdversaryInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.InanimateObjectInfo" Collapsed="true">
-    <Position X="11.5" Y="6.5" Width="1.5" />
+    <Position X="11" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAEAAAAQAAAAAAoAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAQAAAAAAAAAEAAAAQAAAAAAoAAAEAAAAAAAAA=</HashCode>
       <FileName>StaticData\InanimateObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ReadOnlyInanimateObjectInfoCollection" Collapsed="true">
-    <Position X="70.25" Y="1.5" Width="1.5" />
+    <Position X="86.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\ReadOnlyInanimateObjectInfoCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.PortableObjectInfo" Collapsed="true">
-    <Position X="9.25" Y="7.75" Width="1.5" />
+    <Position X="8.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAAACAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAAACAAAAAA=</HashCode>
       <FileName>StaticData\PortableObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ConsumableObject2">
-    <Position X="28.25" Y="4.5" Width="1.5" />
+    <Position X="29.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\ConsumableObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Flashlight">
-    <Position X="26" Y="4.5" Width="1.5" />
+    <Position X="26.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\OnOffObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Glove">
-    <Position X="35" Y="4.5" Width="1.5" />
+    <Position X="37.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\ProtectiveObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Pillow">
-    <Position X="37.25" Y="4.5" Width="1.5" />
+    <Position X="39.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\CushioningObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Vase">
-    <Position X="39.5" Y="4.5" Width="1.5" />
+    <Position X="42" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\DelicateObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.DryIce">
-    <Position X="30.5" Y="4.5" Width="1.5" />
+    <Position X="33" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\PainfulObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Coins">
-    <Position X="41.75" Y="4.5" Width="1.5" />
+    <Position X="44.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\MultiplePieceObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.Box">
-    <Position X="32.75" Y="4.5" Width="1.5" />
+    <Position X="35.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\ContainerObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.PortableObject2" Collapsed="true">
-    <Position X="33.75" Y="3.25" Width="1.5" />
+    <Position X="35.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAIACAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\PortableObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.LockableDoorObject2" Collapsed="true">
-    <Position X="46.25" Y="4.5" Width="1.5" />
+    <Position X="48.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Domain\HouseObjectTypes\LockableDoorObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.StationaryObject2" Collapsed="true">
-    <Position X="46.25" Y="3.25" Width="1.5" />
+    <Position X="48.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\StationaryObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NullObject2" Collapsed="true">
-    <Position X="44" Y="3.25" Width="1.5" />
+    <Position X="46.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Domain\HouseObjectTypes\NullObject2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.FlashlightInfo">
-    <Position X="1.5" Y="9.25" Width="1.5" />
+    <Position X="1" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\FlashlightInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.ConsumableObjectInfo">
-    <Position X="3.75" Y="9.25" Width="1.5" />
+    <Position X="3.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\ConsumableObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.DryIceInfo">
-    <Position X="6" Y="9.25" Width="1.5" />
+    <Position X="5.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\DryIceInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.BoxInfo">
-    <Position X="8.25" Y="9.25" Width="1.5" />
+    <Position X="7.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\BoxInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.GloveInfo">
-    <Position X="10.5" Y="9.25" Width="1.5" />
+    <Position X="10" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\GloveInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.PillowInfo">
-    <Position X="17.25" Y="9.25" Width="1.5" />
+    <Position X="16.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\PillowInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.VaseInfo">
-    <Position X="15" Y="9.25" Width="1.5" />
+    <Position X="14.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\VaseInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.CoinsInfo">
-    <Position X="12.75" Y="9.25" Width="1.5" />
+    <Position X="12.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\CoinsInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.NullObjectInfo">
-    <Position X="19.5" Y="7.75" Width="1.5" />
+    <Position X="19" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\NullObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.StationaryObjectInfo">
-    <Position X="21.75" Y="7.75" Width="1.5" />
+    <Position X="21.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\StationaryObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.LockableDoorObjectInfo">
-    <Position X="21.75" Y="9.5" Width="1.5" />
+    <Position X="21.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAI=</HashCode>
       <FileName>StaticData\LockableDoorObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="HouseCore.Batteries">
+    <Position X="28.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Batteries.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Spray">
+    <Position X="30.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spray.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Blob">
+    <Position X="75.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Blob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Vampire">
+    <Position X="69" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vampire.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Werewolf" Collapsed="true">
+    <Position X="78" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Werewolf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Monk">
+    <Position X="73.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Monk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Beast">
+    <Position X="64.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Beast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.Leopard">
+    <Position X="71.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Leopard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.BlobInfo">
+    <Position X="2.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlobInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.VampireInfo">
+    <Position X="9.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VampireInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.WerewolfInfo">
+    <Position X="7.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WerewolfInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.BeastInfo">
+    <Position X="14" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BeastInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.MonkInfo">
+    <Position X="11.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MonkInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HouseCore.LeopardInfo">
+    <Position X="5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LeopardInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="HouseCore.Interfaces.IHouseView" Collapsed="true">
-    <Position X="66.75" Y="4.75" Width="1.5" />
+    <Position X="82.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEACAAAAAAAAAAAUACAAAAIAAAAAAAAAIAAAChACAAA=</HashCode>
       <FileName>Interfaces\IHouseView.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="HouseCore.Direction" Collapsed="true">
-    <Position X="66.75" Y="5.75" Width="1.5" />
+    <Position X="82.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAAY=</HashCode>
       <FileName>Direction.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="HouseCore.Switch" Collapsed="true">
-    <Position X="72" Y="5.75" Width="1.5" />
+    <Position X="88" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJA=</HashCode>
       <FileName>Switch.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="HouseCore.MagicWord" Collapsed="true">
-    <Position X="70.25" Y="5.75" Width="1.5" />
+    <Position X="86.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACACAAAAAAAAAAAAAAAAAAAAAAQAAIAAAACA=</HashCode>
       <FileName>MagicWord.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="HouseCore.Floor" Collapsed="true">
-    <Position X="68.5" Y="5.75" Width="1.5" />
+    <Position X="84.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAKAAAAAAAAAAAAAAAAAgAAAEAAKA=</HashCode>
       <FileName>Floor.cs</FileName>

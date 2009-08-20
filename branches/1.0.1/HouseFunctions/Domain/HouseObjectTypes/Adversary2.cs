@@ -5,6 +5,8 @@ namespace HouseCore
     using System.Text;
     using System.Xml.Serialization;
 
+    //TODO: Make this abstract and instantiate subclasses
+
     /// <summary>
     /// 
     /// </summary>
@@ -29,7 +31,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="Adversary2"/> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public Adversary2(NormalAdversaryInfo info)
+        public Adversary2(AdversaryInfo info)
             : base(info.Name, info.ShortName)
         {
         }

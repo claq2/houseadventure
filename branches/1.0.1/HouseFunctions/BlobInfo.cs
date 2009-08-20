@@ -1,26 +1,28 @@
-using System;
+﻿using System;
 
 namespace HouseCore
 {
-    //TODO: Use specific adversary types, not this
     /// <summary>
     /// 
     /// </summary>
-    public class NormalAdversaryInfo : AdversaryInfo
+    public class BlobInfo : AdversaryInfo
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NormalAdversaryInfo"/> class.
+        /// Initializes a new instance of the <see cref="BlobInfo"></see> class.
         /// </summary>
-        public NormalAdversaryInfo() { }
+        public BlobInfo()
+        {
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NormalAdversaryInfo"/> class.
+        /// Initializes a new instance of the <see cref="BlobInfo"></see> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="shortName">The short name.</param>
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
-        public NormalAdversaryInfo(string name, string shortName, int initialRoom, Floor floor):base(name, shortName, initialRoom, floor)
+        public BlobInfo(string name, string shortName, int initialRoom, Floor floor)
+            : base(name, shortName, initialRoom, floor)
         {
         }
 
@@ -30,7 +32,7 @@ namespace HouseCore
         /// <returns></returns>
         public override Adversary2 CreateAdversary()
         {
-            return new Adversary2(this);
+            return new Blob(this);
         }
     }
 }

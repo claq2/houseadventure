@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System;
 
 namespace HouseCore
@@ -6,7 +5,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class ImpostorInfo : NormalAdversaryInfo
+    public class ImpostorInfo : AdversaryInfo
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ImpostorInfo"/> class.

@@ -24,12 +24,12 @@ namespace HouseCore
         private static List<AdversaryInfo> InitializeInfo()
         {
             List<AdversaryInfo> result = new List<AdversaryInfo>();
-            result.Add(new NormalAdversaryInfo("a savage beast", "bea", 2, Floor.Basement));
-            result.Add(new NormalAdversaryInfo("a protoplasmic blob", "blo", 7, Floor.Basement));
-            result.Add(new NormalAdversaryInfo("a leopard", "leo", 1, Floor.ThirdFloor));
-            result.Add(new NormalAdversaryInfo("an insane monk", "mon", 3, Floor.SecondFloor));
-            result.Add(new NormalAdversaryInfo("a vampire", "vam", 6, Floor.FirstFloor));
-            result.Add(new NormalAdversaryInfo("a werewolf", "wer", 7, Floor.ThirdFloor));
+            result.Add(new BeastInfo("a savage beast", "bea", 2, Floor.Basement));
+            result.Add(new BlobInfo("a protoplasmic blob", "blo", 7, Floor.Basement));
+            result.Add(new LeopardInfo("a leopard", "leo", 1, Floor.ThirdFloor));
+            result.Add(new MonkInfo("an insane monk", "mon", 3, Floor.SecondFloor));
+            result.Add(new VampireInfo("a vampire", "vam", 6, Floor.FirstFloor));
+            result.Add(new WerewolfInfo("a werewolf", "wer", 7, Floor.ThirdFloor));
 #if (DEBUG)
             int intImpostorItemNumber = 0;
             int intImpostorRoomNumber = 0;

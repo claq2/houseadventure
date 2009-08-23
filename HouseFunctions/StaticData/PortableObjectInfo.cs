@@ -7,7 +7,7 @@ namespace HouseCore
     /// <summary>
     /// 
     /// </summary>
-    public class PortableObjectInfo : InanimateObjectInfo
+    public abstract class PortableObjectInfo : InanimateObjectInfo
     {
 
         /// <summary>
@@ -57,9 +57,6 @@ namespace HouseCore
         /// Creates the object.
         /// </summary>
         /// <returns></returns>
-        public override InanimateObject2 CreateObject()
-        {
-            return new PortableObject2(this);
-        }
+        public abstract PortableObject2 CreateObject();
     }
 }

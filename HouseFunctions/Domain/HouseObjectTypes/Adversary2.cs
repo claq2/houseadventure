@@ -1,17 +1,13 @@
 namespace HouseCore
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Xml.Serialization;
-
-    //TODO: Make this abstract and instantiate subclasses
 
     /// <summary>
     /// 
     /// </summary>
     [XmlInclude(typeof(Impostor2))]
-    public class Adversary2 : GameEntity
+    public abstract class Adversary2 : GameEntity
     {
         /// <summary>
         /// Gets or sets the moves until unhidden.
@@ -22,7 +18,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="Adversary2"/> class.
         /// </summary>
-        public Adversary2()
+        protected Adversary2()
             : base()
         {
         }
@@ -31,7 +27,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="Adversary2"/> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public Adversary2(AdversaryInfo info)
+        protected Adversary2(AdversaryInfo info)
             : base(info.Name, info.ShortName)
         {
         }

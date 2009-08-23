@@ -26,6 +26,7 @@ namespace HouseCore
                 return item.ShortName;
         }
 
+        //TODO: use this to determine if player has item in inventory
         /// <summary>
         /// Determines whether [contains by type] [the specified type].
         /// </summary>

@@ -19,25 +19,25 @@ namespace HouseCore
         private static List<InanimateObjectInfo> InitializeObjectInfo()
         {
             List<InanimateObjectInfo> result = new List<InanimateObjectInfo>();
-            result.Add(new PortableObjectInfo("a bag of gold", "gol", 5, Floor.Basement));
-            result.Add(new PortableObjectInfo("a banjo", "ban", 7, Floor.SecondFloor));
-            result.Add(new ConsumableObjectInfo("a set of batteries", "bat", 2, Floor.ThirdFloor, 40));
-            result.Add(new PortableObjectInfo("a hairbrush", "hai", 6, Floor.SecondFloor));
-            result.Add(new ConsumableObjectInfo("a can of bug spray", "can", 2, Floor.Basement, 3));
-            result.Add(new PortableObjectInfo("a small diamond", "dia", 1, Floor.SecondFloor));
-            result.Add(new PortableObjectInfo("an aluminum dime", "dim", 4, Floor.FirstFloor, false));
+            result.Add(new BagOfGoldInfo("a bag of gold", "gol", 5, Floor.Basement));
+            result.Add(new BanjoInfo("a banjo", "ban", 7, Floor.SecondFloor));
+            result.Add(new BatteriesInfo("a set of batteries", "bat", 2, Floor.ThirdFloor, 40));
+            result.Add(new BrushInfo("a hairbrush", "hai", 6, Floor.SecondFloor));
+            result.Add(new SprayInfo("a can of bug spray", "can", 2, Floor.Basement, 3));
+            result.Add(new DiamondInfo("a small diamond", "dia", 1, Floor.SecondFloor));
+            result.Add(new MagicDimeInfo("an aluminum dime", "dim", 4, Floor.FirstFloor, false));
             result.Add(new DryIceInfo("a block of dry ice", "ice", 3, Floor.ThirdFloor));
             result.Add(new FlashlightInfo("a flashlight", "fla", 3, Floor.FirstFloor));
-            result.Add(new PortableObjectInfo("a clove of garlic", "gar", 0, Floor.Basement, false));
+            result.Add(new GarlicInfo("a clove of garlic", "gar", 0, Floor.Basement, false));
             result.Add(new GloveInfo("an old leather glove", "glo", 8, Floor.Basement));
             result.Add(new CoinsInfo("100's of gold coins", "coi", 8, Floor.SecondFloor));
-            result.Add(new PortableObjectInfo("a carving knife", "kni", 6, Floor.FirstFloor));
+            result.Add(new KnifeInfo("a carving knife", "kni", 6, Floor.FirstFloor));
             result.Add(new VaseInfo("a ming vase", "vas", 3, Floor.SecondFloor));
-            result.Add(new PortableObjectInfo("a wrinkled parchment", "par", 7, Floor.Basement));
+            result.Add(new DocumentInfo("a wrinkled parchment", "par", 7, Floor.Basement));
             result.Add(new PillowInfo("a silk pillow", "pil", 7, Floor.ThirdFloor));
-            result.Add(new PortableObjectInfo("a rusted key", "key", 0, Floor.Basement, false));
-            result.Add(new PortableObjectInfo("a shovel", "sho", 4, Floor.ThirdFloor));
-            result.Add(new PortableObjectInfo("a sorcerer's hand book", "boo", 1, Floor.ThirdFloor));
+            result.Add(new KeyInfo("a rusted key", "key", 0, Floor.Basement, false));
+            result.Add(new ShovelInfo("a shovel", "sho", 4, Floor.ThirdFloor));
+            result.Add(new DocumentInfo("a sorcerer's hand book", "boo", 1, Floor.ThirdFloor));
             result.Add(new BoxInfo("a wooden box", "box", 1, Floor.FirstFloor));
 
             result.Add(new LockableDoorObjectInfo("a locked door", "doo", 1, Floor.FirstFloor, new RoomExit(Direction.South, 0)));

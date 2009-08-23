@@ -80,9 +80,7 @@ namespace HouseCore.Presenters
             SaveData saveData = new SaveData(this.player, this.house.Rooms);
             XmlSerializer serializerSaveData = new XmlSerializer(typeof(SaveData));
             using (TextWriter writer = new StreamWriter("housedata.txt"))
-            {
                 serializerSaveData.Serialize(writer, saveData);
-            }
 
             this.view.SetMessage("Data saved");
         }
@@ -186,57 +184,44 @@ namespace HouseCore.Presenters
         {
             NormalRoom roomCurrent = this.house.Rooms[this.player.Location];
             Elevator elevatorCurrentRoomAsElevator = roomCurrent as Elevator;
-            OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
-            ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
-            if (onOffObjectFlashlight.State == Switch.On)
+            if (this.house.Inventory.ContainsByType(typeof(OnOffObject)) && this.house.Inventory.ContainsByType(typeof(ConsumableObject)))
             {
-                consumableObjectBatteries.IncrementTimesUsed();
-                if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
+                OnOffObject onOffObjectFlashlight = this.house.Inventory[ObjectData.FlashlightShortName] as OnOffObject;
+                if (onOffObjectFlashlight.State == Switch.On)
                 {
-                    onOffObjectFlashlight.State = Switch.Off;
+                    ConsumableObject consumableObjectBatteries = this.house.Inventory[ObjectData.BatteriesShortName] as ConsumableObject;
+                    consumableObjectBatteries.IncrementTimesUsed();
+                    if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
+                        onOffObjectFlashlight.State = Switch.Off;
                 }
             }
 
             if (direction == Direction.North || direction == Direction.East || direction == Direction.West || direction == Direction.South)
-            {
                 if (roomCurrent.Exits.Contains(direction))
                 {
                     this.player.Location = new LocationType(roomCurrent.Exits[direction].ExitDestination, this.player.Location.Floor);
                     return true;
                 }
                 else
-                {
                     return false;
-                }
-            }
             else if (direction == Direction.Up)
-            {
                 if (elevatorCurrentRoomAsElevator != null && this.player.Location.Floor != Floor.ThirdFloor)
                 {
                     this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor + 1);
                     return true;
                 }
                 else
-                {
                     return false;
-                }
-            }
             else if (direction == Direction.Down)
-            {
                 if (elevatorCurrentRoomAsElevator != null && this.player.Location.Floor != Floor.Basement)
                 {
                     this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor - 1);
                     return true;
                 }
                 else
-                {
                     return false;
-                }
-            }
             else
-            {
                 return false;
-            }
         }
 
         /// <summary>
@@ -255,9 +240,7 @@ namespace HouseCore.Presenters
 
             // Trying to brush non adverasry?
             if (!this.house.Adversaries.Contains(this.view.Argument, false))
-            {
                 stringBuilderMessage.Append("You can't brush that");
-            }
             else if (!room.Adversaries.Contains(this.view.Argument, false))
             {
                 // Trying to brush adversary that is not in the room?
@@ -307,13 +290,9 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(".");
             }
             else if (!(room is UnfinishedFlooredRoom))
-            {
                 stringBuilderMessage.Append("I see no dirt to dig here.");
-            }
             else if (!this.house.Inventory.Contains(ObjectData.ShovelShortName))
-            {
                 stringBuilderMessage.Append("You don't have anything with which to dig.");
-            }
             else
             {
                 stringBuilderMessage.Append("Digging... ");
@@ -344,14 +323,11 @@ namespace HouseCore.Presenters
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
             ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
             if (String.IsNullOrEmpty(view.Argument))
-            {
                 if (onOffObjectFlashlight.State == Switch.On)
                     switchDesiredState = Switch.Off;
                 else
                     switchDesiredState = Switch.On;
-            }
             else
-            {
                 try
                 {
                     switchDesiredState = (Switch)Enum.Parse(typeof(Switch), view.Argument, true);
@@ -360,48 +336,30 @@ namespace HouseCore.Presenters
                 {
                     switchDesiredState = Switch.Off;
                 }
-            }
 
             if (switchDesiredState == Switch.On)
-            {
                 if (!this.house.Inventory.Contains(onOffObjectFlashlight.Identity))
-                {
                     stringBuilderMessage.Append("You have no light to turn on!");
-                }
                 else if (!this.house.Inventory.Contains(consumableObjectBatteries.Identity))
-                {
                     stringBuilderMessage.Append("It doesn't work");
-                }
                 else if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
-                {
                     stringBuilderMessage.Append("The batteries are exhausted");
-                }
                 else
                 {
                     onOffObjectFlashlight.State = Switch.On;
                     stringBuilderMessage.Append("Light on");
                     this.player.TimesLookedInDark = 0;
                 }
-            }
+            else if (!this.house.Inventory.Contains(onOffObjectFlashlight.Identity))
+                stringBuilderMessage.Append("You have no light to turn off!");
+            else if (!this.house.Inventory.Contains(consumableObjectBatteries.Identity))
+                stringBuilderMessage.Append("It doesn't work anyway -- so why turn it off!");
+            else if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
+                stringBuilderMessage.Append("The batteries are already dead!");
             else
             {
-                if (!this.house.Inventory.Contains(onOffObjectFlashlight.Identity))
-                {
-                    stringBuilderMessage.Append("You have no light to turn off!");
-                }
-                else if (!this.house.Inventory.Contains(consumableObjectBatteries.Identity))
-                {
-                    stringBuilderMessage.Append("It doesn't work anyway -- so why turn it off!");
-                }
-                else if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
-                {
-                    stringBuilderMessage.Append("The batteries are already dead!");
-                }
-                else
-                {
-                    onOffObjectFlashlight.State = Switch.Off;
-                    stringBuilderMessage.Append("Light off");
-                }
+                onOffObjectFlashlight.State = Switch.Off;
+                stringBuilderMessage.Append("Light off");
             }
 
             this.view.SetMessage(stringBuilderMessage.ToString());
@@ -417,27 +375,19 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            LockableDoorObject lockableDoor = this.house.InanimateObjects[ObjectData.LockedDoorShortName] as LockableDoorObject;
             PortableObject portableObjectKey = this.house.PortableObjects[ObjectData.RustedKeyShortName] as PortableObject;
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
-            if (String.Compare(stringShortenedArgument, lockableDoor.Identity, true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) != 0)
-            {
+            if (String.Compare(stringShortenedArgument, "doo", true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) != 0)
                 stringBuilderMessage.Append("I'm sorry, I only know how to unlock doors and drawers.");
-            }
             else if (String.Compare(stringShortenedArgument, "dra", true, CultureInfo.CurrentCulture) == 0)
-            {
                 stringBuilderMessage.Append("Show me a drawer and I'll open it!!!");
-            }
-            else if (!this.house.Rooms[this.player.Location].Items.Contains(lockableDoor))
-            {
+            else if (!this.house.Rooms[this.player.Location].Items.ContainsByType(typeof(LockableDoorObject)))
                 stringBuilderMessage.Append("I see no door that needs opening!");
-            }
             else if (!this.house.Inventory.Contains(portableObjectKey))
-            {
                 stringBuilderMessage.Append("I need something first!");
-            }
             else
             {
+                LockableDoorObject lockableDoor = this.house.InanimateObjects[ObjectData.LockedDoorShortName] as LockableDoorObject;
                 this.house.Rooms[this.player.Location].Items.Remove(lockableDoor);
                 this.house.Rooms[this.player.Location].Exits.Add(new RoomExit(lockableDoor.ExitWhenUnlocked.ExitDirection, lockableDoor.ExitWhenUnlocked.ExitDestination));
                 stringBuilderMessage.Append("<<<<C-L-I-C-K>>>>\r\nOK, it's open now");
@@ -470,22 +420,16 @@ namespace HouseCore.Presenters
             }
 
             if (inanimateObjectTarget == null || !inanimateObjectTarget.Equals(portableObjectBanjo))
-            {
                 stringBuilderMessage.Append("You can't play that!");
-            }
             else if (!this.house.Inventory.Contains(portableObjectBanjo))
-            {
                 stringBuilderMessage.Append("You have no banjo to play");
-            }
             else
-            {
                 // TODO: play sound
                 if (this.house.Rooms[this.player.Location].Adversaries.Contains(adversaryBeast))
                 {
                     this.house.HideAdversary(adversaryBeast, this.player.Location);
                     stringBuilderMessage.Append("Music hath charm to soothe the savage beast.  The beast wandered off in a state of bliss.");
                 }
-            }
 
             this.view.SetMessage(stringBuilderMessage.ToString());
         }
@@ -503,6 +447,7 @@ namespace HouseCore.Presenters
             PortableObject portableObjectSorcerersBook = this.house.InanimateObjects[ObjectData.BookShortName] as PortableObject;
             PortableObject portableObjectParchment = this.house.InanimateObjects[ObjectData.ParchmentShortName] as PortableObject;
             InanimateObject inanimateObjectTarget = null;
+            //TODO:HouseType needs IsPortable function?
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
@@ -513,9 +458,7 @@ namespace HouseCore.Presenters
             }
 
             if (inanimateObjectTarget == null || !(inanimateObjectTarget is PortableObject))
-            {
                 stringBuilderMessage.Append("You can't read that");
-            }
             else if (!this.house.Inventory.Contains(inanimateObjectTarget))
             {
                 stringBuilderMessage.Append("You don't have a ");
@@ -583,41 +526,32 @@ namespace HouseCore.Presenters
             }
 
             if (!boolWordIsMagic)
-            {
                 stringBuilderMessage.Append("Nothing happened");
-            }
-            else
+            else if (this.house.Rooms[this.player.Location].Magic && this.house.Rooms[this.player.Location].MagicWordForRoom == theword)
             {
-                if (this.house.Rooms[this.player.Location].Magic && this.house.Rooms[this.player.Location].MagicWordForRoom == theword)
+                foreach (InanimateObject inanimateObjectCurrent in this.house.Rooms[this.player.Location].Items)
                 {
-                    foreach (InanimateObject inanimateObjectCurrent in this.house.Rooms[this.player.Location].Items)
-                    {
-                        PortableObject portableObjectCurrent = inanimateObjectCurrent as PortableObject;
-                        if (portableObjectCurrent != null && !portableObjectCurrent.Visible)
-                        {
-                            portableObjectCurrent.Visible = true;
-                        }
-                    }
-
-                    stringBuilderMessage.Append("The air shimmers");
+                    PortableObject portableObjectCurrent = inanimateObjectCurrent as PortableObject;
+                    if (portableObjectCurrent != null && !portableObjectCurrent.Visible)
+                        portableObjectCurrent.Visible = true;
                 }
-                else if (this.house.Rooms[this.player.Location].Magic && this.house.Rooms[this.player.Location].MagicWordForRoom != theword)
-                {
-                    stringBuilderMessage.Append("You experience disortientation");
+
+                stringBuilderMessage.Append("The air shimmers");
+            }
+            else if (this.house.Rooms[this.player.Location].Magic && this.house.Rooms[this.player.Location].MagicWordForRoom != theword)
+            {
+                stringBuilderMessage.Append("You experience disortientation");
 #if (DEBUG)
-                    int intNewRoom = 2;
-                    Floor floorNewFloor = Floor.FirstFloor;
+                int intNewRoom = 2;
+                Floor floorNewFloor = Floor.FirstFloor;
 #else
                     int intNewRoom = this.random.Next(10);
                     Floor floorNewFloor = (Floor)this.random.Next(4);
 #endif
-                    this.player.Location = new LocationType(intNewRoom, floorNewFloor);
-                }
-                else
-                {
-                    stringBuilderMessage.Append("Nothing happened");
-                }
+                this.player.Location = new LocationType(intNewRoom, floorNewFloor);
             }
+            else
+                stringBuilderMessage.Append("Nothing happened");
 
             this.view.SetMessage(stringBuilderMessage.ToString());
         }
@@ -644,10 +578,8 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append("!!");
             }
             else if (!this.house.Adversaries.Contains(this.view.Argument, false))
-            {
                 // Trying to spray non adverasry?
                 stringBuilderMessage.Append("You can't spray that!");
-            }
             else if (!room.Adversaries.Contains(this.view.Argument, false))
             {
                 // Trying to spray adversary that is not in the room?
@@ -656,9 +588,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(" here");
             }
             else if (consumableObjectBugSpray.TimesUsed >= consumableObjectBugSpray.UsageLimit)
-            {
                 stringBuilderMessage.Append("The can is empty");
-            }
             else if (!this.house.Adversaries[this.view.Argument].Equals(adversaryBlob))
             {
                 // Trying to spray adversary in room with your spray but it's not the blob?
@@ -693,9 +623,7 @@ namespace HouseCore.Presenters
             Adversary adversaryMonk = this.house.Adversaries[AdversaryData.MonkShortName];
 
             if (!this.house.Adversaries.Contains(this.view.Argument, false))
-            {
                 stringBuilderMessage.Append("You can't kill that!");
-            }
             else if (!room.Adversaries.Contains(this.view.Argument, false))
             {
                 stringBuilderMessage.Append("I see no ");
@@ -748,10 +676,8 @@ namespace HouseCore.Presenters
             }
 
             if (inanimateObjectTarget == null || !(inanimateObjectTarget is PortableObject))
-            {
                 // is not portable?
                 stringBuilderMessage.Append("You can't wave that!");
-            }
             else if (!this.house.Inventory.Contains(inanimateObjectTarget))
             {
                 // is not in inventory?
@@ -760,10 +686,8 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(" to wave!");
             }
             else if (!(inanimateObjectTarget.Equals(portableObjectGarlic) || inanimateObjectTarget.Equals(onOffObjectFlashlight)))
-            {
                 // is not light nor garlic?
                 stringBuilderMessage.Append("That was fun!! But it had no effect.");
-            }
             else if (inanimateObjectTarget.Equals(onOffObjectFlashlight) && onOffObjectFlashlight.State == Switch.On && room.Adversaries.Contains(adversaryVampire))
             {
                 // is light and vamp in room and light on?
@@ -840,9 +764,7 @@ namespace HouseCore.Presenters
                     stringBuilderMessage.Append(mpo.Name);
                     intCount++;
                     if (intCount < multiplePieceObjectsInInventory.Count)
-                    {
                         stringBuilderMessage.Append(", ");
-                    }
                 }
             }
             else if (inanimateObjectTarget is ProtectiveObject && this.house.Inventory.ContainsByType(typeof(PainfulObject)))
@@ -852,9 +774,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(" now!");
             }
             else if (inanimateObjectTarget is DelicateObject && !this.house.Rooms[this.player.Location].Items.ContainsByType(typeof(CushioningObject)))
-            {
                 stringBuilderMessage.Append("You can't drop that--it'll break");
-            }
             else
             {
                 if (inanimateObjectTarget.Equals(this.house.InanimateObjects[ObjectData.BatteriesShortName]) || inanimateObjectTarget.Equals(this.house.InanimateObjects[ObjectData.FlashlightShortName]))
@@ -869,6 +789,7 @@ namespace HouseCore.Presenters
                 if (this.player.Location.Equals(RoomData.LocationFirstFloorFrontPorch))
                 {
                     this.player.ItemsRemovedFromHouse++;
+                    //TODO: Add HouseType.PortableObjectCount property
                     if (this.player.ItemsRemovedFromHouse == this.house.PortableObjects.Count)
                     {
                         this.view.GameEnded = true;
@@ -1018,14 +939,10 @@ namespace HouseCore.Presenters
             this.house.UpdateMonstersInHangout();
 #else
             if (this.random.Next(50) < 10)
-            {
                 this.house.RemoveFrontPorchItems();
-            }
 
             if (this.random.Next(50) < 40)
-            {
                 this.house.UpdateMonstersInHangout();
-            }
 #endif
             OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
             if (this.player.Location.Floor == Floor.Basement && onOffObjectFlashlight.State == Switch.Off)
@@ -1046,9 +963,7 @@ namespace HouseCore.Presenters
             else
             {
                 foreach (Adversary adversary in room.Adversaries)
-                {
                     this.view.AdversariesInRoom.Add(adversary.Name);
-                }
 
                 foreach (InanimateObject inanimateObject in room.Items)
                 {
@@ -1067,9 +982,7 @@ namespace HouseCore.Presenters
                 }
 
                 foreach (RoomExit exit in room.Exits)
-                {
                     this.view.ExitDirections.Add(exit.ExitDirection.ToString());
-                }
             }
 
             this.view.SetMessage(stringBuilderMessage.ToString());

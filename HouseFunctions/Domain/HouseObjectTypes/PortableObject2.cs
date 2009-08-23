@@ -3,7 +3,7 @@ namespace HouseCore
     /// <summary>
     /// Class that represents an item that can be picked up
     /// </summary>
-    public class PortableObject2 : InanimateObject2
+    public abstract class PortableObject2 : InanimateObject2
     {
         #region Fields (2)
 

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HouseCore
 {
     /// <summary>
     /// 
     /// </summary>
-    public class ConsumableObjectInfo : PortableObjectInfo
+    public abstract class ConsumableObjectInfo : PortableObjectInfo
     {
         /// <summary>
         /// Gets or sets the usage limit.
@@ -37,13 +35,9 @@ namespace HouseCore
             this.UsageLimit = usageLimit;
         }
 
-        /// <summary>
-        /// Creates the object.
-        /// </summary>
-        /// <returns></returns>
-        public override HouseCore.InanimateObject2 CreateObject()
+        public override PortableObject2 CreateObject()
         {
-            return new ConsumableObject2(this);
+            throw new NotImplementedException();
         }
     }
 }

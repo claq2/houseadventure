@@ -3,7 +3,7 @@ namespace HouseCore
     /// <summary>
     /// Class that represents an item that can be used a limited number of time
     /// </summary>
-    public class ConsumableObject2 : PortableObject2
+    public abstract class ConsumableObject2 : PortableObject2
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsumableObject2"/> class.

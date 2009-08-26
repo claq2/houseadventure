@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HouseCore
 {
@@ -9,7 +7,6 @@ namespace HouseCore
     /// </summary>
     public class StationaryObjectInfo : InanimateObjectInfo
     {
-        //TODO:Make this abstract and add abstract method to create stationaryobject.  Also, make genericstattionaryobjectinfo and genericstationaryobject
         /// <summary>
         /// Initializes a new instance of the <see cref="StationaryObjectInfo"/> class.
         /// </summary>

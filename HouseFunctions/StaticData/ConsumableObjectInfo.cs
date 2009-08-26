@@ -35,9 +35,44 @@ namespace HouseCore
             this.UsageLimit = usageLimit;
         }
 
-        public override PortableObject2 CreateObject()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortableObjectInfo"></see> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="shortName">The short name.</param>
+        /// <param name="initialRoom">The initial room.</param>
+        /// <param name="floor">The floor.</param>
+        public ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor)
+            : base(name, shortName, initialRoom, floor)
         {
-            throw new NotImplementedException();
+            
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortableObjectInfo"></see> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="shortName">The short name.</param>
+        /// <param name="initialRoom">The initial room.</param>
+        /// <param name="floor">The floor.</param>
+        /// <param name="visible">if set to <c>true</c> object is visible.</param>
+        public ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor, bool visible)
+            : base(name, shortName, initialRoom, floor, visible)
+        {
+            
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InanimateObjectInfo"></see> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="initialRoom">The initial room.</param>
+        /// <param name="floor">The floor.</param>
+        public ConsumableObjectInfo(string name, int initialRoom, Floor floor)
+            : base(name, initialRoom, floor)
+        {
+            
+        }
+         
     }
 }

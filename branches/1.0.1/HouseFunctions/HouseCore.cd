@@ -369,7 +369,7 @@
   <Class Name="HouseCore.PortableObjectInfo" Collapsed="true">
     <Position X="23" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAAACAAAAAA=</HashCode>
       <FileName>StaticData\PortableObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -642,7 +642,7 @@
   <Class Name="HouseCore.SprayInfo" Collapsed="true">
     <Position X="7.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\SprayInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -723,42 +723,42 @@
       <FileName>BagOfGoldInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.DiamondInfo">
+  <Class Name="HouseCore.DiamondInfo" Collapsed="true">
     <Position X="25.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>DiamondInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.DocumentInfo">
+  <Class Name="HouseCore.DocumentInfo" Collapsed="true">
     <Position X="38.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>DocumentInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.ShovelInfo">
+  <Class Name="HouseCore.ShovelInfo" Collapsed="true">
     <Position X="36.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>ShovelInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.MagicDimeInfo">
+  <Class Name="HouseCore.MagicDimeInfo" Collapsed="true">
     <Position X="32" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>MagicDimeInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.BanjoInfo">
+  <Class Name="HouseCore.BanjoInfo" Collapsed="true">
     <Position X="23" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>BanjoInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.BrushInfo">
+  <Class Name="HouseCore.BrushInfo" Collapsed="true">
     <Position X="16.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
@@ -772,14 +772,14 @@
       <FileName>GarlicInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.KnifeInfo">
+  <Class Name="HouseCore.KnifeInfo" Collapsed="true">
     <Position X="20.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>KnifeInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HouseCore.KeyInfo">
+  <Class Name="HouseCore.KeyInfo" Collapsed="true">
     <Position X="27.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>

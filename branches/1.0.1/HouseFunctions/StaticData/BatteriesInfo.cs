@@ -26,5 +26,14 @@ namespace HouseCore
             : base(name, shortName, initialRoom, floor, usageLimit)
         {
         }
+
+        /// <summary>
+        /// Creates the object.
+        /// </summary>
+        /// <returns></returns>
+        public override InanimateObject2 CreateObject()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

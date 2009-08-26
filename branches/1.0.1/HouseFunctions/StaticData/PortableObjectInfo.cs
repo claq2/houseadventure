@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HouseCore
 {
@@ -52,11 +50,17 @@ namespace HouseCore
         {
             this.Visible = visible;
         }
-
         /// <summary>
-        /// Creates the object.
+        /// Initializes a new instance of the <see cref="InanimateObjectInfo"></see> class.
         /// </summary>
-        /// <returns></returns>
-        public abstract PortableObject2 CreateObject();
+        /// <param name="name">The name.</param>
+        /// <param name="initialRoom">The initial room.</param>
+        /// <param name="floor">The floor.</param>
+        public PortableObjectInfo(string name, int initialRoom, Floor floor)
+            : base(name, initialRoom, floor)
+        {
+            
+        }
+         
     }
 }

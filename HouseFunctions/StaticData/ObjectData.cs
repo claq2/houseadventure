@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text;
+using System;
 namespace HouseCore
 {
     /// <summary>
@@ -33,11 +35,11 @@ namespace HouseCore
             result.Add(new CoinsInfo("100's of gold coins", "coi", 8, Floor.SecondFloor));
             result.Add(new KnifeInfo("a carving knife", "kni", 6, Floor.FirstFloor));
             result.Add(new VaseInfo("a ming vase", "vas", 3, Floor.SecondFloor));
-            result.Add(new DocumentInfo("a wrinkled parchment", "par", 7, Floor.Basement));
+            result.Add(new DocumentInfo("a wrinkled parchment", "par", 7, Floor.Basement, CreateParchmentText(), "The parchment is torn"));
             result.Add(new PillowInfo("a silk pillow", "pil", 7, Floor.ThirdFloor));
             result.Add(new KeyInfo("a rusted key", "key", 0, Floor.Basement, false));
             result.Add(new ShovelInfo("a shovel", "sho", 4, Floor.ThirdFloor));
-            result.Add(new DocumentInfo("a sorcerer's hand book", "boo", 1, Floor.ThirdFloor));
+            result.Add(new DocumentInfo("a sorcerer's hand book", "boo", 1, Floor.ThirdFloor, CreateBookText(), "The writing is blurry"));
             result.Add(new BoxInfo("a wooden box", "box", 1, Floor.FirstFloor));
 
             result.Add(new LockableDoorObjectInfo("a locked door", "doo", 1, Floor.FirstFloor, new RoomExit(Direction.South, 0)));
@@ -50,6 +52,37 @@ namespace HouseCore
 
             result.Add(new NullObjectInfo());
             return result;
+        }
+
+        private static string CreateBookText()
+        {
+            StringBuilder stringBuilderMessage = new StringBuilder();
+            stringBuilderMessage.Append("magic words to make objects . . . one of the following.\r\n");
+            string[] stringArrayMagicWords = Enum.GetNames(typeof(MagicWord));
+            int intMagicWordCount = stringArrayMagicWords.Length;
+            for (int i = 1; i < intMagicWordCount; i++)
+            {
+                stringBuilderMessage.Append(stringArrayMagicWords[i]);
+                stringBuilderMessage.Append(Environment.NewLine);
+            }
+
+            stringBuilderMessage.Append("Note:  Be sure to use the right word in the . . .");
+            return stringBuilderMessage.ToString();
+        }
+
+        private static string CreateParchmentText()
+        {
+            StringBuilder stringBuilderMessage = new StringBuilder();
+            stringBuilderMessage.Append(". . . is the place to use them:\r\n");
+                foreach (NormalRoomInfo room in RoomData.MagicRooms)
+                {
+                    stringBuilderMessage.Append(room.Name);
+                    stringBuilderMessage.Append(Environment.NewLine);
+                }
+
+                // One non-magic decoy room to make things a little harder
+                stringBuilderMessage.Append(RoomData.Rooms[29].Name);
+                return stringBuilderMessage.ToString();
         }
 
         private const string bagOfGoldName = "a bag of gold";

@@ -30,6 +30,7 @@ namespace HouseCore
             result.Add(new MonkInfo("an insane monk", "mon", 3, Floor.SecondFloor));
             result.Add(new VampireInfo("a vampire", "vam", 6, Floor.FirstFloor));
             result.Add(new WerewolfInfo("a werewolf", "wer", 7, Floor.ThirdFloor));
+            //TODO: Initialize impostor info properly
 #if (DEBUG)
             int intImpostorItemNumber = 0;
             int intImpostorRoomNumber = 0;

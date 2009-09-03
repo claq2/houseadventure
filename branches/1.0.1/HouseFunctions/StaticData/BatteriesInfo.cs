@@ -33,7 +33,7 @@ namespace HouseCore
         /// <returns></returns>
         public override InanimateObject2 CreateObject()
         {
-            throw new NotImplementedException();
+            return new Batteries(this);
         }
     }
 }

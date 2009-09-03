@@ -9,7 +9,7 @@ namespace HouseCore
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    
+
     /// <summary>
     /// All data relating to rooms
     /// </summary>
@@ -24,6 +24,23 @@ namespace HouseCore
 
         private static Random random = new Random();
         private readonly static ReadOnlyRoomInfoCollection rooms2 = new ReadOnlyRoomInfoCollection(InitializeRooms());
+
+        /// <summary>
+        /// Gets the magic rooms.
+        /// </summary>
+        /// <value>The magic rooms.</value>
+        public static ReadOnlyRoomInfoCollection MagicRooms
+        {
+            get
+            {
+                List<RoomInfo> result = new List<RoomInfo>();
+                foreach (RoomInfo roomInfo in rooms2)
+                    if (roomInfo.Magic)
+                        result.Add(roomInfo);
+
+                return new ReadOnlyRoomInfoCollection(result);
+            }
+        }
 
         private static List<RoomInfo> InitializeRooms()
         {

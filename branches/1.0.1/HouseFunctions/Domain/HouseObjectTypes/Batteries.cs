@@ -18,9 +18,10 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="ConsumableObject2"></see> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public Batteries(ConsumableObjectInfo info)
+        public Batteries(BatteriesInfo info)
             : base(info)
         {
+            
         }
     }
 }

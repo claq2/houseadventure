@@ -18,7 +18,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="ConsumableObject2"></see> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public Spray(ConsumableObjectInfo info)
+        public Spray(SprayInfo info)
             : base(info)
         {
         }

@@ -11,7 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HousePackage", "HousePackage\HousePackage.vdproj", "{4C3A7F65-E645-4452-A934-29052EB303AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests2", "UnitTests2\UnitTests2.csproj", "{9F2D353B-CB71-4709-81E1-DCE2C590B6E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08ABB8D1-FC84-478C-8AD8-44F04BF3D354}"
+	ProjectSection(SolutionItems) = preProject
+		House.vsmdi = House.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = House.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -35,6 +46,10 @@ Global
 		{F9A94E55-3B09-4D7A-9A20-C82E085BD1D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C3A7F65-E645-4452-A934-29052EB303AA}.Debug|Any CPU.ActiveCfg = Debug
 		{4C3A7F65-E645-4452-A934-29052EB303AA}.Release|Any CPU.ActiveCfg = Release
+		{9F2D353B-CB71-4709-81E1-DCE2C590B6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F2D353B-CB71-4709-81E1-DCE2C590B6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F2D353B-CB71-4709-81E1-DCE2C590B6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F2D353B-CB71-4709-81E1-DCE2C590B6E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

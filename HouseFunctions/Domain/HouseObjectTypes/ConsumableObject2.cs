@@ -8,7 +8,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsumableObject2"/> class.
         /// </summary>
-        public ConsumableObject2()
+        protected ConsumableObject2()
             : base()
         {
         }
@@ -17,7 +17,7 @@ namespace HouseCore
         /// Initializes a new instance of the <see cref="ConsumableObject2"/> class.
         /// </summary>
         /// <param name="info">The info.</param>
-        public ConsumableObject2(ConsumableObjectInfo info)
+        protected ConsumableObject2(ConsumableObjectInfo info)
             : base(info)
         {
             this.UsageLimit = info.UsageLimit;

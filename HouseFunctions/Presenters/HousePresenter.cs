@@ -109,6 +109,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to move player north.
         /// </summary>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool North()
         {
             return this.ProcessMovement(Direction.North);
@@ -117,6 +118,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to move player south.
         /// </summary>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool South()
         {
             return this.ProcessMovement(Direction.South);
@@ -125,6 +127,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to move player east.
         /// </summary>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool East()
         {
             return this.ProcessMovement(Direction.East);
@@ -133,6 +136,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to move player west.
         /// </summary>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool West()
         {
             return this.ProcessMovement(Direction.West);
@@ -141,6 +145,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to move player to the next floor up.
         /// </summary>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool Up()
         {
             return this.ProcessMovement(Direction.Up);
@@ -149,6 +154,7 @@ namespace HouseCore.Presenters
         /// <summary>
         /// Attempts to move player to the next floor down.
         /// </summary>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool Down()
         {
             return this.ProcessMovement(Direction.Down);
@@ -158,6 +164,7 @@ namespace HouseCore.Presenters
         /// Processes the movement request.
         /// </summary>
         /// <param name="direction">The direction.</param>
+        /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         private bool ProcessMovement(Direction direction)
         {
             if (this.Move(direction))
@@ -494,9 +501,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(this.house.Rooms[locationTypeDecoyRoom].Name);
             }
             else
-            {
                 stringBuilderMessage.Append("You can't read that");
-            }
 
             this.view.SetMessage(stringBuilderMessage.ToString());
         }

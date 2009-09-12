@@ -10,7 +10,6 @@ namespace House
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
-    using HouseCore;
     using HouseCore.Interfaces;
     using HouseCore.Presenters;
     using System.Threading;
@@ -41,11 +40,6 @@ namespace House
         /// </summary>
         private List<string> exitDirections = new List<string>();
 
-        ///// <summary>
-        ///// The house in which the game is taking place
-        ///// </summary>
-        //private HouseType house = new HouseType(true);
-
         /// <summary>
         /// The items in the room
         /// </summary>
@@ -56,11 +50,6 @@ namespace House
         /// </summary>
         public PlayGame()
         {
-            //this.housePresenter = new housePresenter(this);
-            //this.housePresenter = new housePresenter(this);
-            //this.housePresenter = new housePresenter(this);
-            //this.housePresenter = new housePresenter(this);
-            //this.housePresenter = new housePresenter(this);
             this.housePresenter = new HousePresenter(this);
         }
 
@@ -133,24 +122,6 @@ namespace House
             }
         }
         
-        ///// <summary>
-        ///// Gets or sets the house.
-        ///// </summary>
-        ///// <value>The house.</value>
-        //public HouseType House
-        //{
-        //    get
-        //    {
-        //        return this.house;
-        //    }
-
-        //    //set
-        //    //{
-        //    //    ////this.house = value;
-        //    //    this.house.RestoreHouse(value);
-        //    //}
-        //}
-
         /// <summary>
         /// Gets the items.
         /// </summary>
@@ -216,9 +187,7 @@ namespace House
                 stringArrayCommand = new string[] { };
                 string stringLine = Console.ReadLine();
                 if (stringLine != null)
-                {
                     stringArrayCommand = stringLine.Split(charArraySplitChars, 2);
-                }
 
                 if (stringArrayCommand.Length > 0 && stringArrayCommand[0].Length > 0)
                 {
@@ -227,9 +196,7 @@ namespace House
                     {
                         this.housePresenter.Quit();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -238,9 +205,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Brush();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -249,9 +214,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Spray();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -260,9 +223,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Say();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -271,9 +232,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Open();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -282,9 +241,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Open();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -293,9 +250,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Play();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -304,9 +259,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Wave();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -315,9 +268,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Dig();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -326,9 +277,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Read();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -336,9 +285,7 @@ namespace House
                     {
                         this.housePresenter.Look();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.ProcessLookReturn(true));
                     }
@@ -346,9 +293,7 @@ namespace House
                     {
                         this.housePresenter.Save();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -356,28 +301,20 @@ namespace House
                     {
                         this.housePresenter.Load();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
                     else if (String.Compare(stringShortenedCommand, "lig", true, CultureInfo.CurrentCulture) == 0)
                     {
                         if (stringArrayCommand.Length > 1)
-                        {
                             this.Argument = stringArrayCommand[1];
-                        }
                         else
-                        {
                             this.Argument = String.Empty;
-                        }
 
                         this.housePresenter.Light();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -386,9 +323,7 @@ namespace House
                         this.Argument = "on";
                         this.housePresenter.Light();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -397,9 +332,7 @@ namespace House
                         this.Argument = "off";
                         this.housePresenter.Light();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -408,9 +341,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Get();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -419,9 +350,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Stab();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -430,9 +359,7 @@ namespace House
                         this.Argument = CollectArgument(stringArrayCommand);
                         this.housePresenter.Drop();
                         if (this.ClearScreen)
-                        {
                             Console.Clear();
-                        }
 
                         Console.WriteLine(this.message);
                     }
@@ -472,33 +399,19 @@ namespace House
                         // Perhaps user entered something that starts with one of the direction values: U, D, N, E, W, S
                         stringShortenedCommand = stringShortenedCommand.Substring(0, 1);
                         if (String.Compare(stringShortenedCommand, "n", true, CultureInfo.CurrentCulture) == 0)
-                        {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.North()));
-                        }
                         else if (String.Compare(stringShortenedCommand, "s", true, CultureInfo.CurrentCulture) == 0)
-                        {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.South()));
-                        }
                         else if (String.Compare(stringShortenedCommand, "e", true, CultureInfo.CurrentCulture) == 0)
-                        {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.East()));
-                        }
                         else if (String.Compare(stringShortenedCommand, "w", true, CultureInfo.CurrentCulture) == 0)
-                        {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.West()));
-                        }
                         else if (String.Compare(stringShortenedCommand, "u", true, CultureInfo.CurrentCulture) == 0)
-                        {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.Up()));
-                        }
                         else if (String.Compare(stringShortenedCommand, "d", true, CultureInfo.CurrentCulture) == 0)
-                        {
                             Console.WriteLine(this.ProcessLookReturn(this.housePresenter.Down()));
-                        }
                         else
-                        {
                             Console.WriteLine("I don't understand");
-                        }
                     }
                 }
             }
@@ -524,9 +437,7 @@ namespace House
             string stringReturn = String.Empty;
             string stringFormattedCommand = FormatCommand(command[0]);
             if (command.Length > 1)
-            {
                 stringReturn = command[1];
-            }
             else
             {
                 Console.Write(String.Format(CultureInfo.CurrentCulture, "{0} what? ", stringFormattedCommand));
@@ -555,9 +466,7 @@ namespace House
             stringBuilderOutput.Append(Environment.NewLine);
             stringBuilderOutput.Append("I see:\r\n");
             if (!String.IsNullOrEmpty(this.message.ToString()))
-            {
                 stringBuilderOutput.Append(this.message);
-            }
             else
             {
                 foreach (string adversary in this.AdversariesInRoom)
@@ -579,9 +488,7 @@ namespace House
                     stringBuilderOutput.Append(direction);
                     intCount++;
                     if (intCount < this.ExitDirections.Count)
-                    {
                         stringBuilderOutput.Append(Environment.NewLine);
-                    }
                 }
             }
 

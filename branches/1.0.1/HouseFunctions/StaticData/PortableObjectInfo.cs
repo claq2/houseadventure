@@ -35,7 +35,7 @@ namespace HouseCore
         /// <param name="shortName">The short name.</param>
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
-        public PortableObjectInfo(string name, string shortName, int initialRoom, Floor floor) : base(name, shortName, initialRoom, floor) { }
+        protected PortableObjectInfo(string name, string shortName, int initialRoom, Floor floor) : base(name, shortName, initialRoom, floor) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PortableObjectInfo"/> class.
@@ -45,7 +45,7 @@ namespace HouseCore
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
         /// <param name="visible">if set to <c>true</c> object is visible.</param>
-        public PortableObjectInfo(string name, string shortName, int initialRoom, Floor floor, bool visible)
+        protected PortableObjectInfo(string name, string shortName, int initialRoom, Floor floor, bool visible)
             : base(name, shortName, initialRoom, floor)
         {
             this.Visible = visible;
@@ -56,7 +56,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
-        public PortableObjectInfo(string name, int initialRoom, Floor floor)
+        protected PortableObjectInfo(string name, int initialRoom, Floor floor)
             : base(name, initialRoom, floor)
         {
             

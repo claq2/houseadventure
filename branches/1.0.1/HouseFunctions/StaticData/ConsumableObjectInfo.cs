@@ -16,7 +16,7 @@ namespace HouseCore
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsumableObjectInfo"/> class.
         /// </summary>
-        public ConsumableObjectInfo()
+        protected ConsumableObjectInfo()
             : base()
         {
         }
@@ -29,7 +29,7 @@ namespace HouseCore
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
         /// <param name="usageLimit">The usage limit.</param>
-        public ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor, int usageLimit)
+        protected ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor, int usageLimit)
             : base(name, shortName, initialRoom, floor)
         {
             this.UsageLimit = usageLimit;
@@ -42,7 +42,7 @@ namespace HouseCore
         /// <param name="shortName">The short name.</param>
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
-        public ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor)
+        protected ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor)
             : base(name, shortName, initialRoom, floor)
         {
             
@@ -56,7 +56,7 @@ namespace HouseCore
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
         /// <param name="visible">if set to <c>true</c> object is visible.</param>
-        public ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor, bool visible)
+        protected ConsumableObjectInfo(string name, string shortName, int initialRoom, Floor floor, bool visible)
             : base(name, shortName, initialRoom, floor, visible)
         {
             
@@ -68,7 +68,7 @@ namespace HouseCore
         /// <param name="name">The name.</param>
         /// <param name="initialRoom">The initial room.</param>
         /// <param name="floor">The floor.</param>
-        public ConsumableObjectInfo(string name, int initialRoom, Floor floor)
+        protected ConsumableObjectInfo(string name, int initialRoom, Floor floor)
             : base(name, initialRoom, floor)
         {
             

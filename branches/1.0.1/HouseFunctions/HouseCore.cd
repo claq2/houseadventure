@@ -123,7 +123,7 @@
   <Class Name="HouseCore.HouseType" Collapsed="true">
     <Position X="106.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIIiBQAARAAIIAAAgoJAAACYAIDAAAIgCAAAgAggIA=</HashCode>
+      <HashCode>AAIIiBQAARAAIIgAAgoJACACYAIDAAAIgCAIAgAggIA=</HashCode>
       <FileName>Domain\HouseType.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -212,11 +212,12 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="HouseCore.Presenters.HousePresenter" Collapsed="true">
+  <Class Name="HouseCore.Presenters.HousePresenter2" Collapsed="true">
     <Position X="112" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACQgIIAAIAQJAJgACAAAgAgEABACIARgQAAQAADAQY=</HashCode>
-      <FileName>Presenters\HousePresenter.cs</FileName>
+      <FileName>Presenters\Copy of HousePresenter.cs</FileName>
+      <NewMemberFileName>Presenters\HousePresenter.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HouseCore.InanimateObjectKeyedCollection" Collapsed="true">
@@ -369,7 +370,7 @@
   <Class Name="HouseCore.PortableObjectInfo" Collapsed="true">
     <Position X="23" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
       <FileName>StaticData\PortableObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -467,7 +468,7 @@
   <Class Name="HouseCore.ConsumableObjectInfo" Collapsed="true">
     <Position X="6" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\ConsumableObjectInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -635,7 +636,7 @@
   <Class Name="HouseCore.BatteriesInfo" Collapsed="true">
     <Position X="5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticData\BatteriesInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -733,7 +734,7 @@
   <Class Name="HouseCore.DocumentInfo" Collapsed="true">
     <Position X="38.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAACAAABAA=</HashCode>
       <FileName>DocumentInfo.cs</FileName>
     </TypeIdentifier>
   </Class>

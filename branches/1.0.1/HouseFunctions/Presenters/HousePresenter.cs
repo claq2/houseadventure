@@ -65,7 +65,7 @@ namespace HouseCore.Presenters
         {
             this.view.Inventory.Clear();
             this.view.InventoryShortNames.Clear();
-            foreach (InanimateObject obj in this.house.Rooms[RoomData.LocationInventory].Items)
+            foreach (InanimateObject2 obj in this.house.Floors[RoomData.LocationInventory.Floor][RoomData.LocationInventory.RoomNumber].Items)
             {
                 this.view.Inventory.Add(obj.Name);
                 this.view.InventoryShortNames.Add(obj.ShortName);
@@ -77,7 +77,7 @@ namespace HouseCore.Presenters
         /// </summary>
         public void Save()
         {
-            SaveData saveData = new SaveData(this.player, this.house.Rooms);
+            SaveData saveData = new SaveData(this.player, this.house.Floors);
             XmlSerializer serializerSaveData = new XmlSerializer(typeof(SaveData));
             using (TextWriter writer = new StreamWriter("housedata.txt"))
                 serializerSaveData.Serialize(writer, saveData);
@@ -100,7 +100,7 @@ namespace HouseCore.Presenters
                 saveData = (SaveData)serializer.Deserialize(reader);
                 reader.Close();
                 this.player = saveData.Player;
-                this.house.RestoreHouse(saveData.Rooms);
+                this.house.RestoreHouse(saveData.Floors);
             }
 
             this.view.SetMessage("Data loaded");
@@ -112,7 +112,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool North()
         {
-            return this.ProcessMovement(Direction.North);
+            return this.ProcessMovement(DirectionConstants.North);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool South()
         {
-            return this.ProcessMovement(Direction.South);
+            return this.ProcessMovement(DirectionConstants.South);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool East()
         {
-            return this.ProcessMovement(Direction.East);
+            return this.ProcessMovement(DirectionConstants.East);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool West()
         {
-            return this.ProcessMovement(Direction.West);
+            return this.ProcessMovement(DirectionConstants.West);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool Up()
         {
-            return this.ProcessMovement(Direction.Up);
+            return this.ProcessMovement(DirectionConstants.Up);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace HouseCore.Presenters
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
         public bool Down()
         {
-            return this.ProcessMovement(Direction.Down);
+            return this.ProcessMovement(DirectionConstants.Down);
         }
 
         /// <summary>
@@ -165,13 +165,13 @@ namespace HouseCore.Presenters
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
-        private bool ProcessMovement(Direction direction)
+        private bool ProcessMovement(DirectionConstants direction)
         {
             if (this.Move(direction))
             {
                 this.view.ClearScreen = true;
                 this.view.SetMessage(String.Empty);
-                this.Look(direction == Direction.Up || direction == Direction.Down);
+                this.Look(direction == DirectionConstants.Up || direction == DirectionConstants.Down);
                 return true;
             }
             else
@@ -187,42 +187,52 @@ namespace HouseCore.Presenters
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns>Boolean that indicates whether the movement was allowed or not.</returns>
-        private bool Move(Direction direction)
+        private bool Move(DirectionConstants direction)
         {
-            NormalRoom roomCurrent = this.house.Rooms[this.player.Location];
-            Elevator elevatorCurrentRoomAsElevator = roomCurrent as Elevator;
-            if (this.house.Inventory.ContainsByType(typeof(OnOffObject)) && this.house.Inventory.ContainsByType(typeof(ConsumableObject)))
+            Room2 roomCurrent = this.house.GetRoomAt(this.player.Location);
+            bool boolRoomIsElevator = false;
+            if (roomCurrent.Up != null || roomCurrent.Down != null)
+                boolRoomIsElevator = true;
+
+            //TODO: Create Elevator2 or test if room has an up or down exit
+            //Elevator elevatorCurrentRoomAsElevator = roomCurrent as Elevator;
+            if (this.house.Inventory2.ContainsByType(typeof(Flashlight)) && this.house.Inventory2.ContainsByType(typeof(Batteries)))
             {
-                OnOffObject onOffObjectFlashlight = this.house.Inventory[ObjectData.FlashlightShortName] as OnOffObject;
+                Flashlight onOffObjectFlashlight = this.house.Inventory2[ObjectData.FlashlightShortName] as Flashlight;
                 if (onOffObjectFlashlight.State == Switch.On)
                 {
-                    ConsumableObject consumableObjectBatteries = this.house.Inventory[ObjectData.BatteriesShortName] as ConsumableObject;
+                    Batteries consumableObjectBatteries = this.house.Inventory2[ObjectData.BatteriesShortName] as Batteries;
                     consumableObjectBatteries.IncrementTimesUsed();
                     if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
                         onOffObjectFlashlight.State = Switch.Off;
                 }
             }
 
-            if (direction == Direction.North || direction == Direction.East || direction == Direction.West || direction == Direction.South)
-                if (roomCurrent.Exits.Contains(direction))
+            if (roomCurrent.GetRoomInDirection(direction) != null)
+            {
+                this.player.Location.RoomNumber = roomCurrent.GetRoomInDirection(direction).RoomNumber;
+                //this.player.Location.FloorNumber = roomCurrent.GetRoomInDirection(direction).Fl;
+            } 
+            if (direction.IsCardinal)
+                if (roomCurrent.GetRoomInDirection(direction) != null)
                 {
-                    this.player.Location = new LocationType(roomCurrent.Exits[direction].ExitDestination, this.player.Location.Floor);
+                    this.player.Location.RoomNumber = roomCurrent.GetRoomInDirection(direction).RoomNumber;
                     return true;
                 }
                 else
                     return false;
-            else if (direction == Direction.Up)
-                if (elevatorCurrentRoomAsElevator != null && this.player.Location.Floor != Floor.ThirdFloor)
+            else if (direction == DirectionConstants.Up)
+                if (boolRoomIsElevator && this.player.Location.Floor != Floor.ThirdFloor)
                 {
-                    this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor + 1);
+                    this.player.Location.Floor++;
                     return true;
                 }
                 else
                     return false;
-            else if (direction == Direction.Down)
-                if (elevatorCurrentRoomAsElevator != null && this.player.Location.Floor != Floor.Basement)
+            else if (direction == DirectionConstants.Down)
+                if (boolRoomIsElevator && this.player.Location.Floor != Floor.Basement)
                 {
-                    this.player.Location = new LocationType(this.player.Location.RoomNumber, this.player.Location.Floor - 1);
+                    this.player.Location.Floor--;
                     return true;
                 }
                 else

@@ -78,6 +78,7 @@
     <Compile Include="KnifeInfo.cs" />
     <Compile Include="MagicDime.cs" />
     <Compile Include="MagicDimeInfo.cs" />
+    <Compile Include="Presenters\Copy of HousePresenter.cs" />
     <Compile Include="Shovel.cs" />
     <Compile Include="ShovelInfo.cs" />
     <Compile Include="StaticData\BatteriesInfo.cs" />

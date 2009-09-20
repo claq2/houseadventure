@@ -32,14 +32,36 @@ namespace HouseCore
             this._rooms = rooms;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SaveData"/> class.
+        /// </summary>
+        /// <param name="player">The player.</param>
+        /// <param name="floors">The floors.</param>
+        public SaveData(Player player, FloorKeyedCollection floors)
+        {
+            this.player = player;
+            this.Floors = floors;
+        }
+
 		#region Fields (2) 
 
         private RoomKeyedCollection _rooms = new RoomKeyedCollection();
+        private FloorKeyedCollection floors;
         private Player player = new Player();
 
 		#endregion Fields 
 
 		#region Properties (2) 
+
+        /// <summary>
+        /// Gets or sets the floors.
+        /// </summary>
+        /// <value>The floors.</value>
+        public FloorKeyedCollection Floors
+        {
+            get { return floors; }
+            set { floors = value; }
+        }
 
         /// <summary>
         /// Gets or sets the player.

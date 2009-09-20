@@ -16,7 +16,7 @@ namespace HouseCore
     /// </summary>
     public class HouseType
     {
-		#region Fields (6) 
+        #region Fields (6)
 
         /// <summary>
         /// The adversaries in the house
@@ -34,9 +34,9 @@ namespace HouseCore
         /// </summary>
         private RoomKeyedCollection rooms = new RoomKeyedCollection();
 
-		#endregion Fields 
+        #endregion Fields
 
-		#region Constructors (2) 
+        #region Constructors (2)
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HouseType"/> class.
@@ -62,9 +62,9 @@ namespace HouseCore
         {
         }
 
-		#endregion Constructors 
+        #endregion Constructors
 
-		#region Properties (8) 
+        #region Properties (8)
 
         /// <summary>
         /// Gets the adversaries.
@@ -74,6 +74,24 @@ namespace HouseCore
         public AdversaryCollection Adversaries
         {
             get { return this.adversaries; }
+        }
+
+        /// <summary>
+        /// Gets the adversaries2.
+        /// </summary>
+        /// <value>The adversaries2.</value>
+        public Adversary2Collection Adversaries2
+        {
+            get { return adversaries2; }
+        }
+
+        /// <summary>
+        /// Gets the floors.
+        /// </summary>
+        /// <value>The floors.</value>
+        public FloorKeyedCollection Floors
+        {
+            get { return floors; }
         }
 
         /// <summary>
@@ -87,6 +105,15 @@ namespace HouseCore
         }
 
         /// <summary>
+        /// Gets the inanimate objects2.
+        /// </summary>
+        /// <value>The inanimate objects2.</value>
+        public InanimateObject2KeyedCollection InanimateObjects2
+        {
+            get { return inanimateObjects2; }
+        }
+
+        /// <summary>
         /// Gets the inventory.
         /// </summary>
         /// <value>The inventory.</value>
@@ -96,6 +123,22 @@ namespace HouseCore
             {
                 InanimateObjectKeyedCollection result = new InanimateObjectKeyedCollection();
                 foreach (InanimateObject obj in this.Rooms[RoomData.LocationInventory].Items)
+                    result.Add(obj);
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Gets the inventory.
+        /// </summary>
+        /// <value>The inventory.</value>
+        public InanimateObject2KeyedCollection Inventory2
+        {
+            get
+            {
+                InanimateObject2KeyedCollection result = new InanimateObject2KeyedCollection();
+                foreach (InanimateObject2 obj in this.GetRoomAt(RoomData.LocationInventory).Items)
                     result.Add(obj);
 
                 return result;
@@ -150,11 +193,11 @@ namespace HouseCore
         /// <value>The times looked in dark.</value>
         public int TimesLookedInDark { get; set; }
 
-		#endregion Properties 
+        #endregion Properties
 
-		#region Methods (19) 
+        #region Methods (19)
 
-		// Public Methods (5) 
+        // Public Methods (5) 
 
         /// <summary>
         /// Adds to inventory.
@@ -215,7 +258,7 @@ namespace HouseCore
             string stringItemShort = item.Length < 4 ? item : item.Substring(0, 3);
             try
             {
-                InanimateObject2 inanimateObject = inanimateObjects2[stringItemShort];
+                InanimateObject2 inanimateObject = InanimateObjects2[stringItemShort];
                 if (inanimateObject is PortableObject2)
                     return true;
                 else
@@ -272,7 +315,7 @@ namespace HouseCore
                 }
             }
         }
-		// Private Methods (12) 
+        // Private Methods (12) 
 
         /// <summary>
         /// Inits the basement rooms.
@@ -368,8 +411,8 @@ namespace HouseCore
         {
             foreach (AdversaryInfo info in AdversaryData.AdversaryInfo)
             {
-                this.adversaries2.Add(info.CreateAdversary());
-                this.floors[info.InitialFloor][info.InitialRoom].Adversaries.Add(this.adversaries2[info.ShortName]);
+                this.Adversaries2.Add(info.CreateAdversary());
+                this.Floors[info.InitialFloor][info.InitialRoom].Adversaries.Add(this.Adversaries2[info.ShortName]);
             }
         }
 
@@ -415,8 +458,8 @@ namespace HouseCore
         {
             foreach (InanimateObjectInfo info in ObjectData.ObjectInfoCollection)
             {
-                this.inanimateObjects2.Add(info.CreateObject());
-                this.floors[info.InitialFloor][info.InitialRoom].Items.Add(this.inanimateObjects2[info.Identity]);
+                this.InanimateObjects2.Add(info.CreateObject());
+                this.Floors[info.InitialFloor][info.InitialRoom].Items.Add(this.InanimateObjects2[info.Identity]);
             }
         }
 
@@ -440,10 +483,10 @@ namespace HouseCore
         {
             foreach (RoomInfo roomInfo in RoomData.Rooms)
             {
-                if (!this.floors.Contains(roomInfo.Floor))
-                    this.floors.Add(new Room2KeyedCollection(roomInfo.Floor));
+                if (!this.Floors.Contains(roomInfo.Floor))
+                    this.Floors.Add(new Room2KeyedCollection(roomInfo.Floor));
 
-                this.floors[roomInfo.Floor].Add(roomInfo.CreateRoom());
+                this.Floors[roomInfo.Floor].Add(roomInfo.CreateRoom());
             }
         }
 
@@ -465,6 +508,16 @@ namespace HouseCore
         }
 
         /// <summary>
+        /// Gets the room at the specified location.
+        /// </summary>
+        /// <param name="location">The location.</param>
+        /// <returns>The room at the given location.</returns>
+        public Room2 GetRoomAt(LocationType location)
+        {
+            return this.Floors[location.Floor][location.RoomNumber];
+        }
+
+        /// <summary>
         /// Inits the third floor rooms.
         /// </summary>
         private void InitThirdFloorRooms()
@@ -480,7 +533,7 @@ namespace HouseCore
             this.rooms.Add(new TelephoneBooth(RoomData.TelephoneBoothName, RoomData.LocationThirdFloorTelephoneBooth, RoomData.ExitsThirdFloorTelephoneBooth));
             this.rooms.Add(new NormalRoom(RoomData.TrophyRoomName, RoomData.LocationThirdFloorTrophyRoom, RoomData.ExitsThirdFloorTrophyRoom));
         }
-		// Internal Methods (2) 
+        // Internal Methods (2) 
 
         // Internal Methods (2) 
         /// <summary>
@@ -540,10 +593,34 @@ namespace HouseCore
             }
         }
 
-		#endregion Methods 
+        #endregion Methods
 
 #if !(DEBUG)
         private Random random = new Random();
 #endif
+
+        internal void RestoreHouse(FloorKeyedCollection floorKeyedCollection)
+        {
+            this.floors.Clear();
+            this.adversaries2.Clear();
+            this.inanimateObjects2.Clear();
+            int intCountFloors = floorKeyedCollection.Count;
+            for (int i = 0; i < intCountFloors; i++)
+            {
+                this.floors.Add(floorKeyedCollection[i]);
+                int intCountRoomsOnFloor = floorKeyedCollection[i].Count;
+                for (int k = 0; k < intCountRoomsOnFloor; k++)
+                {
+                    
+                    int intCountAdversariesInRoom = floorKeyedCollection[i][k].Adversaries.Count;
+                    for (int j = 0; j < intCountAdversariesInRoom; j++)
+                        this.adversaries2.Add(floorKeyedCollection[i][k].Adversaries[j]);
+
+                    int intCountItemsInRoom = floorKeyedCollection[i][k].Items.Count;
+                    for (int j = 0; j < intCountItemsInRoom; j++)
+                        this.inanimateObjects2.Add(floorKeyedCollection[i][k].Items[j]);
+                }
+            }
+        }
     }
 }

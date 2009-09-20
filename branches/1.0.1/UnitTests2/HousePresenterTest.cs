@@ -73,7 +73,7 @@ namespace UnitTests2
         {
             PrivateObject param0 = new PrivateObject(new HousePresenter(new MockView()));
             HousePresenter_Accessor target = new HousePresenter_Accessor(param0);
-            Direction direction = Direction.North;
+            DirectionConstants direction = DirectionConstants.North;
             bool expected = false;
             bool actual;
             actual = target.ProcessMovement(direction);

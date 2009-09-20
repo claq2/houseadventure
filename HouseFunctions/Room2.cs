@@ -26,6 +26,17 @@ namespace HouseCore
         private Adversary2Collection adversaries = new Adversary2Collection();
         private InanimateObject2KeyedCollection items = new InanimateObject2KeyedCollection();
         private ReadOnlyExitSetCollection exits;
+        private Dictionary<DirectionConstants, Room2> connectingRooms = new Dictionary<DirectionConstants, Room2>();
+
+        /// <summary>
+        /// Gets the room in direction.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <returns></returns>
+        public Room2 GetRoomInDirection(DirectionConstants direction)
+        {
+            return this.connectingRooms[direction];
+        }
 
         /// <summary>
         /// Gets or sets the magic word for room.
@@ -104,11 +115,17 @@ namespace HouseCore
         private void InitializeDirections()
         {
             this.North = null;
+            this.connectingRooms.Add(DirectionConstants.North, this.North);
             this.South = null;
+            this.connectingRooms.Add(DirectionConstants.South, this.South);
             this.East = null;
+            this.connectingRooms.Add(DirectionConstants.East, this.East);
             this.West = null;
+            this.connectingRooms.Add(DirectionConstants.West, this.West);
             this.Up = null;
-            this.West = null;
+            this.connectingRooms.Add(DirectionConstants.Up, this.Up);
+            this.Down = null;
+            this.connectingRooms.Add(DirectionConstants.Down, this.Down);
         }
 
         /// <summary>

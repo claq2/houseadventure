@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HouseCore
 {
+
     /// <summary>
     /// 
     /// </summary>
@@ -66,42 +67,69 @@ namespace HouseCore
         /// <value>The exits.</value>
         public ReadOnlyExitSetCollection Exits { get { return this.exits; } private set { this.exits = value; } }
 
+        private Room2 _North;
+
         /// <summary>
         /// Gets or sets the room to the north.
         /// </summary>
         /// <value>The north.</value>
-        public Room2 North { get; set; }
+        public Room2 North
+        {
+            get { return _North; }
+            set
+            {
+                _North = value;
+                this.connectingRooms[DirectionConstants.North] = this._North;
+            }
+        }
+
+        private Room2 _South;
 
         /// <summary>
         /// Gets or sets the room to the south.
         /// </summary>
         /// <value>The south.</value>
-        public Room2 South { get; set; }
+        public Room2 South
+        {
+            get { return _South; }
+            set
+            {
+                _South = value;
+                this.connectingRooms[DirectionConstants.South] = this._South;
+            }
+        }
+
+        private Room2 _East;
 
         /// <summary>
         /// Gets or sets the room to the east.
         /// </summary>
         /// <value>The east.</value>
-        public Room2 East { get; set; }
+        public Room2 East
+        {
+            get { return _East; }
+            set
+            {
+                _East = value;
+                this.connectingRooms[DirectionConstants.East] = this._East;
+            }
+        }
+
+        private Room2 _West;
 
         /// <summary>
         /// Gets or sets the room to the west.
         /// </summary>
         /// <value>The west.</value>
-        public Room2 West { get; set; }
-
-        /// <summary>
-        /// Gets or sets room above.
-        /// </summary>
-        /// <value>Up.</value>
-        public Room2 Up { get; set; }
-
-        /// <summary>
-        /// Gets or sets room below.
-        /// </summary>
-        /// <value>Down.</value>
-        public Room2 Down { get; set; }
-
+        public Room2 West
+        {
+            get { return _West; }
+            set
+            {
+                _West = value;
+                this.connectingRooms[DirectionConstants.West] = this._West;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Room2"/> class.
@@ -114,18 +142,14 @@ namespace HouseCore
 
         private void InitializeDirections()
         {
-            this.North = null;
-            this.connectingRooms.Add(DirectionConstants.North, this.North);
-            this.South = null;
-            this.connectingRooms.Add(DirectionConstants.South, this.South);
-            this.East = null;
-            this.connectingRooms.Add(DirectionConstants.East, this.East);
-            this.West = null;
-            this.connectingRooms.Add(DirectionConstants.West, this.West);
-            this.Up = null;
-            this.connectingRooms.Add(DirectionConstants.Up, this.Up);
-            this.Down = null;
-            this.connectingRooms.Add(DirectionConstants.Down, this.Down);
+            this._North = null;
+            this.connectingRooms.Add(DirectionConstants.North, this._North);
+            this._South = null;
+            this.connectingRooms.Add(DirectionConstants.South, this._South);
+            this._East = null;
+            this.connectingRooms.Add(DirectionConstants.East, this._East);
+            this._West = null;
+            this.connectingRooms.Add(DirectionConstants.West, this._West);
         }
 
         /// <summary>

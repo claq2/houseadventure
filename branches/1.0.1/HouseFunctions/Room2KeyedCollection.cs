@@ -38,7 +38,7 @@ namespace HouseCore
         /// <param name="index">The zero-based index at which <paramref name="item"/> should be inserted.</param>
         /// <param name="item">The object to insert.</param>
         /// <exception cref="T:System.ArgumentOutOfRangeException">
-        /// 	<paramref name="index"/> is less than 0.-or-<paramref name="index"/> is greater than <see cref="P:System.Collections.ObjectModel.Collection`1.Count"/>.</exception>
+        /// <paramref name="index"/> is less than 0.-or-<paramref name="index"/> is greater than <see cref="P:System.Collections.ObjectModel.Collection`1.Count"/>.</exception>
         protected override void InsertItem(int index, Room2 item)
         {
             base.InsertItem(index, item);
@@ -82,20 +82,6 @@ namespace HouseCore
                         {
                             item.South = room2Destination;
                             room2Destination.North = item;
-                        }
-                        break;
-                    case Direction.Up:
-                        if (room2Destination != null)
-                        {
-                            item.Up = room2Destination;
-                            room2Destination.Down = item;
-                        }
-                        break;
-                    case Direction.Down:
-                        if (room2Destination != null)
-                        {
-                            item.Down = room2Destination;
-                            room2Destination.Up = item;
                         }
                         break;
                     default:

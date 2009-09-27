@@ -42,7 +42,7 @@ namespace HouseCore
             result.Add(new DocumentInfo("a sorcerer's hand book", "boo", 1, Floor.ThirdFloor, CreateBookText(), "The writing is blurry"));
             result.Add(new BoxInfo("a wooden box", "box", 1, Floor.FirstFloor));
 
-            result.Add(new LockableDoorObjectInfo("a locked door", "doo", 1, Floor.FirstFloor, new RoomExit(Direction.South, 0)));
+            result.Add(new LockableDoorObjectInfo("a locked door", "doo", 1, Floor.FirstFloor, DirectionConstants.South, 0));
             result.Add(new StationaryObjectInfo("a brass bathtub", 4, Floor.SecondFloor));
             result.Add(new StationaryObjectInfo("the front yard", 0, Floor.FirstFloor));
             result.Add(new StationaryObjectInfo("a king sized bed", 2, Floor.SecondFloor));

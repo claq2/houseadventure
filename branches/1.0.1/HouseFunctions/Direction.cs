@@ -28,11 +28,11 @@ namespace HouseCore
         /// <summary>
         /// 
         /// </summary>
-        public static readonly DirectionConstants Up = new DirectionConstants("Up", true);
+        public static readonly DirectionConstants Up = new DirectionConstants("Up", false);
         /// <summary>
         /// 
         /// </summary>
-        public static readonly DirectionConstants Down = new DirectionConstants("Down", true);
+        public static readonly DirectionConstants Down = new DirectionConstants("Down", false);
 
         private string name;
         /// <summary>

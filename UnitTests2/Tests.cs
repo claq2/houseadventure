@@ -195,8 +195,8 @@ namespace UnitTests2
             this.view.Argument = "vampire";
             this.housePresenter.Brush();
             Assert.AreEqual("You have nothing with which to brush the vampire", this.view.Message);
-            PortableObject portableObjectTarget = this.house.InanimateObjects[ObjectData.BrushShortName] as PortableObject;
-            house.AddToInventory(portableObjectTarget);
+            Brush portableObjectTarget = this.house.InanimateObjects2[ObjectData.BrushShortName] as Brush;
+            house.AddToInventory2(portableObjectTarget);
             this.view.Argument = "vampire";
             this.housePresenter.Brush();
             Assert.AreEqual("The vampire will become angry if you persist!", this.view.Message);
@@ -205,8 +205,8 @@ namespace UnitTests2
             Assert.AreEqual(true, this.house.Rooms[this.player.Location].Adversaries.Contains("leo"));
             this.housePresenter.Brush();
             Assert.AreEqual("Purrrrrrr!!!!!!!!  The leopard is very gratified for the grooming and leaves", this.view.Message);
-            Assert.AreEqual(false, this.house.Rooms[this.player.Location].Adversaries.Contains("leo"));
-            Assert.AreEqual(true, this.house.Rooms[RoomData.LocationMonsterHangout].Adversaries.Contains("leo"));
+            Assert.AreEqual(false, this.house.GetRoomAt(this.player.Location).Adversaries.Contains("leo"));
+            Assert.AreEqual(true, this.house.GetRoomAt(RoomData.LocationMonsterHangout).Adversaries.Contains("leo"));
         }
 
         [TestMethod]
@@ -229,15 +229,15 @@ namespace UnitTests2
             this.view.Argument = "dirt";
             this.housePresenter.Dig();
             Assert.AreEqual("You don't have anything with which to dig.", this.view.Message);
-            PortableObject shovel = this.house.InanimateObjects[ObjectData.ShovelShortName] as PortableObject;
-            this.house.AddToInventory(shovel);
+            Shovel shovel = this.house.InanimateObjects2[ObjectData.ShovelShortName] as Shovel;
+            this.house.AddToInventory2(shovel);
             this.player.Location = RoomData.LocationBasementDirtFlooredRoom;
             this.housePresenter.Look();
             Assert.AreEqual(0, this.view.ItemsInRoom.Count);
             this.view.Argument = "dirt";
             this.housePresenter.Dig();
             Assert.AreEqual("Digging... I found something!", this.view.Message);
-            OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
+            Flashlight onOffObjectFlashlight = this.house.InanimateObjects2[ObjectData.FlashlightShortName] as Flashlight;
             onOffObjectFlashlight.State = Switch.On;
             this.housePresenter.Look();
             Assert.AreEqual(1, this.view.ItemsInRoom.Count);
@@ -256,8 +256,8 @@ namespace UnitTests2
         [TestMethod]
         public void LightTests()
         {
-            OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
-            ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
+            Flashlight onOffObjectFlashlight = this.house.InanimateObjects2[ObjectData.FlashlightShortName] as Flashlight;
+            Batteries consumableObjectBatteries = this.house.InanimateObjects2[ObjectData.BatteriesShortName] as Batteries;
             Assert.AreEqual(Switch.Off, onOffObjectFlashlight.State);
             this.housePresenter.Light();
             Assert.AreEqual("You have no light to turn on!", this.view.Message);
@@ -270,7 +270,7 @@ namespace UnitTests2
             this.housePresenter.Light();
             Assert.AreEqual("You have no light to turn off!", this.view.Message);
             Assert.AreEqual(Switch.Off, onOffObjectFlashlight.State);
-            this.house.AddToInventory(onOffObjectFlashlight);
+            this.house.AddToInventory2(onOffObjectFlashlight);
             this.view.Argument = "";
             this.housePresenter.Light();
             Assert.AreEqual("It doesn't work", this.view.Message);
@@ -278,7 +278,7 @@ namespace UnitTests2
             this.view.Argument = "off";
             this.housePresenter.Light();
             Assert.AreEqual("It doesn't work anyway -- so why turn it off!", this.view.Message);
-            this.house.AddToInventory(consumableObjectBatteries);
+            this.house.AddToInventory2(consumableObjectBatteries);
             consumableObjectBatteries.TimesUsed = consumableObjectBatteries.UsageLimit + 1;
             this.view.Argument = "";
             this.housePresenter.Light();
@@ -326,8 +326,8 @@ namespace UnitTests2
             this.housePresenter.East();
             this.housePresenter.Look();
             Assert.IsFalse(this.view.ExitDirections.Contains("South"));
-            PortableObject portableObjectKey = this.house.PortableObjects[ObjectData.RustedKeyShortName] as PortableObject;
-            this.house.AddToInventory(portableObjectKey);
+            Key portableObjectKey = this.house.InanimateObjects2[ObjectData.RustedKeyShortName] as Key;
+            this.house.AddToInventory2(portableObjectKey);
             this.view.Argument = "door";
             this.housePresenter.Open();
             Assert.AreEqual("<<<<C-L-I-C-K>>>>\r\nOK, it's open now", this.view.Message);

@@ -59,7 +59,7 @@ namespace HouseCore
             MagicWord word = (MagicWord)RoomData.random.Next(Enum.GetNames(typeof(MagicWord)).Length - 1) + 1;
 #endif
             result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.South, 5) }, word));
-            result.Add(new NormalRoomInfo("in the basement elevator", 9, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8), new RoomExit(Direction.Up, 9) }));
+            result.Add(new ElevatorInfo("in the basement elevator", 9, Floor.Basement, new RoomExit[] { new RoomExit(Direction.North, 3), new RoomExit(Direction.South, 8) }, Floor.FirstFloor, Floor.Undefined));
 
             result.Add(new NormalRoomInfo("on the front porch", 0, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 1) }));
             result.Add(new NormalRoomInfo("in the foyer", 1, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.East, 7), new RoomExit(Direction.West, 3) }));
@@ -75,7 +75,7 @@ namespace HouseCore
             result.Add(new NormalRoomInfo("in the kitchen", 6, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.South, 9) }));
             result.Add(new NormalRoomInfo("in the family room", 7, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 2), new RoomExit(Direction.West, 1), new RoomExit(Direction.South, 4) }));
             result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.South, 5) }));
-            result.Add(new NormalRoomInfo("in the first floor elevator", 9, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4), new RoomExit(Direction.Up, 9), new RoomExit(Direction.Down, 9) }));
+            result.Add(new ElevatorInfo("in the first floor elevator", 9, Floor.FirstFloor, new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.East, 3), new RoomExit(Direction.West, 4)}, Floor.SecondFloor, Floor.Basement));
 
             result.Add(new NormalRoomInfo("in the sewing room", 0, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.East, 9), new RoomExit(Direction.South, 1) }));
             result.Add(new NormalRoomInfo("in a closet", 1, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 0), new RoomExit(Direction.South, 3) }));
@@ -86,7 +86,7 @@ namespace HouseCore
             result.Add(new NormalRoomInfo("in a sitting room", 6, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.South, 7) }));
             result.Add(new NormalRoomInfo("in the den", 7, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 6), new RoomExit(Direction.West, 8) }));
             result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.North, 4), new RoomExit(Direction.South, 7) }));
-            result.Add(new NormalRoomInfo("in the second floor elevator", 9, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.West, 0), new RoomExit(Direction.South, 2), new RoomExit(Direction.Up, 9), new RoomExit(Direction.Down, 9) }));
+            result.Add(new ElevatorInfo("in the second floor elevator", 9, Floor.SecondFloor, new RoomExit[] { new RoomExit(Direction.West, 0), new RoomExit(Direction.South, 2)}, Floor.ThirdFloor, Floor.FirstFloor));
 
             result.Add(new NormalRoomInfo("in the living room", 0, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 9), new RoomExit(Direction.East, 2) }));
             result.Add(new NormalRoomInfo("in the library", 1, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.West, 9), new RoomExit(Direction.South, 2) }));
@@ -97,7 +97,7 @@ namespace HouseCore
             result.Add(new NormalRoomInfo("in a bedroom", 6, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 7) }));
             result.Add(new NormalRoomInfo("in the art hall", 7, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.North, 5), new RoomExit(Direction.West, 6) }));
             result.Add(new TelephoneBoothInfo("in a telephone booth", 8, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 3), new RoomExit(Direction.South, 4) }));
-            result.Add(new NormalRoomInfo("in the third floor elevator", 9, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.South, 0), new RoomExit(Direction.Down, 9) }));
+            result.Add(new ElevatorInfo("in the third floor elevator", 9, Floor.ThirdFloor, new RoomExit[] { new RoomExit(Direction.East, 1), new RoomExit(Direction.South, 0)}, Floor.Undefined, Floor.SecondFloor));
 
             result.Add(new NormalRoomInfo("in the monster hangout", 0, Floor.MonsterHangout, new RoomExit[0]));
 
@@ -174,7 +174,7 @@ namespace HouseCore
 
         private readonly static LocationType locationMonsterHangout = new LocationType(0, Floor.MonsterHangout);
 
-        private readonly static LocationType locationInventory = new LocationType(-1, Floor.InHand);
+        private readonly static LocationType locationInventory = new LocationType(0, Floor.InHand);
 
         private readonly static LocationType locationSecondFloorSewingRoom = new LocationType(0, Floor.SecondFloor);
         private readonly static LocationType locationSecondFloorCloset = new LocationType(1, Floor.SecondFloor);

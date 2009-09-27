@@ -235,6 +235,44 @@ namespace HouseCore
         }
 
         /// <summary>
+        /// Adds to inventory.
+        /// </summary>
+        /// <param name="portableObject">The portable object.</param>
+        public void AddToInventory2(PortableObject2 portableObject)
+        {
+            if (this.GetRoomAt(RoomData.LocationInventory).Items.Count == 1 && this.GetRoomAt(RoomData.LocationInventory).Items[0] is NullObject2)
+                this.GetRoomAt(RoomData.LocationInventory).Items.RemoveAt(0);
+
+            foreach (Room2KeyedCollection floor in this.Floors)
+            {
+                foreach (Room2 room in floor)
+                {
+                    int intItemNumber = -1;
+                    int intCounter = 0;
+                    bool boolItemFound = false;
+                    foreach (InanimateObject2 inanimateObject in room.Items)
+                    {
+                        if (inanimateObject != portableObject)
+                        {
+                            intCounter++;
+                            continue;
+                        }
+
+                        boolItemFound = true;
+                        intItemNumber = intCounter;
+                    }
+
+                    if (!boolItemFound)
+                        continue;
+
+                    room.Items.RemoveAt(intItemNumber);
+                    this.GetRoomAt(RoomData.LocationInventory).Items.Add(portableObject);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Hides the adversary.
         /// </summary>
         /// <param name="adversary">The adversary.</param>
@@ -243,6 +281,18 @@ namespace HouseCore
         {
             this.Rooms[location].Adversaries.Remove(adversary);
             this.Rooms[RoomData.LocationMonsterHangout].Adversaries.Add(adversary);
+            adversary.MovesUntilUnhidden = 5;
+        }
+
+        /// <summary>
+        /// Hides the adversary.
+        /// </summary>
+        /// <param name="adversary">The adversary.</param>
+        /// <param name="location">The location.</param>
+        public void HideAdversary2(Adversary2 adversary, LocationType location)
+        {
+            this.GetRoomAt(location).Adversaries.Remove(adversary);
+            this.GetRoomAt(RoomData.LocationMonsterHangout).Adversaries.Add(adversary);
             adversary.MovesUntilUnhidden = 5;
         }
 

@@ -70,6 +70,7 @@
     <Compile Include="Document.cs" />
     <Compile Include="DocumentInfo.cs" />
     <Compile Include="Domain\HouseObjectTypes\Batteries.cs" />
+    <Compile Include="Elevator2.cs" />
     <Compile Include="Garlic.cs" />
     <Compile Include="GarlicInfo.cs" />
     <Compile Include="Key.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Domain\HouseObjectTypes\Blob.cs" />
     <Compile Include="StaticData\BlobInfo.cs" />
     <Compile Include="Domain\HouseObjectTypes\Leopard.cs" />
+    <Compile Include="StaticData\ElevatorInfo.cs" />
     <Compile Include="StaticData\LeopardInfo.cs" />
     <Compile Include="Domain\HouseObjectTypes\Monk.cs" />
     <Compile Include="StaticData\MonkInfo.cs" />

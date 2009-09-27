@@ -6,10 +6,16 @@ namespace HouseCore
     public class LockableDoorObject2 : StationaryObject2
     {
         /// <summary>
-        /// Gets or sets the exit when unlocked.
+        /// Gets or sets the direction when unlocked.
         /// </summary>
-        /// <value>The exit when unlocked.</value>
-        public RoomExit ExitWhenUnlocked { get; private set; }
+        /// <value>The direction when unlocked.</value>
+        public DirectionConstants DirectionWhenUnlocked { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the destination room.
+        /// </summary>
+        /// <value>The destination room.</value>
+        public int DestinationRoom { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LockableDoorObject2"/> class.
@@ -26,7 +32,8 @@ namespace HouseCore
         public LockableDoorObject2(LockableDoorObjectInfo info)
             : base(info)
         {
-            this.ExitWhenUnlocked = info.ExitWhenUnlocked;
+            this.DestinationRoom = info.DestinationRoom;
+            this.DirectionWhenUnlocked = info.DirectionWhenUnlocked;
         }
     }
 }

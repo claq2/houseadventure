@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HouseCore
 {
+
     /// <summary>
     /// 
     /// </summary>

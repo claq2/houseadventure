@@ -190,9 +190,7 @@ namespace HouseCore.Presenters
         private bool Move(DirectionConstants direction)
         {
             Room2 roomCurrent = this.house.GetRoomAt(this.player.Location);
-            bool boolRoomIsElevator = false;
-            if (roomCurrent.Up != null || roomCurrent.Down != null)
-                boolRoomIsElevator = true;
+            Elevator2 roomCurrentAsElevator = roomCurrent as Elevator2;
 
             //TODO: Create Elevator2 or test if room has an up or down exit
             //Elevator elevatorCurrentRoomAsElevator = roomCurrent as Elevator;
@@ -208,37 +206,20 @@ namespace HouseCore.Presenters
                 }
             }
 
-            if (roomCurrent.GetRoomInDirection(direction) != null)
-            {
-                this.player.Location.RoomNumber = roomCurrent.GetRoomInDirection(direction).RoomNumber;
-                //this.player.Location.FloorNumber = roomCurrent.GetRoomInDirection(direction).Fl;
-            } 
             if (direction.IsCardinal)
-                if (roomCurrent.GetRoomInDirection(direction) != null)
+                if (roomCurrent.GetRoomInDirection(direction) == null)
+                    return false;
+                else
                 {
                     this.player.Location.RoomNumber = roomCurrent.GetRoomInDirection(direction).RoomNumber;
                     return true;
                 }
-                else
-                    return false;
-            else if (direction == DirectionConstants.Up)
-                if (boolRoomIsElevator && this.player.Location.Floor != Floor.ThirdFloor)
-                {
-                    this.player.Location.Floor++;
-                    return true;
-                }
-                else
-                    return false;
-            else if (direction == DirectionConstants.Down)
-                if (boolRoomIsElevator && this.player.Location.Floor != Floor.Basement)
-                {
-                    this.player.Location.Floor--;
-                    return true;
-                }
-                else
-                    return false;
-            else
+
+            if (roomCurrentAsElevator == null || roomCurrentAsElevator.GetFloorInDirection(direction) == Floor.Undefined)
                 return false;
+
+            this.player.Location.Floor = roomCurrentAsElevator.GetFloorInDirection(direction);
+            return true;
         }
 
         /// <summary>
@@ -251,9 +232,9 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            NormalRoom room = this.house.Rooms[this.player.Location];
-            Adversary adversaryLeopard = this.house.Adversaries[AdversaryData.LeopardShortName];
-            PortableObject portableObjectBrush = this.house.InanimateObjects[ObjectData.BrushShortName] as PortableObject;
+            Room2 room = this.house.GetRoomAt(this.player.Location);
+            Adversary2 adversaryLeopard = this.house.Adversaries2[AdversaryData.LeopardShortName];
+            //PortableObject2 portableObjectBrush = this.house.InanimateObjects2[ObjectData.BrushShortName] as PortableObject2;
 
             // Trying to brush non adverasry?
             if (!this.house.Adversaries.Contains(this.view.Argument, false))
@@ -265,7 +246,7 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(this.view.Argument);
                 stringBuilderMessage.Append(" here");
             }
-            else if (!this.house.Inventory.Contains(portableObjectBrush))
+            else if (!this.house.Inventory2.ContainsByType(typeof(Brush)))
             {
                 // Trying to brush adversary in the room but don't have a brush?
                 stringBuilderMessage.Append("You have nothing with which to brush the ");
@@ -281,7 +262,7 @@ namespace HouseCore.Presenters
             else
             {
                 // Must be trying to brush the leopard in the room with the brush
-                this.house.HideAdversary(room.Adversaries[this.view.Argument], this.player.Location);
+                this.house.HideAdversary2(room.Adversaries[this.view.Argument], this.player.Location);
                 stringBuilderMessage.Append("Purrrrrrr!!!!!!!!  The leopard is very gratified for the grooming and leaves");
             }
 
@@ -298,7 +279,7 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            NormalRoom room = this.house.Rooms[this.player.Location];
+            Room2 room = this.house.GetRoomAt(this.player.Location);
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             if (String.Compare(stringShortenedArgument, "dir", true, CultureInfo.CurrentCulture) != 0)
             {
@@ -306,19 +287,19 @@ namespace HouseCore.Presenters
                 stringBuilderMessage.Append(this.view.Argument);
                 stringBuilderMessage.Append(".");
             }
-            else if (!(room is UnfinishedFlooredRoom))
+            else if (!(room is UnfinishedFlooredRoom2))
                 stringBuilderMessage.Append("I see no dirt to dig here.");
-            else if (!this.house.Inventory.Contains(ObjectData.ShovelShortName))
+            else if (!this.house.Inventory2.ContainsByType(typeof(Shovel)))
                 stringBuilderMessage.Append("You don't have anything with which to dig.");
             else
             {
                 stringBuilderMessage.Append("Digging... ");
-                foreach (InanimateObject inanimateObjectCurrent in room.Items)
+                foreach (InanimateObject2 inanimateObjectCurrent in room.Items)
                 {
-                    PortableObject portableObjectCurrent = inanimateObjectCurrent as PortableObject;
-                    if (portableObjectCurrent != null && portableObjectCurrent.Buried == true)
+                    PortableObject2 portableObjectCurrent = inanimateObjectCurrent as PortableObject2;
+                    if (portableObjectCurrent != null && portableObjectCurrent.Visible == false)
                     {
-                        portableObjectCurrent.Buried = false;
+                        portableObjectCurrent.Visible = true;
                         stringBuilderMessage.Append("I found something!");
                         break;
                     }
@@ -337,8 +318,8 @@ namespace HouseCore.Presenters
         {
             StringBuilder stringBuilderMessage = new StringBuilder();
             Switch switchDesiredState = Switch.Unknown;
-            OnOffObject onOffObjectFlashlight = this.house.InanimateObjects[ObjectData.FlashlightShortName] as OnOffObject;
-            ConsumableObject consumableObjectBatteries = this.house.InanimateObjects[ObjectData.BatteriesShortName] as ConsumableObject;
+            Flashlight onOffObjectFlashlight = this.house.InanimateObjects2[ObjectData.FlashlightShortName] as Flashlight;
+            Batteries consumableObjectBatteries = this.house.InanimateObjects2[ObjectData.BatteriesShortName] as Batteries;
             if (String.IsNullOrEmpty(view.Argument))
                 if (onOffObjectFlashlight.State == Switch.On)
                     switchDesiredState = Switch.Off;
@@ -355,9 +336,9 @@ namespace HouseCore.Presenters
                 }
 
             if (switchDesiredState == Switch.On)
-                if (!this.house.Inventory.Contains(onOffObjectFlashlight.Identity))
+                if (!this.house.Inventory2.ContainsByType(typeof(Flashlight)))
                     stringBuilderMessage.Append("You have no light to turn on!");
-                else if (!this.house.Inventory.Contains(consumableObjectBatteries.Identity))
+                else if (!this.house.Inventory2.ContainsByType(typeof(Batteries)))
                     stringBuilderMessage.Append("It doesn't work");
                 else if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
                     stringBuilderMessage.Append("The batteries are exhausted");
@@ -367,9 +348,9 @@ namespace HouseCore.Presenters
                     stringBuilderMessage.Append("Light on");
                     this.player.TimesLookedInDark = 0;
                 }
-            else if (!this.house.Inventory.Contains(onOffObjectFlashlight.Identity))
+            else if (!this.house.Inventory2.ContainsByType(typeof(Flashlight)))
                 stringBuilderMessage.Append("You have no light to turn off!");
-            else if (!this.house.Inventory.Contains(consumableObjectBatteries.Identity))
+            else if (!this.house.Inventory2.ContainsByType(typeof(Batteries)))
                 stringBuilderMessage.Append("It doesn't work anyway -- so why turn it off!");
             else if (consumableObjectBatteries.TimesUsed > consumableObjectBatteries.UsageLimit)
                 stringBuilderMessage.Append("The batteries are already dead!");
@@ -392,21 +373,22 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            PortableObject portableObjectKey = this.house.PortableObjects[ObjectData.RustedKeyShortName] as PortableObject;
+            Key portableObjectKey = this.house.InanimateObjects2[ObjectData.RustedKeyShortName] as Key;
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             if (String.Compare(stringShortenedArgument, "doo", true, CultureInfo.CurrentCulture) != 0 && String.Compare(this.view.Argument, "drawer", true, CultureInfo.CurrentCulture) != 0)
                 stringBuilderMessage.Append("I'm sorry, I only know how to unlock doors and drawers.");
             else if (String.Compare(stringShortenedArgument, "dra", true, CultureInfo.CurrentCulture) == 0)
                 stringBuilderMessage.Append("Show me a drawer and I'll open it!!!");
-            else if (!this.house.Rooms[this.player.Location].Items.ContainsByType(typeof(LockableDoorObject)))
+            else if (!this.house.GetRoomAt(this.player.Location).Items.ContainsByType(typeof(LockableDoorObject2)))
                 stringBuilderMessage.Append("I see no door that needs opening!");
-            else if (!this.house.Inventory.Contains(portableObjectKey))
+            else if (!this.house.Inventory2.ContainsByType(typeof(Key)))
                 stringBuilderMessage.Append("I need something first!");
             else
             {
-                LockableDoorObject lockableDoor = this.house.InanimateObjects[ObjectData.LockedDoorShortName] as LockableDoorObject;
-                this.house.Rooms[this.player.Location].Items.Remove(lockableDoor);
-                this.house.Rooms[this.player.Location].Exits.Add(new RoomExit(lockableDoor.ExitWhenUnlocked.ExitDirection, lockableDoor.ExitWhenUnlocked.ExitDestination));
+                LockableDoorObject2 lockableDoor = this.house.InanimateObjects2[ObjectData.LockedDoorShortName] as LockableDoorObject2;
+                this.house.GetRoomAt(this.player.Location).Items.Remove(lockableDoor);
+                Room2 room = this.house.GetRoomAt(this.player.Location).GetRoomInDirection(lockableDoor.DirectionWhenUnlocked);
+                room = this.house.Floors[this.player.Location.Floor][lockableDoor.DestinationRoom];
                 stringBuilderMessage.Append("<<<<C-L-I-C-K>>>>\r\nOK, it's open now");
             }
 

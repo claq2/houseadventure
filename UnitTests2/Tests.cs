@@ -357,18 +357,18 @@ namespace UnitTests2
             this.view.Argument = "banjo";
             this.housePresenter.Play();
             Assert.AreEqual("You have no banjo to play", this.view.Message);
-            PortableObject portableObjectBanjo = this.house.PortableObjects[ObjectData.BanjoShortName] as PortableObject;
-            this.house.AddToInventory(portableObjectBanjo);
+            Banjo portableObjectBanjo = this.house.InanimateObjects2[ObjectData.BanjoShortName] as Banjo;
+            this.house.AddToInventory2(portableObjectBanjo);
             this.view.Argument = "banjo";
             this.housePresenter.Play();
             Assert.AreEqual("", this.view.Message);
             this.player.Location = RoomData.LocationBasementPumpRoom;
-            Assert.IsTrue(this.house.Rooms[this.player.Location].Adversaries.Contains(AdversaryData.BeastShortName));
+            Assert.IsTrue(this.house.GetRoomAt(this.player.Location).Adversaries.Contains(AdversaryData.BeastShortName));
             this.view.Argument = "banjo";
             this.housePresenter.Play();
             Assert.AreEqual("Music hath charm to soothe the savage beast.  The beast wandered off in a state of bliss.", this.view.Message);
-            Assert.IsFalse(this.house.Rooms[this.player.Location].Adversaries.Contains(AdversaryData.BeastShortName));
-            Assert.IsTrue(this.house.Rooms[RoomData.LocationMonsterHangout].Adversaries.Contains(AdversaryData.BeastShortName));
+            Assert.IsFalse(this.house.GetRoomAt(this.player.Location).Adversaries.Contains(AdversaryData.BeastShortName));
+            Assert.IsTrue(this.house.GetRoomAt(RoomData.LocationMonsterHangout).Adversaries.Contains(AdversaryData.BeastShortName));
         }
 
         [TestMethod]
@@ -387,24 +387,24 @@ namespace UnitTests2
             this.view.Argument = "ban";
             this.housePresenter.Read();
             Assert.AreEqual("You don't have a ban to read.", this.view.Message);
-            PortableObject portableObjectBanjo = this.house.PortableObjects[ObjectData.BanjoShortName] as PortableObject;
-            this.house.AddToInventory(portableObjectBanjo);
+            Banjo portableObjectBanjo = this.house.InanimateObjects2[ObjectData.BanjoShortName] as Banjo;
+            this.house.AddToInventory2(portableObjectBanjo);
             this.view.Argument = "ban";
             this.housePresenter.Read();
             Assert.AreEqual("You can't read that", this.view.Message);
             this.view.Argument = "book";
             this.housePresenter.Read();
             Assert.AreEqual("You don't have a book to read.", this.view.Message);
-            PortableObject portableObjectSorcerersBook = this.house.InanimateObjects[ObjectData.BookShortName] as PortableObject;
-            this.house.AddToInventory(portableObjectSorcerersBook);
+            Document portableObjectSorcerersBook = this.house.InanimateObjects2[ObjectData.BookShortName] as Document;
+            this.house.AddToInventory2(portableObjectSorcerersBook);
             this.view.Argument = "book";
             this.housePresenter.Read();
             Assert.AreEqual("The writing is blurry -- it reads:\r\nmagic words to make objects . . . one of the following.\r\nAbracadabra\r\nShazaam\r\nSeersucker\r\nUgaboom\r\nNote:  Be sure to use the right word in the . . .", this.view.Message);
             this.view.Argument = "parch";
             this.housePresenter.Read();
             Assert.AreEqual("You don't have a parch to read.", this.view.Message);
-            PortableObject portableObjectParchment = this.house.InanimateObjects[ObjectData.ParchmentShortName] as PortableObject;
-            this.house.AddToInventory(portableObjectParchment);
+            Document portableObjectParchment = this.house.InanimateObjects2[ObjectData.ParchmentShortName] as Document;
+            this.house.AddToInventory2(portableObjectParchment);
             this.view.Argument = "parch";
             this.housePresenter.Read();
             Assert.AreEqual("The parchment is torn -- it reads:\r\n. . . is the place to use them:\r\nin a telephone booth\r\nin the dining room\r\nin the living room", this.view.Message);

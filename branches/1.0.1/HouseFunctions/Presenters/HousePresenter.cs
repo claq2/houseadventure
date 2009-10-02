@@ -405,13 +405,13 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            PortableObject portableObjectBanjo = this.house.PortableObjects[ObjectData.BanjoShortName] as PortableObject;
-            Adversary adversaryBeast = this.house.Adversaries[AdversaryData.BeastShortName];
-            InanimateObject inanimateObjectTarget = null;
+            Banjo portableObjectBanjo = this.house.InanimateObjects2[ObjectData.BanjoShortName] as Banjo;
+            Beast adversaryBeast = this.house.Adversaries2[AdversaryData.BeastShortName] as Beast;
+            InanimateObject2 inanimateObjectTarget = null;
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
-                inanimateObjectTarget = this.house.PortableObjects[stringShortenedArgument];
+                inanimateObjectTarget = this.house.InanimateObjects2[stringShortenedArgument];
             }
             catch (KeyNotFoundException)
             {
@@ -420,13 +420,13 @@ namespace HouseCore.Presenters
 
             if (inanimateObjectTarget == null || !inanimateObjectTarget.Equals(portableObjectBanjo))
                 stringBuilderMessage.Append("You can't play that!");
-            else if (!this.house.Inventory.Contains(portableObjectBanjo))
+            else if (!this.house.Inventory2.ContainsByType(typeof(Banjo)))
                 stringBuilderMessage.Append("You have no banjo to play");
             else
                 // TODO: play sound
-                if (this.house.Rooms[this.player.Location].Adversaries.Contains(adversaryBeast))
+                if (this.house.GetRoomAt(this.player.Location).Adversaries.Contains(adversaryBeast))
                 {
-                    this.house.HideAdversary(adversaryBeast, this.player.Location);
+                    this.house.HideAdversary2(adversaryBeast, this.player.Location);
                     stringBuilderMessage.Append("Music hath charm to soothe the savage beast.  The beast wandered off in a state of bliss.");
                 }
 
@@ -443,22 +443,22 @@ namespace HouseCore.Presenters
                 throw new NullViewArgumentException("The view's Argument property is null");
 
             StringBuilder stringBuilderMessage = new StringBuilder();
-            PortableObject portableObjectSorcerersBook = this.house.InanimateObjects[ObjectData.BookShortName] as PortableObject;
-            PortableObject portableObjectParchment = this.house.InanimateObjects[ObjectData.ParchmentShortName] as PortableObject;
-            InanimateObject inanimateObjectTarget = null;
+            Document portableObjectSorcerersBook = this.house.InanimateObjects2[ObjectData.BookShortName] as Document;
+            Document portableObjectParchment = this.house.InanimateObjects2[ObjectData.ParchmentShortName] as Document;
+            InanimateObject2 inanimateObjectTarget = null;
             //TODO:HouseType needs IsPortable function?
             string stringShortenedArgument = this.view.Argument.Length > 2 ? this.view.Argument.Substring(0, 3) : this.view.Argument;
             try
             {
-                inanimateObjectTarget = this.house.InanimateObjects[stringShortenedArgument];
+                inanimateObjectTarget = this.house.InanimateObjects2[stringShortenedArgument];
             }
             catch (KeyNotFoundException)
             {
             }
 
-            if (inanimateObjectTarget == null || !(inanimateObjectTarget is PortableObject))
+            if (inanimateObjectTarget == null || !(inanimateObjectTarget is PortableObject2))
                 stringBuilderMessage.Append("You can't read that");
-            else if (!this.house.Inventory.Contains(inanimateObjectTarget))
+            else if (!this.house.Inventory2.Contains(inanimateObjectTarget))
             {
                 stringBuilderMessage.Append("You don't have a ");
                 stringBuilderMessage.Append(this.view.Argument);
@@ -466,31 +466,17 @@ namespace HouseCore.Presenters
             }
             else if (inanimateObjectTarget.Equals(portableObjectSorcerersBook))
             {
-                stringBuilderMessage.Append("The writing is blurry -- it reads:\r\n");
-                stringBuilderMessage.Append("magic words to make objects . . . one of the following.\r\n");
-                string[] stringArrayMagicWords = Enum.GetNames(typeof(MagicWord));
-                int intMagicWordCount = stringArrayMagicWords.Length;
-                for (int i = 1; i < intMagicWordCount; i++)
-                {
-                    stringBuilderMessage.Append(stringArrayMagicWords[i]);
-                    stringBuilderMessage.Append(Environment.NewLine);
-                }
-
-                stringBuilderMessage.Append("Note:  Be sure to use the right word in the . . .");
+                stringBuilderMessage.Append(portableObjectSorcerersBook.StateDescription);
+                stringBuilderMessage.Append(" -- it reads:");
+                stringBuilderMessage.Append(Environment.NewLine);
+                stringBuilderMessage.Append(portableObjectSorcerersBook.Text);
             }
             else if (inanimateObjectTarget.Equals(portableObjectParchment))
             {
-                stringBuilderMessage.Append("The parchment is torn -- it reads:\r\n");
-                stringBuilderMessage.Append(". . . is the place to use them:\r\n");
-                foreach (NormalRoom room in this.house.Rooms.MagicRooms)
-                {
-                    stringBuilderMessage.Append(room.Name);
-                    stringBuilderMessage.Append(Environment.NewLine);
-                }
-
-                // One non-magic decoy room to make things a little harder
-                LocationType locationTypeDecoyRoom = new LocationType(0, Floor.ThirdFloor);
-                stringBuilderMessage.Append(this.house.Rooms[locationTypeDecoyRoom].Name);
+                stringBuilderMessage.Append(portableObjectParchment.StateDescription);
+                stringBuilderMessage.Append(" -- it reads:");
+                stringBuilderMessage.Append(Environment.NewLine);
+                stringBuilderMessage.Append(portableObjectParchment.Text);
             }
             else
                 stringBuilderMessage.Append("You can't read that");

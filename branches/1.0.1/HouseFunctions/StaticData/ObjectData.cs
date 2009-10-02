@@ -81,7 +81,7 @@ namespace HouseCore
                 }
 
                 // One non-magic decoy room to make things a little harder
-                stringBuilderMessage.Append(RoomData.Rooms[29].Name);
+                stringBuilderMessage.Append(RoomData.Rooms[30].Name);
                 return stringBuilderMessage.ToString();
         }
 
